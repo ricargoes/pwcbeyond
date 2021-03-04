@@ -1,0 +1,1155 @@
+[gd_scene load_steps=34 format=2]
+
+[ext_resource path="res://resources/theme.tres" type="Theme" id=1]
+[ext_resource path="res://resources/sprites/backgrounds/logoletter (3).png" type="Texture" id=2]
+[ext_resource path="res://resources/underline.tres" type="StyleBox" id=3]
+[ext_resource path="res://resources/h1_font.tres" type="DynamicFont" id=4]
+[ext_resource path="res://scenes/sheet_layouts/CharacterSheet.gd" type="Script" id=5]
+[ext_resource path="res://resources/logos/PWC-logo-fighting_man.png" type="Texture" id=6]
+[ext_resource path="res://scenes/counters/Status.tscn" type="PackedScene" id=7]
+[ext_resource path="res://scenes/counters/Tireness.tscn" type="PackedScene" id=8]
+[ext_resource path="res://resources/underline_small.tres" type="StyleBox" id=9]
+[ext_resource path="res://scenes/decorations/BG.tscn" type="PackedScene" id=10]
+[ext_resource path="res://resources/h2_font.tres" type="DynamicFont" id=11]
+[ext_resource path="res://scenes/counters/Feature.tscn" type="PackedScene" id=12]
+[ext_resource path="res://resources/EscapeKeyShortcut.tres" type="ShortCut" id=13]
+[ext_resource path="res://scenes/tools/RollTool.tscn" type="PackedScene" id=14]
+[ext_resource path="res://resources/sprites/backgrounds/9patch_scroll3.png" type="Texture" id=15]
+[ext_resource path="res://resources/sprites/backgrounds/9patch_scroll2.png" type="Texture" id=16]
+[ext_resource path="res://resources/sprites/backgrounds/9patch_scroll1_med.png" type="Texture" id=17]
+[ext_resource path="res://resources/sprites/backgrounds/info.png" type="Texture" id=18]
+[ext_resource path="res://resources/sprites/props/musket.png" type="Texture" id=19]
+[ext_resource path="res://scenes/decorations/PropHuman.gd" type="Script" id=20]
+[ext_resource path="res://resources/sprites/props/inkwell.png" type="Texture" id=21]
+[ext_resource path="res://resources/sprites/props/feather.png" type="Texture" id=22]
+[ext_resource path="res://resources/sprites/details/dirt2.png" type="Texture" id=23]
+[ext_resource path="res://resources/sprites/details/dirt3.png" type="Texture" id=24]
+[ext_resource path="res://resources/sprites/details/dirt1.png" type="Texture" id=25]
+[ext_resource path="res://resources/sprites/details/dirt4.png" type="Texture" id=26]
+[ext_resource path="res://resources/sprites/details/dirt5.png" type="Texture" id=27]
+[ext_resource path="res://scenes/panels/ArtesReference.tscn" type="PackedScene" id=28]
+[ext_resource path="res://scenes/panels/Inventory.tscn" type="PackedScene" id=29]
+
+
+
+
+
+[sub_resource type="StyleBoxEmpty" id=1]
+
+[sub_resource type="StyleBoxEmpty" id=2]
+
+[sub_resource type="StyleBoxEmpty" id=3]
+
+[sub_resource type="StyleBoxEmpty" id=4]
+
+[node name="DashboardLayout" type="ScrollContainer"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+theme = ExtResource( 1 )
+script = ExtResource( 5 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Autosave" type="Timer" parent="."]
+wait_time = 3.0
+autostart = true
+
+[node name="GET" type="HTTPRequest" parent="."]
+
+[node name="BG" parent="." instance=ExtResource( 10 )]
+margin_right = 1920.0
+margin_bottom = 1080.0
+
+[node name="Envelope" type="TextureRect" parent="BG"]
+margin_right = 720.0
+margin_bottom = 270.0
+rect_min_size = Vector2( 720, 270 )
+texture = ExtResource( 2 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="InfoPaper" type="TextureRect" parent="BG/Envelope"]
+anchor_left = 0.9
+anchor_right = 0.9
+margin_top = -300.0
+margin_right = 1260.0
+margin_bottom = 300.0
+texture = ExtResource( 18 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Margin" type="MarginContainer" parent="BG"]
+margin_right = 1919.0
+margin_bottom = 1080.0
+rect_min_size = Vector2( 1919, 0 )
+custom_constants/margin_top = 30
+custom_constants/margin_left = 30
+custom_constants/margin_bottom = 10
+
+[node name="Pivot" type="Control" parent="BG/Margin"]
+margin_left = 30.0
+margin_top = 30.0
+margin_right = 1919.0
+margin_bottom = 1070.0
+mouse_filter = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="CenterContainer" type="CenterContainer" parent="BG/Margin/Pivot"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ConfirmationPopup" type="Popup" parent="BG/Margin/Pivot/CenterContainer"]
+margin_left = 744.0
+margin_top = 470.0
+margin_right = 1144.0
+margin_bottom = 570.0
+rect_min_size = Vector2( 400, 100 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="NinePatchRect" type="NinePatchRect" parent="BG/Margin/Pivot/CenterContainer/ConfirmationPopup"]
+modulate = Color( 0.768627, 0.776471, 0, 1 )
+margin_right = 400.0
+margin_bottom = 100.0
+rect_min_size = Vector2( 400, 100 )
+texture = ExtResource( 16 )
+patch_margin_left = 55
+patch_margin_top = 64
+patch_margin_right = 51
+patch_margin_bottom = 45
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="BG/Margin/Pivot/CenterContainer/ConfirmationPopup"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+alignment = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ConfirmationL" type="Label" parent="BG/Margin/Pivot/CenterContainer/ConfirmationPopup/VBoxContainer"]
+margin_top = 23.0
+margin_right = 400.0
+margin_bottom = 45.0
+text = "Acepta para confirmar el borrado"
+align = 1
+
+[node name="ConfirmButtons" type="HBoxContainer" parent="BG/Margin/Pivot/CenterContainer/ConfirmationPopup/VBoxContainer"]
+margin_top = 49.0
+margin_right = 400.0
+margin_bottom = 77.0
+alignment = 1
+
+[node name="Aceptar" type="Button" parent="BG/Margin/Pivot/CenterContainer/ConfirmationPopup/VBoxContainer/ConfirmButtons"]
+margin_left = 159.0
+margin_right = 240.0
+margin_bottom = 28.0
+text = "Aceptar"
+
+[node name="Sheet" type="VBoxContainer" parent="BG/Margin"]
+margin_left = 30.0
+margin_top = 30.0
+margin_right = 1919.0
+margin_bottom = 1070.0
+custom_constants/separation = 10
+
+[node name="Header" type="HBoxContainer" parent="BG/Margin/Sheet"]
+margin_right = 1889.0
+margin_bottom = 200.0
+custom_constants/separation = 100
+
+[node name="Logo" type="TextureRect" parent="BG/Margin/Sheet/Header"]
+margin_right = 540.0
+margin_bottom = 200.0
+rect_min_size = Vector2( 540, 200 )
+mouse_default_cursor_shape = 2
+texture = ExtResource( 6 )
+expand = true
+stretch_mode = 5
+
+[node name="Info" type="GridContainer" parent="BG/Margin/Sheet/Header"]
+margin_left = 640.0
+margin_right = 1820.0
+margin_bottom = 200.0
+custom_constants/hseparation = 20
+columns = 4
+
+[node name="PlayerBox" type="HBoxContainer" parent="BG/Margin/Sheet/Header/Info"]
+margin_right = 280.0
+margin_bottom = 30.0
+alignment = 2
+
+[node name="PlayerL" type="Label" parent="BG/Margin/Sheet/Header/Info/PlayerBox"]
+margin_top = 4.0
+margin_right = 126.0
+margin_bottom = 26.0
+size_flags_horizontal = 3
+text = "Jugador: "
+
+[node name="Player" type="LineEdit" parent="BG/Margin/Sheet/Header/Info/PlayerBox"]
+margin_left = 130.0
+margin_right = 280.0
+margin_bottom = 30.0
+rect_min_size = Vector2( 150, 30 )
+focus_mode = 0
+text = "Jugador"
+align = 1
+editable = false
+caret_blink = true
+caret_blink_speed = 0.5
+
+[node name="NameBox" type="HBoxContainer" parent="BG/Margin/Sheet/Header/Info"]
+margin_left = 300.0
+margin_right = 580.0
+margin_bottom = 30.0
+alignment = 2
+
+[node name="NameL" type="Label" parent="BG/Margin/Sheet/Header/Info/NameBox"]
+margin_top = 4.0
+margin_right = 126.0
+margin_bottom = 26.0
+size_flags_horizontal = 3
+text = "Nombre: "
+
+[node name="Name" type="LineEdit" parent="BG/Margin/Sheet/Header/Info/NameBox"]
+margin_left = 130.0
+margin_right = 280.0
+margin_bottom = 30.0
+rect_min_size = Vector2( 150, 0 )
+focus_mode = 0
+align = 1
+editable = false
+caret_blink = true
+caret_blink_speed = 0.5
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="SpeciesBox" type="HBoxContainer" parent="BG/Margin/Sheet/Header/Info"]
+margin_left = 600.0
+margin_right = 880.0
+margin_bottom = 30.0
+alignment = 2
+
+[node name="SpeciesL" type="Label" parent="BG/Margin/Sheet/Header/Info/SpeciesBox"]
+margin_top = 4.0
+margin_right = 126.0
+margin_bottom = 26.0
+size_flags_horizontal = 3
+text = "Especie: "
+
+[node name="Species" type="LineEdit" parent="BG/Margin/Sheet/Header/Info/SpeciesBox" groups=[
+"editable_lineedits",
+]]
+margin_left = 130.0
+margin_right = 280.0
+margin_bottom = 30.0
+rect_min_size = Vector2( 150, 0 )
+focus_mode = 0
+align = 1
+editable = false
+caret_blink = true
+caret_blink_speed = 0.5
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="XPBox" type="HBoxContainer" parent="BG/Margin/Sheet/Header/Info"]
+margin_left = 900.0
+margin_right = 1180.0
+margin_bottom = 30.0
+alignment = 2
+
+[node name="XPL" type="Label" parent="BG/Margin/Sheet/Header/Info/XPBox"]
+margin_top = 4.0
+margin_right = 126.0
+margin_bottom = 26.0
+size_flags_horizontal = 3
+text = "XP: "
+
+[node name="XP" type="LineEdit" parent="BG/Margin/Sheet/Header/Info/XPBox"]
+margin_left = 130.0
+margin_right = 280.0
+margin_bottom = 30.0
+rect_min_size = Vector2( 150, 30 )
+align = 1
+caret_blink = true
+caret_blink_speed = 0.5
+
+[node name="ChronicleBox" type="HBoxContainer" parent="BG/Margin/Sheet/Header/Info"]
+margin_top = 34.0
+margin_right = 280.0
+margin_bottom = 64.0
+alignment = 2
+
+[node name="ChronicleL" type="Label" parent="BG/Margin/Sheet/Header/Info/ChronicleBox"]
+margin_top = 4.0
+margin_right = 126.0
+margin_bottom = 26.0
+size_flags_horizontal = 3
+text = "Cronica:"
+
+[node name="Chronicle" type="LineEdit" parent="BG/Margin/Sheet/Header/Info/ChronicleBox"]
+margin_left = 130.0
+margin_right = 280.0
+margin_bottom = 30.0
+rect_min_size = Vector2( 150, 30 )
+focus_mode = 0
+text = "Cronica"
+align = 1
+editable = false
+caret_blink = true
+caret_blink_speed = 0.5
+
+[node name="JobBox" type="HBoxContainer" parent="BG/Margin/Sheet/Header/Info"]
+margin_left = 300.0
+margin_top = 34.0
+margin_right = 580.0
+margin_bottom = 64.0
+alignment = 2
+
+[node name="JobL" type="Label" parent="BG/Margin/Sheet/Header/Info/JobBox"]
+margin_top = 4.0
+margin_right = 126.0
+margin_bottom = 26.0
+size_flags_horizontal = 3
+text = "Profesion: "
+
+[node name="Job" type="LineEdit" parent="BG/Margin/Sheet/Header/Info/JobBox" groups=[
+"editable_lineedits",
+]]
+margin_left = 130.0
+margin_right = 280.0
+margin_bottom = 30.0
+rect_min_size = Vector2( 150, 0 )
+focus_mode = 0
+align = 1
+editable = false
+caret_blink = true
+caret_blink_speed = 0.5
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="AgeBox" type="HBoxContainer" parent="BG/Margin/Sheet/Header/Info"]
+margin_left = 600.0
+margin_top = 34.0
+margin_right = 880.0
+margin_bottom = 64.0
+alignment = 2
+
+[node name="AgeL" type="Label" parent="BG/Margin/Sheet/Header/Info/AgeBox"]
+margin_top = 4.0
+margin_right = 126.0
+margin_bottom = 26.0
+size_flags_horizontal = 3
+text = "Edad: "
+
+[node name="Age" type="LineEdit" parent="BG/Margin/Sheet/Header/Info/AgeBox" groups=[
+"editable_lineedits",
+]]
+margin_left = 130.0
+margin_right = 280.0
+margin_bottom = 30.0
+rect_min_size = Vector2( 150, 0 )
+focus_mode = 0
+align = 1
+editable = false
+caret_blink = true
+caret_blink_speed = 0.5
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="EPBox" type="HBoxContainer" parent="BG/Margin/Sheet/Header/Info"]
+margin_left = 900.0
+margin_top = 34.0
+margin_right = 1180.0
+margin_bottom = 64.0
+alignment = 2
+
+[node name="EPL" type="Label" parent="BG/Margin/Sheet/Header/Info/EPBox"]
+margin_top = 4.0
+margin_right = 126.0
+margin_bottom = 26.0
+size_flags_horizontal = 3
+text = "EP: "
+
+[node name="EP" type="LineEdit" parent="BG/Margin/Sheet/Header/Info/EPBox"]
+margin_left = 130.0
+margin_right = 280.0
+margin_bottom = 30.0
+rect_min_size = Vector2( 150, 30 )
+align = 1
+caret_blink = true
+caret_blink_speed = 0.5
+
+[node name="RasgosL" type="Label" parent="BG/Margin/Sheet/Header/Info"]
+margin_top = 68.0
+margin_right = 280.0
+margin_bottom = 90.0
+text = "Rasgos: "
+
+[node name="PersonalidadL" type="Label" parent="BG/Margin/Sheet/Header/Info"]
+margin_left = 300.0
+margin_top = 68.0
+margin_right = 580.0
+margin_bottom = 90.0
+text = "Personalidad: "
+
+[node name="PasadoL" type="Label" parent="BG/Margin/Sheet/Header/Info"]
+margin_left = 600.0
+margin_top = 68.0
+margin_right = 880.0
+margin_bottom = 90.0
+text = "Pasado: "
+
+[node name="MotivacionL" type="Label" parent="BG/Margin/Sheet/Header/Info"]
+margin_left = 900.0
+margin_top = 68.0
+margin_right = 1180.0
+margin_bottom = 90.0
+text = "Motivación:"
+
+[node name="Looks" type="TextEdit" parent="BG/Margin/Sheet/Header/Info" groups=[
+"editable_textedits",
+]]
+margin_top = 94.0
+margin_right = 280.0
+margin_bottom = 184.0
+rect_min_size = Vector2( 280, 90 )
+focus_mode = 0
+readonly = true
+wrap_enabled = true
+
+[node name="Personality" type="TextEdit" parent="BG/Margin/Sheet/Header/Info" groups=[
+"editable_textedits",
+]]
+margin_left = 300.0
+margin_top = 94.0
+margin_right = 580.0
+margin_bottom = 184.0
+rect_min_size = Vector2( 280, 0 )
+focus_mode = 0
+readonly = true
+wrap_enabled = true
+
+[node name="Past" type="TextEdit" parent="BG/Margin/Sheet/Header/Info" groups=[
+"editable_textedits",
+]]
+margin_left = 600.0
+margin_top = 94.0
+margin_right = 880.0
+margin_bottom = 184.0
+rect_min_size = Vector2( 280, 0 )
+focus_mode = 0
+readonly = true
+wrap_enabled = true
+
+[node name="Motivation" type="TextEdit" parent="BG/Margin/Sheet/Header/Info" groups=[
+"editable_textedits",
+]]
+margin_left = 900.0
+margin_top = 94.0
+margin_right = 1180.0
+margin_bottom = 184.0
+rect_min_size = Vector2( 280, 0 )
+focus_mode = 0
+readonly = true
+wrap_enabled = true
+
+[node name="HSeparator" type="HSeparator" parent="BG/Margin/Sheet"]
+margin_top = 210.0
+margin_right = 1889.0
+margin_bottom = 240.0
+custom_styles/separator = SubResource( 1 )
+custom_constants/separation = 30
+
+[node name="Body" type="HBoxContainer" parent="BG/Margin/Sheet"]
+margin_top = 250.0
+margin_right = 1889.0
+margin_bottom = 950.0
+custom_constants/separation = 50
+
+[node name="Sec1" type="VBoxContainer" parent="BG/Margin/Sheet/Body"]
+margin_right = 570.0
+margin_bottom = 700.0
+custom_constants/separation = 50
+
+[node name="AtributesBG" type="NinePatchRect" parent="BG/Margin/Sheet/Body/Sec1"]
+margin_right = 570.0
+margin_bottom = 300.0
+rect_min_size = Vector2( 550, 300 )
+texture = ExtResource( 15 )
+patch_margin_left = 49
+patch_margin_top = 70
+patch_margin_right = 62
+patch_margin_bottom = 59
+
+[node name="AtributeDetails" type="Node2D" parent="BG/Margin/Sheet/Body/Sec1/AtributesBG"]
+
+[node name="Sprite" type="Sprite" parent="BG/Margin/Sheet/Body/Sec1/AtributesBG/AtributeDetails"]
+self_modulate = Color( 1, 1, 1, 0.411765 )
+position = Vector2( 288, 137 )
+texture = ExtResource( 24 )
+
+[node name="AtributesCenter" type="CenterContainer" parent="BG/Margin/Sheet/Body/Sec1/AtributesBG"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="AtributesFrame" type="VBoxContainer" parent="BG/Margin/Sheet/Body/Sec1/AtributesBG/AtributesCenter"]
+margin_left = 230.0
+margin_top = 129.0
+margin_right = 340.0
+margin_bottom = 170.0
+alignment = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="AtributosL" type="Label" parent="BG/Margin/Sheet/Body/Sec1/AtributesBG/AtributesCenter/AtributesFrame"]
+margin_right = 110.0
+margin_bottom = 29.0
+custom_fonts/font = ExtResource( 4 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "Atributos"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HSeparator" type="HSeparator" parent="BG/Margin/Sheet/Body/Sec1/AtributesBG/AtributesCenter/AtributesFrame"]
+margin_top = 33.0
+margin_right = 110.0
+margin_bottom = 37.0
+custom_styles/separator = ExtResource( 3 )
+
+[node name="Atributes" type="HBoxContainer" parent="BG/Margin/Sheet/Body/Sec1/AtributesBG/AtributesCenter/AtributesFrame"]
+margin_top = 41.0
+margin_right = 110.0
+margin_bottom = 41.0
+custom_constants/separation = 10
+
+[node name="StatusBG" type="NinePatchRect" parent="BG/Margin/Sheet/Body/Sec1"]
+margin_top = 350.0
+margin_right = 570.0
+margin_bottom = 700.0
+rect_min_size = Vector2( 570, 350 )
+texture = ExtResource( 16 )
+patch_margin_left = 53
+patch_margin_top = 66
+patch_margin_right = 67
+patch_margin_bottom = 71
+
+[node name="Dirt" type="TextureRect" parent="BG/Margin/Sheet/Body/Sec1/StatusBG"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -200.0
+margin_top = -200.0
+margin_right = 200.0
+margin_bottom = 200.0
+texture = ExtResource( 26 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="StatusCenter" type="CenterContainer" parent="BG/Margin/Sheet/Body/Sec1/StatusBG"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="StatusFrame" type="VBoxContainer" parent="BG/Margin/Sheet/Body/Sec1/StatusBG/StatusCenter"]
+margin_left = 76.0
+margin_top = 79.0
+margin_right = 494.0
+margin_bottom = 270.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="EstadoL" type="Label" parent="BG/Margin/Sheet/Body/Sec1/StatusBG/StatusCenter/StatusFrame"]
+margin_right = 418.0
+margin_bottom = 29.0
+custom_fonts/font = ExtResource( 4 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "Estado"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HSeparator" type="HSeparator" parent="BG/Margin/Sheet/Body/Sec1/StatusBG/StatusCenter/StatusFrame"]
+margin_top = 33.0
+margin_right = 418.0
+margin_bottom = 37.0
+custom_styles/separator = ExtResource( 3 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Status" type="HBoxContainer" parent="BG/Margin/Sheet/Body/Sec1/StatusBG/StatusCenter/StatusFrame"]
+margin_top = 41.0
+margin_right = 418.0
+margin_bottom = 191.0
+custom_constants/separation = 40
+alignment = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="PhysicalStatus" type="VBoxContainer" parent="BG/Margin/Sheet/Body/Sec1/StatusBG/StatusCenter/StatusFrame/Status"]
+margin_right = 189.0
+margin_bottom = 150.0
+
+[node name="Vigor" parent="BG/Margin/Sheet/Body/Sec1/StatusBG/StatusCenter/StatusFrame/Status/PhysicalStatus" groups=[
+"features",
+] instance=ExtResource( 8 )]
+margin_right = 189.0
+margin_bottom = 96.0
+status_name = "Vigor"
+
+[node name="BlankSep" type="HSeparator" parent="BG/Margin/Sheet/Body/Sec1/StatusBG/StatusCenter/StatusFrame/Status/PhysicalStatus"]
+margin_top = 100.0
+margin_right = 189.0
+margin_bottom = 120.0
+custom_styles/separator = SubResource( 2 )
+custom_constants/separation = 20
+
+[node name="Salud" parent="BG/Margin/Sheet/Body/Sec1/StatusBG/StatusCenter/StatusFrame/Status/PhysicalStatus" instance=ExtResource( 7 )]
+margin_top = 124.0
+margin_right = 189.0
+margin_bottom = 150.0
+
+[node name="MentalStatus" type="VBoxContainer" parent="BG/Margin/Sheet/Body/Sec1/StatusBG/StatusCenter/StatusFrame/Status"]
+margin_left = 229.0
+margin_right = 418.0
+margin_bottom = 150.0
+
+[node name="Voluntad" parent="BG/Margin/Sheet/Body/Sec1/StatusBG/StatusCenter/StatusFrame/Status/MentalStatus" groups=[
+"features",
+] instance=ExtResource( 8 )]
+margin_right = 189.0
+margin_bottom = 96.0
+status_name = "Voluntad"
+
+[node name="BlankSep2" type="HSeparator" parent="BG/Margin/Sheet/Body/Sec1/StatusBG/StatusCenter/StatusFrame/Status/MentalStatus"]
+margin_top = 100.0
+margin_right = 189.0
+margin_bottom = 120.0
+custom_styles/separator = SubResource( 2 )
+custom_constants/separation = 20
+
+[node name="Cordura" parent="BG/Margin/Sheet/Body/Sec1/StatusBG/StatusCenter/StatusFrame/Status/MentalStatus" instance=ExtResource( 7 )]
+margin_top = 124.0
+margin_right = 189.0
+margin_bottom = 150.0
+type = "Cordura"
+icon_colection = "sanity"
+
+[node name="Inkwell" type="Sprite" parent="BG/Margin/Sheet/Body/Sec1/StatusBG"]
+position = Vector2( 24, -19 )
+scale = Vector2( 0.7, 0.7 )
+texture = ExtResource( 21 )
+
+[node name="SkillsBG" type="NinePatchRect" parent="BG/Margin/Sheet/Body"]
+margin_left = 620.0
+margin_right = 1320.0
+margin_bottom = 700.0
+rect_min_size = Vector2( 700, 700 )
+texture = ExtResource( 15 )
+patch_margin_left = 45
+patch_margin_top = 71
+patch_margin_right = 60
+patch_margin_bottom = 65
+
+[node name="SkillDetails" type="Node2D" parent="BG/Margin/Sheet/Body/SkillsBG"]
+
+[node name="Sprite" type="Sprite" parent="BG/Margin/Sheet/Body/SkillsBG/SkillDetails"]
+position = Vector2( 357, 345 )
+scale = Vector2( 1.5, 1.5 )
+texture = ExtResource( 25 )
+
+[node name="Sprite2" type="Sprite" parent="BG/Margin/Sheet/Body/SkillsBG/SkillDetails"]
+self_modulate = Color( 1, 1, 1, 0.388235 )
+position = Vector2( 277, 271 )
+scale = Vector2( 1.5, 1.5 )
+texture = ExtResource( 27 )
+
+[node name="VBoxContainer" type="VBoxContainer" parent="BG/Margin/Sheet/Body/SkillsBG"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+alignment = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Title" type="Label" parent="BG/Margin/Sheet/Body/SkillsBG/VBoxContainer"]
+margin_top = 329.0
+margin_right = 700.0
+margin_bottom = 358.0
+custom_fonts/font = ExtResource( 4 )
+text = "Habilidades"
+align = 1
+
+[node name="HSeparator" type="HSeparator" parent="BG/Margin/Sheet/Body/SkillsBG/VBoxContainer"]
+margin_top = 362.0
+margin_right = 700.0
+margin_bottom = 366.0
+custom_styles/separator = ExtResource( 3 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="CenterContainer" type="CenterContainer" parent="BG/Margin/Sheet/Body/SkillsBG/VBoxContainer"]
+margin_top = 370.0
+margin_right = 700.0
+margin_bottom = 370.0
+
+[node name="Skills" type="HBoxContainer" parent="BG/Margin/Sheet/Body/SkillsBG/VBoxContainer/CenterContainer"]
+margin_left = 350.0
+margin_right = 350.0
+custom_constants/separation = 30
+
+[node name="Feather" type="Sprite" parent="BG/Margin/Sheet/Body/SkillsBG"]
+position = Vector2( -23.0448, 238.014 )
+rotation = 0.174533
+texture = ExtResource( 22 )
+
+[node name="PlaneManipulationBG" type="NinePatchRect" parent="BG/Margin/Sheet/Body"]
+margin_left = 1370.0
+margin_right = 1820.0
+margin_bottom = 700.0
+rect_min_size = Vector2( 450, 0 )
+texture = ExtResource( 17 )
+patch_margin_left = 41
+patch_margin_top = 38
+patch_margin_right = 44
+patch_margin_bottom = 38
+
+[node name="PWDetails" type="Node2D" parent="BG/Margin/Sheet/Body/PlaneManipulationBG"]
+
+[node name="Sprite" type="Sprite" parent="BG/Margin/Sheet/Body/PlaneManipulationBG/PWDetails"]
+self_modulate = Color( 1, 1, 1, 0.411765 )
+position = Vector2( 232, 361 )
+scale = Vector2( 1, 1.6 )
+texture = ExtResource( 23 )
+
+[node name="PlaneManipulation" type="VBoxContainer" parent="BG/Margin/Sheet/Body/PlaneManipulationBG"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 1.75806
+margin_top = 1.75812
+margin_right = 1.75806
+margin_bottom = 1.75818
+rect_min_size = Vector2( 450, 0 )
+custom_constants/separation = 8
+alignment = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Title" type="Label" parent="BG/Margin/Sheet/Body/PlaneManipulationBG/PlaneManipulation"]
+margin_top = 73.0
+margin_right = 450.0
+margin_bottom = 102.0
+custom_fonts/font = ExtResource( 4 )
+text = "Manipulacion de planos"
+align = 1
+
+[node name="HSeparator" type="HSeparator" parent="BG/Margin/Sheet/Body/PlaneManipulationBG/PlaneManipulation"]
+margin_top = 110.0
+margin_right = 450.0
+margin_bottom = 114.0
+custom_styles/separator = ExtResource( 3 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="DataCenter" type="CenterContainer" parent="BG/Margin/Sheet/Body/PlaneManipulationBG/PlaneManipulation"]
+margin_top = 122.0
+margin_right = 450.0
+margin_bottom = 254.0
+
+[node name="Data" type="GridContainer" parent="BG/Margin/Sheet/Body/PlaneManipulationBG/PlaneManipulation/DataCenter"]
+margin_left = 94.0
+margin_right = 356.0
+margin_bottom = 132.0
+custom_constants/hseparation = 30
+columns = 2
+
+[node name="ModusL" type="Label" parent="BG/Margin/Sheet/Body/PlaneManipulationBG/PlaneManipulation/DataCenter/Data"]
+margin_top = 4.0
+margin_right = 82.0
+margin_bottom = 26.0
+text = "Modo: "
+
+[node name="Modus" type="LineEdit" parent="BG/Margin/Sheet/Body/PlaneManipulationBG/PlaneManipulation/DataCenter/Data"]
+margin_left = 112.0
+margin_right = 262.0
+margin_bottom = 30.0
+rect_min_size = Vector2( 150, 30 )
+focus_mode = 0
+editable = false
+caret_blink = true
+caret_blink_speed = 0.5
+
+[node name="ViaL" type="Label" parent="BG/Margin/Sheet/Body/PlaneManipulationBG/PlaneManipulation/DataCenter/Data"]
+margin_top = 38.0
+margin_right = 82.0
+margin_bottom = 60.0
+text = "Via:"
+
+[node name="Via" type="LineEdit" parent="BG/Margin/Sheet/Body/PlaneManipulationBG/PlaneManipulation/DataCenter/Data"]
+margin_left = 112.0
+margin_top = 34.0
+margin_right = 262.0
+margin_bottom = 64.0
+rect_min_size = Vector2( 150, 30 )
+focus_mode = 0
+editable = false
+caret_blink = true
+caret_blink_speed = 0.5
+
+[node name="AspectL" type="Label" parent="BG/Margin/Sheet/Body/PlaneManipulationBG/PlaneManipulation/DataCenter/Data"]
+margin_top = 72.0
+margin_right = 82.0
+margin_bottom = 94.0
+text = "Aspectos:"
+
+[node name="Aspect1" type="LineEdit" parent="BG/Margin/Sheet/Body/PlaneManipulationBG/PlaneManipulation/DataCenter/Data"]
+margin_left = 112.0
+margin_top = 68.0
+margin_right = 262.0
+margin_bottom = 98.0
+rect_min_size = Vector2( 150, 30 )
+focus_mode = 0
+editable = false
+caret_blink = true
+caret_blink_speed = 0.5
+
+[node name="Blank" type="Label" parent="BG/Margin/Sheet/Body/PlaneManipulationBG/PlaneManipulation/DataCenter/Data"]
+margin_top = 106.0
+margin_right = 82.0
+margin_bottom = 128.0
+
+[node name="Aspect2" type="LineEdit" parent="BG/Margin/Sheet/Body/PlaneManipulationBG/PlaneManipulation/DataCenter/Data"]
+margin_left = 112.0
+margin_top = 102.0
+margin_right = 262.0
+margin_bottom = 132.0
+rect_min_size = Vector2( 150, 30 )
+focus_mode = 0
+editable = false
+caret_blink = true
+caret_blink_speed = 0.5
+
+[node name="Journey" parent="BG/Margin/Sheet/Body/PlaneManipulationBG/PlaneManipulation" instance=ExtResource( 12 )]
+margin_top = 262.0
+margin_right = 450.0
+margin_bottom = 308.0
+ability_name = "Viaje"
+
+[node name="HSeparator2" type="HSeparator" parent="BG/Margin/Sheet/Body/PlaneManipulationBG/PlaneManipulation"]
+margin_top = 316.0
+margin_right = 450.0
+margin_bottom = 320.0
+custom_styles/separator = ExtResource( 9 )
+
+[node name="AccessCenter" type="CenterContainer" parent="BG/Margin/Sheet/Body/PlaneManipulationBG/PlaneManipulation"]
+margin_top = 328.0
+margin_right = 450.0
+margin_bottom = 456.0
+
+[node name="Access" type="GridContainer" parent="BG/Margin/Sheet/Body/PlaneManipulationBG/PlaneManipulation/AccessCenter"]
+margin_left = 8.0
+margin_right = 442.0
+margin_bottom = 128.0
+custom_constants/vseparation = -5
+custom_constants/hseparation = -20
+columns = 3
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Blank" type="Label" parent="BG/Margin/Sheet/Body/PlaneManipulationBG/PlaneManipulation/AccessCenter/Access"]
+margin_top = 12.0
+margin_right = 158.0
+margin_bottom = 34.0
+
+[node name="Ego" parent="BG/Margin/Sheet/Body/PlaneManipulationBG/PlaneManipulation/AccessCenter/Access" instance=ExtResource( 12 )]
+margin_left = 138.0
+margin_right = 296.0
+margin_bottom = 46.0
+ability_name = "Ego"
+
+[node name="Blank2" type="Label" parent="BG/Margin/Sheet/Body/PlaneManipulationBG/PlaneManipulation/AccessCenter/Access"]
+margin_left = 276.0
+margin_top = 12.0
+margin_right = 434.0
+margin_bottom = 34.0
+
+[node name="Scientia" parent="BG/Margin/Sheet/Body/PlaneManipulationBG/PlaneManipulation/AccessCenter/Access" instance=ExtResource( 12 )]
+margin_top = 41.0
+margin_right = 158.0
+margin_bottom = 87.0
+ability_name = "Scientia"
+
+[node name="AccessL" type="Label" parent="BG/Margin/Sheet/Body/PlaneManipulationBG/PlaneManipulation/AccessCenter/Access"]
+margin_left = 138.0
+margin_top = 51.0
+margin_right = 296.0
+margin_bottom = 77.0
+custom_fonts/font = ExtResource( 11 )
+text = "Accesos"
+align = 1
+
+[node name="Opus" parent="BG/Margin/Sheet/Body/PlaneManipulationBG/PlaneManipulation/AccessCenter/Access" instance=ExtResource( 12 )]
+margin_left = 276.0
+margin_top = 41.0
+margin_right = 434.0
+margin_bottom = 87.0
+ability_name = "Opus"
+
+[node name="Blank4" type="Label" parent="BG/Margin/Sheet/Body/PlaneManipulationBG/PlaneManipulation/AccessCenter/Access"]
+margin_top = 94.0
+margin_right = 158.0
+margin_bottom = 116.0
+
+[node name="Quod" parent="BG/Margin/Sheet/Body/PlaneManipulationBG/PlaneManipulation/AccessCenter/Access" instance=ExtResource( 12 )]
+margin_left = 138.0
+margin_top = 82.0
+margin_right = 296.0
+margin_bottom = 128.0
+ability_name = "Quod"
+
+[node name="Blank5" type="Label" parent="BG/Margin/Sheet/Body/PlaneManipulationBG/PlaneManipulation/AccessCenter/Access"]
+margin_left = 276.0
+margin_top = 94.0
+margin_right = 434.0
+margin_bottom = 116.0
+
+[node name="HSeparator3" type="HSeparator" parent="BG/Margin/Sheet/Body/PlaneManipulationBG/PlaneManipulation"]
+margin_top = 464.0
+margin_right = 450.0
+margin_bottom = 468.0
+custom_styles/separator = ExtResource( 9 )
+
+[node name="ArtesL" type="Label" parent="BG/Margin/Sheet/Body/PlaneManipulationBG/PlaneManipulation"]
+margin_top = 476.0
+margin_right = 450.0
+margin_bottom = 502.0
+custom_fonts/font = ExtResource( 11 )
+text = "Artes"
+align = 1
+
+[node name="ArtesCenter" type="CenterContainer" parent="BG/Margin/Sheet/Body/PlaneManipulationBG/PlaneManipulation"]
+margin_top = 510.0
+margin_right = 450.0
+margin_bottom = 510.0
+
+[node name="Artes" type="GridContainer" parent="BG/Margin/Sheet/Body/PlaneManipulationBG/PlaneManipulation/ArtesCenter"]
+margin_left = 225.0
+margin_right = 225.0
+custom_constants/vseparation = 10
+custom_constants/hseparation = 20
+columns = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HSeparator4" type="HSeparator" parent="BG/Margin/Sheet/Body/PlaneManipulationBG/PlaneManipulation"]
+margin_top = 518.0
+margin_right = 450.0
+margin_bottom = 522.0
+custom_styles/separator = ExtResource( 9 )
+
+[node name="Coherencia" parent="BG/Margin/Sheet/Body/PlaneManipulationBG/PlaneManipulation" groups=[
+"features",
+] instance=ExtResource( 8 )]
+margin_top = 530.0
+margin_right = 450.0
+margin_bottom = 626.0
+status_name = "Coherencia"
+
+[node name="PropSep" type="VSeparator" parent="BG/Margin/Sheet/Body"]
+visible = false
+margin_left = 1370.0
+margin_right = 1390.0
+margin_bottom = 700.0
+custom_styles/separator = SubResource( 3 )
+custom_constants/separation = 20
+
+[node name="Prop" type="TextureRect" parent="BG/Margin/Sheet/Body"]
+visible = false
+margin_left = 1370.0
+margin_right = 1820.0
+margin_bottom = 700.0
+rect_min_size = Vector2( 450, 700 )
+texture = ExtResource( 19 )
+script = ExtResource( 20 )
+
+[node name="Tools" type="HBoxContainer" parent="BG/Margin/Sheet"]
+margin_top = 960.0
+margin_right = 1889.0
+margin_bottom = 1040.0
+custom_constants/separation = 20
+
+[node name="InventoryButton" type="Button" parent="BG/Margin/Sheet/Tools"]
+margin_top = 26.0
+margin_right = 71.0
+margin_bottom = 54.0
+rect_min_size = Vector2( 70, 0 )
+size_flags_vertical = 4
+custom_colors/font_color = Color( 0.643137, 0.643137, 0.643137, 1 )
+custom_colors/font_color_hover = Color( 0.537255, 0.537255, 0.537255, 1 )
+custom_colors/font_color_pressed = Color( 1, 1, 1, 1 )
+text = "Equipo"
+flat = true
+__meta__ = {
+"_editor_description_": ""
+}
+
+[node name="VSeparator4" type="VSeparator" parent="BG/Margin/Sheet/Tools"]
+margin_left = 91.0
+margin_right = 191.0
+margin_bottom = 80.0
+custom_styles/separator = SubResource( 4 )
+custom_constants/separation = 100
+
+[node name="RollTool" parent="BG/Margin/Sheet/Tools" instance=ExtResource( 14 )]
+margin_left = 211.0
+margin_right = 1011.0
+
+[node name="VSeparator3" type="VSeparator" parent="BG/Margin/Sheet/Tools"]
+margin_left = 1031.0
+margin_right = 1189.0
+margin_bottom = 80.0
+size_flags_horizontal = 3
+custom_styles/separator = SubResource( 4 )
+
+[node name="ChangeLayout" type="Button" parent="BG/Margin/Sheet/Tools"]
+margin_left = 1209.0
+margin_top = 26.0
+margin_right = 1292.0
+margin_bottom = 54.0
+rect_min_size = Vector2( 70, 0 )
+size_flags_vertical = 4
+custom_colors/font_color = Color( 0.643137, 0.643137, 0.643137, 1 )
+custom_colors/font_color_hover = Color( 0.537255, 0.537255, 0.537255, 1 )
+custom_colors/font_color_pressed = Color( 1, 1, 1, 1 )
+text = "Interfaz"
+flat = true
+
+[node name="EditL" type="Label" parent="BG/Margin/Sheet/Tools"]
+margin_left = 1312.0
+margin_top = 29.0
+margin_right = 1363.0
+margin_bottom = 51.0
+text = "Editar"
+
+[node name="EditCheck" type="CheckButton" parent="BG/Margin/Sheet/Tools"]
+margin_left = 1383.0
+margin_right = 1459.0
+margin_bottom = 80.0
+
+[node name="AutosaveL" type="Label" parent="BG/Margin/Sheet/Tools"]
+margin_left = 1479.0
+margin_top = 29.0
+margin_right = 1563.0
+margin_bottom = 51.0
+text = "Autosave"
+
+[node name="AutosaveCheck" type="CheckButton" parent="BG/Margin/Sheet/Tools"]
+margin_left = 1583.0
+margin_right = 1659.0
+margin_bottom = 80.0
+pressed = true
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="BG/Margin/Sheet/Tools/AutosaveCheck"]
+emitting = false
+amount = 50
+one_shot = true
+emission_shape = 1
+emission_sphere_radius = 10.0
+spread = 180.0
+gravity = Vector2( 0, 0 )
+initial_velocity = 30.0
+initial_velocity_random = 0.5
+tangential_accel = 20.0
+tangential_accel_random = 1.0
+scale_amount = 2.0
+color = Color( 0.690196, 0.607843, 0, 1 )
+
+[node name="Delete" type="Button" parent="BG/Margin/Sheet/Tools"]
+margin_left = 1679.0
+margin_top = 26.0
+margin_right = 1749.0
+margin_bottom = 54.0
+rect_min_size = Vector2( 70, 0 )
+size_flags_vertical = 4
+custom_colors/font_color = Color( 0.643137, 0.643137, 0.643137, 1 )
+custom_colors/font_color_hover = Color( 0.537255, 0.537255, 0.537255, 1 )
+custom_colors/font_color_pressed = Color( 1, 1, 1, 1 )
+text = "Borrar"
+flat = true
+
+[node name="Exit" type="Button" parent="BG/Margin/Sheet/Tools"]
+margin_left = 1769.0
+margin_top = 26.0
+margin_right = 1839.0
+margin_bottom = 54.0
+rect_min_size = Vector2( 70, 0 )
+size_flags_vertical = 4
+custom_colors/font_color = Color( 0.643137, 0.643137, 0.643137, 1 )
+custom_colors/font_color_hover = Color( 0.537255, 0.537255, 0.537255, 1 )
+custom_colors/font_color_pressed = Color( 1, 1, 1, 1 )
+shortcut = ExtResource( 13 )
+text = "Salir"
+flat = true
+
+[node name="VSeparator2" type="VSeparator" parent="BG/Margin/Sheet/Tools"]
+margin_left = 1859.0
+margin_right = 1889.0
+margin_bottom = 80.0
+custom_styles/separator = SubResource( 4 )
+custom_constants/separation = 30
+
+[node name="ArtesReference" parent="BG" instance=ExtResource( 28 )]
+
+[node name="Inventory" parent="BG" instance=ExtResource( 29 )]
+[connection signal="timeout" from="Autosave" to="." method="autosave"]
+[connection signal="pressed" from="BG/Margin/Pivot/CenterContainer/ConfirmationPopup/VBoxContainer/ConfirmButtons/Aceptar" to="." method="_on_Confirmation_pressed"]
+[connection signal="gui_input" from="BG/Margin/Sheet/Header/Logo" to="." method="_on_Logo_gui_input"]
+[connection signal="clicked" from="BG/Margin/Sheet/Body/Sec1/StatusBG/StatusCenter/StatusFrame/Status/PhysicalStatus/Vigor" to="BG/Margin/Sheet/Tools/RollTool" method="select_atribute"]
+[connection signal="clicked" from="BG/Margin/Sheet/Body/Sec1/StatusBG/StatusCenter/StatusFrame/Status/MentalStatus/Voluntad" to="BG/Margin/Sheet/Tools/RollTool" method="select_atribute"]
+[connection signal="clicked" from="BG/Margin/Sheet/Body/PlaneManipulationBG/PlaneManipulation/Journey" to="BG/Margin/Sheet/Tools/RollTool" method="select_ability"]
+[connection signal="clicked" from="BG/Margin/Sheet/Body/PlaneManipulationBG/PlaneManipulation/AccessCenter/Access/Ego" to="BG/Margin/Sheet/Tools/RollTool" method="select_skill"]
+[connection signal="clicked" from="BG/Margin/Sheet/Body/PlaneManipulationBG/PlaneManipulation/AccessCenter/Access/Scientia" to="BG/Margin/Sheet/Tools/RollTool" method="select_atribute"]
+[connection signal="clicked" from="BG/Margin/Sheet/Body/PlaneManipulationBG/PlaneManipulation/AccessCenter/Access/Opus" to="BG/Margin/Sheet/Tools/RollTool" method="select_atribute"]
+[connection signal="clicked" from="BG/Margin/Sheet/Body/PlaneManipulationBG/PlaneManipulation/AccessCenter/Access/Quod" to="BG/Margin/Sheet/Tools/RollTool" method="select_skill"]
+[connection signal="clicked" from="BG/Margin/Sheet/Body/PlaneManipulationBG/PlaneManipulation/Coherencia" to="BG/Margin/Sheet/Tools/RollTool" method="select_atribute"]
+[connection signal="pressed" from="BG/Margin/Sheet/Tools/InventoryButton" to="." method="_on_InventoryButton_pressed"]
+[connection signal="pressed" from="BG/Margin/Sheet/Tools/ChangeLayout" to="." method="change_layout"]
+[connection signal="pressed" from="BG/Margin/Sheet/Tools/EditCheck" to="." method="_on_EditarCheck_pressed"]
+[connection signal="pressed" from="BG/Margin/Sheet/Tools/Delete" to="." method="_on_Delete_pressed"]
+[connection signal="pressed" from="BG/Margin/Sheet/Tools/Exit" to="." method="_on_Exit_pressed"]

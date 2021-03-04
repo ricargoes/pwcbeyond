@@ -1,0 +1,173 @@
+[gd_scene load_steps=12 format=2]
+
+[ext_resource path="res://resources/theme.tres" type="Theme" id=1]
+[ext_resource path="res://scenes/counters/Tireness.gd" type="Script" id=2]
+[ext_resource path="res://scenes/counters/RombusPoint.tscn" type="PackedScene" id=3]
+[ext_resource path="res://scenes/counters/CirclePoint.tscn" type="PackedScene" id=4]
+[ext_resource path="res://scenes/counters/SquarePoint.tscn" type="PackedScene" id=5]
+[ext_resource path="res://resources/sprites/buttons/press-.png" type="Texture" id=6]
+[ext_resource path="res://resources/sprites/buttons/+.png" type="Texture" id=7]
+[ext_resource path="res://resources/sprites/buttons/-.png" type="Texture" id=8]
+[ext_resource path="res://resources/sprites/buttons/press-+.png" type="Texture" id=9]
+[ext_resource path="res://resources/sfx/pen&papersound.wav" type="AudioStream" id=10]
+[ext_resource path="res://resources/sfx/erasersound.wav" type="AudioStream" id=11]
+
+[node name="Tireness" type="VBoxContainer"]
+margin_right = 116.0
+margin_bottom = 83.0
+theme = ExtResource( 1 )
+custom_constants/separation = 0
+alignment = 1
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+editable = true
+
+[node name="Effort" type="Button" parent="."]
+margin_right = 189.0
+margin_bottom = 28.0
+text = "Esfuerzo"
+flat = true
+
+[node name="Label" type="HBoxContainer" parent="."]
+margin_top = 28.0
+margin_right = 189.0
+margin_bottom = 50.0
+alignment = 1
+
+[node name="Minus" type="TextureButton" parent="Label"]
+margin_left = 29.0
+margin_right = 49.0
+margin_bottom = 22.0
+texture_normal = ExtResource( 8 )
+texture_pressed = ExtResource( 6 )
+
+[node name="Label" type="Label" parent="Label"]
+margin_left = 53.0
+margin_right = 135.0
+margin_bottom = 22.0
+mouse_filter = 1
+mouse_default_cursor_shape = 2
+theme = ExtResource( 1 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "Voluntad"
+align = 1
+
+[node name="Plus" type="TextureButton" parent="Label"]
+margin_left = 139.0
+margin_right = 159.0
+margin_bottom = 22.0
+texture_normal = ExtResource( 7 )
+texture_pressed = ExtResource( 9 )
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+margin_top = 50.0
+margin_right = 189.0
+margin_bottom = 96.0
+
+[node name="Markers" type="GridContainer" parent="CenterContainer"]
+margin_right = 189.0
+margin_bottom = 46.0
+mouse_default_cursor_shape = 2
+columns = 8
+
+[node name="l-3" type="Label" parent="CenterContainer/Markers"]
+margin_right = 20.0
+margin_bottom = 22.0
+text = "x"
+
+[node name="l-2" type="Label" parent="CenterContainer/Markers"]
+margin_left = 24.0
+margin_right = 45.0
+margin_bottom = 22.0
+text = "-2"
+
+[node name="l-1" type="Label" parent="CenterContainer/Markers"]
+margin_left = 49.0
+margin_right = 69.0
+margin_bottom = 22.0
+text = "-1"
+
+[node name="p1" parent="CenterContainer/Markers" instance=ExtResource( 4 )]
+margin_left = 73.0
+margin_right = 93.0
+margin_bottom = 22.0
+
+[node name="p2" parent="CenterContainer/Markers" instance=ExtResource( 4 )]
+margin_left = 97.0
+margin_right = 117.0
+margin_bottom = 22.0
+
+[node name="p3" parent="CenterContainer/Markers" instance=ExtResource( 4 )]
+margin_left = 121.0
+margin_right = 141.0
+margin_bottom = 22.0
+
+[node name="p4" parent="CenterContainer/Markers" instance=ExtResource( 4 )]
+margin_left = 145.0
+margin_right = 165.0
+margin_bottom = 22.0
+
+[node name="p5" parent="CenterContainer/Markers" instance=ExtResource( 4 )]
+margin_left = 169.0
+margin_right = 189.0
+margin_bottom = 22.0
+
+[node name="t-3" parent="CenterContainer/Markers" instance=ExtResource( 3 )]
+margin_top = 26.0
+margin_right = 20.0
+margin_bottom = 46.0
+
+[node name="t-2" parent="CenterContainer/Markers" instance=ExtResource( 3 )]
+margin_left = 24.0
+margin_top = 26.0
+margin_right = 45.0
+margin_bottom = 46.0
+
+[node name="t-1" parent="CenterContainer/Markers" instance=ExtResource( 3 )]
+margin_left = 49.0
+margin_top = 26.0
+margin_right = 69.0
+margin_bottom = 46.0
+
+[node name="t1" parent="CenterContainer/Markers" instance=ExtResource( 5 )]
+margin_left = 73.0
+margin_top = 26.0
+margin_right = 93.0
+margin_bottom = 46.0
+
+[node name="t2" parent="CenterContainer/Markers" instance=ExtResource( 5 )]
+margin_left = 97.0
+margin_top = 26.0
+margin_right = 117.0
+margin_bottom = 46.0
+
+[node name="t3" parent="CenterContainer/Markers" instance=ExtResource( 5 )]
+margin_left = 121.0
+margin_top = 26.0
+margin_right = 141.0
+margin_bottom = 46.0
+
+[node name="t4" parent="CenterContainer/Markers" instance=ExtResource( 5 )]
+margin_left = 145.0
+margin_top = 26.0
+margin_right = 165.0
+margin_bottom = 46.0
+
+[node name="t5" parent="CenterContainer/Markers" instance=ExtResource( 5 )]
+margin_left = 169.0
+margin_top = 26.0
+margin_right = 189.0
+margin_bottom = 46.0
+
+[node name="SFXDraw" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 10 )
+
+[node name="SFXErase" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 11 )
+[connection signal="pressed" from="Effort" to="." method="make_effort"]
+[connection signal="pressed" from="Label/Minus" to="." method="get_tired"]
+[connection signal="gui_input" from="Label/Label" to="." method="_on_tireness_click"]
+[connection signal="pressed" from="Label/Plus" to="." method="rest"]
+[connection signal="gui_input" from="CenterContainer/Markers" to="." method="_on_tireness_click"]

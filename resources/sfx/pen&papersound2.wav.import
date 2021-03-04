@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/pen&papersound2.wav-6ca26b02e44ed2bfd47ee15484a16da1.sample"
+
+[deps]
+
+source_file="res://resources/sfx/pen&papersound2.wav"
+dest_files=[ "res://.import/pen&papersound2.wav-6ca26b02e44ed2bfd47ee15484a16da1.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

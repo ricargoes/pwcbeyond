@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/erasersound.wav-5727144b0248912eeab2b43d50e78544.sample"
+
+[deps]
+
+source_file="res://resources/sfx/erasersound.wav"
+dest_files=[ "res://.import/erasersound.wav-5727144b0248912eeab2b43d50e78544.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

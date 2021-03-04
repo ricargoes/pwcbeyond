@@ -1,0 +1,138 @@
+[gd_scene load_steps=10 format=2]
+
+[ext_resource path="res://resources/theme.tres" type="Theme" id=1]
+[ext_resource path="res://resources/underline.tres" type="StyleBox" id=2]
+[ext_resource path="res://scenes/counters/Status.tscn" type="PackedScene" id=3]
+[ext_resource path="res://resources/sprites/backgrounds/9patch_scroll2.png" type="Texture" id=4]
+[ext_resource path="res://resources/h1_font.tres" type="DynamicFont" id=5]
+[ext_resource path="res://scenes/counters/Tireness.tscn" type="PackedScene" id=6]
+[ext_resource path="res://scenes/panels/CharStatusPanel.gd" type="Script" id=7]
+[ext_resource path="res://resources/sprites/counters/square.png" type="Texture" id=8]
+[ext_resource path="res://resources/sprites/counters/square_marked.png" type="Texture" id=9]
+
+[node name="CharStatus" type="Control"]
+rect_min_size = Vector2( 550, 350 )
+theme = ExtResource( 1 )
+script = ExtResource( 7 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="BG" type="NinePatchRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+rect_min_size = Vector2( 550, 350 )
+texture = ExtResource( 4 )
+patch_margin_left = 45
+patch_margin_top = 45
+patch_margin_right = 44
+patch_margin_bottom = 57
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Layout" type="VBoxContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+alignment = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Name" type="Label" parent="Layout"]
+margin_top = 12.0
+margin_right = 550.0
+margin_bottom = 41.0
+mouse_filter = 1
+mouse_default_cursor_shape = 2
+custom_fonts/font = ExtResource( 5 )
+text = "Foobar"
+align = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="Layout/Name"]
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+margin_left = -108.0
+margin_top = -15.0
+margin_bottom = 15.0
+grow_horizontal = 0
+custom_constants/margin_right = 25
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="EditBut" type="CheckButton" parent="Layout/Name/MarginContainer"]
+margin_right = 88.0
+margin_bottom = 30.0
+grow_horizontal = 0
+custom_icons/off = ExtResource( 8 )
+custom_icons/on = ExtResource( 9 )
+custom_constants/hseparation = 5
+text = "Editar"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HSeparator" type="HSeparator" parent="Layout"]
+margin_top = 45.0
+margin_right = 550.0
+margin_bottom = 49.0
+custom_styles/separator = ExtResource( 2 )
+
+[node name="DataBox" type="VBoxContainer" parent="Layout"]
+margin_top = 53.0
+margin_right = 550.0
+margin_bottom = 337.0
+
+[node name="Vigor" parent="Layout/DataBox" instance=ExtResource( 6 )]
+margin_right = 550.0
+margin_bottom = 72.0
+editable = false
+status_name = "Vigor"
+
+[node name="Voluntad" parent="Layout/DataBox" instance=ExtResource( 6 )]
+margin_top = 76.0
+margin_right = 550.0
+margin_bottom = 148.0
+editable = false
+status_name = "Voluntad"
+
+[node name="Coherencia" parent="Layout/DataBox" instance=ExtResource( 6 )]
+margin_top = 152.0
+margin_right = 550.0
+margin_bottom = 224.0
+editable = false
+status_name = "Coherencia"
+
+[node name="Salud" parent="Layout/DataBox" instance=ExtResource( 3 )]
+margin_top = 228.0
+margin_right = 550.0
+margin_bottom = 254.0
+editable = false
+
+[node name="Cordura" parent="Layout/DataBox" instance=ExtResource( 3 )]
+margin_top = 258.0
+margin_right = 550.0
+margin_bottom = 284.0
+editable = false
+type = "Cordura"
+icon_colection = "sanity"
+
+[node name="RefreshInterval" type="Timer" parent="."]
+wait_time = 15.0
+autostart = true
+
+[node name="GET" type="HTTPRequest" parent="."]
+
+[node name="CharSheet" type="Popup" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+[connection signal="gui_input" from="Layout/Name" to="." method="_on_Name_clicked"]
+[connection signal="pressed" from="Layout/Name/MarginContainer/EditBut" to="." method="_on_EditBut_pressed"]
+[connection signal="timeout" from="RefreshInterval" to="." method="refresh_char"]
+[connection signal="request_completed" from="GET" to="." method="_on_GET_request_completed"]
