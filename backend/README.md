@@ -1,6 +1,6 @@
-# Set Up Database for PWCBeyond
+# Set Up Backend for PWCBeyond
 
-Setting up a database with the latest scheme (and some ramdom data) is easy provided docker and docker-compose is installed. In a linux machine it would be as follows:
+Setting up the backend with the latest scheme of the db (and some ramdom data) is easy provided docker and docker-compose is installed. In a linux machine it would be as follows:
 
 ```
 cd database
