@@ -30,10 +30,6 @@
 [ext_resource path="res://scenes/panels/ArtesReference.tscn" type="PackedScene" id=28]
 [ext_resource path="res://scenes/panels/Inventory.tscn" type="PackedScene" id=29]
 
-
-
-
-
 [sub_resource type="StyleBoxEmpty" id=1]
 
 [sub_resource type="StyleBoxEmpty" id=2]
@@ -735,7 +731,7 @@ position = Vector2( -23.0448, 238.014 )
 rotation = 0.174533
 texture = ExtResource( 22 )
 
-[node name="PlaneManipulationBG" type="NinePatchRect" parent="BG/Margin/Sheet/Body"]
+[node name="Manipulacion de planos" type="NinePatchRect" parent="BG/Margin/Sheet/Body"]
 margin_left = 1370.0
 margin_right = 1820.0
 margin_bottom = 700.0
@@ -746,15 +742,15 @@ patch_margin_top = 38
 patch_margin_right = 44
 patch_margin_bottom = 38
 
-[node name="PWDetails" type="Node2D" parent="BG/Margin/Sheet/Body/PlaneManipulationBG"]
+[node name="PWDetails" type="Node2D" parent="BG/Margin/Sheet/Body/Manipulacion de planos"]
 
-[node name="Sprite" type="Sprite" parent="BG/Margin/Sheet/Body/PlaneManipulationBG/PWDetails"]
+[node name="Sprite" type="Sprite" parent="BG/Margin/Sheet/Body/Manipulacion de planos/PWDetails"]
 self_modulate = Color( 1, 1, 1, 0.411765 )
 position = Vector2( 232, 361 )
 scale = Vector2( 1, 1.6 )
 texture = ExtResource( 23 )
 
-[node name="PlaneManipulation" type="VBoxContainer" parent="BG/Margin/Sheet/Body/PlaneManipulationBG"]
+[node name="PlaneManipulation" type="VBoxContainer" parent="BG/Margin/Sheet/Body/Manipulacion de planos"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 1.75806
@@ -768,7 +764,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Title" type="Label" parent="BG/Margin/Sheet/Body/PlaneManipulationBG/PlaneManipulation"]
+[node name="Title" type="Label" parent="BG/Margin/Sheet/Body/Manipulacion de planos/PlaneManipulation"]
 margin_top = 73.0
 margin_right = 450.0
 margin_bottom = 102.0
@@ -776,7 +772,7 @@ custom_fonts/font = ExtResource( 4 )
 text = "Manipulacion de planos"
 align = 1
 
-[node name="HSeparator" type="HSeparator" parent="BG/Margin/Sheet/Body/PlaneManipulationBG/PlaneManipulation"]
+[node name="HSeparator" type="HSeparator" parent="BG/Margin/Sheet/Body/Manipulacion de planos/PlaneManipulation"]
 margin_top = 110.0
 margin_right = 450.0
 margin_bottom = 114.0
@@ -785,25 +781,25 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="DataCenter" type="CenterContainer" parent="BG/Margin/Sheet/Body/PlaneManipulationBG/PlaneManipulation"]
+[node name="DataCenter" type="CenterContainer" parent="BG/Margin/Sheet/Body/Manipulacion de planos/PlaneManipulation"]
 margin_top = 122.0
 margin_right = 450.0
 margin_bottom = 254.0
 
-[node name="Data" type="GridContainer" parent="BG/Margin/Sheet/Body/PlaneManipulationBG/PlaneManipulation/DataCenter"]
+[node name="Data" type="GridContainer" parent="BG/Margin/Sheet/Body/Manipulacion de planos/PlaneManipulation/DataCenter"]
 margin_left = 94.0
 margin_right = 356.0
 margin_bottom = 132.0
 custom_constants/hseparation = 30
 columns = 2
 
-[node name="ModusL" type="Label" parent="BG/Margin/Sheet/Body/PlaneManipulationBG/PlaneManipulation/DataCenter/Data"]
+[node name="ModusL" type="Label" parent="BG/Margin/Sheet/Body/Manipulacion de planos/PlaneManipulation/DataCenter/Data"]
 margin_top = 4.0
 margin_right = 82.0
 margin_bottom = 26.0
 text = "Modo: "
 
-[node name="Modus" type="LineEdit" parent="BG/Margin/Sheet/Body/PlaneManipulationBG/PlaneManipulation/DataCenter/Data"]
+[node name="Modus" type="LineEdit" parent="BG/Margin/Sheet/Body/Manipulacion de planos/PlaneManipulation/DataCenter/Data"]
 margin_left = 112.0
 margin_right = 262.0
 margin_bottom = 30.0
@@ -813,13 +809,13 @@ editable = false
 caret_blink = true
 caret_blink_speed = 0.5
 
-[node name="ViaL" type="Label" parent="BG/Margin/Sheet/Body/PlaneManipulationBG/PlaneManipulation/DataCenter/Data"]
+[node name="ViaL" type="Label" parent="BG/Margin/Sheet/Body/Manipulacion de planos/PlaneManipulation/DataCenter/Data"]
 margin_top = 38.0
 margin_right = 82.0
 margin_bottom = 60.0
 text = "Via:"
 
-[node name="Via" type="LineEdit" parent="BG/Margin/Sheet/Body/PlaneManipulationBG/PlaneManipulation/DataCenter/Data"]
+[node name="Via" type="LineEdit" parent="BG/Margin/Sheet/Body/Manipulacion de planos/PlaneManipulation/DataCenter/Data"]
 margin_left = 112.0
 margin_top = 34.0
 margin_right = 262.0
@@ -830,13 +826,13 @@ editable = false
 caret_blink = true
 caret_blink_speed = 0.5
 
-[node name="AspectL" type="Label" parent="BG/Margin/Sheet/Body/PlaneManipulationBG/PlaneManipulation/DataCenter/Data"]
+[node name="AspectL" type="Label" parent="BG/Margin/Sheet/Body/Manipulacion de planos/PlaneManipulation/DataCenter/Data"]
 margin_top = 72.0
 margin_right = 82.0
 margin_bottom = 94.0
 text = "Aspectos:"
 
-[node name="Aspect1" type="LineEdit" parent="BG/Margin/Sheet/Body/PlaneManipulationBG/PlaneManipulation/DataCenter/Data"]
+[node name="Aspect1" type="LineEdit" parent="BG/Margin/Sheet/Body/Manipulacion de planos/PlaneManipulation/DataCenter/Data"]
 margin_left = 112.0
 margin_top = 68.0
 margin_right = 262.0
@@ -847,12 +843,12 @@ editable = false
 caret_blink = true
 caret_blink_speed = 0.5
 
-[node name="Blank" type="Label" parent="BG/Margin/Sheet/Body/PlaneManipulationBG/PlaneManipulation/DataCenter/Data"]
+[node name="Blank" type="Label" parent="BG/Margin/Sheet/Body/Manipulacion de planos/PlaneManipulation/DataCenter/Data"]
 margin_top = 106.0
 margin_right = 82.0
 margin_bottom = 128.0
 
-[node name="Aspect2" type="LineEdit" parent="BG/Margin/Sheet/Body/PlaneManipulationBG/PlaneManipulation/DataCenter/Data"]
+[node name="Aspect2" type="LineEdit" parent="BG/Margin/Sheet/Body/Manipulacion de planos/PlaneManipulation/DataCenter/Data"]
 margin_left = 112.0
 margin_top = 102.0
 margin_right = 262.0
@@ -863,24 +859,24 @@ editable = false
 caret_blink = true
 caret_blink_speed = 0.5
 
-[node name="Journey" parent="BG/Margin/Sheet/Body/PlaneManipulationBG/PlaneManipulation" instance=ExtResource( 12 )]
+[node name="Journey" parent="BG/Margin/Sheet/Body/Manipulacion de planos/PlaneManipulation" instance=ExtResource( 12 )]
 margin_top = 262.0
 margin_right = 450.0
 margin_bottom = 308.0
 ability_name = "Viaje"
 
-[node name="HSeparator2" type="HSeparator" parent="BG/Margin/Sheet/Body/PlaneManipulationBG/PlaneManipulation"]
+[node name="HSeparator2" type="HSeparator" parent="BG/Margin/Sheet/Body/Manipulacion de planos/PlaneManipulation"]
 margin_top = 316.0
 margin_right = 450.0
 margin_bottom = 320.0
 custom_styles/separator = ExtResource( 9 )
 
-[node name="AccessCenter" type="CenterContainer" parent="BG/Margin/Sheet/Body/PlaneManipulationBG/PlaneManipulation"]
+[node name="AccessCenter" type="CenterContainer" parent="BG/Margin/Sheet/Body/Manipulacion de planos/PlaneManipulation"]
 margin_top = 328.0
 margin_right = 450.0
 margin_bottom = 456.0
 
-[node name="Access" type="GridContainer" parent="BG/Margin/Sheet/Body/PlaneManipulationBG/PlaneManipulation/AccessCenter"]
+[node name="Access" type="GridContainer" parent="BG/Margin/Sheet/Body/Manipulacion de planos/PlaneManipulation/AccessCenter"]
 margin_left = 8.0
 margin_right = 442.0
 margin_bottom = 128.0
@@ -891,30 +887,30 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Blank" type="Label" parent="BG/Margin/Sheet/Body/PlaneManipulationBG/PlaneManipulation/AccessCenter/Access"]
+[node name="Blank" type="Label" parent="BG/Margin/Sheet/Body/Manipulacion de planos/PlaneManipulation/AccessCenter/Access"]
 margin_top = 12.0
 margin_right = 158.0
 margin_bottom = 34.0
 
-[node name="Ego" parent="BG/Margin/Sheet/Body/PlaneManipulationBG/PlaneManipulation/AccessCenter/Access" instance=ExtResource( 12 )]
+[node name="Ego" parent="BG/Margin/Sheet/Body/Manipulacion de planos/PlaneManipulation/AccessCenter/Access" instance=ExtResource( 12 )]
 margin_left = 138.0
 margin_right = 296.0
 margin_bottom = 46.0
 ability_name = "Ego"
 
-[node name="Blank2" type="Label" parent="BG/Margin/Sheet/Body/PlaneManipulationBG/PlaneManipulation/AccessCenter/Access"]
+[node name="Blank2" type="Label" parent="BG/Margin/Sheet/Body/Manipulacion de planos/PlaneManipulation/AccessCenter/Access"]
 margin_left = 276.0
 margin_top = 12.0
 margin_right = 434.0
 margin_bottom = 34.0
 
-[node name="Scientia" parent="BG/Margin/Sheet/Body/PlaneManipulationBG/PlaneManipulation/AccessCenter/Access" instance=ExtResource( 12 )]
+[node name="Scientia" parent="BG/Margin/Sheet/Body/Manipulacion de planos/PlaneManipulation/AccessCenter/Access" instance=ExtResource( 12 )]
 margin_top = 41.0
 margin_right = 158.0
 margin_bottom = 87.0
 ability_name = "Scientia"
 
-[node name="AccessL" type="Label" parent="BG/Margin/Sheet/Body/PlaneManipulationBG/PlaneManipulation/AccessCenter/Access"]
+[node name="AccessL" type="Label" parent="BG/Margin/Sheet/Body/Manipulacion de planos/PlaneManipulation/AccessCenter/Access"]
 margin_left = 138.0
 margin_top = 51.0
 margin_right = 296.0
@@ -923,38 +919,38 @@ custom_fonts/font = ExtResource( 11 )
 text = "Accesos"
 align = 1
 
-[node name="Opus" parent="BG/Margin/Sheet/Body/PlaneManipulationBG/PlaneManipulation/AccessCenter/Access" instance=ExtResource( 12 )]
+[node name="Opus" parent="BG/Margin/Sheet/Body/Manipulacion de planos/PlaneManipulation/AccessCenter/Access" instance=ExtResource( 12 )]
 margin_left = 276.0
 margin_top = 41.0
 margin_right = 434.0
 margin_bottom = 87.0
 ability_name = "Opus"
 
-[node name="Blank4" type="Label" parent="BG/Margin/Sheet/Body/PlaneManipulationBG/PlaneManipulation/AccessCenter/Access"]
+[node name="Blank4" type="Label" parent="BG/Margin/Sheet/Body/Manipulacion de planos/PlaneManipulation/AccessCenter/Access"]
 margin_top = 94.0
 margin_right = 158.0
 margin_bottom = 116.0
 
-[node name="Quod" parent="BG/Margin/Sheet/Body/PlaneManipulationBG/PlaneManipulation/AccessCenter/Access" instance=ExtResource( 12 )]
+[node name="Quod" parent="BG/Margin/Sheet/Body/Manipulacion de planos/PlaneManipulation/AccessCenter/Access" instance=ExtResource( 12 )]
 margin_left = 138.0
 margin_top = 82.0
 margin_right = 296.0
 margin_bottom = 128.0
 ability_name = "Quod"
 
-[node name="Blank5" type="Label" parent="BG/Margin/Sheet/Body/PlaneManipulationBG/PlaneManipulation/AccessCenter/Access"]
+[node name="Blank5" type="Label" parent="BG/Margin/Sheet/Body/Manipulacion de planos/PlaneManipulation/AccessCenter/Access"]
 margin_left = 276.0
 margin_top = 94.0
 margin_right = 434.0
 margin_bottom = 116.0
 
-[node name="HSeparator3" type="HSeparator" parent="BG/Margin/Sheet/Body/PlaneManipulationBG/PlaneManipulation"]
+[node name="HSeparator3" type="HSeparator" parent="BG/Margin/Sheet/Body/Manipulacion de planos/PlaneManipulation"]
 margin_top = 464.0
 margin_right = 450.0
 margin_bottom = 468.0
 custom_styles/separator = ExtResource( 9 )
 
-[node name="ArtesL" type="Label" parent="BG/Margin/Sheet/Body/PlaneManipulationBG/PlaneManipulation"]
+[node name="ArtesL" type="Label" parent="BG/Margin/Sheet/Body/Manipulacion de planos/PlaneManipulation"]
 margin_top = 476.0
 margin_right = 450.0
 margin_bottom = 502.0
@@ -962,12 +958,12 @@ custom_fonts/font = ExtResource( 11 )
 text = "Artes"
 align = 1
 
-[node name="ArtesCenter" type="CenterContainer" parent="BG/Margin/Sheet/Body/PlaneManipulationBG/PlaneManipulation"]
+[node name="ArtesCenter" type="CenterContainer" parent="BG/Margin/Sheet/Body/Manipulacion de planos/PlaneManipulation"]
 margin_top = 510.0
 margin_right = 450.0
 margin_bottom = 510.0
 
-[node name="Artes" type="GridContainer" parent="BG/Margin/Sheet/Body/PlaneManipulationBG/PlaneManipulation/ArtesCenter"]
+[node name="Artes" type="GridContainer" parent="BG/Margin/Sheet/Body/Manipulacion de planos/PlaneManipulation/ArtesCenter"]
 margin_left = 225.0
 margin_right = 225.0
 custom_constants/vseparation = 10
@@ -977,13 +973,13 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="HSeparator4" type="HSeparator" parent="BG/Margin/Sheet/Body/PlaneManipulationBG/PlaneManipulation"]
+[node name="HSeparator4" type="HSeparator" parent="BG/Margin/Sheet/Body/Manipulacion de planos/PlaneManipulation"]
 margin_top = 518.0
 margin_right = 450.0
 margin_bottom = 522.0
 custom_styles/separator = ExtResource( 9 )
 
-[node name="Coherencia" parent="BG/Margin/Sheet/Body/PlaneManipulationBG/PlaneManipulation" groups=[
+[node name="Coherencia" parent="BG/Margin/Sheet/Body/Manipulacion de planos/PlaneManipulation" groups=[
 "features",
 ] instance=ExtResource( 8 )]
 margin_top = 530.0
@@ -1142,12 +1138,12 @@ custom_constants/separation = 30
 [connection signal="gui_input" from="BG/Margin/Sheet/Header/Logo" to="." method="_on_Logo_gui_input"]
 [connection signal="clicked" from="BG/Margin/Sheet/Body/Sec1/StatusBG/StatusCenter/StatusFrame/Status/PhysicalStatus/Vigor" to="BG/Margin/Sheet/Tools/RollTool" method="select_atribute"]
 [connection signal="clicked" from="BG/Margin/Sheet/Body/Sec1/StatusBG/StatusCenter/StatusFrame/Status/MentalStatus/Voluntad" to="BG/Margin/Sheet/Tools/RollTool" method="select_atribute"]
-[connection signal="clicked" from="BG/Margin/Sheet/Body/PlaneManipulationBG/PlaneManipulation/Journey" to="BG/Margin/Sheet/Tools/RollTool" method="select_ability"]
-[connection signal="clicked" from="BG/Margin/Sheet/Body/PlaneManipulationBG/PlaneManipulation/AccessCenter/Access/Ego" to="BG/Margin/Sheet/Tools/RollTool" method="select_skill"]
-[connection signal="clicked" from="BG/Margin/Sheet/Body/PlaneManipulationBG/PlaneManipulation/AccessCenter/Access/Scientia" to="BG/Margin/Sheet/Tools/RollTool" method="select_atribute"]
-[connection signal="clicked" from="BG/Margin/Sheet/Body/PlaneManipulationBG/PlaneManipulation/AccessCenter/Access/Opus" to="BG/Margin/Sheet/Tools/RollTool" method="select_atribute"]
-[connection signal="clicked" from="BG/Margin/Sheet/Body/PlaneManipulationBG/PlaneManipulation/AccessCenter/Access/Quod" to="BG/Margin/Sheet/Tools/RollTool" method="select_skill"]
-[connection signal="clicked" from="BG/Margin/Sheet/Body/PlaneManipulationBG/PlaneManipulation/Coherencia" to="BG/Margin/Sheet/Tools/RollTool" method="select_atribute"]
+[connection signal="clicked" from="BG/Margin/Sheet/Body/Manipulacion de planos/PlaneManipulation/Journey" to="BG/Margin/Sheet/Tools/RollTool" method="select_ability"]
+[connection signal="clicked" from="BG/Margin/Sheet/Body/Manipulacion de planos/PlaneManipulation/AccessCenter/Access/Ego" to="BG/Margin/Sheet/Tools/RollTool" method="select_skill"]
+[connection signal="clicked" from="BG/Margin/Sheet/Body/Manipulacion de planos/PlaneManipulation/AccessCenter/Access/Scientia" to="BG/Margin/Sheet/Tools/RollTool" method="select_atribute"]
+[connection signal="clicked" from="BG/Margin/Sheet/Body/Manipulacion de planos/PlaneManipulation/AccessCenter/Access/Opus" to="BG/Margin/Sheet/Tools/RollTool" method="select_atribute"]
+[connection signal="clicked" from="BG/Margin/Sheet/Body/Manipulacion de planos/PlaneManipulation/AccessCenter/Access/Quod" to="BG/Margin/Sheet/Tools/RollTool" method="select_skill"]
+[connection signal="clicked" from="BG/Margin/Sheet/Body/Manipulacion de planos/PlaneManipulation/Coherencia" to="BG/Margin/Sheet/Tools/RollTool" method="select_atribute"]
 [connection signal="pressed" from="BG/Margin/Sheet/Tools/InventoryButton" to="." method="_on_InventoryButton_pressed"]
 [connection signal="pressed" from="BG/Margin/Sheet/Tools/ChangeLayout" to="." method="change_layout"]
 [connection signal="pressed" from="BG/Margin/Sheet/Tools/EditCheck" to="." method="_on_EditarCheck_pressed"]

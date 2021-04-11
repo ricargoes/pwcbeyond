@@ -23,11 +23,6 @@
 [ext_resource path="res://scenes/panels/ArtesReference.tscn" type="PackedScene" id=28]
 [ext_resource path="res://scenes/panels/Inventory.tscn" type="PackedScene" id=29]
 
-
-
-
-
-
 [sub_resource type="StyleBoxEmpty" id=1]
 
 [sub_resource type="StyleBoxEmpty" id=2]
@@ -723,7 +718,7 @@ custom_constants/separation = 20
 [node name="CenterContainer" type="CenterContainer" parent="CenterContainer/VScrollContainer/Center/Sheet/CharData/TabContainer/Manipulacion de planos/PlaneManipulation"]
 margin_top = 175.0
 margin_right = 570.0
-margin_bottom = 247.0
+margin_bottom = 271.0
 
 [node name="HBoxContainer" type="HBoxContainer" parent="CenterContainer/VScrollContainer/Center/Sheet/CharData/TabContainer/Manipulacion de planos/PlaneManipulation/CenterContainer"]
 margin_left = 86.0
@@ -734,7 +729,7 @@ alignment = 1
 
 [node name="Journey" parent="CenterContainer/VScrollContainer/Center/Sheet/CharData/TabContainer/Manipulacion de planos/PlaneManipulation/CenterContainer/HBoxContainer" instance=ExtResource( 12 )]
 margin_right = 158.0
-margin_bottom = 72.0
+margin_bottom = 96.0
 ability_name = "Viaje"
 
 [node name="Coherencia" parent="CenterContainer/VScrollContainer/Center/Sheet/CharData/TabContainer/Manipulacion de planos/PlaneManipulation/CenterContainer/HBoxContainer" groups=[
@@ -742,19 +737,19 @@ ability_name = "Viaje"
 ] instance=ExtResource( 8 )]
 margin_left = 208.0
 margin_right = 397.0
-margin_bottom = 72.0
+margin_bottom = 96.0
 status_name = "Coherencia"
 
 [node name="HSeparator2" type="HSeparator" parent="CenterContainer/VScrollContainer/Center/Sheet/CharData/TabContainer/Manipulacion de planos/PlaneManipulation"]
-margin_top = 255.0
+margin_top = 279.0
 margin_right = 570.0
-margin_bottom = 259.0
+margin_bottom = 283.0
 custom_styles/separator = ExtResource( 9 )
 
 [node name="AccessCenter" type="CenterContainer" parent="CenterContainer/VScrollContainer/Center/Sheet/CharData/TabContainer/Manipulacion de planos/PlaneManipulation"]
-margin_top = 267.0
+margin_top = 291.0
 margin_right = 570.0
-margin_bottom = 395.0
+margin_bottom = 419.0
 
 [node name="Access" type="GridContainer" parent="CenterContainer/VScrollContainer/Center/Sheet/CharData/TabContainer/Manipulacion de planos/PlaneManipulation/AccessCenter"]
 margin_left = 68.0
@@ -825,23 +820,23 @@ margin_right = 434.0
 margin_bottom = 116.0
 
 [node name="HSeparator3" type="HSeparator" parent="CenterContainer/VScrollContainer/Center/Sheet/CharData/TabContainer/Manipulacion de planos/PlaneManipulation"]
-margin_top = 403.0
+margin_top = 427.0
 margin_right = 570.0
-margin_bottom = 407.0
+margin_bottom = 431.0
 custom_styles/separator = ExtResource( 9 )
 
 [node name="ArtesL" type="Label" parent="CenterContainer/VScrollContainer/Center/Sheet/CharData/TabContainer/Manipulacion de planos/PlaneManipulation"]
-margin_top = 415.0
+margin_top = 439.0
 margin_right = 570.0
-margin_bottom = 441.0
+margin_bottom = 465.0
 custom_fonts/font = ExtResource( 11 )
 text = "Artes"
 align = 1
 
 [node name="ArtesCenter" type="CenterContainer" parent="CenterContainer/VScrollContainer/Center/Sheet/CharData/TabContainer/Manipulacion de planos/PlaneManipulation"]
-margin_top = 449.0
+margin_top = 473.0
 margin_right = 570.0
-margin_bottom = 449.0
+margin_bottom = 473.0
 
 [node name="Artes" type="GridContainer" parent="CenterContainer/VScrollContainer/Center/Sheet/CharData/TabContainer/Manipulacion de planos/PlaneManipulation/ArtesCenter"]
 margin_left = 285.0
