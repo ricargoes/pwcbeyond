@@ -16,6 +16,8 @@ func build_ability_tree(type, parent_node, item_levels, editable = true):
 		container.add_child(label)
 		
 		for item in item_levels[group].keys():
+			if item == "":
+				continue
 			var node = ResourceManager.ability_counter_class.instance()
 			node.ability_name = item
 			node.editable = editable
