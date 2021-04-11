@@ -88,9 +88,7 @@ func autosave():
 func save_changes():
 	character.save_human_side(self)
 	character.save_status(self)
-	if not character.plane_manipulation.empty():
-		character.save_planewalker_side(self)
-
+	character.save_planewalker_side(self)
 
 func commit_changes():
 	var post_data = { "character_stats": character.get_data_dict() }
@@ -146,9 +144,6 @@ func paint_skills():
 
 func paint_plane_manipulation():
 	var char_pm = character.plane_manipulation
-	if char_pm.empty():
-		find_node("Manipulacion de planos").queue_free()
-		return
 	
 	var modus = plane_manipulation_panel.find_node("Modus")
 	var via = plane_manipulation_panel.find_node("Via")
