@@ -9,7 +9,9 @@ func _ready():
 
 
 func _on_get_request_completed(_result, _response_code, _headers, body):
-	var artes = JSON.parse(body.get_string_from_utf8()).result
+	var test_json_conv = JSON.new()
+	test_json_conv.parse(body.get_string_from_utf8())
+	var artes = test_json_conv.get_data()
 	for ars in artes:
 		if not _artes_cache.has(ars["ars_group_name"]):
 			_artes_cache[ars["ars_group_name"]] = {}

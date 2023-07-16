@@ -67,7 +67,7 @@ const states = {
 }
 
 const discord_webhook_url = "youwebhook"
-const host = "http://youbackend:3000"
+const host = "http://pwc.fluffyclouds.duckdns.org:3000"
 
 const character_sheets_table_url = host + "/character_sheets"
 const artes_table_url = host + "/artes"

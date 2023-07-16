@@ -1,13 +1,14 @@
 [remap]
 
 importer="wav"
-type="AudioStreamSample"
-path="res://.import/pen&papersound2.wav-6ca26b02e44ed2bfd47ee15484a16da1.sample"
+type="AudioStreamWAV"
+uid="uid://dh1s8m3ocopby"
+path="res://.godot/imported/pen&papersound2.wav-6ca26b02e44ed2bfd47ee15484a16da1.sample"
 
 [deps]
 
 source_file="res://resources/sfx/pen&papersound2.wav"
-dest_files=[ "res://.import/pen&papersound2.wav-6ca26b02e44ed2bfd47ee15484a16da1.sample" ]
+dest_files=["res://.godot/imported/pen&papersound2.wav-6ca26b02e44ed2bfd47ee15484a16da1.sample"]
 
 [params]
 
@@ -17,5 +18,7 @@ force/max_rate=false
 force/max_rate_hz=44100
 edit/trim=false
 edit/normalize=false
-edit/loop=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
 compress/mode=0

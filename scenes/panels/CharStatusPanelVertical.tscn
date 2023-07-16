@@ -3,15 +3,15 @@
 [ext_resource path="res://resources/theme.tres" type="Theme" id=1]
 [ext_resource path="res://resources/underline.tres" type="StyleBox" id=2]
 [ext_resource path="res://scenes/counters/Status.tscn" type="PackedScene" id=3]
-[ext_resource path="res://resources/sprites/backgrounds/9patch_scroll2.png" type="Texture" id=4]
-[ext_resource path="res://resources/h1_font.tres" type="DynamicFont" id=5]
+[ext_resource path="res://resources/sprites/backgrounds/9patch_scroll2.png" type="Texture2D" id=4]
+[ext_resource path="res://resources/h1_font.tres" type="FontFile" id=5]
 [ext_resource path="res://scenes/counters/Tireness.tscn" type="PackedScene" id=6]
 [ext_resource path="res://scenes/panels/CharStatusPanel.gd" type="Script" id=7]
-[ext_resource path="res://resources/sprites/counters/square.png" type="Texture" id=8]
-[ext_resource path="res://resources/sprites/counters/square_marked.png" type="Texture" id=9]
+[ext_resource path="res://resources/sprites/counters/square.png" type="Texture2D" id=8]
+[ext_resource path="res://resources/sprites/counters/square_marked.png" type="Texture2D" id=9]
 
 [node name="CharStatus" type="Control"]
-rect_min_size = Vector2( 550, 350 )
+custom_minimum_size = Vector2( 550, 350 )
 theme = ExtResource( 1 )
 script = ExtResource( 7 )
 __meta__ = {
@@ -21,7 +21,7 @@ __meta__ = {
 [node name="BG" type="NinePatchRect" parent="."]
 anchor_right = 1.0
 anchor_bottom = 1.0
-rect_min_size = Vector2( 550, 350 )
+custom_minimum_size = Vector2( 550, 350 )
 texture = ExtResource( 4 )
 patch_margin_left = 45
 patch_margin_top = 45
@@ -40,12 +40,12 @@ __meta__ = {
 }
 
 [node name="Name" type="Label" parent="Layout"]
-margin_top = 12.0
-margin_right = 550.0
-margin_bottom = 41.0
+offset_top = 12.0
+offset_right = 550.0
+offset_bottom = 41.0
 mouse_filter = 1
 mouse_default_cursor_shape = 2
-custom_fonts/font = ExtResource( 5 )
+theme_override_fonts/font = ExtResource( 5 )
 text = "Foobar"
 align = 1
 
@@ -54,68 +54,68 @@ anchor_left = 1.0
 anchor_top = 0.5
 anchor_right = 1.0
 anchor_bottom = 0.5
-margin_left = -108.0
-margin_top = -15.0
-margin_bottom = 15.0
+offset_left = -108.0
+offset_top = -15.0
+offset_bottom = 15.0
 grow_horizontal = 0
-custom_constants/margin_right = 25
+theme_override_constants/margin_right = 25
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="EditBut" type="CheckButton" parent="Layout/Name/MarginContainer"]
-margin_right = 88.0
-margin_bottom = 30.0
+offset_right = 88.0
+offset_bottom = 30.0
 grow_horizontal = 0
-custom_icons/off = ExtResource( 8 )
-custom_icons/on = ExtResource( 9 )
-custom_constants/hseparation = 5
+theme_override_icons/off = ExtResource( 8 )
+theme_override_icons/on = ExtResource( 9 )
+theme_override_constants/h_separation = 5
 text = "Editar"
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="HSeparator" type="HSeparator" parent="Layout"]
-margin_top = 45.0
-margin_right = 550.0
-margin_bottom = 49.0
-custom_styles/separator = ExtResource( 2 )
+offset_top = 45.0
+offset_right = 550.0
+offset_bottom = 49.0
+theme_override_styles/separator = ExtResource( 2 )
 
 [node name="DataBox" type="VBoxContainer" parent="Layout"]
-margin_top = 53.0
-margin_right = 550.0
-margin_bottom = 337.0
+offset_top = 53.0
+offset_right = 550.0
+offset_bottom = 337.0
 
 [node name="Vigor" parent="Layout/DataBox" instance=ExtResource( 6 )]
-margin_right = 550.0
-margin_bottom = 72.0
+offset_right = 550.0
+offset_bottom = 72.0
 editable = false
 status_name = "Vigor"
 
 [node name="Voluntad" parent="Layout/DataBox" instance=ExtResource( 6 )]
-margin_top = 76.0
-margin_right = 550.0
-margin_bottom = 148.0
+offset_top = 76.0
+offset_right = 550.0
+offset_bottom = 148.0
 editable = false
 status_name = "Voluntad"
 
 [node name="Coherencia" parent="Layout/DataBox" instance=ExtResource( 6 )]
-margin_top = 152.0
-margin_right = 550.0
-margin_bottom = 224.0
+offset_top = 152.0
+offset_right = 550.0
+offset_bottom = 224.0
 editable = false
 status_name = "Coherencia"
 
 [node name="Salud" parent="Layout/DataBox" instance=ExtResource( 3 )]
-margin_top = 228.0
-margin_right = 550.0
-margin_bottom = 254.0
+offset_top = 228.0
+offset_right = 550.0
+offset_bottom = 254.0
 editable = false
 
 [node name="Cordura" parent="Layout/DataBox" instance=ExtResource( 3 )]
-margin_top = 258.0
-margin_right = 550.0
-margin_bottom = 284.0
+offset_top = 258.0
+offset_right = 550.0
+offset_bottom = 284.0
 editable = false
 type = "Cordura"
 icon_colection = "sanity"

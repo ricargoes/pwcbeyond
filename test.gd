@@ -11,14 +11,15 @@ func search():
 	
 	request(
 		GameInfo.character_sheets_table_url + "?" + query_order,
-		PoolStringArray(["accept: application/json", "Range-Unit: items"]),
-		true,
+		PackedStringArray(["accept: application/json", "Range-Unit: items"]),
 		HTTPClient.METHOD_GET
 		)
 
 
 func _on_Node_request_completed(result, response_code, headers, body):
-	var chars = JSON.parse(body.get_string_from_utf8()).result
+	var test_json_conv = JSON.new()
+	test_json_conv.parse(body.get_string_from_utf8())
+	var chars = test_json_conv.get_data()
 	for char2 in chars:
 		var chronicle = char2["chronicle"]
 		var player = char2["player"]
@@ -34,7 +35,7 @@ func _on_Node_request_completed(result, response_code, headers, body):
 		n_data["bio"]["age"] = data["data"]["age"]
 		n_data["bio"]["job"] = data["data"]["job"]
 		n_data["bio"]["species"] = data["data"]["species"]
-		if not data["plane_manipulation"].empty():
+		if not data["plane_manipulation"].is_empty():
 			n_data["plane_manipulation"].erase("iter")
 			n_data["plane_manipulation"]["journey"] = data["plane_manipulation"]["iter"]
 			n_data["plane_manipulation"].erase("aspecti")
@@ -46,7 +47,7 @@ func _on_Node_request_completed(result, response_code, headers, body):
 		
 		var post_data = { "character_stats": n_data }
 		CharactersGetter.update_character(chronicle, player, char_name, post_data)
-		yield(get_tree().create_timer(0.5), "timeout")
+		await get_tree().create_timer(0.5).timeout
 		new_format.append(n_data)
 	
 	print(new_format.size())

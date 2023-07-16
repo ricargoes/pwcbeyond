@@ -7,7 +7,7 @@ func mark():
 func cross():
 	$Crossed.show()
 
-func empty():
+func is_empty():
 	$Marked.hide()
 	$Crossed.hide()
 

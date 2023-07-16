@@ -1,25 +1,15 @@
 extends Control
 
-onready var character_finder = $CharacterFinder
-onready var master_screen = find_node("MasterScreen")
-
-onready var char_sheet_cards = [
-	master_screen.find_node("Char1"),
-	master_screen.find_node("Char2"),
-	master_screen.find_node("Char3"),
-	master_screen.find_node("Char4"),
-	master_screen.find_node("Char5"),
-	master_screen.find_node("Char6")
-]
+@onready var char_sheet_cards = [%Char1, %Char2, %Char3, %Char4, %Char5, %Char6]
 
 func character_finder_view():
-	character_finder.show()
-	master_screen.hide()
+	%CharacterFinder.show()
+	%MasterScreen.hide()
 
 
 func master_screen_view():
-	character_finder.hide()
-	master_screen.show()
+	%CharacterFinder.hide()
+	%MasterScreen.show()
 
 
 func clear_character_selection():
@@ -40,7 +30,7 @@ func _on_CharacterFinder_ok(selected_chars):
 
 
 func _on_CharacterFinder_back():
-	get_tree().change_scene("res://scenes/screens/MainMenu.tscn")
+	get_tree().change_scene_to_file("res://scenes/screens/MainMenu.tscn")
 
 
 func _on_Exit_pressed():

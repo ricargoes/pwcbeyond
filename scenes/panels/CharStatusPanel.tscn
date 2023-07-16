@@ -1,135 +1,99 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=8 format=3 uid="uid://cqq7n32w7m6dd"]
 
-[ext_resource path="res://resources/theme.tres" type="Theme" id=1]
-[ext_resource path="res://resources/underline.tres" type="StyleBox" id=2]
-[ext_resource path="res://scenes/counters/Status.tscn" type="PackedScene" id=3]
-[ext_resource path="res://resources/sprites/backgrounds/9patch_scroll2.png" type="Texture" id=4]
-[ext_resource path="res://resources/h1_font.tres" type="DynamicFont" id=5]
-[ext_resource path="res://scenes/counters/Tireness.tscn" type="PackedScene" id=6]
-[ext_resource path="res://scenes/panels/CharStatusPanel.gd" type="Script" id=7]
-[ext_resource path="res://resources/sprites/counters/square.png" type="Texture" id=8]
-[ext_resource path="res://resources/sprites/counters/square_marked.png" type="Texture" id=9]
+[ext_resource type="Theme" uid="uid://fdky2ckfobqg" path="res://resources/theme.tres" id="1"]
+[ext_resource type="StyleBox" path="res://resources/underline.tres" id="2"]
+[ext_resource type="PackedScene" path="res://scenes/counters/Status.tscn" id="3"]
+[ext_resource type="Texture2D" uid="uid://bjcldyjvuol4g" path="res://resources/sprites/backgrounds/9patch_scroll2.png" id="4"]
+[ext_resource type="FontFile" path="res://resources/h1_font.tres" id="5"]
+[ext_resource type="PackedScene" path="res://scenes/counters/Tireness.tscn" id="6"]
+[ext_resource type="Script" path="res://scenes/panels/CharStatusPanel.gd" id="7"]
 
 [node name="CharStatus" type="Control"]
-rect_min_size = Vector2( 550, 350 )
-theme = ExtResource( 1 )
-script = ExtResource( 7 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
+custom_minimum_size = Vector2(550, 350)
+layout_mode = 3
+anchors_preset = 0
+theme = ExtResource("1")
+script = ExtResource("7")
 
 [node name="BG" type="NinePatchRect" parent="."]
+layout_mode = 0
 anchor_right = 1.0
 anchor_bottom = 1.0
-texture = ExtResource( 4 )
+texture = ExtResource("4")
 patch_margin_left = 45
 patch_margin_top = 45
 patch_margin_right = 44
 patch_margin_bottom = 57
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="Layout" type="VBoxContainer" parent="."]
+layout_mode = 0
 anchor_right = 1.0
 anchor_bottom = 1.0
 alignment = 1
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="Name" type="Label" parent="Layout"]
-margin_top = 36.0
-margin_right = 550.0
-margin_bottom = 65.0
+layout_mode = 2
 mouse_filter = 1
 mouse_default_cursor_shape = 2
-custom_fonts/font = ExtResource( 5 )
+theme_override_fonts/font = ExtResource("5")
 text = "Foobar"
-align = 1
 
 [node name="MarginContainer" type="MarginContainer" parent="Layout/Name"]
+layout_mode = 0
 anchor_left = 1.0
 anchor_top = 0.5
 anchor_right = 1.0
 anchor_bottom = 0.5
-margin_left = -108.0
-margin_top = -15.0
-margin_bottom = 15.0
+offset_left = -108.0
+offset_top = -15.0
+offset_bottom = 15.0
 grow_horizontal = 0
-custom_constants/margin_right = 25
-__meta__ = {
-"_edit_use_anchors_": false
-}
+theme_override_constants/margin_right = 25
 
 [node name="EditBut" type="CheckButton" parent="Layout/Name/MarginContainer"]
-margin_right = 88.0
-margin_bottom = 30.0
-grow_horizontal = 0
-custom_icons/off = ExtResource( 8 )
-custom_icons/on = ExtResource( 9 )
-custom_constants/hseparation = 5
+layout_mode = 2
+theme_override_constants/h_separation = 5
 text = "Editar"
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="HSeparator" type="HSeparator" parent="Layout"]
-margin_top = 69.0
-margin_right = 550.0
-margin_bottom = 73.0
-custom_styles/separator = ExtResource( 2 )
+layout_mode = 2
+theme_override_styles/separator = ExtResource("2")
 
 [node name="DataBox" type="HBoxContainer" parent="Layout"]
-margin_top = 77.0
-margin_right = 550.0
-margin_bottom = 313.0
-custom_constants/separation = 30
+layout_mode = 2
+theme_override_constants/separation = 30
 alignment = 1
 
 [node name="TirenessBox" type="VBoxContainer" parent="Layout/DataBox"]
-margin_left = 141.0
-margin_right = 330.0
-margin_bottom = 236.0
-custom_constants/separation = 10
+layout_mode = 2
+theme_override_constants/separation = 10
 
-[node name="Vigor" parent="Layout/DataBox/TirenessBox" instance=ExtResource( 6 )]
-margin_right = 189.0
-margin_bottom = 72.0
+[node name="Vigor" parent="Layout/DataBox/TirenessBox" instance=ExtResource("6")]
+layout_mode = 2
 editable = false
 status_name = "Vigor"
 
-[node name="Voluntad" parent="Layout/DataBox/TirenessBox" instance=ExtResource( 6 )]
-margin_top = 82.0
-margin_right = 189.0
-margin_bottom = 154.0
+[node name="Voluntad" parent="Layout/DataBox/TirenessBox" instance=ExtResource("6")]
+layout_mode = 2
 editable = false
 status_name = "Voluntad"
 
-[node name="Coherencia" parent="Layout/DataBox/TirenessBox" instance=ExtResource( 6 )]
-margin_top = 164.0
-margin_right = 189.0
-margin_bottom = 236.0
+[node name="Coherencia" parent="Layout/DataBox/TirenessBox" instance=ExtResource("6")]
+layout_mode = 2
 editable = false
 status_name = "Coherencia"
 
 [node name="StatusBox" type="VBoxContainer" parent="Layout/DataBox"]
-margin_left = 360.0
-margin_right = 409.0
-margin_bottom = 236.0
-custom_constants/separation = 10
+layout_mode = 2
+theme_override_constants/separation = 10
 alignment = 1
 
-[node name="Salud" parent="Layout/DataBox/StatusBox" instance=ExtResource( 3 )]
-margin_top = 87.0
-margin_right = 49.0
-margin_bottom = 113.0
+[node name="Salud" parent="Layout/DataBox/StatusBox" instance=ExtResource("3")]
+layout_mode = 2
 editable = false
 
-[node name="Cordura" parent="Layout/DataBox/StatusBox" instance=ExtResource( 3 )]
-margin_top = 123.0
-margin_right = 49.0
-margin_bottom = 149.0
+[node name="Cordura" parent="Layout/DataBox/StatusBox" instance=ExtResource("3")]
+layout_mode = 2
 editable = false
 type = "Cordura"
 icon_colection = "sanity"
@@ -139,11 +103,7 @@ wait_time = 15.0
 autostart = true
 
 [node name="CharSheet" type="Popup" parent="."]
-anchor_right = 1.0
-anchor_bottom = 1.0
-__meta__ = {
-"_edit_use_anchors_": false
-}
+
 [connection signal="gui_input" from="Layout/Name" to="." method="_on_Name_clicked"]
 [connection signal="pressed" from="Layout/Name/MarginContainer/EditBut" to="." method="_on_EditBut_pressed"]
 [connection signal="timeout" from="RefreshInterval" to="." method="refresh_char"]

@@ -9,15 +9,10 @@ var max_artes_points = 4
 var _count_access_points = 0
 var _count_artes_points = 0
 
-onready var chronicle = $CenterContainer/SheetInfo/CenterContainer/GridContainer/Chronicle
-onready var player = $CenterContainer/SheetInfo/CenterContainer/GridContainer/Player
-onready var char_name = $CenterContainer/SheetInfo/CenterContainer/GridContainer/Name
-onready var version_control = $CenterContainer/NinePatchRect/Version
-
 var _char_type = ""
 
 func _ready():
-	version_control.select(1)
+	%Version.select(1)
 	paint_atributes()
 	paint_skills()
 	paint_plane_manipulation()
@@ -26,19 +21,19 @@ func _ready():
 func paint_atributes():
 	var feature_type = "atributes"
 	var item_levels = GameInfo.version_skill_template[get_sheet_version()][feature_type]
-	Helper.build_ability_tree(feature_type, find_node("Atributes"), item_levels)
-	get_tree().call_group(feature_type, "connect", "level_up", self, "update_atribute_points")
-	get_tree().call_group(feature_type, "connect", "level_down", self, "update_atribute_points")
+	Helper.build_ability_tree(feature_type, %Atributes, item_levels)
+	get_tree().call_group(feature_type, "connect", "leveled_up", update_atribute_points)
+	get_tree().call_group(feature_type, "connect", "leveled_down", update_atribute_points)
 
 
 func paint_skills():
 	var feature_type = "skills"
 	var item_levels = GameInfo.version_skill_template[get_sheet_version()][feature_type]
-	Helper.build_ability_tree(feature_type, find_node("Skills"), item_levels)
+	Helper.build_ability_tree(feature_type, find_child("Skills"), item_levels)
 	
-	for group_containers in find_node("Skills").get_children():
+	for group_containers in find_child("Skills").get_children():
 		var group = group_containers.name
-		var node = ResourceManager.ability_counter_class.instance()
+		var node = ResourceManager.ability_counter_class.instantiate()
 		node.ability_name = ""
 		node.editable = true
 		node.set_level(0, 0)
@@ -48,15 +43,15 @@ func paint_skills():
 		group_containers.add_child(node)
 	
 	skill_points = 30
-	get_tree().call_group(feature_type, "connect", "level_up", self, "update_skill_points", [true])
-	get_tree().call_group(feature_type, "connect", "level_down", self, "update_skill_points", [false])
+	get_tree().call_group(feature_type, "connect", "leveled_up", update_skill_points.bind(true))
+	get_tree().call_group(feature_type, "connect", "leveled_down", update_skill_points.bind(false))
 
 
 func paint_plane_manipulation():
 	for access in ["Ego", "Quod", "Scientia", "Opus"]:
-		var access_node = find_node(access)
-		access_node.connect("level_up", self, "update_access_points", [true])
-		access_node.connect("level_down", self, "update_access_points", [false])
+		var access_node = find_child(access)
+		access_node.connect("leveled_up", update_access_points.bind(true))
+		access_node.connect("leveled_down", update_access_points.bind(false))
 
 
 func rollback_ability(ability, is_atribute = false):
@@ -66,7 +61,7 @@ func rollback_ability(ability, is_atribute = false):
 func update_atribute_points(last_updates_atribute):
 	
 	var levels_by_group = {}
-	var atribute_groups = find_node("Atributes").get_children()
+	var atribute_groups = find_child("Atributes").get_children()
 	for atribute_group in atribute_groups:
 		levels_by_group[atribute_group.name] = 0
 		for atribute in atribute_group.get_children():
@@ -134,23 +129,23 @@ func update_skill_points(last_updated_ability, going_up):
 	else:
 		skill_points += points_spent + 1
 	
-	find_node("PointsLeft").text = "Quedan " + str(skill_points) + "puntos"
+	find_child("PointsLeft").text = "Quedan " + str(skill_points) + "puntos"
 
 
 func _hide_everything():
-	find_node("SheetInfo").hide()
-	find_node("SheetDescription").hide()
-	find_node("SheetAtributes").hide()
-	find_node("SheetSkills").hide()
-	find_node("SheetPlaneManipulation").hide()
+	find_child("SheetInfo").hide()
+	find_child("SheetDescription").hide()
+	find_child("SheetAtributes").hide()
+	find_child("SheetSkills").hide()
+	find_child("SheetPlaneManipulation").hide()
 
 
 func info_form_ok():
-	if chronicle.text == "":
+	if %Chronicle.text == "":
 		$Warning.send_warning("El campo Crónica no debe estar vacío")
-	elif player.text == "":
+	elif %Player.text == "":
 		$Warning.send_warning("El campo Jugador no debe estar vacío")
-	elif char_name.text == "":
+	elif %Name.text == "":
 		$Warning.send_warning("El campo Nombre no debe estar vacío")
 	else:
 		return true
@@ -158,7 +153,7 @@ func info_form_ok():
 	return false
 
 func get_sheet_version():
-	return version_control.get_item_text(version_control.get_selected_items()[0])
+	return %Version.get_item_text(%Version.get_selected_items()[0])
 
 
 func _on_Version_item_selected(_index):
@@ -179,84 +174,86 @@ func _on_Planewalker_pressed():
 
 func info_phase():
 	_hide_everything()
-	find_node("SheetInfo").show()
-	version_control.mouse_filter = Control.MOUSE_FILTER_STOP
+	find_child("SheetInfo").show()
+	%Version.mouse_filter = Control.MOUSE_FILTER_STOP
 
 func description_phase():
 	_hide_everything()
-	find_node("SheetDescription").show()
-	version_control.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	find_child("SheetDescription").show()
+	%Version.mouse_filter = Control.MOUSE_FILTER_IGNORE
 
 func atributes_phase():
 	_hide_everything()
-	find_node("SheetAtributes").show()
+	find_child("SheetAtributes").show()
 
 func skills_phase():
 	_hide_everything()
-	find_node("SheetSkills").show()
+	find_child("SheetSkills").show()
 	if _char_type != "planewalker":
-		find_node("SheetSkills").find_node("Next").text = "Fin"
+		find_child("SheetSkills").find_child("Next").text = "Fin"
 	else:
-		find_node("SheetSkills").find_node("Next").text = "Siguiente"
+		find_child("SheetSkills").find_child("Next").text = "Siguiente"
 
 func plane_manipulation_phase():
 	if _char_type == "planewalker":
-		var vias_options = find_node("Via")
+		var vias_options = find_child("Via")
 		if vias_options.get_item_count() == 0:
-			$GET.connect("request_completed", self, "_on_get_vias_request_completed")
+			$GET.connect("request_completed", Callable(self, "_on_get_vias_request_completed"))
 			$GET.request(GameInfo.vias_table_url,
-				PoolStringArray(["accept: application/json", "Range-Unit: items"]),
-				true,
+				PackedStringArray(["accept: application/json", "Range-Unit: items"]),
 				HTTPClient.METHOD_GET
 				)
-			find_node("InstructionsAccessL").text = "Quedan " + str(max_access_points-_count_access_points) + " puntos por repartir"
+			find_child("InstructionsAccessL").text = "Quedan " + str(max_access_points-_count_access_points) + " puntos por repartir"
 		
 		_hide_everything()
-		find_node("SheetPlaneManipulation").show()
+		find_child("SheetPlaneManipulation").show()
 	else:
 		finish()
 
 
 func _on_get_vias_request_completed(_result, _response_code, _headers, body):
-	var vias = JSON.parse(body.get_string_from_utf8()).result
-	var vias_options = find_node("Via")
+	var test_json_conv = JSON.new()
+	test_json_conv.parse(body.get_string_from_utf8())
+	var vias = test_json_conv.get_data()
+	var vias_options = find_child("Via")
 	vias_options.clear()
 	for via in vias:
 		vias_options.add_item(via["name"])
 	
-	$GET.disconnect("request_completed", self, "_on_get_vias_request_completed")
+	$GET.disconnect("request_completed", Callable(self, "_on_get_vias_request_completed"))
 
 
 func _on_Via_item_selected(id):
-	var vias_options = find_node("Via")
+	var vias_options = find_child("Via")
 	var via_name = vias_options.get_item_text(id)
-	$GET.connect("request_completed", self, "_on_get_artes_request_completed")
+	$GET.connect("request_completed", Callable(self, "_on_get_artes_request_completed"))
 	$GET.request(GameInfo.vias_to_artes_table_url + "?via_name=eq." + via_name,
-		PoolStringArray(["accept: application/json", "Range-Unit: items"]),
-		true,
+		PackedStringArray(["accept: application/json", "Range-Unit: items"]),
 		HTTPClient.METHOD_GET
 		)
 
 
 func _on_get_artes_request_completed(_result, _response_code, _headers, body):
-	var vias_artes = JSON.parse(body.get_string_from_utf8()).result
-	var artes_node = find_node("Artes")
-	Helper.remove_children(find_node("Artes"))
+	var test_json_conv = JSON.new()
+	test_json_conv.parse(body.get_string_from_utf8())
+	var vias_artes = test_json_conv.get_data()
+	var artes_node = find_child("Artes")
+	Helper.remove_children(find_child("Artes"))
 	for via_arte in vias_artes:
 		var ars_name = via_arte["ars_group_name"]
-		var ars = ResourceManager.ability_counter_class.instance()
+		var ars = ResourceManager.ability_counter_class.instantiate()
 		ars.name = ars_name
 		ars.ability_name = ars_name
 		ars.editable = true
 		ars.set_level(0, 0)
-		ars.connect("level_up", self, "update_artes_points", [true])
-		ars.connect("level_down", self, "update_artes_points", [false])
-		ars.connect("clicked", $ArtesReference, "launch", [true])
+		ars.connect("leveled_up", update_artes_points.bind(true))
+		ars.connect("leveled_down", update_artes_points.bind(false))
+		ars.connect("clicked", Callable($ArtesReference, "launch").bind(true))
 		artes_node.add_child(ars)
 	_count_artes_points = 0
-	find_node("InstructionsAccessL").text = "Quedan " + str(max_artes_points-_count_artes_points) + " puntos por repartir"
+	find_child("InstructionsAccessL").text = "Quedan " + str(max_artes_points-_count_artes_points) + " puntos por repartir"
 	
-	$GET.disconnect("request_completed", self, "_on_get_artes_request_completed")
+	$GET.disconnect("request_completed", Callable(self, "_on_get_artes_request_completed"))
 
 
 func update_artes_points(last_updated_ability, going_up):
@@ -268,7 +265,7 @@ func update_artes_points(last_updated_ability, going_up):
 	else:
 		_count_artes_points -= 1
 	
-	find_node("InstructionsArtesL").text = "Quedan " + str(max_artes_points-_count_artes_points) + " puntos por repartir"
+	find_child("InstructionsArtesL").text = "Quedan " + str(max_artes_points-_count_artes_points) + " puntos por repartir"
 
 
 func update_access_points(last_updated_ability, going_up):
@@ -280,20 +277,20 @@ func update_access_points(last_updated_ability, going_up):
 	else:
 		_count_access_points -= 1
 	
-	find_node("InstructionsAccessL").text = "Quedan " + str(max_access_points-_count_access_points) + " puntos por repartir"
+	find_child("InstructionsAccessL").text = "Quedan " + str(max_access_points-_count_access_points) + " puntos por repartir"
 
 
 func finish():
-	var character = load("res://scenes/classes/Character.tscn").instance()
+	var character = load("res://scenes/classes/Character.tscn").instantiate()
 	character.set_id(self)
 	character.save_human_side(self)
 	character.save_planewalker_side(self)
 	character.initialize_status()
 	CharactersGetter.insert_character(character)
-	get_tree().change_scene("res://scenes/screens/MainMenu.tscn")
+	get_tree().change_scene_to_file("res://scenes/screens/MainMenu.tscn")
 
 
 func _on_Exit_pressed():
-	get_tree().change_scene("res://scenes/screens/MainMenu.tscn")
+	get_tree().change_scene_to_file("res://scenes/screens/MainMenu.tscn")
 
 

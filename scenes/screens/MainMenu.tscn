@@ -1,137 +1,125 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=13 format=3 uid="uid://cef6g54acc1lb"]
 
-[ext_resource path="res://resources/theme.tres" type="Theme" id=1]
-[ext_resource path="res://resources/sprites/buttons/usecharacterpressed.png" type="Texture" id=2]
-[ext_resource path="res://resources/sprites/buttons/Charactercreator1.png" type="Texture" id=3]
-[ext_resource path="res://resources/sprites/buttons/Charactercreatorpressed1.png" type="Texture" id=4]
-[ext_resource path="res://resources/sprites/buttons/Mastermode.png" type="Texture" id=5]
-[ext_resource path="res://scenes/screens/MainMenu.gd" type="Script" id=6]
-[ext_resource path="res://resources/sprites/buttons/usecharacter.png" type="Texture" id=7]
-[ext_resource path="res://resources/sprites/backgrounds/9patch_scroll3.png" type="Texture" id=8]
-[ext_resource path="res://resources/EscapeKeyShortcut.tres" type="ShortCut" id=9]
-[ext_resource path="res://resources/sprites/buttons/Mastermodepressed.png" type="Texture" id=10]
-[ext_resource path="res://scenes/panels/Logo.tscn" type="PackedScene" id=11]
-[ext_resource path="res://scenes/decorations/BG.tscn" type="PackedScene" id=12]
+[ext_resource type="Theme" uid="uid://fdky2ckfobqg" path="res://resources/theme.tres" id="1"]
+[ext_resource type="Texture2D" uid="uid://op4nshmj7wty" path="res://resources/sprites/buttons/usecharacterpressed.png" id="2"]
+[ext_resource type="Texture2D" uid="uid://dnqbv3d0xwj50" path="res://resources/sprites/buttons/Charactercreator1.png" id="3"]
+[ext_resource type="Texture2D" uid="uid://cdugyu2k0kk41" path="res://resources/sprites/buttons/Charactercreatorpressed1.png" id="4"]
+[ext_resource type="Texture2D" uid="uid://bgmbl43nl7bmu" path="res://resources/sprites/buttons/Mastermode.png" id="5"]
+[ext_resource type="Script" path="res://scenes/screens/MainMenu.gd" id="6"]
+[ext_resource type="Texture2D" uid="uid://2x4ik2ryrg4p" path="res://resources/sprites/buttons/usecharacter.png" id="7"]
+[ext_resource type="Texture2D" uid="uid://oaynf75i4sbe" path="res://resources/sprites/backgrounds/9patch_scroll3.png" id="8"]
+[ext_resource type="Shortcut" path="res://resources/EscapeKeyShortcut.tres" id="9"]
+[ext_resource type="Texture2D" uid="uid://b17x343mn1vuw" path="res://resources/sprites/buttons/Mastermodepressed.png" id="10"]
+[ext_resource type="PackedScene" path="res://scenes/panels/Logo.tscn" id="11"]
+[ext_resource type="PackedScene" path="res://scenes/decorations/BG.tscn" id="12"]
 
 [node name="MainMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-theme = ExtResource( 1 )
-script = ExtResource( 6 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1")
+script = ExtResource("6")
 
-[node name="BG" parent="." instance=ExtResource( 12 )]
+[node name="BG" parent="." instance=ExtResource("12")]
+layout_mode = 0
 
-[node name="Logo" parent="." instance=ExtResource( 11 )]
-margin_bottom = 250.0
+[node name="Logo" parent="." instance=ExtResource("11")]
+layout_mode = 1
+anchors_preset = 5
+offset_top = 0.0
+offset_bottom = 250.0
+grow_horizontal = 2
+expand_mode = 1
 
 [node name="CenterContainer" type="CenterContainer" parent="."]
+layout_mode = 0
 anchor_right = 1.0
 anchor_bottom = 1.0
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="NinePatchRect" type="NinePatchRect" parent="CenterContainer"]
-margin_left = 735.0
-margin_top = 265.0
-margin_right = 1185.0
-margin_bottom = 815.0
-rect_min_size = Vector2( 450, 550 )
-texture = ExtResource( 8 )
+custom_minimum_size = Vector2(450, 550)
+layout_mode = 2
+texture = ExtResource("8")
 patch_margin_left = 62
 patch_margin_top = 80
 patch_margin_right = 71
 patch_margin_bottom = 67
 
 [node name="Buttons" type="VBoxContainer" parent="CenterContainer"]
-margin_left = 860.0
-margin_top = 293.0
-margin_right = 1060.0
-margin_bottom = 787.0
-custom_constants/separation = 10
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+theme_override_constants/separation = 10
 
 [node name="CreateCharL" type="Label" parent="CenterContainer/Buttons"]
-margin_right = 200.0
-margin_bottom = 22.0
-rect_min_size = Vector2( 200, 0 )
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+size_flags_horizontal = 5
 text = "Crear personaje"
-align = 1
+horizontal_alignment = 1
 
 [node name="CreateChar" type="TextureButton" parent="CenterContainer/Buttons"]
-margin_left = 50.0
-margin_top = 32.0
-margin_right = 150.0
-margin_bottom = 132.0
-rect_min_size = Vector2( 100, 100 )
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 2
 mouse_default_cursor_shape = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
-texture_normal = ExtResource( 3 )
-texture_pressed = ExtResource( 4 )
-expand = true
+texture_normal = ExtResource("3")
+texture_pressed = ExtResource("4")
+ignore_texture_size = true
 stretch_mode = 5
 
 [node name="GetCharSheetL" type="Label" parent="CenterContainer/Buttons"]
-margin_top = 142.0
-margin_right = 200.0
-margin_bottom = 164.0
-rect_min_size = Vector2( 200, 0 )
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+size_flags_horizontal = 5
 text = "Usar personaje"
-align = 1
+horizontal_alignment = 1
 
 [node name="GetCharSheet" type="TextureButton" parent="CenterContainer/Buttons"]
-margin_left = 50.0
-margin_top = 174.0
-margin_right = 150.0
-margin_bottom = 274.0
-rect_min_size = Vector2( 100, 100 )
-mouse_default_cursor_shape = 2
-size_flags_horizontal = 4
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 2
+size_flags_horizontal = 5
 size_flags_vertical = 4
-texture_normal = ExtResource( 7 )
-texture_pressed = ExtResource( 2 )
-expand = true
+mouse_default_cursor_shape = 2
+texture_normal = ExtResource("7")
+texture_pressed = ExtResource("2")
+ignore_texture_size = true
 stretch_mode = 5
 
 [node name="MasterModeL" type="Label" parent="CenterContainer/Buttons"]
-margin_top = 284.0
-margin_right = 200.0
-margin_bottom = 306.0
-rect_min_size = Vector2( 200, 0 )
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+size_flags_horizontal = 5
 text = "Master mode"
-align = 1
+horizontal_alignment = 1
 
 [node name="MasterMode" type="TextureButton" parent="CenterContainer/Buttons"]
-margin_left = 50.0
-margin_top = 316.0
-margin_right = 150.0
-margin_bottom = 416.0
-rect_min_size = Vector2( 100, 100 )
-mouse_default_cursor_shape = 2
-size_flags_horizontal = 4
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 2
+size_flags_horizontal = 5
 size_flags_vertical = 4
-texture_normal = ExtResource( 5 )
-texture_pressed = ExtResource( 10 )
-expand = true
+mouse_default_cursor_shape = 2
+texture_normal = ExtResource("5")
+texture_pressed = ExtResource("10")
+ignore_texture_size = true
 stretch_mode = 5
 
 [node name="HSeparator" type="HSeparator" parent="CenterContainer/Buttons"]
-margin_top = 426.0
-margin_right = 200.0
-margin_bottom = 456.0
-custom_constants/separation = 30
+layout_mode = 2
+size_flags_horizontal = 5
+size_flags_vertical = 4
+theme_override_constants/separation = 30
 
 [node name="Quit" type="Button" parent="CenterContainer/Buttons"]
-margin_top = 466.0
-margin_right = 200.0
-margin_bottom = 494.0
-rect_min_size = Vector2( 150, 0 )
-shortcut = ExtResource( 9 )
+custom_minimum_size = Vector2(150, 0)
+layout_mode = 2
+size_flags_horizontal = 5
+size_flags_vertical = 4
+shortcut = ExtResource("9")
 text = "Salir"
 flat = true
+
 [connection signal="pressed" from="CenterContainer/Buttons/CreateChar" to="." method="_on_CreateChar_pressed"]
 [connection signal="pressed" from="CenterContainer/Buttons/GetCharSheet" to="." method="_on_GetCharSheet_pressed"]
 [connection signal="pressed" from="CenterContainer/Buttons/MasterMode" to="." method="_on_MasterMode_pressed"]

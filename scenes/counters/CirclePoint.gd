@@ -8,7 +8,7 @@ func permanent():
 	$Full.hide()
 	$Permanent.show()
 
-func empty():
+func is_empty():
 	$Full.hide()
 	$Permanent.hide()
 

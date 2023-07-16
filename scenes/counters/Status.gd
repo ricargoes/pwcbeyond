@@ -1,8 +1,8 @@
 extends Control
 
-export var editable = true
-export var type = "Salud"
-export var icon_colection = "health"
+@export var editable = true
+@export var type = "Salud"
+@export var icon_colection = "health"
 
 var damage_light = 0
 var damage_heavy = 0
@@ -35,14 +35,14 @@ func generate_status():
 		$CenterContainer/States.add_child(state_name)
 		var state_penalty = Label.new()
 		state_penalty.text = state["penalty"]
-		state_penalty.align = Label.ALIGN_RIGHT
+#		state_penalty.align = Label.ALIGN_RIGHT
 		$CenterContainer/States.add_child(state_penalty)
 		var degrees_container = HBoxContainer.new()
 		degrees_container.name = "MarkersContainer"
 		$CenterContainer/States.add_child(degrees_container)
 		for _i in range(0, state["degrees"]):
 			degrees_counter += 1
-			var damage_marker = rombus_class.instance()
+			var damage_marker = rombus_class.instantiate()
 			damage_marker.name = "d"+str(degrees_counter)
 			degrees_container.add_child(damage_marker)
 	max_damage = degrees_counter
@@ -59,13 +59,13 @@ func refresh():
 		$Label/PlusHeavy.hide()
 	
 	for i in range(1, max_damage + 1):
-		var marker = $CenterContainer/States.find_node("*d"+str(i), true, false)
+		var marker = $CenterContainer/States.find_child("*d"+str(i), true, false)
 		if i <= damage_heavy:
 			marker.cross()
 		elif i <= damage_heavy + damage_light:
 			marker.mark()
 		else:
-			marker.empty()
+			marker.is_empty()
 
 
 func set_editable(is_editable):

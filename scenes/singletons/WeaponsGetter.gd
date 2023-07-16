@@ -9,7 +9,9 @@ func _ready():
 
 
 func _on_get_request_completed(_result, _response_code, _headers, body):
-	var weapons = JSON.parse(body.get_string_from_utf8()).result
+	var test_json_conv = JSON.new()
+	test_json_conv.parse(body.get_string_from_utf8())
+	var weapons = test_json_conv.get_data()
 	for weapon in weapons:
 		if not _cache.has(weapon["weapon_class_name"]):
 			_cache[weapon["weapon_class_name"]] = {}

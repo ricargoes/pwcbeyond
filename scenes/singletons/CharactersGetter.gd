@@ -17,7 +17,9 @@ func _process(_delta):
 
 
 func _on_get_request_completed(_result, _response_code, _headers, body):
-	var chars = JSON.parse(body.get_string_from_utf8()).result
+	var test_json_conv = JSON.new()
+	test_json_conv.parse(body.get_string_from_utf8())
+	var chars = test_json_conv.get_data()
 	var chars_recovered = []
 	for character_dict in chars:
 		var chronicle = character_dict["chronicle"]
@@ -28,7 +30,7 @@ func _on_get_request_completed(_result, _response_code, _headers, body):
 		if not _chars_cache[chronicle].has(player):
 			_chars_cache[chronicle][player] = {}
 		
-		var character = ResourceManager.character_class.instance()
+		var character = ResourceManager.character_class.instantiate()
 		character.from_data_dict(character_dict)
 		_chars_cache[chronicle][player][char_name] = character
 		chars_recovered.append(character)
@@ -53,12 +55,11 @@ func character_filter(chronicle=null, player=null, char_name=null):
 
 
 func try_request():
-	if get_http_client_status() == HTTPClient.STATUS_DISCONNECTED and not request_queue.empty():
+	if get_http_client_status() == HTTPClient.STATUS_DISCONNECTED and not request_queue.is_empty():
 		var url = request_queue.pop_front()
 		request(
 			url,
-			PoolStringArray(["accept: application/json", "Range-Unit: items"]),
-			true,
+			PackedStringArray(["accept: application/json", "Range-Unit: items"]),
 			HTTPClient.METHOD_GET
 			)
 
@@ -85,18 +86,16 @@ func insert_character(character):
 		}
 	$CharactersInserter.request(
 		GameInfo.character_sheets_table_url,
-		PoolStringArray(["Content-Type: application/json"]),
-		true,
+		PackedStringArray(["Content-Type: application/json"]),
 		HTTPClient.METHOD_POST,
-		JSON.print(post_data)
+		JSON.stringify(post_data)
 		)
 
 
 func delete_character(chronicle, player, char_name):
 	$CharactersDeleter.request(
 		GameInfo.character_sheets_table_url + character_filter(chronicle, player, char_name),
-		PoolStringArray(["Content-Type: application/json"]),
-		true,
+		PackedStringArray(["Content-Type: application/json"]),
 		HTTPClient.METHOD_DELETE
 		)
 
@@ -104,9 +103,8 @@ func delete_character(chronicle, player, char_name):
 func update_character(chronicle, player, char_name, payload):
 	$CharactersUpdater.request(
 		GameInfo.character_sheets_table_url + character_filter(chronicle, player, char_name),
-		PoolStringArray(["Content-Type: application/json"]),
-		true,
+		PackedStringArray(["Content-Type: application/json"]),
 		HTTPClient.METHOD_PATCH,
-		JSON.print(payload)
+		JSON.stringify(payload)
 		)
 

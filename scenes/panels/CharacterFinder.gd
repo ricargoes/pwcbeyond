@@ -1,8 +1,8 @@
 extends CenterContainer
 
-onready var char_list = $VBoxContainer/PosibleChars
+@onready var char_list = $VBoxContainer/PosibleChars
 
-export var multiple_selection = false
+@export var multiple_selection = false
 
 signal ok(selected_characters)
 signal back()
@@ -16,7 +16,7 @@ func _on_SearchButton_pressed():
 	var search_text = $VBoxContainer/SearchCont/SearchLine.text
 	char_list.clear()
 	CharactersGetter.search(search_text)
-	CharactersGetter.connect("cache_refreshed", self, "populate_list")
+	CharactersGetter.connect("cache_refreshed", Callable(self, "populate_list"))
 
 
 func populate_list(characters):

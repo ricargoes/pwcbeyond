@@ -1,10 +1,10 @@
 extends VBoxContainer
 
-export var editable = false
-export var ability_name = "ABILITY"
+@export var editable = false
+@export var ability_name = "ABILITY"
 
-signal level_up
-signal level_down
+signal leveled_up
+signal leveled_down
 signal clicked(node)
 
 
@@ -18,11 +18,11 @@ func refresh():
 	if editable:
 		$Label/Plus.show()
 		$Label/Minus.show()
-		$Label/Label.rect_min_size = Vector2(110, 0)
+		$Label/Label.custom_minimum_size = Vector2(110, 0)
 	else:
 		$Label/Plus.hide()
 		$Label/Minus.hide()
-		$Label/Label.rect_min_size = Vector2(160, 0)
+		$Label/Label.custom_minimum_size = Vector2(160, 0)
 
 
 func set_level(level, min_level = 1):
@@ -40,16 +40,16 @@ func level_up():
 		return
 	
 	$StandardCounter.level += 1
-	emit_signal("level_up", self)
+	leveled_up.emit(self)
 	refresh()
 
 
 func level_down():
-	if $StandardCounter.level <= 0:
+	if $StandardCounter.level <= $StandardCounter.initial_level:
 		return
 	
 	$StandardCounter.level -= 1
-	emit_signal("level_down", self)
+	leveled_down.emit(self)
 	refresh()
 
 
@@ -59,15 +59,15 @@ func set_editable(is_editable):
 
 
 func _on_ability_click(event):
-	if event is InputEventMouseButton and event.button_index == BUTTON_LEFT and event.pressed:
-		emit_signal("clicked", self)
+	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT and event.pressed:
+		clicked.emit(self)
 
 
-func set_name(new_name):
+func set_indicator_name(new_name):
 	ability_name = new_name
 
 
-func get_name():
+func get_indicator_name():
 	return ability_name
 
 

@@ -1,848 +1,607 @@
-[gd_scene load_steps=15 format=2]
+[gd_scene load_steps=15 format=3 uid="uid://bbvg21v5m6vnf"]
 
-[ext_resource path="res://scenes/panels/CharStatusPanel.tscn" type="PackedScene" id=1]
-[ext_resource path="res://scenes/decorations/BG.tscn" type="PackedScene" id=2]
-[ext_resource path="res://scenes/panels/CharacterFinder.tscn" type="PackedScene" id=3]
-[ext_resource path="res://scenes/screens/MasterMode.gd" type="Script" id=4]
-[ext_resource path="res://resources/theme.tres" type="Theme" id=5]
-[ext_resource path="res://scenes/tools/Warning.tscn" type="PackedScene" id=6]
-[ext_resource path="res://scenes/panels/Logo.tscn" type="PackedScene" id=7]
-[ext_resource path="res://resources/EscapeKeyShortcut.tres" type="ShortCut" id=8]
-[ext_resource path="res://scenes/counters/StandardCounter.tscn" type="PackedScene" id=9]
-[ext_resource path="res://resources/h2_font.tres" type="DynamicFont" id=10]
-[ext_resource path="res://resources/sprites/backgrounds/9patch_scroll3.png" type="Texture" id=11]
-[ext_resource path="res://resources/h1_font.tres" type="DynamicFont" id=12]
-[ext_resource path="res://resources/sprites/backgrounds/9patch_paper_small.png" type="Texture" id=13]
+[ext_resource type="PackedScene" uid="uid://cqq7n32w7m6dd" path="res://scenes/panels/CharStatusPanel.tscn" id="1"]
+[ext_resource type="PackedScene" path="res://scenes/decorations/BG.tscn" id="2"]
+[ext_resource type="PackedScene" uid="uid://2bewf06uoc6u" path="res://scenes/panels/CharacterFinder.tscn" id="3"]
+[ext_resource type="Script" path="res://scenes/screens/MasterMode.gd" id="4"]
+[ext_resource type="Theme" uid="uid://fdky2ckfobqg" path="res://resources/theme.tres" id="5"]
+[ext_resource type="PackedScene" uid="uid://dt4qyr1o62ww5" path="res://scenes/tools/Warning.tscn" id="6"]
+[ext_resource type="PackedScene" path="res://scenes/panels/Logo.tscn" id="7"]
+[ext_resource type="Shortcut" path="res://resources/EscapeKeyShortcut.tres" id="8"]
+[ext_resource type="PackedScene" uid="uid://b7leqvhsa8ldp" path="res://scenes/counters/StandardCounter.tscn" id="9"]
+[ext_resource type="FontFile" path="res://resources/h2_font.tres" id="10"]
+[ext_resource type="Texture2D" uid="uid://oaynf75i4sbe" path="res://resources/sprites/backgrounds/9patch_scroll3.png" id="11"]
+[ext_resource type="FontFile" path="res://resources/h1_font.tres" id="12"]
+[ext_resource type="Texture2D" uid="uid://sekwcgb6rwfb" path="res://resources/sprites/backgrounds/9patch_paper_small.png" id="13"]
 
-
-
-[sub_resource type="StyleBoxEmpty" id=1]
+[sub_resource type="StyleBoxEmpty" id="1"]
 
 [node name="MasterMode" type="Control"]
+layout_mode = 3
+anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-theme = ExtResource( 5 )
-script = ExtResource( 4 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("5")
+script = ExtResource("4")
 
-[node name="BG" parent="." instance=ExtResource( 2 )]
-margin_right = 1920.0
-margin_bottom = 1080.0
+[node name="BG" parent="." instance=ExtResource("2")]
+layout_mode = 0
+offset_right = 1920.0
+offset_bottom = 1080.0
 
-[node name="Logo" parent="." instance=ExtResource( 7 )]
-margin_bottom = 250.0
+[node name="Logo" parent="." instance=ExtResource("7")]
+layout_mode = 1
+anchors_preset = 5
+offset_top = 0.0
+offset_bottom = 250.0
+grow_horizontal = 2
+expand_mode = 1
 
 [node name="Scroll" type="ScrollContainer" parent="."]
+layout_mode = 0
 anchor_right = 1.0
 anchor_bottom = 1.0
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="Margin" type="MarginContainer" parent="Scroll"]
-margin_right = 60.0
-margin_bottom = 15.0
-custom_constants/margin_right = 30
-custom_constants/margin_top = 15
-custom_constants/margin_left = 30
-__meta__ = {
-"_edit_use_anchors_": false
-}
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/margin_left = 30
+theme_override_constants/margin_top = 15
+theme_override_constants/margin_right = 30
 
 [node name="MasterScreen" type="VBoxContainer" parent="Scroll/Margin"]
+unique_name_in_owner = true
 visible = false
-margin_left = 30.0
-margin_top = 15.0
-margin_right = 1768.0
-margin_bottom = 1073.0
-custom_constants/separation = -20
+layout_mode = 2
+theme_override_constants/separation = -20
 
 [node name="UpperSec" type="HBoxContainer" parent="Scroll/Margin/MasterScreen"]
-margin_right = 1738.0
-margin_bottom = 1050.0
+layout_mode = 2
 
 [node name="VCharsL" type="VBoxContainer" parent="Scroll/Margin/MasterScreen/UpperSec"]
-margin_right = 550.0
-margin_bottom = 1050.0
-custom_constants/separation = 0
+layout_mode = 2
+theme_override_constants/separation = 0
 
-[node name="Char1" parent="Scroll/Margin/MasterScreen/UpperSec/VCharsL" instance=ExtResource( 1 )]
-margin_right = 550.0
-margin_bottom = 350.0
+[node name="Char1" parent="Scroll/Margin/MasterScreen/UpperSec/VCharsL" instance=ExtResource("1")]
+unique_name_in_owner = true
+layout_mode = 2
 
-[node name="Char2" parent="Scroll/Margin/MasterScreen/UpperSec/VCharsL" instance=ExtResource( 1 )]
-margin_top = 350.0
-margin_right = 550.0
-margin_bottom = 700.0
+[node name="Char2" parent="Scroll/Margin/MasterScreen/UpperSec/VCharsL" instance=ExtResource("1")]
+unique_name_in_owner = true
+layout_mode = 2
 
-[node name="Char3" parent="Scroll/Margin/MasterScreen/UpperSec/VCharsL" instance=ExtResource( 1 )]
-margin_top = 700.0
-margin_right = 550.0
-margin_bottom = 1050.0
+[node name="Char3" parent="Scroll/Margin/MasterScreen/UpperSec/VCharsL" instance=ExtResource("1")]
+unique_name_in_owner = true
+layout_mode = 2
 
 [node name="MiddleSpace" type="CenterContainer" parent="Scroll/Margin/MasterScreen/UpperSec"]
-margin_left = 554.0
-margin_right = 1184.0
-margin_bottom = 1050.0
+layout_mode = 2
 size_flags_horizontal = 3
 
 [node name="MasterRef" type="VBoxContainer" parent="Scroll/Margin/MasterScreen/UpperSec/MiddleSpace"]
-margin_top = 21.0
-margin_right = 630.0
-margin_bottom = 1029.0
+layout_mode = 2
 
 [node name="Control" type="Control" parent="Scroll/Margin/MasterScreen/UpperSec/MiddleSpace/MasterRef"]
-margin_right = 630.0
-margin_bottom = 200.0
-rect_min_size = Vector2( 0, 200 )
+custom_minimum_size = Vector2(0, 200)
+layout_mode = 2
 
 [node name="RulesBG" type="NinePatchRect" parent="Scroll/Margin/MasterScreen/UpperSec/MiddleSpace/MasterRef"]
-margin_top = 204.0
-margin_right = 630.0
-margin_bottom = 754.0
-rect_min_size = Vector2( 0, 550 )
-texture = ExtResource( 11 )
+custom_minimum_size = Vector2(0, 550)
+layout_mode = 2
+texture = ExtResource("11")
 patch_margin_left = 47
 patch_margin_top = 69
 patch_margin_right = 68
 patch_margin_bottom = 49
 
 [node name="CenterContainer" type="CenterContainer" parent="Scroll/Margin/MasterScreen/UpperSec/MiddleSpace/MasterRef/RulesBG"]
+layout_mode = 0
 anchor_right = 1.0
 anchor_bottom = 1.0
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="Rules" type="VBoxContainer" parent="Scroll/Margin/MasterScreen/UpperSec/MiddleSpace/MasterRef/RulesBG/CenterContainer"]
-margin_left = 48.0
-margin_top = 25.0
-margin_right = 581.0
-margin_bottom = 525.0
-custom_constants/separation = 10
-__meta__ = {
-"_edit_use_anchors_": false
-}
+custom_minimum_size = Vector2(500, 0)
+layout_mode = 2
+theme_override_constants/separation = 10
 
 [node name="Label" type="Label" parent="Scroll/Margin/MasterScreen/UpperSec/MiddleSpace/MasterRef/RulesBG/CenterContainer/Rules"]
-margin_right = 533.0
-margin_bottom = 29.0
-custom_fonts/font = ExtResource( 12 )
+layout_mode = 2
+theme_override_fonts/font = ExtResource("12")
 text = "Pruebas"
-align = 1
+horizontal_alignment = 1
 
 [node name="CenterContainer" type="CenterContainer" parent="Scroll/Margin/MasterScreen/UpperSec/MiddleSpace/MasterRef/RulesBG/CenterContainer/Rules"]
-margin_top = 39.0
-margin_right = 533.0
-margin_bottom = 195.0
-__meta__ = {
-"_edit_use_anchors_": false
-}
+layout_mode = 2
 
 [node name="ChallengesRef" type="GridContainer" parent="Scroll/Margin/MasterScreen/UpperSec/MiddleSpace/MasterRef/RulesBG/CenterContainer/Rules/CenterContainer"]
-margin_left = 18.0
-margin_right = 514.0
-margin_bottom = 156.0
-custom_constants/hseparation = 15
+custom_minimum_size = Vector2(400, 0)
+layout_mode = 2
+theme_override_constants/h_separation = 15
 columns = 3
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="LevelH" type="Label" parent="Scroll/Margin/MasterScreen/UpperSec/MiddleSpace/MasterRef/RulesBG/CenterContainer/Rules/CenterContainer/ChallengesRef"]
-margin_right = 242.0
-margin_bottom = 26.0
-custom_fonts/font = ExtResource( 10 )
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_fonts/font = ExtResource("10")
 
 [node name="DifficultyH" type="Label" parent="Scroll/Margin/MasterScreen/UpperSec/MiddleSpace/MasterRef/RulesBG/CenterContainer/Rules/CenterContainer/ChallengesRef"]
-margin_left = 257.0
-margin_right = 355.0
-margin_bottom = 26.0
-custom_fonts/font = ExtResource( 10 )
+layout_mode = 2
+theme_override_fonts/font = ExtResource("10")
 text = "Dificultad"
 
 [node name="ProficiencyH" type="Label" parent="Scroll/Margin/MasterScreen/UpperSec/MiddleSpace/MasterRef/RulesBG/CenterContainer/Rules/CenterContainer/ChallengesRef"]
-margin_left = 370.0
-margin_right = 496.0
-margin_bottom = 26.0
-custom_fonts/font = ExtResource( 10 )
+layout_mode = 2
+theme_override_fonts/font = ExtResource("10")
 text = "Competencia"
 
 [node name="Level1" type="HBoxContainer" parent="Scroll/Margin/MasterScreen/UpperSec/MiddleSpace/MasterRef/RulesBG/CenterContainer/Rules/CenterContainer/ChallengesRef"]
-margin_top = 30.0
-margin_right = 242.0
-margin_bottom = 52.0
-custom_constants/separation = 10
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+theme_override_constants/separation = 10
 
-[node name="StandardCounter" parent="Scroll/Margin/MasterScreen/UpperSec/MiddleSpace/MasterRef/RulesBG/CenterContainer/Rules/CenterContainer/ChallengesRef/Level1" instance=ExtResource( 9 )]
-anchor_right = 0.0
-anchor_bottom = 0.0
-margin_right = 116.0
-margin_bottom = 22.0
+[node name="StandardCounter" parent="Scroll/Margin/MasterScreen/UpperSec/MiddleSpace/MasterRef/RulesBG/CenterContainer/Rules/CenterContainer/ChallengesRef/Level1" instance=ExtResource("9")]
+layout_mode = 2
+size_flags_horizontal = 3
 initial_level = 1
 
-[node name="StandardCounter2" parent="Scroll/Margin/MasterScreen/UpperSec/MiddleSpace/MasterRef/RulesBG/CenterContainer/Rules/CenterContainer/ChallengesRef/Level1" instance=ExtResource( 9 )]
-anchor_right = 0.0
-anchor_bottom = 0.0
-margin_left = 126.0
-margin_right = 242.0
-margin_bottom = 22.0
+[node name="StandardCounter2" parent="Scroll/Margin/MasterScreen/UpperSec/MiddleSpace/MasterRef/RulesBG/CenterContainer/Rules/CenterContainer/ChallengesRef/Level1" instance=ExtResource("9")]
+layout_mode = 2
+size_flags_horizontal = 3
 
 [node name="Difficulty1" type="Label" parent="Scroll/Margin/MasterScreen/UpperSec/MiddleSpace/MasterRef/RulesBG/CenterContainer/Rules/CenterContainer/ChallengesRef"]
-margin_left = 257.0
-margin_top = 30.0
-margin_right = 355.0
-margin_bottom = 52.0
+layout_mode = 2
 text = "Fácil"
 
 [node name="Proficiency1" type="Label" parent="Scroll/Margin/MasterScreen/UpperSec/MiddleSpace/MasterRef/RulesBG/CenterContainer/Rules/CenterContainer/ChallengesRef"]
-margin_left = 370.0
-margin_top = 30.0
-margin_right = 496.0
-margin_bottom = 52.0
+layout_mode = 2
 text = "Torpe"
 
 [node name="Level3" type="HBoxContainer" parent="Scroll/Margin/MasterScreen/UpperSec/MiddleSpace/MasterRef/RulesBG/CenterContainer/Rules/CenterContainer/ChallengesRef"]
-margin_top = 56.0
-margin_right = 242.0
-margin_bottom = 78.0
-custom_constants/separation = 10
+layout_mode = 2
+theme_override_constants/separation = 10
 
-[node name="StandardCounter" parent="Scroll/Margin/MasterScreen/UpperSec/MiddleSpace/MasterRef/RulesBG/CenterContainer/Rules/CenterContainer/ChallengesRef/Level3" instance=ExtResource( 9 )]
-anchor_right = 0.0
-anchor_bottom = 0.0
-margin_right = 116.0
-margin_bottom = 22.0
+[node name="StandardCounter" parent="Scroll/Margin/MasterScreen/UpperSec/MiddleSpace/MasterRef/RulesBG/CenterContainer/Rules/CenterContainer/ChallengesRef/Level3" instance=ExtResource("9")]
+layout_mode = 2
+size_flags_horizontal = 3
 initial_level = 3
 
-[node name="StandardCounter2" parent="Scroll/Margin/MasterScreen/UpperSec/MiddleSpace/MasterRef/RulesBG/CenterContainer/Rules/CenterContainer/ChallengesRef/Level3" instance=ExtResource( 9 )]
-anchor_right = 0.0
-anchor_bottom = 0.0
-margin_left = 126.0
-margin_right = 242.0
-margin_bottom = 22.0
+[node name="StandardCounter2" parent="Scroll/Margin/MasterScreen/UpperSec/MiddleSpace/MasterRef/RulesBG/CenterContainer/Rules/CenterContainer/ChallengesRef/Level3" instance=ExtResource("9")]
+layout_mode = 2
+size_flags_horizontal = 3
 
 [node name="Difficulty3" type="Label" parent="Scroll/Margin/MasterScreen/UpperSec/MiddleSpace/MasterRef/RulesBG/CenterContainer/Rules/CenterContainer/ChallengesRef"]
-margin_left = 257.0
-margin_top = 56.0
-margin_right = 355.0
-margin_bottom = 78.0
+layout_mode = 2
 text = "Normal"
 
 [node name="Proficiency3" type="Label" parent="Scroll/Margin/MasterScreen/UpperSec/MiddleSpace/MasterRef/RulesBG/CenterContainer/Rules/CenterContainer/ChallengesRef"]
-margin_left = 370.0
-margin_top = 56.0
-margin_right = 496.0
-margin_bottom = 78.0
+layout_mode = 2
 text = "Corriente"
 
 [node name="Level5" type="HBoxContainer" parent="Scroll/Margin/MasterScreen/UpperSec/MiddleSpace/MasterRef/RulesBG/CenterContainer/Rules/CenterContainer/ChallengesRef"]
-margin_top = 82.0
-margin_right = 242.0
-margin_bottom = 104.0
-custom_constants/separation = 10
+layout_mode = 2
+theme_override_constants/separation = 10
 
-[node name="StandardCounter" parent="Scroll/Margin/MasterScreen/UpperSec/MiddleSpace/MasterRef/RulesBG/CenterContainer/Rules/CenterContainer/ChallengesRef/Level5" instance=ExtResource( 9 )]
-anchor_right = 0.0
-anchor_bottom = 0.0
-margin_right = 116.0
-margin_bottom = 22.0
+[node name="StandardCounter" parent="Scroll/Margin/MasterScreen/UpperSec/MiddleSpace/MasterRef/RulesBG/CenterContainer/Rules/CenterContainer/ChallengesRef/Level5" instance=ExtResource("9")]
+layout_mode = 2
+size_flags_horizontal = 3
 initial_level = 5
 
-[node name="StandardCounter2" parent="Scroll/Margin/MasterScreen/UpperSec/MiddleSpace/MasterRef/RulesBG/CenterContainer/Rules/CenterContainer/ChallengesRef/Level5" instance=ExtResource( 9 )]
-anchor_right = 0.0
-anchor_bottom = 0.0
-margin_left = 126.0
-margin_right = 242.0
-margin_bottom = 22.0
+[node name="StandardCounter2" parent="Scroll/Margin/MasterScreen/UpperSec/MiddleSpace/MasterRef/RulesBG/CenterContainer/Rules/CenterContainer/ChallengesRef/Level5" instance=ExtResource("9")]
+layout_mode = 2
+size_flags_horizontal = 3
 
 [node name="Difficulty5" type="Label" parent="Scroll/Margin/MasterScreen/UpperSec/MiddleSpace/MasterRef/RulesBG/CenterContainer/Rules/CenterContainer/ChallengesRef"]
-margin_left = 257.0
-margin_top = 82.0
-margin_right = 355.0
-margin_bottom = 104.0
+layout_mode = 2
 text = "Dificil"
 
 [node name="Proficiency5" type="Label" parent="Scroll/Margin/MasterScreen/UpperSec/MiddleSpace/MasterRef/RulesBG/CenterContainer/Rules/CenterContainer/ChallengesRef"]
-margin_left = 370.0
-margin_top = 82.0
-margin_right = 496.0
-margin_bottom = 104.0
+layout_mode = 2
 text = "Experto"
 
 [node name="Level7" type="HBoxContainer" parent="Scroll/Margin/MasterScreen/UpperSec/MiddleSpace/MasterRef/RulesBG/CenterContainer/Rules/CenterContainer/ChallengesRef"]
-margin_top = 108.0
-margin_right = 242.0
-margin_bottom = 130.0
-custom_constants/separation = 10
+layout_mode = 2
+theme_override_constants/separation = 10
 
-[node name="StandardCounter" parent="Scroll/Margin/MasterScreen/UpperSec/MiddleSpace/MasterRef/RulesBG/CenterContainer/Rules/CenterContainer/ChallengesRef/Level7" instance=ExtResource( 9 )]
-anchor_right = 0.0
-anchor_bottom = 0.0
-margin_right = 116.0
-margin_bottom = 22.0
+[node name="StandardCounter" parent="Scroll/Margin/MasterScreen/UpperSec/MiddleSpace/MasterRef/RulesBG/CenterContainer/Rules/CenterContainer/ChallengesRef/Level7" instance=ExtResource("9")]
+layout_mode = 2
+size_flags_horizontal = 3
 initial_level = 5
 
-[node name="StandardCounter2" parent="Scroll/Margin/MasterScreen/UpperSec/MiddleSpace/MasterRef/RulesBG/CenterContainer/Rules/CenterContainer/ChallengesRef/Level7" instance=ExtResource( 9 )]
-anchor_right = 0.0
-anchor_bottom = 0.0
-margin_left = 126.0
-margin_right = 242.0
-margin_bottom = 22.0
+[node name="StandardCounter2" parent="Scroll/Margin/MasterScreen/UpperSec/MiddleSpace/MasterRef/RulesBG/CenterContainer/Rules/CenterContainer/ChallengesRef/Level7" instance=ExtResource("9")]
+layout_mode = 2
+size_flags_horizontal = 3
 initial_level = 2
 
 [node name="Difficulty7" type="Label" parent="Scroll/Margin/MasterScreen/UpperSec/MiddleSpace/MasterRef/RulesBG/CenterContainer/Rules/CenterContainer/ChallengesRef"]
-margin_left = 257.0
-margin_top = 108.0
-margin_right = 355.0
-margin_bottom = 130.0
+layout_mode = 2
 text = "Heroica"
 
 [node name="Proficiency7" type="Label" parent="Scroll/Margin/MasterScreen/UpperSec/MiddleSpace/MasterRef/RulesBG/CenterContainer/Rules/CenterContainer/ChallengesRef"]
-margin_left = 370.0
-margin_top = 108.0
-margin_right = 496.0
-margin_bottom = 130.0
+layout_mode = 2
 text = "Famoso"
 
 [node name="Level9" type="HBoxContainer" parent="Scroll/Margin/MasterScreen/UpperSec/MiddleSpace/MasterRef/RulesBG/CenterContainer/Rules/CenterContainer/ChallengesRef"]
-margin_top = 134.0
-margin_right = 242.0
-margin_bottom = 156.0
-custom_constants/separation = 10
+layout_mode = 2
+theme_override_constants/separation = 10
 
-[node name="StandardCounter" parent="Scroll/Margin/MasterScreen/UpperSec/MiddleSpace/MasterRef/RulesBG/CenterContainer/Rules/CenterContainer/ChallengesRef/Level9" instance=ExtResource( 9 )]
-anchor_right = 0.0
-anchor_bottom = 0.0
-margin_right = 116.0
-margin_bottom = 22.0
+[node name="StandardCounter" parent="Scroll/Margin/MasterScreen/UpperSec/MiddleSpace/MasterRef/RulesBG/CenterContainer/Rules/CenterContainer/ChallengesRef/Level9" instance=ExtResource("9")]
+layout_mode = 2
+size_flags_horizontal = 3
 initial_level = 5
 
-[node name="StandardCounter2" parent="Scroll/Margin/MasterScreen/UpperSec/MiddleSpace/MasterRef/RulesBG/CenterContainer/Rules/CenterContainer/ChallengesRef/Level9" instance=ExtResource( 9 )]
-anchor_right = 0.0
-anchor_bottom = 0.0
-margin_left = 126.0
-margin_right = 242.0
-margin_bottom = 22.0
+[node name="StandardCounter2" parent="Scroll/Margin/MasterScreen/UpperSec/MiddleSpace/MasterRef/RulesBG/CenterContainer/Rules/CenterContainer/ChallengesRef/Level9" instance=ExtResource("9")]
+layout_mode = 2
+size_flags_horizontal = 3
 initial_level = 4
 
 [node name="Difficulty9" type="Label" parent="Scroll/Margin/MasterScreen/UpperSec/MiddleSpace/MasterRef/RulesBG/CenterContainer/Rules/CenterContainer/ChallengesRef"]
-margin_left = 257.0
-margin_top = 134.0
-margin_right = 355.0
-margin_bottom = 156.0
+layout_mode = 2
 text = "Imposible"
 
 [node name="Proficiency9" type="Label" parent="Scroll/Margin/MasterScreen/UpperSec/MiddleSpace/MasterRef/RulesBG/CenterContainer/Rules/CenterContainer/ChallengesRef"]
-margin_left = 370.0
-margin_top = 134.0
-margin_right = 496.0
-margin_bottom = 156.0
+layout_mode = 2
 text = "Generacional"
 
 [node name="HSeparator" type="HSeparator" parent="Scroll/Margin/MasterScreen/UpperSec/MiddleSpace/MasterRef/RulesBG/CenterContainer/Rules"]
-margin_top = 205.0
-margin_right = 533.0
-margin_bottom = 215.0
-custom_styles/separator = SubResource( 1 )
-custom_constants/separation = 10
+layout_mode = 2
+theme_override_constants/separation = 10
+theme_override_styles/separator = SubResource("1")
 
 [node name="Label2" type="Label" parent="Scroll/Margin/MasterScreen/UpperSec/MiddleSpace/MasterRef/RulesBG/CenterContainer/Rules"]
-margin_top = 225.0
-margin_right = 533.0
-margin_bottom = 254.0
-custom_fonts/font = ExtResource( 12 )
+layout_mode = 2
+theme_override_fonts/font = ExtResource("12")
 text = "Combate a distancia"
-align = 1
+horizontal_alignment = 1
 
 [node name="CenterContainer2" type="CenterContainer" parent="Scroll/Margin/MasterScreen/UpperSec/MiddleSpace/MasterRef/RulesBG/CenterContainer/Rules"]
-margin_top = 264.0
-margin_right = 533.0
-margin_bottom = 500.0
-__meta__ = {
-"_edit_use_anchors_": false
-}
+layout_mode = 2
 
 [node name="ChallengesRef" type="GridContainer" parent="Scroll/Margin/MasterScreen/UpperSec/MiddleSpace/MasterRef/RulesBG/CenterContainer/Rules/CenterContainer2"]
-margin_right = 533.0
-margin_bottom = 236.0
-custom_constants/hseparation = 15
+custom_minimum_size = Vector2(400, 0)
+layout_mode = 2
+theme_override_constants/h_separation = 15
 columns = 4
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="StatusH1" type="Label" parent="Scroll/Margin/MasterScreen/UpperSec/MiddleSpace/MasterRef/RulesBG/CenterContainer/Rules/CenterContainer2/ChallengesRef"]
-margin_right = 125.0
-margin_bottom = 26.0
-custom_fonts/font = ExtResource( 10 )
+layout_mode = 2
+theme_override_fonts/font = ExtResource("10")
 text = "Situación"
 
 [node name="ModH1" type="Label" parent="Scroll/Margin/MasterScreen/UpperSec/MiddleSpace/MasterRef/RulesBG/CenterContainer/Rules/CenterContainer2/ChallengesRef"]
-margin_left = 140.0
-margin_right = 272.0
-margin_bottom = 26.0
-custom_fonts/font = ExtResource( 10 )
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_fonts/font = ExtResource("10")
 text = "Mod"
 
 [node name="StatusH2" type="Label" parent="Scroll/Margin/MasterScreen/UpperSec/MiddleSpace/MasterRef/RulesBG/CenterContainer/Rules/CenterContainer2/ChallengesRef"]
-margin_left = 287.0
-margin_right = 388.0
-margin_bottom = 26.0
-custom_fonts/font = ExtResource( 10 )
+layout_mode = 2
+theme_override_fonts/font = ExtResource("10")
 text = "Situación"
 
 [node name="ModH2" type="Label" parent="Scroll/Margin/MasterScreen/UpperSec/MiddleSpace/MasterRef/RulesBG/CenterContainer/Rules/CenterContainer2/ChallengesRef"]
-margin_left = 403.0
-margin_right = 533.0
-margin_bottom = 26.0
-custom_fonts/font = ExtResource( 10 )
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_fonts/font = ExtResource("10")
 text = "Mod"
 
 [node name="Range0" type="Label" parent="Scroll/Margin/MasterScreen/UpperSec/MiddleSpace/MasterRef/RulesBG/CenterContainer/Rules/CenterContainer2/ChallengesRef"]
-margin_top = 32.0
-margin_right = 125.0
-margin_bottom = 54.0
+layout_mode = 2
 text = "Quemarropa"
 
 [node name="Level0" type="HBoxContainer" parent="Scroll/Margin/MasterScreen/UpperSec/MiddleSpace/MasterRef/RulesBG/CenterContainer/Rules/CenterContainer2/ChallengesRef"]
-margin_left = 140.0
-margin_top = 30.0
-margin_right = 272.0
-margin_bottom = 56.0
-custom_constants/separation = 0
+layout_mode = 2
+theme_override_constants/separation = 0
 
 [node name="Label" type="Label" parent="Scroll/Margin/MasterScreen/UpperSec/MiddleSpace/MasterRef/RulesBG/CenterContainer/Rules/CenterContainer2/ChallengesRef/Level0"]
-margin_right = 14.0
-margin_bottom = 26.0
-custom_fonts/font = ExtResource( 10 )
+layout_mode = 2
+theme_override_fonts/font = ExtResource("10")
 text = "+"
 
-[node name="StandardCounter" parent="Scroll/Margin/MasterScreen/UpperSec/MiddleSpace/MasterRef/RulesBG/CenterContainer/Rules/CenterContainer2/ChallengesRef/Level0" instance=ExtResource( 9 )]
-anchor_right = 0.0
-anchor_bottom = 0.0
-margin_left = 14.0
-margin_top = 3.0
-margin_right = 130.0
-margin_bottom = 23.0
-size_flags_vertical = 4
+[node name="StandardCounter" parent="Scroll/Margin/MasterScreen/UpperSec/MiddleSpace/MasterRef/RulesBG/CenterContainer/Rules/CenterContainer2/ChallengesRef/Level0" instance=ExtResource("9")]
+layout_mode = 2
+size_flags_horizontal = 3
 
 [node name="Status0" type="Label" parent="Scroll/Margin/MasterScreen/UpperSec/MiddleSpace/MasterRef/RulesBG/CenterContainer/Rules/CenterContainer2/ChallengesRef"]
-margin_left = 287.0
-margin_top = 32.0
-margin_right = 388.0
-margin_bottom = 54.0
+layout_mode = 2
 text = "Movimiento"
 
 [node name="Mod0" type="HBoxContainer" parent="Scroll/Margin/MasterScreen/UpperSec/MiddleSpace/MasterRef/RulesBG/CenterContainer/Rules/CenterContainer2/ChallengesRef"]
-margin_left = 403.0
-margin_top = 30.0
-margin_right = 533.0
-margin_bottom = 56.0
-custom_constants/separation = 0
+layout_mode = 2
+theme_override_constants/separation = 0
 
 [node name="Label7" type="Label" parent="Scroll/Margin/MasterScreen/UpperSec/MiddleSpace/MasterRef/RulesBG/CenterContainer/Rules/CenterContainer2/ChallengesRef/Mod0"]
-margin_right = 14.0
-margin_bottom = 26.0
-custom_fonts/font = ExtResource( 10 )
+layout_mode = 2
+theme_override_fonts/font = ExtResource("10")
 text = "+"
 
-[node name="StandardCounter" parent="Scroll/Margin/MasterScreen/UpperSec/MiddleSpace/MasterRef/RulesBG/CenterContainer/Rules/CenterContainer2/ChallengesRef/Mod0" instance=ExtResource( 9 )]
-anchor_right = 0.0
-anchor_bottom = 0.0
-margin_left = 14.0
-margin_right = 130.0
-margin_bottom = 26.0
+[node name="StandardCounter" parent="Scroll/Margin/MasterScreen/UpperSec/MiddleSpace/MasterRef/RulesBG/CenterContainer/Rules/CenterContainer2/ChallengesRef/Mod0" instance=ExtResource("9")]
+layout_mode = 2
+size_flags_horizontal = 3
 initial_level = 2
 
 [node name="Range1" type="Label" parent="Scroll/Margin/MasterScreen/UpperSec/MiddleSpace/MasterRef/RulesBG/CenterContainer/Rules/CenterContainer2/ChallengesRef"]
-margin_top = 62.0
-margin_right = 125.0
-margin_bottom = 84.0
+layout_mode = 2
 text = "2- m"
 
 [node name="Level1" type="HBoxContainer" parent="Scroll/Margin/MasterScreen/UpperSec/MiddleSpace/MasterRef/RulesBG/CenterContainer/Rules/CenterContainer2/ChallengesRef"]
-margin_left = 140.0
-margin_top = 60.0
-margin_right = 272.0
-margin_bottom = 86.0
-custom_constants/separation = 0
+layout_mode = 2
+theme_override_constants/separation = 0
 
 [node name="Label6" type="Label" parent="Scroll/Margin/MasterScreen/UpperSec/MiddleSpace/MasterRef/RulesBG/CenterContainer/Rules/CenterContainer2/ChallengesRef/Level1"]
-margin_right = 14.0
-margin_bottom = 26.0
-custom_fonts/font = ExtResource( 10 )
+layout_mode = 2
+theme_override_fonts/font = ExtResource("10")
 text = "+"
 
-[node name="StandardCounter" parent="Scroll/Margin/MasterScreen/UpperSec/MiddleSpace/MasterRef/RulesBG/CenterContainer/Rules/CenterContainer2/ChallengesRef/Level1" instance=ExtResource( 9 )]
-anchor_right = 0.0
-anchor_bottom = 0.0
-margin_left = 14.0
-margin_right = 130.0
-margin_bottom = 26.0
+[node name="StandardCounter" parent="Scroll/Margin/MasterScreen/UpperSec/MiddleSpace/MasterRef/RulesBG/CenterContainer/Rules/CenterContainer2/ChallengesRef/Level1" instance=ExtResource("9")]
+layout_mode = 2
+size_flags_horizontal = 3
 initial_level = 1
 
 [node name="Status1" type="Label" parent="Scroll/Margin/MasterScreen/UpperSec/MiddleSpace/MasterRef/RulesBG/CenterContainer/Rules/CenterContainer2/ChallengesRef"]
-margin_left = 287.0
-margin_top = 62.0
-margin_right = 388.0
-margin_bottom = 84.0
+layout_mode = 2
 text = "Agachado"
 
 [node name="Mod1" type="HBoxContainer" parent="Scroll/Margin/MasterScreen/UpperSec/MiddleSpace/MasterRef/RulesBG/CenterContainer/Rules/CenterContainer2/ChallengesRef"]
-margin_left = 403.0
-margin_top = 60.0
-margin_right = 533.0
-margin_bottom = 86.0
-custom_constants/separation = 0
+layout_mode = 2
+theme_override_constants/separation = 0
 
 [node name="Label5" type="Label" parent="Scroll/Margin/MasterScreen/UpperSec/MiddleSpace/MasterRef/RulesBG/CenterContainer/Rules/CenterContainer2/ChallengesRef/Mod1"]
-margin_right = 14.0
-margin_bottom = 26.0
-custom_fonts/font = ExtResource( 10 )
+layout_mode = 2
+theme_override_fonts/font = ExtResource("10")
 text = "+"
 
-[node name="StandardCounter" parent="Scroll/Margin/MasterScreen/UpperSec/MiddleSpace/MasterRef/RulesBG/CenterContainer/Rules/CenterContainer2/ChallengesRef/Mod1" instance=ExtResource( 9 )]
-anchor_right = 0.0
-anchor_bottom = 0.0
-margin_left = 14.0
-margin_right = 130.0
-margin_bottom = 26.0
+[node name="StandardCounter" parent="Scroll/Margin/MasterScreen/UpperSec/MiddleSpace/MasterRef/RulesBG/CenterContainer/Rules/CenterContainer2/ChallengesRef/Mod1" instance=ExtResource("9")]
+layout_mode = 2
+size_flags_horizontal = 3
 initial_level = 1
 
 [node name="Range2" type="Label" parent="Scroll/Margin/MasterScreen/UpperSec/MiddleSpace/MasterRef/RulesBG/CenterContainer/Rules/CenterContainer2/ChallengesRef"]
-margin_top = 92.0
-margin_right = 125.0
-margin_bottom = 114.0
+layout_mode = 2
 text = "2 m"
 
 [node name="Level2" type="HBoxContainer" parent="Scroll/Margin/MasterScreen/UpperSec/MiddleSpace/MasterRef/RulesBG/CenterContainer/Rules/CenterContainer2/ChallengesRef"]
-margin_left = 140.0
-margin_top = 90.0
-margin_right = 272.0
-margin_bottom = 116.0
-custom_constants/separation = 0
+layout_mode = 2
+theme_override_constants/separation = 0
 
 [node name="Label4" type="Label" parent="Scroll/Margin/MasterScreen/UpperSec/MiddleSpace/MasterRef/RulesBG/CenterContainer/Rules/CenterContainer2/ChallengesRef/Level2"]
-margin_right = 14.0
-margin_bottom = 26.0
-custom_fonts/font = ExtResource( 10 )
+layout_mode = 2
+theme_override_fonts/font = ExtResource("10")
 text = "+"
 
-[node name="StandardCounter" parent="Scroll/Margin/MasterScreen/UpperSec/MiddleSpace/MasterRef/RulesBG/CenterContainer/Rules/CenterContainer2/ChallengesRef/Level2" instance=ExtResource( 9 )]
-anchor_right = 0.0
-anchor_bottom = 0.0
-margin_left = 14.0
-margin_right = 130.0
-margin_bottom = 26.0
+[node name="StandardCounter" parent="Scroll/Margin/MasterScreen/UpperSec/MiddleSpace/MasterRef/RulesBG/CenterContainer/Rules/CenterContainer2/ChallengesRef/Level2" instance=ExtResource("9")]
+layout_mode = 2
+size_flags_horizontal = 3
 initial_level = 2
 
 [node name="Status2" type="Label" parent="Scroll/Margin/MasterScreen/UpperSec/MiddleSpace/MasterRef/RulesBG/CenterContainer/Rules/CenterContainer2/ChallengesRef"]
-margin_left = 287.0
-margin_top = 92.0
-margin_right = 388.0
-margin_bottom = 114.0
+layout_mode = 2
 text = "Mala visib."
 
 [node name="Mod2" type="HBoxContainer" parent="Scroll/Margin/MasterScreen/UpperSec/MiddleSpace/MasterRef/RulesBG/CenterContainer/Rules/CenterContainer2/ChallengesRef"]
-margin_left = 403.0
-margin_top = 90.0
-margin_right = 533.0
-margin_bottom = 116.0
-custom_constants/separation = 0
+layout_mode = 2
+theme_override_constants/separation = 0
 
 [node name="Label3" type="Label" parent="Scroll/Margin/MasterScreen/UpperSec/MiddleSpace/MasterRef/RulesBG/CenterContainer/Rules/CenterContainer2/ChallengesRef/Mod2"]
-margin_right = 14.0
-margin_bottom = 26.0
-custom_fonts/font = ExtResource( 10 )
+layout_mode = 2
+theme_override_fonts/font = ExtResource("10")
 text = "+"
 
-[node name="StandardCounter" parent="Scroll/Margin/MasterScreen/UpperSec/MiddleSpace/MasterRef/RulesBG/CenterContainer/Rules/CenterContainer2/ChallengesRef/Mod2" instance=ExtResource( 9 )]
-anchor_right = 0.0
-anchor_bottom = 0.0
-margin_left = 14.0
-margin_right = 130.0
-margin_bottom = 26.0
+[node name="StandardCounter" parent="Scroll/Margin/MasterScreen/UpperSec/MiddleSpace/MasterRef/RulesBG/CenterContainer/Rules/CenterContainer2/ChallengesRef/Mod2" instance=ExtResource("9")]
+layout_mode = 2
+size_flags_horizontal = 3
 initial_level = 1
 
 [node name="Range3" type="Label" parent="Scroll/Margin/MasterScreen/UpperSec/MiddleSpace/MasterRef/RulesBG/CenterContainer/Rules/CenterContainer2/ChallengesRef"]
-margin_top = 122.0
-margin_right = 125.0
-margin_bottom = 144.0
+layout_mode = 2
 text = "5 m"
 
 [node name="Level3" type="HBoxContainer" parent="Scroll/Margin/MasterScreen/UpperSec/MiddleSpace/MasterRef/RulesBG/CenterContainer/Rules/CenterContainer2/ChallengesRef"]
-margin_left = 140.0
-margin_top = 120.0
-margin_right = 272.0
-margin_bottom = 146.0
-custom_constants/separation = 0
+layout_mode = 2
+theme_override_constants/separation = 0
 
 [node name="Label2" type="Label" parent="Scroll/Margin/MasterScreen/UpperSec/MiddleSpace/MasterRef/RulesBG/CenterContainer/Rules/CenterContainer2/ChallengesRef/Level3"]
-margin_right = 14.0
-margin_bottom = 26.0
-custom_fonts/font = ExtResource( 10 )
+layout_mode = 2
+theme_override_fonts/font = ExtResource("10")
 text = "+"
 
-[node name="StandardCounter" parent="Scroll/Margin/MasterScreen/UpperSec/MiddleSpace/MasterRef/RulesBG/CenterContainer/Rules/CenterContainer2/ChallengesRef/Level3" instance=ExtResource( 9 )]
-anchor_right = 0.0
-anchor_bottom = 0.0
-margin_left = 14.0
-margin_right = 130.0
-margin_bottom = 26.0
+[node name="StandardCounter" parent="Scroll/Margin/MasterScreen/UpperSec/MiddleSpace/MasterRef/RulesBG/CenterContainer/Rules/CenterContainer2/ChallengesRef/Level3" instance=ExtResource("9")]
+layout_mode = 2
+size_flags_horizontal = 3
 initial_level = 3
 
 [node name="Status3" type="Label" parent="Scroll/Margin/MasterScreen/UpperSec/MiddleSpace/MasterRef/RulesBG/CenterContainer/Rules/CenterContainer2/ChallengesRef"]
-margin_left = 287.0
-margin_top = 122.0
-margin_right = 388.0
-margin_bottom = 144.0
+layout_mode = 2
 text = "Cober. 30%"
 
 [node name="Mod3" type="HBoxContainer" parent="Scroll/Margin/MasterScreen/UpperSec/MiddleSpace/MasterRef/RulesBG/CenterContainer/Rules/CenterContainer2/ChallengesRef"]
-margin_left = 403.0
-margin_top = 120.0
-margin_right = 533.0
-margin_bottom = 146.0
-custom_constants/separation = 0
+layout_mode = 2
+theme_override_constants/separation = 0
 
 [node name="Label3" type="Label" parent="Scroll/Margin/MasterScreen/UpperSec/MiddleSpace/MasterRef/RulesBG/CenterContainer/Rules/CenterContainer2/ChallengesRef/Mod3"]
-margin_right = 14.0
-margin_bottom = 26.0
-custom_fonts/font = ExtResource( 10 )
+layout_mode = 2
+theme_override_fonts/font = ExtResource("10")
 text = "+"
 
-[node name="StandardCounter" parent="Scroll/Margin/MasterScreen/UpperSec/MiddleSpace/MasterRef/RulesBG/CenterContainer/Rules/CenterContainer2/ChallengesRef/Mod3" instance=ExtResource( 9 )]
-anchor_right = 0.0
-anchor_bottom = 0.0
-margin_left = 14.0
-margin_right = 130.0
-margin_bottom = 26.0
+[node name="StandardCounter" parent="Scroll/Margin/MasterScreen/UpperSec/MiddleSpace/MasterRef/RulesBG/CenterContainer/Rules/CenterContainer2/ChallengesRef/Mod3" instance=ExtResource("9")]
+layout_mode = 2
+size_flags_horizontal = 3
 initial_level = 1
 
 [node name="Range4" type="Label" parent="Scroll/Margin/MasterScreen/UpperSec/MiddleSpace/MasterRef/RulesBG/CenterContainer/Rules/CenterContainer2/ChallengesRef"]
-margin_top = 152.0
-margin_right = 125.0
-margin_bottom = 174.0
+layout_mode = 2
 text = "10+ m"
 
 [node name="Level4" type="HBoxContainer" parent="Scroll/Margin/MasterScreen/UpperSec/MiddleSpace/MasterRef/RulesBG/CenterContainer/Rules/CenterContainer2/ChallengesRef"]
-margin_left = 140.0
-margin_top = 150.0
-margin_right = 272.0
-margin_bottom = 176.0
-custom_constants/separation = 0
+layout_mode = 2
+theme_override_constants/separation = 0
 
 [node name="Label4" type="Label" parent="Scroll/Margin/MasterScreen/UpperSec/MiddleSpace/MasterRef/RulesBG/CenterContainer/Rules/CenterContainer2/ChallengesRef/Level4"]
-margin_right = 14.0
-margin_bottom = 26.0
-custom_fonts/font = ExtResource( 10 )
+layout_mode = 2
+theme_override_fonts/font = ExtResource("10")
 text = "+"
 
-[node name="StandardCounter" parent="Scroll/Margin/MasterScreen/UpperSec/MiddleSpace/MasterRef/RulesBG/CenterContainer/Rules/CenterContainer2/ChallengesRef/Level4" instance=ExtResource( 9 )]
-anchor_right = 0.0
-anchor_bottom = 0.0
-margin_left = 14.0
-margin_right = 130.0
-margin_bottom = 26.0
+[node name="StandardCounter" parent="Scroll/Margin/MasterScreen/UpperSec/MiddleSpace/MasterRef/RulesBG/CenterContainer/Rules/CenterContainer2/ChallengesRef/Level4" instance=ExtResource("9")]
+layout_mode = 2
+size_flags_horizontal = 3
 initial_level = 5
 
 [node name="Status4" type="Label" parent="Scroll/Margin/MasterScreen/UpperSec/MiddleSpace/MasterRef/RulesBG/CenterContainer/Rules/CenterContainer2/ChallengesRef"]
-margin_left = 287.0
-margin_top = 152.0
-margin_right = 388.0
-margin_bottom = 174.0
+layout_mode = 2
 text = "Cober. 50%"
 
 [node name="Mod4" type="HBoxContainer" parent="Scroll/Margin/MasterScreen/UpperSec/MiddleSpace/MasterRef/RulesBG/CenterContainer/Rules/CenterContainer2/ChallengesRef"]
-margin_left = 403.0
-margin_top = 150.0
-margin_right = 533.0
-margin_bottom = 176.0
-custom_constants/separation = 0
+layout_mode = 2
+theme_override_constants/separation = 0
 
 [node name="Label6" type="Label" parent="Scroll/Margin/MasterScreen/UpperSec/MiddleSpace/MasterRef/RulesBG/CenterContainer/Rules/CenterContainer2/ChallengesRef/Mod4"]
-margin_right = 14.0
-margin_bottom = 26.0
-custom_fonts/font = ExtResource( 10 )
+layout_mode = 2
+theme_override_fonts/font = ExtResource("10")
 text = "+"
 
-[node name="StandardCounter" parent="Scroll/Margin/MasterScreen/UpperSec/MiddleSpace/MasterRef/RulesBG/CenterContainer/Rules/CenterContainer2/ChallengesRef/Mod4" instance=ExtResource( 9 )]
-anchor_right = 0.0
-anchor_bottom = 0.0
-margin_left = 14.0
-margin_right = 130.0
-margin_bottom = 26.0
+[node name="StandardCounter" parent="Scroll/Margin/MasterScreen/UpperSec/MiddleSpace/MasterRef/RulesBG/CenterContainer/Rules/CenterContainer2/ChallengesRef/Mod4" instance=ExtResource("9")]
+layout_mode = 2
+size_flags_horizontal = 3
 initial_level = 2
 
 [node name="Range5" type="Label" parent="Scroll/Margin/MasterScreen/UpperSec/MiddleSpace/MasterRef/RulesBG/CenterContainer/Rules/CenterContainer2/ChallengesRef"]
-margin_top = 182.0
-margin_right = 125.0
-margin_bottom = 204.0
+layout_mode = 2
 text = "Blanco peq."
 
 [node name="Level5" type="HBoxContainer" parent="Scroll/Margin/MasterScreen/UpperSec/MiddleSpace/MasterRef/RulesBG/CenterContainer/Rules/CenterContainer2/ChallengesRef"]
-margin_left = 140.0
-margin_top = 180.0
-margin_right = 272.0
-margin_bottom = 206.0
-custom_constants/separation = 0
+layout_mode = 2
+theme_override_constants/separation = 0
 
 [node name="Label7" type="Label" parent="Scroll/Margin/MasterScreen/UpperSec/MiddleSpace/MasterRef/RulesBG/CenterContainer/Rules/CenterContainer2/ChallengesRef/Level5"]
-margin_right = 14.0
-margin_bottom = 26.0
-custom_fonts/font = ExtResource( 10 )
+layout_mode = 2
+theme_override_fonts/font = ExtResource("10")
 text = "+"
 
-[node name="StandardCounter" parent="Scroll/Margin/MasterScreen/UpperSec/MiddleSpace/MasterRef/RulesBG/CenterContainer/Rules/CenterContainer2/ChallengesRef/Level5" instance=ExtResource( 9 )]
-anchor_right = 0.0
-anchor_bottom = 0.0
-margin_left = 14.0
-margin_right = 130.0
-margin_bottom = 26.0
+[node name="StandardCounter" parent="Scroll/Margin/MasterScreen/UpperSec/MiddleSpace/MasterRef/RulesBG/CenterContainer/Rules/CenterContainer2/ChallengesRef/Level5" instance=ExtResource("9")]
+layout_mode = 2
+size_flags_horizontal = 3
 initial_level = 1
 
 [node name="Status5" type="Label" parent="Scroll/Margin/MasterScreen/UpperSec/MiddleSpace/MasterRef/RulesBG/CenterContainer/Rules/CenterContainer2/ChallengesRef"]
-margin_left = 287.0
-margin_top = 182.0
-margin_right = 388.0
-margin_bottom = 204.0
+layout_mode = 2
 text = "Cober. 90%"
 
 [node name="Mod5" type="HBoxContainer" parent="Scroll/Margin/MasterScreen/UpperSec/MiddleSpace/MasterRef/RulesBG/CenterContainer/Rules/CenterContainer2/ChallengesRef"]
-margin_left = 403.0
-margin_top = 180.0
-margin_right = 533.0
-margin_bottom = 206.0
-custom_constants/separation = 0
+layout_mode = 2
+theme_override_constants/separation = 0
 
 [node name="Label8" type="Label" parent="Scroll/Margin/MasterScreen/UpperSec/MiddleSpace/MasterRef/RulesBG/CenterContainer/Rules/CenterContainer2/ChallengesRef/Mod5"]
-margin_right = 14.0
-margin_bottom = 26.0
-custom_fonts/font = ExtResource( 10 )
+layout_mode = 2
+theme_override_fonts/font = ExtResource("10")
 text = "+"
 
-[node name="StandardCounter" parent="Scroll/Margin/MasterScreen/UpperSec/MiddleSpace/MasterRef/RulesBG/CenterContainer/Rules/CenterContainer2/ChallengesRef/Mod5" instance=ExtResource( 9 )]
-anchor_right = 0.0
-anchor_bottom = 0.0
-margin_left = 14.0
-margin_right = 130.0
-margin_bottom = 26.0
+[node name="StandardCounter" parent="Scroll/Margin/MasterScreen/UpperSec/MiddleSpace/MasterRef/RulesBG/CenterContainer/Rules/CenterContainer2/ChallengesRef/Mod5" instance=ExtResource("9")]
+layout_mode = 2
+size_flags_horizontal = 3
 initial_level = 4
 
 [node name="Range6" type="Label" parent="Scroll/Margin/MasterScreen/UpperSec/MiddleSpace/MasterRef/RulesBG/CenterContainer/Rules/CenterContainer2/ChallengesRef"]
-margin_top = 212.0
-margin_right = 125.0
-margin_bottom = 234.0
+layout_mode = 2
 text = "Blanco grande"
 
 [node name="Level6" type="HBoxContainer" parent="Scroll/Margin/MasterScreen/UpperSec/MiddleSpace/MasterRef/RulesBG/CenterContainer/Rules/CenterContainer2/ChallengesRef"]
-margin_left = 140.0
-margin_top = 210.0
-margin_right = 272.0
-margin_bottom = 236.0
-custom_constants/separation = 0
+layout_mode = 2
+theme_override_constants/separation = 0
 
 [node name="Label5" type="Label" parent="Scroll/Margin/MasterScreen/UpperSec/MiddleSpace/MasterRef/RulesBG/CenterContainer/Rules/CenterContainer2/ChallengesRef/Level6"]
-margin_right = 16.0
-margin_bottom = 26.0
-custom_fonts/font = ExtResource( 10 )
+layout_mode = 2
+theme_override_fonts/font = ExtResource("10")
 text = "- "
 
-[node name="StandardCounter" parent="Scroll/Margin/MasterScreen/UpperSec/MiddleSpace/MasterRef/RulesBG/CenterContainer/Rules/CenterContainer2/ChallengesRef/Level6" instance=ExtResource( 9 )]
-anchor_right = 0.0
-anchor_bottom = 0.0
-margin_left = 16.0
-margin_right = 132.0
-margin_bottom = 26.0
+[node name="StandardCounter" parent="Scroll/Margin/MasterScreen/UpperSec/MiddleSpace/MasterRef/RulesBG/CenterContainer/Rules/CenterContainer2/ChallengesRef/Level6" instance=ExtResource("9")]
+layout_mode = 2
+size_flags_horizontal = 3
 initial_level = 1
 
 [node name="NotesBG" type="NinePatchRect" parent="Scroll/Margin/MasterScreen/UpperSec/MiddleSpace/MasterRef"]
-margin_top = 758.0
-margin_right = 630.0
-margin_bottom = 1008.0
-rect_min_size = Vector2( 630, 250 )
-texture = ExtResource( 13 )
+custom_minimum_size = Vector2(630, 250)
+layout_mode = 2
+texture = ExtResource("13")
 patch_margin_left = 77
 patch_margin_top = 86
 patch_margin_right = 66
 patch_margin_bottom = 79
 
 [node name="CenterContainer" type="CenterContainer" parent="Scroll/Margin/MasterScreen/UpperSec/MiddleSpace/MasterRef/NotesBG"]
+layout_mode = 0
 anchor_right = 1.0
 anchor_bottom = 1.0
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="HBoxContainer" type="HBoxContainer" parent="Scroll/Margin/MasterScreen/UpperSec/MiddleSpace/MasterRef/NotesBG/CenterContainer"]
-margin_left = 29.0
-margin_top = 25.0
-margin_right = 601.0
-margin_bottom = 225.0
+layout_mode = 2
 
 [node name="NotesEdit" type="TextEdit" parent="Scroll/Margin/MasterScreen/UpperSec/MiddleSpace/MasterRef/NotesBG/CenterContainer/HBoxContainer"]
-margin_right = 280.0
-margin_bottom = 200.0
-rect_min_size = Vector2( 280, 200 )
+custom_minimum_size = Vector2(280, 200)
+layout_mode = 2
 text = "Notas"
-wrap_enabled = true
 
 [node name="VSeparator" type="VSeparator" parent="Scroll/Margin/MasterScreen/UpperSec/MiddleSpace/MasterRef/NotesBG/CenterContainer/HBoxContainer"]
-margin_left = 284.0
-margin_right = 288.0
-margin_bottom = 200.0
+layout_mode = 2
 
 [node name="NotesEdit2" type="TextEdit" parent="Scroll/Margin/MasterScreen/UpperSec/MiddleSpace/MasterRef/NotesBG/CenterContainer/HBoxContainer"]
-margin_left = 292.0
-margin_right = 572.0
-margin_bottom = 200.0
-rect_min_size = Vector2( 280, 200 )
+custom_minimum_size = Vector2(280, 200)
+layout_mode = 2
 text = "Notas"
-wrap_enabled = true
 
 [node name="VCharsR" type="VBoxContainer" parent="Scroll/Margin/MasterScreen/UpperSec"]
-margin_left = 1188.0
-margin_right = 1738.0
-margin_bottom = 1050.0
-custom_constants/separation = 0
+layout_mode = 2
+theme_override_constants/separation = 0
 
-[node name="Char4" parent="Scroll/Margin/MasterScreen/UpperSec/VCharsR" instance=ExtResource( 1 )]
-margin_right = 550.0
-margin_bottom = 350.0
+[node name="Char4" parent="Scroll/Margin/MasterScreen/UpperSec/VCharsR" instance=ExtResource("1")]
+unique_name_in_owner = true
+layout_mode = 2
 
-[node name="Char5" parent="Scroll/Margin/MasterScreen/UpperSec/VCharsR" instance=ExtResource( 1 )]
-margin_top = 350.0
-margin_right = 550.0
-margin_bottom = 700.0
+[node name="Char5" parent="Scroll/Margin/MasterScreen/UpperSec/VCharsR" instance=ExtResource("1")]
+unique_name_in_owner = true
+layout_mode = 2
 
-[node name="Char6" parent="Scroll/Margin/MasterScreen/UpperSec/VCharsR" instance=ExtResource( 1 )]
-margin_top = 700.0
-margin_right = 550.0
-margin_bottom = 1050.0
+[node name="Char6" parent="Scroll/Margin/MasterScreen/UpperSec/VCharsR" instance=ExtResource("1")]
+unique_name_in_owner = true
+layout_mode = 2
 
 [node name="Exit" type="Button" parent="Scroll/Margin/MasterScreen"]
-margin_top = 1030.0
-margin_right = 1738.0
-margin_bottom = 1058.0
-rect_min_size = Vector2( 70, 0 )
+custom_minimum_size = Vector2(70, 0)
+layout_mode = 2
 size_flags_vertical = 8
-custom_colors/font_color = Color( 0.784314, 0.784314, 0.784314, 1 )
-custom_colors/font_color_hover = Color( 0.423529, 0.423529, 0.423529, 1 )
-custom_colors/font_color_pressed = Color( 1, 1, 1, 1 )
-shortcut = ExtResource( 8 )
+theme_override_colors/font_color = Color(0.784314, 0.784314, 0.784314, 1)
+theme_override_colors/font_pressed_color = Color(1, 1, 1, 1)
+theme_override_colors/font_hover_color = Color(0.423529, 0.423529, 0.423529, 1)
+shortcut = ExtResource("8")
 text = "Salir"
 flat = true
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
-[node name="CharacterFinder" parent="." instance=ExtResource( 3 )]
+[node name="Warning" parent="." instance=ExtResource("6")]
+layout_mode = 0
+anchors_preset = 0
+anchor_left = 0.0
+anchor_right = 0.0
+offset_left = 0.0
+offset_top = 0.0
+offset_right = 500.0
+offset_bottom = 70.0
+
+[node name="CharacterFinder" parent="." instance=ExtResource("3")]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -250.0
+offset_top = -300.0
+offset_right = 250.0
+offset_bottom = 300.0
+grow_horizontal = 2
+grow_vertical = 2
 multiple_selection = true
 
-[node name="Warning" parent="." instance=ExtResource( 6 )]
 [connection signal="pressed" from="Scroll/Margin/MasterScreen/Exit" to="." method="_on_Exit_pressed"]
 [connection signal="back" from="CharacterFinder" to="." method="_on_CharacterFinder_back"]
 [connection signal="ok" from="CharacterFinder" to="." method="_on_CharacterFinder_ok"]

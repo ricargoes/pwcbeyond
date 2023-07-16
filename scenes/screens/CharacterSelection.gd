@@ -7,8 +7,8 @@ func _on_CharacterFinder_ok(selected_chars):
 		return
 	else:
 		GameInfo.next_character = selected_chars.front()
-		get_tree().change_scene("res://scenes/sheet_layouts/WebSheetLayout.tscn")
+		get_tree().change_scene_to_file("res://scenes/sheet_layouts/WebSheetLayout.tscn")
 
 
 func _on_CharacterFinder_back():
-	get_tree().change_scene("res://scenes/screens/MainMenu.tscn")
+	get_tree().change_scene_to_file("res://scenes/screens/MainMenu.tscn")

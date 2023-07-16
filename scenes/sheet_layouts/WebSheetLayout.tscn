@@ -1,50 +1,51 @@
-[gd_scene load_steps=30 format=2]
+[gd_scene load_steps=30 format=3 uid="uid://cpmpg76qqmwg7"]
 
-[ext_resource path="res://resources/theme.tres" type="Theme" id=1]
-[ext_resource path="res://resources/sprites/backgrounds/logoletter (3).png" type="Texture" id=2]
-[ext_resource path="res://scenes/tools/FullVScroll.gd" type="Script" id=3]
-[ext_resource path="res://resources/h1_font.tres" type="DynamicFont" id=4]
-[ext_resource path="res://scenes/sheet_layouts/CharacterSheet.gd" type="Script" id=5]
-[ext_resource path="res://resources/logos/PWC-logo-fighting_man.png" type="Texture" id=6]
-[ext_resource path="res://scenes/counters/Status.tscn" type="PackedScene" id=7]
-[ext_resource path="res://scenes/counters/Tireness.tscn" type="PackedScene" id=8]
-[ext_resource path="res://resources/underline_small.tres" type="StyleBox" id=9]
-[ext_resource path="res://scenes/decorations/BG.tscn" type="PackedScene" id=10]
-[ext_resource path="res://resources/h2_font.tres" type="DynamicFont" id=11]
-[ext_resource path="res://scenes/counters/Feature.tscn" type="PackedScene" id=12]
-[ext_resource path="res://resources/EscapeKeyShortcut.tres" type="ShortCut" id=13]
-[ext_resource path="res://scenes/tools/RollTool.tscn" type="PackedScene" id=14]
-[ext_resource path="res://resources/sprites/backgrounds/9patch_scroll3.png" type="Texture" id=15]
-[ext_resource path="res://resources/sprites/backgrounds/9patch_scroll2.png" type="Texture" id=16]
-[ext_resource path="res://resources/sprites/props/musket.png" type="Texture" id=17]
-[ext_resource path="res://resources/sprites/props/compass.png" type="Texture" id=18]
-[ext_resource path="res://resources/sprites/props/inkwell.png" type="Texture" id=19]
-[ext_resource path="res://resources/sprites/props/feather.png" type="Texture" id=20]
-[ext_resource path="res://scenes/panels/ArtesReference.tscn" type="PackedScene" id=28]
-[ext_resource path="res://scenes/panels/Inventory.tscn" type="PackedScene" id=29]
+[ext_resource type="Theme" uid="uid://fdky2ckfobqg" path="res://resources/theme.tres" id="1"]
+[ext_resource type="Texture2D" uid="uid://cycusujak170" path="res://resources/sprites/backgrounds/logoletter (3).png" id="2"]
+[ext_resource type="Script" path="res://scenes/tools/FullVScroll.gd" id="3"]
+[ext_resource type="FontFile" path="res://resources/h1_font.tres" id="4"]
+[ext_resource type="Script" path="res://scenes/sheet_layouts/CharacterSheet.gd" id="5"]
+[ext_resource type="Texture2D" uid="uid://dkrgghkol20l4" path="res://resources/logos/PWC-logo-fighting_man.png" id="6"]
+[ext_resource type="PackedScene" path="res://scenes/counters/Status.tscn" id="7"]
+[ext_resource type="PackedScene" path="res://scenes/counters/Tireness.tscn" id="8"]
+[ext_resource type="StyleBox" path="res://resources/underline_small.tres" id="9"]
+[ext_resource type="PackedScene" path="res://scenes/decorations/BG.tscn" id="10"]
+[ext_resource type="FontFile" path="res://resources/h2_font.tres" id="11"]
+[ext_resource type="PackedScene" uid="uid://bvsfexlw1hvsx" path="res://scenes/counters/Feature.tscn" id="12"]
+[ext_resource type="Shortcut" path="res://resources/EscapeKeyShortcut.tres" id="13"]
+[ext_resource type="PackedScene" uid="uid://mhvw62e3bmj2" path="res://scenes/tools/RollTool.tscn" id="14"]
+[ext_resource type="Texture2D" uid="uid://oaynf75i4sbe" path="res://resources/sprites/backgrounds/9patch_scroll3.png" id="15"]
+[ext_resource type="Texture2D" uid="uid://bjcldyjvuol4g" path="res://resources/sprites/backgrounds/9patch_scroll2.png" id="16"]
+[ext_resource type="Texture2D" uid="uid://bg0v5of028tpu" path="res://resources/sprites/props/musket.png" id="17"]
+[ext_resource type="Texture2D" uid="uid://od2fk7ag3hfc" path="res://resources/sprites/props/compass.png" id="18"]
+[ext_resource type="Texture2D" uid="uid://drpopeqf7yrkb" path="res://resources/sprites/props/inkwell.png" id="19"]
+[ext_resource type="Texture2D" uid="uid://duah1n3m3iiyp" path="res://resources/sprites/props/feather.png" id="20"]
+[ext_resource type="PackedScene" path="res://scenes/panels/ArtesReference.tscn" id="28"]
+[ext_resource type="PackedScene" path="res://scenes/panels/Inventory.tscn" id="29"]
 
-[sub_resource type="StyleBoxEmpty" id=1]
+[sub_resource type="StyleBoxEmpty" id="1"]
 
-[sub_resource type="StyleBoxEmpty" id=2]
+[sub_resource type="StyleBoxEmpty" id="2"]
 
-[sub_resource type="StyleBoxEmpty" id=3]
+[sub_resource type="StyleBoxEmpty" id="3"]
 
-[sub_resource type="StyleBoxEmpty" id=4]
+[sub_resource type="StyleBoxEmpty" id="4"]
 
-[sub_resource type="StyleBoxEmpty" id=5]
+[sub_resource type="StyleBoxEmpty" id="5"]
 
-[sub_resource type="StyleBoxEmpty" id=6]
+[sub_resource type="StyleBoxEmpty" id="6"]
 
-[sub_resource type="StyleBoxEmpty" id=7]
+[sub_resource type="StyleBoxEmpty" id="7"]
 
 [node name="WebSheetLayout" type="Control"]
+layout_mode = 3
+anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-theme = ExtResource( 1 )
-script = ExtResource( 5 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1")
+script = ExtResource("5")
 
 [node name="Autosave" type="Timer" parent="."]
 wait_time = 3.0
@@ -52,1127 +53,755 @@ autostart = true
 
 [node name="GET" type="HTTPRequest" parent="."]
 
-[node name="BG" parent="." instance=ExtResource( 10 )]
-margin_right = 1920.0
-margin_bottom = 1080.0
+[node name="BG" parent="." instance=ExtResource("10")]
+layout_mode = 0
+offset_right = 1920.0
+offset_bottom = 1080.0
 
 [node name="Inkwell" type="TextureRect" parent="BG"]
-margin_left = 168.867
-margin_top = -83.2444
-margin_right = 582.867
-margin_bottom = 337.756
-texture = ExtResource( 19 )
+layout_mode = 0
+offset_left = 168.867
+offset_top = -83.2444
+offset_right = 582.867
+offset_bottom = 337.756
+texture = ExtResource("19")
 
 [node name="Feather" type="TextureRect" parent="BG"]
-margin_left = 1686.3
-margin_top = 1182.07
-margin_right = 2100.3
-margin_bottom = 1811.07
-rect_rotation = 196.9
-texture = ExtResource( 20 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
+layout_mode = 0
+offset_left = 1686.3
+offset_top = 1182.07
+offset_right = 2100.3
+offset_bottom = 1811.07
+rotation = 196.9
+texture = ExtResource("20")
 
 [node name="Compass" type="TextureRect" parent="BG"]
-margin_left = -14.2703
-margin_top = 508.981
-margin_right = 435.73
-margin_bottom = 1208.98
-texture = ExtResource( 18 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
+layout_mode = 0
+offset_left = -14.2703
+offset_top = 508.981
+offset_right = 435.73
+offset_bottom = 1208.98
+texture = ExtResource("18")
 
 [node name="Compass2" type="TextureRect" parent="BG"]
-margin_left = 1636.35
-margin_top = -237.841
-margin_right = 2086.35
-margin_bottom = 462.159
-rect_rotation = 22.3
-texture = ExtResource( 17 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
+layout_mode = 0
+offset_left = 1636.35
+offset_top = -237.841
+offset_right = 2086.35
+offset_bottom = 462.159
+rotation = 22.3
+texture = ExtResource("17")
 
 [node name="CenterContainer" type="CenterContainer" parent="."]
+layout_mode = 0
 anchor_right = 1.0
 anchor_bottom = 1.0
-__meta__ = {
-"_edit_lock_": true,
-"_edit_use_anchors_": false
-}
 
 [node name="VScrollContainer" type="ScrollContainer" parent="CenterContainer"]
-margin_left = 460.0
-margin_right = 1460.0
-margin_bottom = 1080.0
-rect_min_size = Vector2( 1000, 1080 )
-script = ExtResource( 3 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
+custom_minimum_size = Vector2(1000, 1080)
+layout_mode = 2
+script = ExtResource("3")
 
 [node name="Center" type="CenterContainer" parent="CenterContainer/VScrollContainer"]
-margin_right = 1000.0
-margin_bottom = 1488.0
-rect_min_size = Vector2( 1000, 0 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
+custom_minimum_size = Vector2(1000, 0)
+layout_mode = 2
 
 [node name="Pivot" type="Control" parent="CenterContainer/VScrollContainer/Center"]
-margin_left = 500.0
-margin_top = 744.0
-margin_right = 500.0
-margin_bottom = 744.0
+layout_mode = 2
 mouse_filter = 2
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="CenterContainer" type="CenterContainer" parent="CenterContainer/VScrollContainer/Center/Pivot"]
+layout_mode = 0
 anchor_right = 1.0
 anchor_bottom = 1.0
 mouse_filter = 2
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="ConfirmationPopup" type="Popup" parent="CenterContainer/VScrollContainer/Center/Pivot/CenterContainer"]
-margin_left = -200.0
-margin_top = -50.0
-margin_right = 200.0
-margin_bottom = 50.0
-rect_min_size = Vector2( 400, 100 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="NinePatchRect" type="NinePatchRect" parent="CenterContainer/VScrollContainer/Center/Pivot/CenterContainer/ConfirmationPopup"]
-modulate = Color( 0.768627, 0.776471, 0, 1 )
-margin_right = 400.0
-margin_bottom = 100.0
-rect_min_size = Vector2( 400, 100 )
-texture = ExtResource( 16 )
+modulate = Color(0.768627, 0.776471, 0, 1)
+custom_minimum_size = Vector2(400, 100)
+offset_right = 400.0
+offset_bottom = 100.0
+texture = ExtResource("16")
 patch_margin_left = 55
 patch_margin_top = 64
 patch_margin_right = 51
 patch_margin_bottom = 45
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer/VScrollContainer/Center/Pivot/CenterContainer/ConfirmationPopup"]
+anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 alignment = 1
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="ConfirmationL" type="Label" parent="CenterContainer/VScrollContainer/Center/Pivot/CenterContainer/ConfirmationPopup/VBoxContainer"]
-margin_top = 23.0
-margin_right = 400.0
-margin_bottom = 45.0
+layout_mode = 2
 text = "Acepta para confirmar el borrado"
-align = 1
 
 [node name="ConfirmButtons" type="HBoxContainer" parent="CenterContainer/VScrollContainer/Center/Pivot/CenterContainer/ConfirmationPopup/VBoxContainer"]
-margin_top = 49.0
-margin_right = 400.0
-margin_bottom = 77.0
+layout_mode = 2
 alignment = 1
 
 [node name="Aceptar" type="Button" parent="CenterContainer/VScrollContainer/Center/Pivot/CenterContainer/ConfirmationPopup/VBoxContainer/ConfirmButtons"]
-margin_left = 159.0
-margin_right = 240.0
-margin_bottom = 28.0
+layout_mode = 2
 text = "Aceptar"
 
 [node name="Sheet" type="VBoxContainer" parent="CenterContainer/VScrollContainer/Center"]
-margin_left = 75.0
-margin_right = 925.0
-margin_bottom = 1488.0
+layout_mode = 2
 alignment = 1
 
 [node name="Envelope" type="TextureRect" parent="CenterContainer/VScrollContainer/Center/Sheet"]
-margin_right = 850.0
-margin_bottom = 230.0
-rect_min_size = Vector2( 750, 230 )
-texture = ExtResource( 2 )
-expand = true
-__meta__ = {
-"_edit_use_anchors_": false
-}
+custom_minimum_size = Vector2(750, 230)
+layout_mode = 2
+texture = ExtResource("2")
+expand_mode = 1
 
 [node name="Logo" type="TextureRect" parent="CenterContainer/VScrollContainer/Center/Sheet/Envelope"]
+custom_minimum_size = Vector2(540, 200)
+layout_mode = 0
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -350.0
-margin_top = -100.0
-margin_right = 190.0
-margin_bottom = 100.0
-rect_min_size = Vector2( 540, 200 )
+offset_left = -350.0
+offset_top = -100.0
+offset_right = 190.0
+offset_bottom = 100.0
 mouse_default_cursor_shape = 2
-texture = ExtResource( 6 )
-expand = true
+texture = ExtResource("6")
+expand_mode = 1
 stretch_mode = 5
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="PlayerIDBG" type="NinePatchRect" parent="CenterContainer/VScrollContainer/Center/Sheet"]
-margin_top = 234.0
-margin_right = 850.0
-margin_bottom = 314.0
-texture = ExtResource( 16 )
+layout_mode = 2
+texture = ExtResource("16")
 patch_margin_left = 42
 patch_margin_top = 38
 patch_margin_right = 43
 patch_margin_bottom = 42
 
 [node name="CenterContainer" type="CenterContainer" parent="CenterContainer/VScrollContainer/Center/Sheet/PlayerIDBG"]
+layout_mode = 0
 anchor_right = 1.0
 anchor_bottom = 1.0
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="PlayerID" type="HBoxContainer" parent="CenterContainer/VScrollContainer/Center/Sheet/PlayerIDBG/CenterContainer"]
-margin_left = 53.0
-margin_top = 25.0
-margin_right = 796.0
-margin_bottom = 55.0
-custom_constants/separation = 30
+layout_mode = 2
+theme_override_constants/separation = 30
 
 [node name="PlayerBox" type="HBoxContainer" parent="CenterContainer/VScrollContainer/Center/Sheet/PlayerIDBG/CenterContainer/PlayerID"]
-margin_right = 232.0
-margin_bottom = 30.0
+layout_mode = 2
 alignment = 2
 
 [node name="PlayerL" type="Label" parent="CenterContainer/VScrollContainer/Center/Sheet/PlayerIDBG/CenterContainer/PlayerID/PlayerBox"]
-margin_top = 4.0
-margin_right = 78.0
-margin_bottom = 26.0
+layout_mode = 2
 size_flags_horizontal = 3
 text = "Jugador: "
 
 [node name="Player" type="LineEdit" parent="CenterContainer/VScrollContainer/Center/Sheet/PlayerIDBG/CenterContainer/PlayerID/PlayerBox"]
-margin_left = 82.0
-margin_right = 232.0
-margin_bottom = 30.0
-rect_min_size = Vector2( 150, 30 )
+unique_name_in_owner = true
+custom_minimum_size = Vector2(150, 30)
+layout_mode = 2
 focus_mode = 0
 text = "Jugador"
-align = 1
 editable = false
 caret_blink = true
-caret_blink_speed = 0.5
+caret_blink_interval = 0.5
 
 [node name="NameBox" type="HBoxContainer" parent="CenterContainer/VScrollContainer/Center/Sheet/PlayerIDBG/CenterContainer/PlayerID"]
-margin_left = 262.0
-margin_right = 493.0
-margin_bottom = 30.0
+layout_mode = 2
 alignment = 2
 
 [node name="NameL" type="Label" parent="CenterContainer/VScrollContainer/Center/Sheet/PlayerIDBG/CenterContainer/PlayerID/NameBox"]
-margin_top = 4.0
-margin_right = 77.0
-margin_bottom = 26.0
+layout_mode = 2
 size_flags_horizontal = 3
 text = "Nombre: "
 
 [node name="Name" type="LineEdit" parent="CenterContainer/VScrollContainer/Center/Sheet/PlayerIDBG/CenterContainer/PlayerID/NameBox"]
-margin_left = 81.0
-margin_right = 231.0
-margin_bottom = 30.0
-rect_min_size = Vector2( 150, 0 )
+unique_name_in_owner = true
+custom_minimum_size = Vector2(150, 0)
+layout_mode = 2
 focus_mode = 0
-align = 1
 editable = false
 caret_blink = true
-caret_blink_speed = 0.5
-__meta__ = {
-"_edit_use_anchors_": false
-}
+caret_blink_interval = 0.5
 
 [node name="ChronicleBox" type="HBoxContainer" parent="CenterContainer/VScrollContainer/Center/Sheet/PlayerIDBG/CenterContainer/PlayerID"]
-margin_left = 523.0
-margin_right = 743.0
-margin_bottom = 30.0
+layout_mode = 2
 alignment = 2
 
 [node name="ChronicleL" type="Label" parent="CenterContainer/VScrollContainer/Center/Sheet/PlayerIDBG/CenterContainer/PlayerID/ChronicleBox"]
-margin_top = 4.0
-margin_right = 66.0
-margin_bottom = 26.0
+layout_mode = 2
 size_flags_horizontal = 3
 text = "Cronica:"
 
 [node name="Chronicle" type="LineEdit" parent="CenterContainer/VScrollContainer/Center/Sheet/PlayerIDBG/CenterContainer/PlayerID/ChronicleBox"]
-margin_left = 70.0
-margin_right = 220.0
-margin_bottom = 30.0
-rect_min_size = Vector2( 150, 30 )
+unique_name_in_owner = true
+custom_minimum_size = Vector2(150, 30)
+layout_mode = 2
 focus_mode = 0
 text = "Cronica"
-align = 1
 editable = false
 caret_blink = true
-caret_blink_speed = 0.5
+caret_blink_interval = 0.5
 
-[node name="RollTool" parent="CenterContainer/VScrollContainer/Center/Sheet" instance=ExtResource( 14 )]
-margin_left = 0.0
-margin_top = 318.0
-margin_right = 850.0
-margin_bottom = 398.0
-rect_min_size = Vector2( 850, 80 )
+[node name="RollTool" parent="CenterContainer/VScrollContainer/Center/Sheet" instance=ExtResource("14")]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(850, 80)
+layout_mode = 2
 
 [node name="CharData" type="HBoxContainer" parent="CenterContainer/VScrollContainer/Center/Sheet"]
-margin_top = 402.0
-margin_right = 850.0
-margin_bottom = 1434.0
-custom_constants/separation = 0
+layout_mode = 2
+theme_override_constants/separation = 0
 
 [node name="Sec1" type="VBoxContainer" parent="CenterContainer/VScrollContainer/Center/Sheet/CharData"]
-margin_right = 280.0
-margin_bottom = 1032.0
+layout_mode = 2
 
 [node name="StatusBG" type="NinePatchRect" parent="CenterContainer/VScrollContainer/Center/Sheet/CharData/Sec1"]
-margin_right = 280.0
-margin_bottom = 600.0
-rect_min_size = Vector2( 280, 600 )
-texture = ExtResource( 15 )
-region_rect = Rect2( 0, 0, 302.308, 298.423 )
+custom_minimum_size = Vector2(280, 600)
+layout_mode = 2
+texture = ExtResource("15")
+region_rect = Rect2(0, 0, 302.308, 298.423)
 patch_margin_left = 53
 patch_margin_top = 77
 patch_margin_right = 72
 patch_margin_bottom = 71
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="StatusFrame" type="VBoxContainer" parent="CenterContainer/VScrollContainer/Center/Sheet/CharData/Sec1/StatusBG"]
+layout_mode = 0
 anchor_right = 1.0
 anchor_bottom = 1.0
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="MarginContainer2" type="MarginContainer" parent="CenterContainer/VScrollContainer/Center/Sheet/CharData/Sec1/StatusBG/StatusFrame"]
-margin_right = 280.0
-margin_bottom = 39.0
-custom_constants/margin_top = 10
-custom_constants/margin_left = 35
-__meta__ = {
-"_edit_use_anchors_": false
-}
+layout_mode = 2
+theme_override_constants/margin_left = 35
+theme_override_constants/margin_top = 10
 
 [node name="StatusL" type="Label" parent="CenterContainer/VScrollContainer/Center/Sheet/CharData/Sec1/StatusBG/StatusFrame/MarginContainer2"]
-margin_left = 35.0
-margin_top = 10.0
-margin_right = 280.0
-margin_bottom = 39.0
-custom_fonts/font = ExtResource( 4 )
-custom_colors/font_color = Color( 0, 0, 0, 1 )
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("4")
 text = "Estado"
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="BlankSep4" type="HSeparator" parent="CenterContainer/VScrollContainer/Center/Sheet/CharData/Sec1/StatusBG/StatusFrame"]
-margin_top = 43.0
-margin_right = 280.0
-margin_bottom = 63.0
-custom_styles/separator = SubResource( 1 )
-custom_constants/separation = 20
+layout_mode = 2
+theme_override_constants/separation = 20
+theme_override_styles/separator = SubResource("1")
 
-[node name="Vigor" parent="CenterContainer/VScrollContainer/Center/Sheet/CharData/Sec1/StatusBG/StatusFrame" groups=[
-"features",
-] instance=ExtResource( 8 )]
-margin_top = 67.0
-margin_right = 280.0
-margin_bottom = 163.0
+[node name="Vigor" parent="CenterContainer/VScrollContainer/Center/Sheet/CharData/Sec1/StatusBG/StatusFrame" groups=["features"] instance=ExtResource("8")]
+layout_mode = 2
 status_name = "Vigor"
 
 [node name="BlankSep" type="HSeparator" parent="CenterContainer/VScrollContainer/Center/Sheet/CharData/Sec1/StatusBG/StatusFrame"]
-margin_top = 167.0
-margin_right = 280.0
-margin_bottom = 187.0
-custom_styles/separator = SubResource( 1 )
-custom_constants/separation = 20
+layout_mode = 2
+theme_override_constants/separation = 20
+theme_override_styles/separator = SubResource("1")
 
-[node name="Voluntad" parent="CenterContainer/VScrollContainer/Center/Sheet/CharData/Sec1/StatusBG/StatusFrame" groups=[
-"features",
-] instance=ExtResource( 8 )]
-margin_top = 191.0
-margin_right = 280.0
-margin_bottom = 287.0
+[node name="Voluntad" parent="CenterContainer/VScrollContainer/Center/Sheet/CharData/Sec1/StatusBG/StatusFrame" groups=["features"] instance=ExtResource("8")]
+layout_mode = 2
 status_name = "Voluntad"
 
 [node name="BlankSep3" type="HSeparator" parent="CenterContainer/VScrollContainer/Center/Sheet/CharData/Sec1/StatusBG/StatusFrame"]
-margin_top = 291.0
-margin_right = 280.0
-margin_bottom = 311.0
-custom_styles/separator = SubResource( 1 )
-custom_constants/separation = 20
+layout_mode = 2
+theme_override_constants/separation = 20
+theme_override_styles/separator = SubResource("1")
 
-[node name="Salud" parent="CenterContainer/VScrollContainer/Center/Sheet/CharData/Sec1/StatusBG/StatusFrame" instance=ExtResource( 7 )]
-margin_top = 315.0
-margin_right = 280.0
-margin_bottom = 341.0
+[node name="Salud" parent="CenterContainer/VScrollContainer/Center/Sheet/CharData/Sec1/StatusBG/StatusFrame" instance=ExtResource("7")]
+layout_mode = 2
 
 [node name="BlankSep2" type="HSeparator" parent="CenterContainer/VScrollContainer/Center/Sheet/CharData/Sec1/StatusBG/StatusFrame"]
-margin_top = 345.0
-margin_right = 280.0
-margin_bottom = 365.0
-custom_styles/separator = SubResource( 1 )
-custom_constants/separation = 20
+layout_mode = 2
+theme_override_constants/separation = 20
+theme_override_styles/separator = SubResource("1")
 
-[node name="Cordura" parent="CenterContainer/VScrollContainer/Center/Sheet/CharData/Sec1/StatusBG/StatusFrame" instance=ExtResource( 7 )]
-margin_top = 369.0
-margin_right = 280.0
-margin_bottom = 395.0
+[node name="Cordura" parent="CenterContainer/VScrollContainer/Center/Sheet/CharData/Sec1/StatusBG/StatusFrame" instance=ExtResource("7")]
+layout_mode = 2
 type = "Cordura"
 icon_colection = "sanity"
 
 [node name="InventoryButton" type="Button" parent="CenterContainer/VScrollContainer/Center/Sheet/CharData/Sec1"]
-margin_top = 604.0
-margin_right = 280.0
-margin_bottom = 632.0
-rect_min_size = Vector2( 70, 0 )
+custom_minimum_size = Vector2(70, 0)
+layout_mode = 2
 size_flags_vertical = 4
-custom_colors/font_color = Color( 0.643137, 0.643137, 0.643137, 1 )
-custom_colors/font_color_hover = Color( 0.537255, 0.537255, 0.537255, 1 )
-custom_colors/font_color_pressed = Color( 1, 1, 1, 1 )
+theme_override_colors/font_color = Color(0.643137, 0.643137, 0.643137, 1)
+theme_override_colors/font_pressed_color = Color(1, 1, 1, 1)
+theme_override_colors/font_hover_color = Color(0.537255, 0.537255, 0.537255, 1)
 text = "Equipo"
 flat = true
-__meta__ = {
-"_editor_description_": ""
-}
 
 [node name="Padding" type="HSeparator" parent="CenterContainer/VScrollContainer/Center/Sheet/CharData/Sec1"]
-margin_top = 636.0
-margin_right = 280.0
-margin_bottom = 1032.0
+layout_mode = 2
 size_flags_vertical = 3
-custom_styles/separator = SubResource( 2 )
+theme_override_styles/separator = SubResource("2")
 
 [node name="TabContainer" type="TabContainer" parent="CenterContainer/VScrollContainer/Center/Sheet/CharData"]
-margin_left = 280.0
-margin_right = 850.0
-margin_bottom = 1032.0
+layout_mode = 2
 size_flags_horizontal = 3
 
 [node name="Stats" type="VBoxContainer" parent="CenterContainer/VScrollContainer/Center/Sheet/CharData/TabContainer"]
-anchor_right = 1.0
-anchor_bottom = 1.0
-margin_top = 32.0
-custom_constants/separation = 0
+layout_mode = 2
+theme_override_constants/separation = 0
 
 [node name="AtributesBG" type="NinePatchRect" parent="CenterContainer/VScrollContainer/Center/Sheet/CharData/TabContainer/Stats"]
-margin_right = 570.0
-margin_bottom = 300.0
-rect_min_size = Vector2( 550, 300 )
-texture = ExtResource( 15 )
-region_rect = Rect2( 3.63867, 1.56606, 295.439, 293.931 )
+custom_minimum_size = Vector2(550, 300)
+layout_mode = 2
+texture = ExtResource("15")
+region_rect = Rect2(3.63867, 1.56606, 295.439, 293.931)
 patch_margin_left = 49
 patch_margin_top = 70
 patch_margin_right = 68
 patch_margin_bottom = 59
 
 [node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer/VScrollContainer/Center/Sheet/CharData/TabContainer/Stats/AtributesBG"]
+layout_mode = 0
 anchor_right = 1.0
 anchor_bottom = 1.0
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="MarginContainer" type="MarginContainer" parent="CenterContainer/VScrollContainer/Center/Sheet/CharData/TabContainer/Stats/AtributesBG/VBoxContainer"]
-margin_right = 570.0
-margin_bottom = 39.0
-custom_constants/margin_top = 10
-custom_constants/margin_left = 35
-__meta__ = {
-"_edit_use_anchors_": false
-}
+layout_mode = 2
+theme_override_constants/margin_left = 35
+theme_override_constants/margin_top = 10
 
 [node name="AtributosL" type="Label" parent="CenterContainer/VScrollContainer/Center/Sheet/CharData/TabContainer/Stats/AtributesBG/VBoxContainer/MarginContainer"]
-margin_left = 35.0
-margin_top = 10.0
-margin_right = 570.0
-margin_bottom = 39.0
-custom_fonts/font = ExtResource( 4 )
-custom_colors/font_color = Color( 0, 0, 0, 1 )
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("4")
 text = "Atributos"
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="HSeparator" type="HSeparator" parent="CenterContainer/VScrollContainer/Center/Sheet/CharData/TabContainer/Stats/AtributesBG/VBoxContainer"]
-margin_top = 43.0
-margin_right = 570.0
-margin_bottom = 63.0
-custom_styles/separator = SubResource( 3 )
-custom_constants/separation = 20
+layout_mode = 2
+theme_override_constants/separation = 20
+theme_override_styles/separator = SubResource("3")
 
 [node name="Atributes" type="HBoxContainer" parent="CenterContainer/VScrollContainer/Center/Sheet/CharData/TabContainer/Stats/AtributesBG/VBoxContainer"]
-margin_top = 67.0
-margin_right = 570.0
-margin_bottom = 67.0
-custom_constants/separation = 10
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_constants/separation = 10
 alignment = 1
 
 [node name="SkillsBG" type="NinePatchRect" parent="CenterContainer/VScrollContainer/Center/Sheet/CharData/TabContainer/Stats"]
-margin_top = 300.0
-margin_right = 570.0
-margin_bottom = 1000.0
-rect_min_size = Vector2( 550, 700 )
-texture = ExtResource( 15 )
-region_rect = Rect2( 6.65338, 3.0734, 290.917, 292.424 )
+custom_minimum_size = Vector2(550, 700)
+layout_mode = 2
+texture = ExtResource("15")
+region_rect = Rect2(6.65338, 3.0734, 290.917, 292.424)
 patch_margin_left = 45
 patch_margin_top = 71
 patch_margin_right = 63
 patch_margin_bottom = 65
 
 [node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer/VScrollContainer/Center/Sheet/CharData/TabContainer/Stats/SkillsBG"]
+layout_mode = 0
 anchor_right = 1.0
 anchor_bottom = 1.0
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="MarginContainer" type="MarginContainer" parent="CenterContainer/VScrollContainer/Center/Sheet/CharData/TabContainer/Stats/SkillsBG/VBoxContainer"]
-margin_right = 570.0
-margin_bottom = 39.0
-custom_constants/margin_top = 10
-custom_constants/margin_left = 40
-__meta__ = {
-"_edit_use_anchors_": false
-}
+layout_mode = 2
+theme_override_constants/margin_left = 40
+theme_override_constants/margin_top = 10
 
 [node name="SkillsL" type="Label" parent="CenterContainer/VScrollContainer/Center/Sheet/CharData/TabContainer/Stats/SkillsBG/VBoxContainer/MarginContainer"]
-margin_left = 40.0
-margin_top = 10.0
-margin_right = 570.0
-margin_bottom = 39.0
-custom_fonts/font = ExtResource( 4 )
+layout_mode = 2
+theme_override_fonts/font = ExtResource("4")
 text = "Habilidades"
 
 [node name="HSeparator2" type="HSeparator" parent="CenterContainer/VScrollContainer/Center/Sheet/CharData/TabContainer/Stats/SkillsBG/VBoxContainer"]
-margin_top = 43.0
-margin_right = 570.0
-margin_bottom = 63.0
-custom_styles/separator = SubResource( 3 )
-custom_constants/separation = 20
+layout_mode = 2
+theme_override_constants/separation = 20
+theme_override_styles/separator = SubResource("3")
 
 [node name="Skills" type="HBoxContainer" parent="CenterContainer/VScrollContainer/Center/Sheet/CharData/TabContainer/Stats/SkillsBG/VBoxContainer"]
-margin_top = 67.0
-margin_right = 570.0
-margin_bottom = 67.0
-custom_constants/separation = 30
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_constants/separation = 30
 alignment = 1
 
 [node name="Manipulacion de planos" type="NinePatchRect" parent="CenterContainer/VScrollContainer/Center/Sheet/CharData/TabContainer"]
 visible = false
-anchor_right = 1.0
-anchor_bottom = 1.0
-margin_top = 32.0
-rect_min_size = Vector2( 450, 620 )
-texture = ExtResource( 15 )
-region_rect = Rect2( 7, 0, 290, 297 )
+custom_minimum_size = Vector2(450, 620)
+layout_mode = 2
+texture = ExtResource("15")
+region_rect = Rect2(7, 0, 290, 297)
 patch_margin_left = 31
 patch_margin_top = 66
 patch_margin_right = 60
 patch_margin_bottom = 61
 
 [node name="PlaneManipulation" type="VBoxContainer" parent="CenterContainer/VScrollContainer/Center/Sheet/CharData/TabContainer/Manipulacion de planos"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(450, 0)
+layout_mode = 0
 anchor_right = 1.0
 anchor_bottom = 1.0
-rect_min_size = Vector2( 450, 0 )
-custom_constants/separation = 8
-__meta__ = {
-"_edit_use_anchors_": false
-}
+theme_override_constants/separation = 8
 
 [node name="MarginContainer2" type="MarginContainer" parent="CenterContainer/VScrollContainer/Center/Sheet/CharData/TabContainer/Manipulacion de planos/PlaneManipulation"]
-margin_right = 570.0
-margin_bottom = 39.0
-custom_constants/margin_top = 10
-custom_constants/margin_left = 35
-__meta__ = {
-"_edit_use_anchors_": false
-}
+layout_mode = 2
+theme_override_constants/margin_left = 35
+theme_override_constants/margin_top = 10
 
 [node name="PlaneManipulationL" type="Label" parent="CenterContainer/VScrollContainer/Center/Sheet/CharData/TabContainer/Manipulacion de planos/PlaneManipulation/MarginContainer2"]
-margin_left = 35.0
-margin_top = 10.0
-margin_right = 570.0
-margin_bottom = 39.0
-custom_fonts/font = ExtResource( 4 )
-custom_colors/font_color = Color( 0, 0, 0, 1 )
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("4")
 text = "Manipulacion de planos"
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="HSeparator5" type="HSeparator" parent="CenterContainer/VScrollContainer/Center/Sheet/CharData/TabContainer/Manipulacion de planos/PlaneManipulation"]
-margin_top = 47.0
-margin_right = 570.0
-margin_bottom = 67.0
-custom_styles/separator = SubResource( 4 )
-custom_constants/separation = 20
-__meta__ = {
-"_edit_use_anchors_": false
-}
+layout_mode = 2
+theme_override_constants/separation = 20
+theme_override_styles/separator = SubResource("4")
 
 [node name="DataCenter" type="CenterContainer" parent="CenterContainer/VScrollContainer/Center/Sheet/CharData/TabContainer/Manipulacion de planos/PlaneManipulation"]
-margin_top = 75.0
-margin_right = 570.0
-margin_bottom = 139.0
+layout_mode = 2
 
 [node name="Data" type="GridContainer" parent="CenterContainer/VScrollContainer/Center/Sheet/CharData/TabContainer/Manipulacion de planos/PlaneManipulation/DataCenter"]
-margin_left = 21.0
-margin_right = 548.0
-margin_bottom = 64.0
-custom_constants/hseparation = 30
+layout_mode = 2
+theme_override_constants/h_separation = 30
 columns = 4
 
 [node name="ModusL" type="Label" parent="CenterContainer/VScrollContainer/Center/Sheet/CharData/TabContainer/Manipulacion de planos/PlaneManipulation/DataCenter/Data"]
-margin_top = 4.0
-margin_right = 55.0
-margin_bottom = 26.0
+layout_mode = 2
 text = "Modo: "
 
 [node name="Modus" type="LineEdit" parent="CenterContainer/VScrollContainer/Center/Sheet/CharData/TabContainer/Manipulacion de planos/PlaneManipulation/DataCenter/Data"]
-margin_left = 85.0
-margin_right = 235.0
-margin_bottom = 30.0
-rect_min_size = Vector2( 150, 30 )
+custom_minimum_size = Vector2(150, 30)
+layout_mode = 2
 focus_mode = 0
 editable = false
 caret_blink = true
-caret_blink_speed = 0.5
+caret_blink_interval = 0.5
 
 [node name="AspectL" type="Label" parent="CenterContainer/VScrollContainer/Center/Sheet/CharData/TabContainer/Manipulacion de planos/PlaneManipulation/DataCenter/Data"]
-margin_left = 265.0
-margin_top = 4.0
-margin_right = 347.0
-margin_bottom = 26.0
+layout_mode = 2
 text = "Aspectos:"
 
 [node name="Aspect1" type="LineEdit" parent="CenterContainer/VScrollContainer/Center/Sheet/CharData/TabContainer/Manipulacion de planos/PlaneManipulation/DataCenter/Data"]
-margin_left = 377.0
-margin_right = 527.0
-margin_bottom = 30.0
-rect_min_size = Vector2( 150, 30 )
+custom_minimum_size = Vector2(150, 30)
+layout_mode = 2
 focus_mode = 0
 editable = false
 caret_blink = true
-caret_blink_speed = 0.5
+caret_blink_interval = 0.5
 
 [node name="ViaL" type="Label" parent="CenterContainer/VScrollContainer/Center/Sheet/CharData/TabContainer/Manipulacion de planos/PlaneManipulation/DataCenter/Data"]
-margin_top = 38.0
-margin_right = 55.0
-margin_bottom = 60.0
+layout_mode = 2
 text = "Via:"
 
 [node name="Via" type="LineEdit" parent="CenterContainer/VScrollContainer/Center/Sheet/CharData/TabContainer/Manipulacion de planos/PlaneManipulation/DataCenter/Data"]
-margin_left = 85.0
-margin_top = 34.0
-margin_right = 235.0
-margin_bottom = 64.0
-rect_min_size = Vector2( 150, 30 )
+custom_minimum_size = Vector2(150, 30)
+layout_mode = 2
 focus_mode = 0
 editable = false
 caret_blink = true
-caret_blink_speed = 0.5
+caret_blink_interval = 0.5
 
 [node name="Blank" type="Label" parent="CenterContainer/VScrollContainer/Center/Sheet/CharData/TabContainer/Manipulacion de planos/PlaneManipulation/DataCenter/Data"]
-margin_left = 265.0
-margin_top = 38.0
-margin_right = 347.0
-margin_bottom = 60.0
+layout_mode = 2
 
 [node name="Aspect2" type="LineEdit" parent="CenterContainer/VScrollContainer/Center/Sheet/CharData/TabContainer/Manipulacion de planos/PlaneManipulation/DataCenter/Data"]
-margin_left = 377.0
-margin_top = 34.0
-margin_right = 527.0
-margin_bottom = 64.0
-rect_min_size = Vector2( 150, 30 )
+custom_minimum_size = Vector2(150, 30)
+layout_mode = 2
 focus_mode = 0
 editable = false
 caret_blink = true
-caret_blink_speed = 0.5
+caret_blink_interval = 0.5
 
 [node name="HSeparator4" type="HSeparator" parent="CenterContainer/VScrollContainer/Center/Sheet/CharData/TabContainer/Manipulacion de planos/PlaneManipulation"]
-margin_top = 147.0
-margin_right = 570.0
-margin_bottom = 167.0
-custom_styles/separator = SubResource( 5 )
-custom_constants/separation = 20
+layout_mode = 2
+theme_override_constants/separation = 20
+theme_override_styles/separator = SubResource("5")
 
 [node name="CenterContainer" type="CenterContainer" parent="CenterContainer/VScrollContainer/Center/Sheet/CharData/TabContainer/Manipulacion de planos/PlaneManipulation"]
-margin_top = 175.0
-margin_right = 570.0
-margin_bottom = 271.0
+layout_mode = 2
 
 [node name="HBoxContainer" type="HBoxContainer" parent="CenterContainer/VScrollContainer/Center/Sheet/CharData/TabContainer/Manipulacion de planos/PlaneManipulation/CenterContainer"]
-margin_left = 86.0
-margin_right = 483.0
-margin_bottom = 96.0
-custom_constants/separation = 50
+layout_mode = 2
+theme_override_constants/separation = 50
 alignment = 1
 
-[node name="Journey" parent="CenterContainer/VScrollContainer/Center/Sheet/CharData/TabContainer/Manipulacion de planos/PlaneManipulation/CenterContainer/HBoxContainer" instance=ExtResource( 12 )]
-margin_right = 158.0
-margin_bottom = 96.0
+[node name="Journey" parent="CenterContainer/VScrollContainer/Center/Sheet/CharData/TabContainer/Manipulacion de planos/PlaneManipulation/CenterContainer/HBoxContainer" instance=ExtResource("12")]
+layout_mode = 2
 ability_name = "Viaje"
 
-[node name="Coherencia" parent="CenterContainer/VScrollContainer/Center/Sheet/CharData/TabContainer/Manipulacion de planos/PlaneManipulation/CenterContainer/HBoxContainer" groups=[
-"features",
-] instance=ExtResource( 8 )]
-margin_left = 208.0
-margin_right = 397.0
-margin_bottom = 96.0
+[node name="Coherencia" parent="CenterContainer/VScrollContainer/Center/Sheet/CharData/TabContainer/Manipulacion de planos/PlaneManipulation/CenterContainer/HBoxContainer" groups=["features"] instance=ExtResource("8")]
+layout_mode = 2
 status_name = "Coherencia"
 
 [node name="HSeparator2" type="HSeparator" parent="CenterContainer/VScrollContainer/Center/Sheet/CharData/TabContainer/Manipulacion de planos/PlaneManipulation"]
-margin_top = 279.0
-margin_right = 570.0
-margin_bottom = 283.0
-custom_styles/separator = ExtResource( 9 )
+layout_mode = 2
+theme_override_styles/separator = ExtResource("9")
 
 [node name="AccessCenter" type="CenterContainer" parent="CenterContainer/VScrollContainer/Center/Sheet/CharData/TabContainer/Manipulacion de planos/PlaneManipulation"]
-margin_top = 291.0
-margin_right = 570.0
-margin_bottom = 419.0
+layout_mode = 2
 
 [node name="Access" type="GridContainer" parent="CenterContainer/VScrollContainer/Center/Sheet/CharData/TabContainer/Manipulacion de planos/PlaneManipulation/AccessCenter"]
-margin_left = 68.0
-margin_right = 502.0
-margin_bottom = 128.0
-custom_constants/vseparation = -5
-custom_constants/hseparation = -20
+layout_mode = 2
+theme_override_constants/h_separation = -20
+theme_override_constants/v_separation = -5
 columns = 3
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="Blank" type="Label" parent="CenterContainer/VScrollContainer/Center/Sheet/CharData/TabContainer/Manipulacion de planos/PlaneManipulation/AccessCenter/Access"]
-margin_top = 12.0
-margin_right = 158.0
-margin_bottom = 34.0
+layout_mode = 2
 
-[node name="Ego" parent="CenterContainer/VScrollContainer/Center/Sheet/CharData/TabContainer/Manipulacion de planos/PlaneManipulation/AccessCenter/Access" instance=ExtResource( 12 )]
-margin_left = 138.0
-margin_right = 296.0
-margin_bottom = 46.0
+[node name="Ego" parent="CenterContainer/VScrollContainer/Center/Sheet/CharData/TabContainer/Manipulacion de planos/PlaneManipulation/AccessCenter/Access" instance=ExtResource("12")]
+layout_mode = 2
 ability_name = "Ego"
 
 [node name="Blank2" type="Label" parent="CenterContainer/VScrollContainer/Center/Sheet/CharData/TabContainer/Manipulacion de planos/PlaneManipulation/AccessCenter/Access"]
-margin_left = 276.0
-margin_top = 12.0
-margin_right = 434.0
-margin_bottom = 34.0
+layout_mode = 2
 
-[node name="Scientia" parent="CenterContainer/VScrollContainer/Center/Sheet/CharData/TabContainer/Manipulacion de planos/PlaneManipulation/AccessCenter/Access" instance=ExtResource( 12 )]
-margin_top = 41.0
-margin_right = 158.0
-margin_bottom = 87.0
+[node name="Scientia" parent="CenterContainer/VScrollContainer/Center/Sheet/CharData/TabContainer/Manipulacion de planos/PlaneManipulation/AccessCenter/Access" instance=ExtResource("12")]
+layout_mode = 2
 ability_name = "Scientia"
 
 [node name="AccessL" type="Label" parent="CenterContainer/VScrollContainer/Center/Sheet/CharData/TabContainer/Manipulacion de planos/PlaneManipulation/AccessCenter/Access"]
-margin_left = 138.0
-margin_top = 51.0
-margin_right = 296.0
-margin_bottom = 77.0
-custom_fonts/font = ExtResource( 11 )
+layout_mode = 2
+theme_override_fonts/font = ExtResource("11")
 text = "Accesos"
-align = 1
 
-[node name="Opus" parent="CenterContainer/VScrollContainer/Center/Sheet/CharData/TabContainer/Manipulacion de planos/PlaneManipulation/AccessCenter/Access" instance=ExtResource( 12 )]
-margin_left = 276.0
-margin_top = 41.0
-margin_right = 434.0
-margin_bottom = 87.0
+[node name="Opus" parent="CenterContainer/VScrollContainer/Center/Sheet/CharData/TabContainer/Manipulacion de planos/PlaneManipulation/AccessCenter/Access" instance=ExtResource("12")]
+layout_mode = 2
 ability_name = "Opus"
 
 [node name="Blank4" type="Label" parent="CenterContainer/VScrollContainer/Center/Sheet/CharData/TabContainer/Manipulacion de planos/PlaneManipulation/AccessCenter/Access"]
-margin_top = 94.0
-margin_right = 158.0
-margin_bottom = 116.0
+layout_mode = 2
 
-[node name="Quod" parent="CenterContainer/VScrollContainer/Center/Sheet/CharData/TabContainer/Manipulacion de planos/PlaneManipulation/AccessCenter/Access" instance=ExtResource( 12 )]
-margin_left = 138.0
-margin_top = 82.0
-margin_right = 296.0
-margin_bottom = 128.0
+[node name="Quod" parent="CenterContainer/VScrollContainer/Center/Sheet/CharData/TabContainer/Manipulacion de planos/PlaneManipulation/AccessCenter/Access" instance=ExtResource("12")]
+layout_mode = 2
 ability_name = "Quod"
 
 [node name="Blank5" type="Label" parent="CenterContainer/VScrollContainer/Center/Sheet/CharData/TabContainer/Manipulacion de planos/PlaneManipulation/AccessCenter/Access"]
-margin_left = 276.0
-margin_top = 94.0
-margin_right = 434.0
-margin_bottom = 116.0
+layout_mode = 2
 
 [node name="HSeparator3" type="HSeparator" parent="CenterContainer/VScrollContainer/Center/Sheet/CharData/TabContainer/Manipulacion de planos/PlaneManipulation"]
-margin_top = 427.0
-margin_right = 570.0
-margin_bottom = 431.0
-custom_styles/separator = ExtResource( 9 )
+layout_mode = 2
+theme_override_styles/separator = ExtResource("9")
 
 [node name="ArtesL" type="Label" parent="CenterContainer/VScrollContainer/Center/Sheet/CharData/TabContainer/Manipulacion de planos/PlaneManipulation"]
-margin_top = 439.0
-margin_right = 570.0
-margin_bottom = 465.0
-custom_fonts/font = ExtResource( 11 )
+layout_mode = 2
+theme_override_fonts/font = ExtResource("11")
 text = "Artes"
-align = 1
 
 [node name="ArtesCenter" type="CenterContainer" parent="CenterContainer/VScrollContainer/Center/Sheet/CharData/TabContainer/Manipulacion de planos/PlaneManipulation"]
-margin_top = 473.0
-margin_right = 570.0
-margin_bottom = 473.0
+layout_mode = 2
 
 [node name="Artes" type="GridContainer" parent="CenterContainer/VScrollContainer/Center/Sheet/CharData/TabContainer/Manipulacion de planos/PlaneManipulation/ArtesCenter"]
-margin_left = 285.0
-margin_right = 285.0
-custom_constants/vseparation = 10
-custom_constants/hseparation = 20
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_constants/h_separation = 20
+theme_override_constants/v_separation = 10
 columns = 2
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="Info" type="NinePatchRect" parent="CenterContainer/VScrollContainer/Center/Sheet/CharData/TabContainer"]
 visible = false
-anchor_right = 1.0
-anchor_bottom = 1.0
-margin_top = 32.0
-rect_min_size = Vector2( 0, 480 )
-texture = ExtResource( 15 )
-region_rect = Rect2( 6.71851, 3.13211, 290.465, 291.186 )
+custom_minimum_size = Vector2(0, 480)
+layout_mode = 2
+texture = ExtResource("15")
+region_rect = Rect2(6.71851, 3.13211, 290.465, 291.186)
 patch_margin_left = 230
 patch_margin_top = 64
 patch_margin_right = 239
 patch_margin_bottom = 57
 
 [node name="MarginContainer" type="MarginContainer" parent="CenterContainer/VScrollContainer/Center/Sheet/CharData/TabContainer/Info"]
+layout_mode = 0
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_right = 6.10352e-05
-margin_bottom = -100.0
-custom_constants/margin_top = 20
-custom_constants/margin_left = 30
-__meta__ = {
-"_edit_use_anchors_": false
-}
+offset_right = 6.10352e-05
+offset_bottom = -100.0
+theme_override_constants/margin_left = 30
+theme_override_constants/margin_top = 20
 
 [node name="Info" type="GridContainer" parent="CenterContainer/VScrollContainer/Center/Sheet/CharData/TabContainer/Info/MarginContainer"]
-margin_left = 30.0
-margin_top = 20.0
-margin_right = 570.0
-margin_bottom = 900.0
-custom_constants/hseparation = 20
+layout_mode = 2
+theme_override_constants/h_separation = 20
 columns = 2
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="Blank2" type="Control" parent="CenterContainer/VScrollContainer/Center/Sheet/CharData/TabContainer/Info/MarginContainer/Info"]
-margin_right = 250.0
-margin_bottom = 50.0
-rect_min_size = Vector2( 0, 50 )
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
 
 [node name="Blank3" type="Control" parent="CenterContainer/VScrollContainer/Center/Sheet/CharData/TabContainer/Info/MarginContainer/Info"]
-margin_left = 270.0
-margin_right = 520.0
-margin_bottom = 50.0
+layout_mode = 2
 
 [node name="SpeciesBox" type="HBoxContainer" parent="CenterContainer/VScrollContainer/Center/Sheet/CharData/TabContainer/Info/MarginContainer/Info"]
-margin_top = 54.0
-margin_right = 250.0
-margin_bottom = 76.0
+layout_mode = 2
 alignment = 2
 
 [node name="SpeciesL" type="Label" parent="CenterContainer/VScrollContainer/Center/Sheet/CharData/TabContainer/Info/MarginContainer/Info/SpeciesBox"]
-margin_right = 96.0
-margin_bottom = 22.0
+layout_mode = 2
 size_flags_horizontal = 3
 text = "Especie: "
 
-[node name="Species" type="LineEdit" parent="CenterContainer/VScrollContainer/Center/Sheet/CharData/TabContainer/Info/MarginContainer/Info/SpeciesBox" groups=[
-"editable_lineedits",
-]]
-margin_left = 100.0
-margin_right = 250.0
-margin_bottom = 22.0
-rect_min_size = Vector2( 150, 0 )
+[node name="Species" type="LineEdit" parent="CenterContainer/VScrollContainer/Center/Sheet/CharData/TabContainer/Info/MarginContainer/Info/SpeciesBox" groups=["editable_lineedits"]]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(150, 0)
+layout_mode = 2
 focus_mode = 0
-align = 1
 editable = false
 caret_blink = true
-caret_blink_speed = 0.5
-__meta__ = {
-"_edit_use_anchors_": false
-}
+caret_blink_interval = 0.5
 
 [node name="AgeBox" type="HBoxContainer" parent="CenterContainer/VScrollContainer/Center/Sheet/CharData/TabContainer/Info/MarginContainer/Info"]
-margin_left = 270.0
-margin_top = 54.0
-margin_right = 520.0
-margin_bottom = 76.0
+layout_mode = 2
 alignment = 2
 
 [node name="AgeL" type="Label" parent="CenterContainer/VScrollContainer/Center/Sheet/CharData/TabContainer/Info/MarginContainer/Info/AgeBox"]
-margin_right = 96.0
-margin_bottom = 22.0
+layout_mode = 2
 size_flags_horizontal = 3
 text = "Edad: "
 
-[node name="Age" type="LineEdit" parent="CenterContainer/VScrollContainer/Center/Sheet/CharData/TabContainer/Info/MarginContainer/Info/AgeBox" groups=[
-"editable_lineedits",
-]]
-margin_left = 100.0
-margin_right = 250.0
-margin_bottom = 22.0
-rect_min_size = Vector2( 150, 0 )
+[node name="Age" type="LineEdit" parent="CenterContainer/VScrollContainer/Center/Sheet/CharData/TabContainer/Info/MarginContainer/Info/AgeBox" groups=["editable_lineedits"]]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(150, 0)
+layout_mode = 2
 focus_mode = 0
-align = 1
 editable = false
 caret_blink = true
-caret_blink_speed = 0.5
-__meta__ = {
-"_edit_use_anchors_": false
-}
+caret_blink_interval = 0.5
 
 [node name="JobBox" type="HBoxContainer" parent="CenterContainer/VScrollContainer/Center/Sheet/CharData/TabContainer/Info/MarginContainer/Info"]
-margin_top = 80.0
-margin_right = 250.0
-margin_bottom = 102.0
+layout_mode = 2
 alignment = 2
 
 [node name="JobL" type="Label" parent="CenterContainer/VScrollContainer/Center/Sheet/CharData/TabContainer/Info/MarginContainer/Info/JobBox"]
-margin_right = 96.0
-margin_bottom = 22.0
+layout_mode = 2
 size_flags_horizontal = 3
 text = "Profesion: "
 
-[node name="Job" type="LineEdit" parent="CenterContainer/VScrollContainer/Center/Sheet/CharData/TabContainer/Info/MarginContainer/Info/JobBox" groups=[
-"editable_lineedits",
-]]
-margin_left = 100.0
-margin_right = 250.0
-margin_bottom = 22.0
-rect_min_size = Vector2( 150, 0 )
+[node name="Job" type="LineEdit" parent="CenterContainer/VScrollContainer/Center/Sheet/CharData/TabContainer/Info/MarginContainer/Info/JobBox" groups=["editable_lineedits"]]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(150, 0)
+layout_mode = 2
 focus_mode = 0
-align = 1
 editable = false
 caret_blink = true
-caret_blink_speed = 0.5
-__meta__ = {
-"_edit_use_anchors_": false
-}
+caret_blink_interval = 0.5
 
 [node name="Blank" type="Control" parent="CenterContainer/VScrollContainer/Center/Sheet/CharData/TabContainer/Info/MarginContainer/Info"]
-margin_left = 270.0
-margin_top = 80.0
-margin_right = 520.0
-margin_bottom = 102.0
+layout_mode = 2
 
 [node name="XPBox" type="HBoxContainer" parent="CenterContainer/VScrollContainer/Center/Sheet/CharData/TabContainer/Info/MarginContainer/Info"]
-margin_top = 106.0
-margin_right = 250.0
-margin_bottom = 136.0
+layout_mode = 2
 alignment = 2
 
 [node name="XPL" type="Label" parent="CenterContainer/VScrollContainer/Center/Sheet/CharData/TabContainer/Info/MarginContainer/Info/XPBox"]
-margin_top = 4.0
-margin_right = 96.0
-margin_bottom = 26.0
+layout_mode = 2
 size_flags_horizontal = 3
 text = "XP: "
 
 [node name="XP" type="LineEdit" parent="CenterContainer/VScrollContainer/Center/Sheet/CharData/TabContainer/Info/MarginContainer/Info/XPBox"]
-margin_left = 100.0
-margin_right = 250.0
-margin_bottom = 30.0
-rect_min_size = Vector2( 150, 30 )
-align = 1
+unique_name_in_owner = true
+custom_minimum_size = Vector2(150, 30)
+layout_mode = 2
 caret_blink = true
-caret_blink_speed = 0.5
+caret_blink_interval = 0.5
 
 [node name="EPBox" type="HBoxContainer" parent="CenterContainer/VScrollContainer/Center/Sheet/CharData/TabContainer/Info/MarginContainer/Info"]
-margin_left = 270.0
-margin_top = 106.0
-margin_right = 520.0
-margin_bottom = 136.0
+layout_mode = 2
 alignment = 2
 
 [node name="EPL" type="Label" parent="CenterContainer/VScrollContainer/Center/Sheet/CharData/TabContainer/Info/MarginContainer/Info/EPBox"]
-margin_top = 4.0
-margin_right = 96.0
-margin_bottom = 26.0
+layout_mode = 2
 size_flags_horizontal = 3
 text = "EP: "
 
 [node name="EP" type="LineEdit" parent="CenterContainer/VScrollContainer/Center/Sheet/CharData/TabContainer/Info/MarginContainer/Info/EPBox"]
-margin_left = 100.0
-margin_right = 250.0
-margin_bottom = 30.0
-rect_min_size = Vector2( 150, 30 )
-align = 1
+unique_name_in_owner = true
+custom_minimum_size = Vector2(150, 30)
+layout_mode = 2
 caret_blink = true
-caret_blink_speed = 0.5
+caret_blink_interval = 0.5
 
 [node name="Blank4" type="Control" parent="CenterContainer/VScrollContainer/Center/Sheet/CharData/TabContainer/Info/MarginContainer/Info"]
-margin_top = 140.0
-margin_right = 250.0
-margin_bottom = 160.0
-rect_min_size = Vector2( 0, 20 )
+custom_minimum_size = Vector2(0, 20)
+layout_mode = 2
 
 [node name="Blank5" type="Control" parent="CenterContainer/VScrollContainer/Center/Sheet/CharData/TabContainer/Info/MarginContainer/Info"]
-margin_left = 270.0
-margin_top = 140.0
-margin_right = 520.0
-margin_bottom = 160.0
+layout_mode = 2
 
 [node name="RasgosL" type="Label" parent="CenterContainer/VScrollContainer/Center/Sheet/CharData/TabContainer/Info/MarginContainer/Info"]
-margin_top = 164.0
-margin_right = 250.0
-margin_bottom = 186.0
+layout_mode = 2
 text = "Rasgos: "
 
 [node name="PersonalidadL" type="Label" parent="CenterContainer/VScrollContainer/Center/Sheet/CharData/TabContainer/Info/MarginContainer/Info"]
-margin_left = 270.0
-margin_top = 164.0
-margin_right = 520.0
-margin_bottom = 186.0
+layout_mode = 2
 text = "Personalidad: "
 
-[node name="Looks" type="TextEdit" parent="CenterContainer/VScrollContainer/Center/Sheet/CharData/TabContainer/Info/MarginContainer/Info" groups=[
-"editable_textedits",
-]]
-margin_top = 190.0
-margin_right = 250.0
-margin_bottom = 280.0
-rect_min_size = Vector2( 250, 90 )
+[node name="Looks" type="TextEdit" parent="CenterContainer/VScrollContainer/Center/Sheet/CharData/TabContainer/Info/MarginContainer/Info" groups=["editable_textedits"]]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(250, 90)
+layout_mode = 2
 focus_mode = 0
-readonly = true
-wrap_enabled = true
 
-[node name="Personality" type="TextEdit" parent="CenterContainer/VScrollContainer/Center/Sheet/CharData/TabContainer/Info/MarginContainer/Info" groups=[
-"editable_textedits",
-]]
-margin_left = 270.0
-margin_top = 190.0
-margin_right = 520.0
-margin_bottom = 280.0
-rect_min_size = Vector2( 250, 90 )
+[node name="Personality" type="TextEdit" parent="CenterContainer/VScrollContainer/Center/Sheet/CharData/TabContainer/Info/MarginContainer/Info" groups=["editable_textedits"]]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(250, 90)
+layout_mode = 2
 focus_mode = 0
-readonly = true
-wrap_enabled = true
 
 [node name="PasadoL" type="Label" parent="CenterContainer/VScrollContainer/Center/Sheet/CharData/TabContainer/Info/MarginContainer/Info"]
-margin_top = 284.0
-margin_right = 250.0
-margin_bottom = 306.0
+layout_mode = 2
 text = "Pasado: "
 
 [node name="MotivacionL" type="Label" parent="CenterContainer/VScrollContainer/Center/Sheet/CharData/TabContainer/Info/MarginContainer/Info"]
-margin_left = 270.0
-margin_top = 284.0
-margin_right = 520.0
-margin_bottom = 306.0
+layout_mode = 2
 text = "Motivación:"
 
-[node name="Past" type="TextEdit" parent="CenterContainer/VScrollContainer/Center/Sheet/CharData/TabContainer/Info/MarginContainer/Info" groups=[
-"editable_textedits",
-]]
-margin_top = 310.0
-margin_right = 250.0
-margin_bottom = 400.0
-rect_min_size = Vector2( 250, 90 )
+[node name="Past" type="TextEdit" parent="CenterContainer/VScrollContainer/Center/Sheet/CharData/TabContainer/Info/MarginContainer/Info" groups=["editable_textedits"]]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(250, 90)
+layout_mode = 2
 focus_mode = 0
-readonly = true
-wrap_enabled = true
 
-[node name="Motivation" type="TextEdit" parent="CenterContainer/VScrollContainer/Center/Sheet/CharData/TabContainer/Info/MarginContainer/Info" groups=[
-"editable_textedits",
-]]
-margin_left = 270.0
-margin_top = 310.0
-margin_right = 520.0
-margin_bottom = 400.0
-rect_min_size = Vector2( 250, 90 )
+[node name="Motivation" type="TextEdit" parent="CenterContainer/VScrollContainer/Center/Sheet/CharData/TabContainer/Info/MarginContainer/Info" groups=["editable_textedits"]]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(250, 90)
+layout_mode = 2
 focus_mode = 0
-readonly = true
-wrap_enabled = true
 
 [node name="HSeparator" type="HSeparator" parent="CenterContainer/VScrollContainer/Center/Sheet"]
-margin_top = 1438.0
-margin_right = 850.0
-margin_bottom = 1488.0
-custom_styles/separator = SubResource( 6 )
-custom_constants/separation = 50
+layout_mode = 2
+theme_override_constants/separation = 50
+theme_override_styles/separator = SubResource("6")
 
 [node name="Tools" type="VBoxContainer" parent="."]
+layout_mode = 0
 anchor_left = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = -100.0
-custom_constants/separation = 20
+offset_left = -100.0
+theme_override_constants/separation = 20
 alignment = 1
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="HSeparator" type="HSeparator" parent="Tools"]
-margin_right = 100.0
-margin_bottom = 344.0
+layout_mode = 2
 size_flags_vertical = 3
-custom_styles/separator = SubResource( 7 )
+theme_override_styles/separator = SubResource("7")
 
 [node name="ChangeLayout" type="Button" parent="Tools"]
-margin_top = 364.0
-margin_right = 100.0
-margin_bottom = 392.0
-rect_min_size = Vector2( 70, 0 )
+custom_minimum_size = Vector2(70, 0)
+layout_mode = 2
 size_flags_vertical = 4
-custom_colors/font_color = Color( 0.643137, 0.643137, 0.643137, 1 )
-custom_colors/font_color_hover = Color( 0.537255, 0.537255, 0.537255, 1 )
-custom_colors/font_color_pressed = Color( 1, 1, 1, 1 )
+theme_override_colors/font_color = Color(0.643137, 0.643137, 0.643137, 1)
+theme_override_colors/font_pressed_color = Color(1, 1, 1, 1)
+theme_override_colors/font_hover_color = Color(0.537255, 0.537255, 0.537255, 1)
 text = "Interfaz"
 flat = true
 
 [node name="EditL" type="Label" parent="Tools"]
-margin_top = 412.0
-margin_right = 100.0
-margin_bottom = 434.0
+layout_mode = 2
 text = "Editar"
-align = 1
 
 [node name="EditCheck" type="CheckButton" parent="Tools"]
-margin_top = 454.0
-margin_right = 100.0
-margin_bottom = 494.0
+layout_mode = 2
 
 [node name="AutosaveL" type="Label" parent="Tools"]
-margin_top = 514.0
-margin_right = 100.0
-margin_bottom = 536.0
+layout_mode = 2
 text = "Autosave"
-align = 1
 
 [node name="AutosaveCheck" type="CheckButton" parent="Tools"]
-margin_top = 556.0
-margin_right = 100.0
-margin_bottom = 596.0
-pressed = true
+layout_mode = 2
 
 [node name="CPUParticles2D" type="CPUParticles2D" parent="Tools/AutosaveCheck"]
 emitting = false
@@ -1181,55 +810,44 @@ one_shot = true
 emission_shape = 1
 emission_sphere_radius = 10.0
 spread = 180.0
-gravity = Vector2( 0, 0 )
-initial_velocity = 30.0
-initial_velocity_random = 0.5
-tangential_accel = 20.0
-tangential_accel_random = 1.0
-scale_amount = 2.0
-color = Color( 0.690196, 0.607843, 0, 1 )
+gravity = Vector2(0, 0)
+color = Color(0.690196, 0.607843, 0, 1)
 
 [node name="HSeparator2" type="HSeparator" parent="Tools"]
-margin_top = 616.0
-margin_right = 100.0
-margin_bottom = 960.0
+layout_mode = 2
 size_flags_vertical = 3
-custom_styles/separator = SubResource( 7 )
+theme_override_styles/separator = SubResource("7")
 
 [node name="Delete" type="Button" parent="Tools"]
-margin_top = 980.0
-margin_right = 100.0
-margin_bottom = 1008.0
-rect_min_size = Vector2( 70, 0 )
+custom_minimum_size = Vector2(70, 0)
+layout_mode = 2
 size_flags_vertical = 4
-custom_colors/font_color = Color( 0.643137, 0.643137, 0.643137, 1 )
-custom_colors/font_color_hover = Color( 0.537255, 0.537255, 0.537255, 1 )
-custom_colors/font_color_pressed = Color( 1, 1, 1, 1 )
+theme_override_colors/font_color = Color(0.643137, 0.643137, 0.643137, 1)
+theme_override_colors/font_pressed_color = Color(1, 1, 1, 1)
+theme_override_colors/font_hover_color = Color(0.537255, 0.537255, 0.537255, 1)
 text = "Borrar"
 flat = true
 
 [node name="Exit" type="Button" parent="Tools"]
-margin_top = 1028.0
-margin_right = 100.0
-margin_bottom = 1056.0
-rect_min_size = Vector2( 70, 0 )
+custom_minimum_size = Vector2(70, 0)
+layout_mode = 2
 size_flags_vertical = 4
-custom_colors/font_color = Color( 0.643137, 0.643137, 0.643137, 1 )
-custom_colors/font_color_hover = Color( 0.537255, 0.537255, 0.537255, 1 )
-custom_colors/font_color_pressed = Color( 1, 1, 1, 1 )
-shortcut = ExtResource( 13 )
+theme_override_colors/font_color = Color(0.643137, 0.643137, 0.643137, 1)
+theme_override_colors/font_pressed_color = Color(1, 1, 1, 1)
+theme_override_colors/font_hover_color = Color(0.537255, 0.537255, 0.537255, 1)
+shortcut = ExtResource("13")
 text = "Salir"
 flat = true
 
 [node name="HSeparator4" type="HSeparator" parent="Tools"]
-margin_top = 1076.0
-margin_right = 100.0
-margin_bottom = 1080.0
-custom_styles/separator = SubResource( 7 )
+layout_mode = 2
+theme_override_styles/separator = SubResource("7")
 
-[node name="ArtesReference" parent="." instance=ExtResource( 28 )]
+[node name="ArtesReference" parent="." instance=ExtResource("28")]
 
-[node name="Inventory" parent="." instance=ExtResource( 29 )]
+[node name="Inventory" parent="." instance=ExtResource("29")]
+unique_name_in_owner = true
+
 [connection signal="timeout" from="Autosave" to="." method="autosave"]
 [connection signal="pressed" from="CenterContainer/VScrollContainer/Center/Pivot/CenterContainer/ConfirmationPopup/VBoxContainer/ConfirmButtons/Aceptar" to="." method="_on_Confirmation_pressed"]
 [connection signal="gui_input" from="CenterContainer/VScrollContainer/Center/Sheet/Envelope/Logo" to="." method="_on_Logo_gui_input"]

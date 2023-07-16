@@ -3,7 +3,7 @@ extends Control
 func mark():
 	$Marked.show()
 
-func empty():
+func is_empty():
 	$Marked.hide()
 
 func is_marked():

@@ -1,12 +1,12 @@
 extends Popup
 
-onready var item_inventory = find_node("Items")
-onready var weapon_inventory = find_node("Weapons")
+@onready var item_inventory = find_child("Items")
+@onready var weapon_inventory = find_child("Weapons")
 
-onready var weapon_choice = find_node("AddWeaponChoice")
+@onready var weapon_choice = find_child("AddWeaponChoice")
 
-onready var item_card = find_node("ItemCard")
-onready var weapon_card = find_node("WeaponCard")
+@onready var item_card = find_child("ItemCard")
+@onready var weapon_card = find_child("WeaponCard")
 
 var owned_items = {}
 var owned_weapons = {}
@@ -54,13 +54,13 @@ func make_weapon_string(weapon_class, weapon_name):
 
 
 func paint_item_card(item_name, item_description):
-	item_card.find_node("ItemName").text = item_name
-	item_card.find_node("ItemDescription").text = item_description
+	item_card.find_child("ItemName").text = item_name
+	item_card.find_child("ItemDescription").text = item_description
 
 
 func _on_AddItemButton_pressed():
-	var item_line_edit = find_node("AddItemEdit")
-	var item_description_edit = find_node("AddItemDescription")
+	var item_line_edit = find_child("AddItemEdit")
+	var item_description_edit = find_child("AddItemDescription")
 	item_inventory.add_item(item_line_edit.text)
 	owned_items[item_line_edit.text] = item_description_edit.text
 	item_line_edit.text = ""

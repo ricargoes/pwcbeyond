@@ -4,7 +4,7 @@ func _ready():
 	hide()
 
 func send_warning(message):
-	$MarginMessage/Message.text = message
+	%Message.text = message
 	show()
 	$Fade.start()
 

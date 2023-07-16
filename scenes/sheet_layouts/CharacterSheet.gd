@@ -11,13 +11,6 @@ var sheet_layouts = {
 }
 
 var character = null
-onready var roll_tool = find_node("RollTool")
-onready var inventory = find_node("Inventory")
-
-onready var atributes_panel = find_node("Atributes")
-onready var skills_panel = find_node("Skills")
-onready var plane_manipulation_panel = find_node("PlaneManipulation")
-onready var artes_node = find_node("Artes")
 
 var vigor
 var voluntad
@@ -25,39 +18,25 @@ var coherencia
 var salud
 var cordura
 
-onready var player_tb = find_node("Player")
-onready var chronicle_tb = find_node("Chronicle")
-onready var name_tb = find_node("Name")
-onready var job_tb = find_node("Job")
-onready var species_tb = find_node("Species")
-onready var age_tb = find_node("Age")
-onready var xp_tb = find_node("XP")
-onready var ep_tb = find_node("EP")
-onready var looks_tb = find_node("Looks")
-onready var personality_tb = find_node("Personality")
-onready var past_tb = find_node("Past")
-onready var motivation_tb = find_node("Motivation")
-
-
 func _ready():
 	if not character:
 		character = GameInfo.load_character()
-	salud = find_node("Salud")
-	cordura = find_node("Cordura")
-	vigor = find_node("Vigor")
-	voluntad = find_node("Voluntad")
-	coherencia = find_node("Coherencia")
-	vigor.connect("effort", character, "effort", ["físicos"])
-	voluntad.connect("effort", character, "effort", ["mentales"])
-	coherencia.connect("effort", character, "effort", ["plane_manipulation"])
-	character.connect("effort_spended", vigor, "unlock_efforts")
-	character.connect("effort_spended", voluntad, "unlock_efforts")
-	character.connect("effort_spended", coherencia, "unlock_efforts")
-	roll_tool.set_roller(character)
-	roll_tool.set_health(salud)
-	roll_tool.set_tireness("físicos", vigor)
-	roll_tool.set_tireness("mentales", voluntad)
-	roll_tool.set_tireness("plane_manipulation", coherencia)
+	salud = find_child("Salud")
+	cordura = find_child("Cordura")
+	vigor = find_child("Vigor")
+	voluntad = find_child("Voluntad")
+	coherencia = find_child("Coherencia")
+	vigor.connect("effort", Callable(character, "effort").bind("físicos"))
+	voluntad.connect("effort", Callable(character, "effort").bind("mentales"))
+	coherencia.connect("effort", Callable(character, "effort").bind("plane_manipulation"))
+	character.connect("effort_spended", Callable(vigor, "unlock_efforts"))
+	character.connect("effort_spended", Callable(voluntad, "unlock_efforts"))
+	character.connect("effort_spended", Callable(coherencia, "unlock_efforts"))
+	%RollTool.set_roller(character)
+	%RollTool.set_health(salud)
+	%RollTool.set_tireness("físicos", vigor)
+	%RollTool.set_tireness("mentales", voluntad)
+	%RollTool.set_tireness("plane_manipulation", coherencia)
 	build_sheet()
 
 func build_sheet():
@@ -72,13 +51,13 @@ func build_sheet():
 
 
 func clean():
-	Helper.remove_children(atributes_panel)
-	Helper.remove_children(skills_panel)
-	Helper.remove_children(artes_node)
+	Helper.remove_children(%Atributes)
+	Helper.remove_children(%Skills)
+	Helper.remove_children(%Artes)
 
 
 func autosave():
-	var autosave_check = find_node("AutosaveCheck")
+	var autosave_check = find_child("AutosaveCheck")
 	if autosave_check.pressed:
 		save_changes()
 		commit_changes()
@@ -110,71 +89,71 @@ func choose_logo():
 		preload("res://resources/logos/PWC-logo-top-tentacles.png")
 	]
 	var logo = possible_logos[randi() % possible_logos.size()]
-	find_node("Logo").texture = logo
+	find_child("Logo").texture = logo
 
 func paint_info():
-	player_tb.text = character.player_name
-	chronicle_tb.text = character.chronicle
-	name_tb.text = character.char_name
+	%Player.text = character.player_name
+	%Chronicle.text = character.chronicle
+	%Name.text = character.char_name
 	
-	job_tb.text = character.bio["job"]
-	species_tb.text = character.bio["species"]
-	age_tb.text = character.bio["age"]
+	%Job.text = character.bio["job"]
+	%Species.text = character.bio["species"]
+	%Age.text = character.bio["age"]
 	
-	xp_tb.text = character.status["xp"]
-	ep_tb.text = character.status["ep"]
+	%XP.text = character.status["xp"]
+	%EP.text = character.status["ep"]
 
-	looks_tb.text = character.bio["looks"]
-	personality_tb.text = character.bio["personality"]
-	past_tb.text = character.bio["past"]
-	motivation_tb.text = character.bio["motivation"]
+	%Looks.text = character.bio["looks"]
+	%Personality.text = character.bio["personality"]
+	%Past.text = character.bio["past"]
+	%Motivation.text = character.bio["motivation"]
 
 
 func paint_atributes():
 	var feature_type = "atributes"
-	Helper.build_ability_tree(feature_type, atributes_panel, character.atributes, false)
-	get_tree().call_group(feature_type, "connect", "clicked", roll_tool, "select_atribute")
+	Helper.build_ability_tree(feature_type, %Atributes, character.atributes, false)
+	get_tree().call_group(feature_type, "connect", "clicked", %RollTool.select_atribute)
 
 
 func paint_skills():
 	var feature_type = "skills"
-	Helper.build_ability_tree(feature_type, skills_panel, character.skills, false)
-	get_tree().call_group(feature_type, "connect", "clicked", roll_tool, "select_skill")
+	Helper.build_ability_tree(feature_type, %Skills, character.skills, false)
+	get_tree().call_group(feature_type, "connect", "clicked", %RollTool.select_skill)
 
 
 func paint_plane_manipulation():
 	var char_pm = character.plane_manipulation
 	
-	var modus = plane_manipulation_panel.find_node("Modus")
-	var via = plane_manipulation_panel.find_node("Via")
+	var modus = %PlaneManipulation.find_child("Modus")
+	var via = %PlaneManipulation.find_child("Via")
 	modus.text = char_pm["modus"]
 	via.text = char_pm["via"]
 	
 	var aspects = char_pm["aspects"]
 	for i in range(0, min(aspects.size(), 2)):
-		var aspect = plane_manipulation_panel.find_node("Aspect"+str(i+1))
+		var aspect = %PlaneManipulation.find_child("Aspect"+str(i+1))
 		aspect.text = aspects[i]
 	
-	var iter = plane_manipulation_panel.find_node("Journey")
+	var iter = %PlaneManipulation.find_child("Journey")
 	iter.set_level(char_pm["journey"], 0)
 	
 	var access = char_pm["access"]
 	for access_name in ["Ego", "Quod", "Scientia", "Opus"]:
-		var node = plane_manipulation_panel.find_node(access_name)
+		var node = %PlaneManipulation.find_child(access_name)
 		node.set_level(access[access_name.to_lower()], 0)
 		node.add_to_group("plane_manipulation")
 	
 	var artes = char_pm["artes"]
 	if artes.keys().size() > 4:
-		artes_node.columns = 3
-		artes_node.set("custom_constants/hseparation", -15)
+		%Artes.columns = 3
+		%Artes.set("theme_override_constants/h_separation", -15)
 	for ars_name in artes.keys():
-		var ars = ResourceManager.ability_counter_class.instance()
+		var ars = ResourceManager.ability_counter_class.instantiate()
 		ars.name = ars_name
 		ars.ability_name = ars_name
 		ars.set_level(artes[ars_name], 0)
-		artes_node.add_child(ars)
-		ars.connect("clicked", find_node("ArtesReference"), "launch")
+		%Artes.add_child(ars)
+		ars.connect("clicked", Callable(find_child("ArtesReference"), "launch"))
 
 func paint_status():
 	var sheet_status = character.status
@@ -184,12 +163,12 @@ func paint_status():
 	salud.set_damage(sheet_status["Salud"]["light"],sheet_status["Salud"]["heavy"])
 	cordura.set_damage(sheet_status["Cordura"]["light"],sheet_status["Cordura"]["heavy"])
 	
-	if not character.plane_manipulation.empty():
+	if not character.plane_manipulation.is_empty():
 		coherencia.set_level(sheet_status["Coherencia"]["perm"], sheet_status["Coherencia"]["temp"])
 
 
 func _on_EditarCheck_pressed():
-	var edit_check = find_node("EditCheck")
+	var edit_check = find_child("EditCheck")
 	get_tree().call_group("features", "set_editable", edit_check.pressed)
 	get_tree().call_group("editable_lineedits", "set_editable", edit_check.pressed)
 	get_tree().call_group("editable_textedits", "set_readonly", not edit_check.pressed)
@@ -199,7 +178,7 @@ func _on_EditarCheck_pressed():
 
 
 func _on_Delete_pressed():
-	find_node("ConfirmationPopup").popup_centered()
+	find_child("ConfirmationPopup").popup_centered()
 
 
 func _on_Confirmation_pressed():
@@ -213,7 +192,7 @@ func _on_Exit_pressed():
 
 
 func exit():
-	get_tree().change_scene("res://scenes/screens/MainMenu.tscn")
+	get_tree().change_scene_to_file("res://scenes/screens/MainMenu.tscn")
 
 
 func change_layout():
@@ -221,7 +200,7 @@ func change_layout():
 	var layouts = sheet_layouts[platform]
 	var new_layout = layouts[(layouts.find(name) + 1) % layouts.size()]
 	GameInfo.next_character = character
-	get_tree().change_scene("res://scenes/sheet_layouts/"+new_layout+".tscn")
+	get_tree().change_scene_to_file("res://scenes/sheet_layouts/"+new_layout+".tscn")
 
 
 func _on_Logo_gui_input(event):
@@ -230,5 +209,5 @@ func _on_Logo_gui_input(event):
 
 
 func _on_InventoryButton_pressed():
-	inventory.initialize(character)
-	inventory.popup_centered()
+	%Inventory.initialize(character)
+	%Inventory.popup_centered()

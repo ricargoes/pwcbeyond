@@ -6,19 +6,18 @@ func build_ability_tree(type, parent_node, item_levels, editable = true):
 	for group in item_levels.keys():
 		var container = VBoxContainer.new()
 		container.name = group
-		container.add_constant_override("separation", 10)
+		container.add_theme_constant_override("separation", 10)
 		parent_node.add_child(container)
 		
 		var label = Label.new()
 		label.text = "-" + group + "-"
-		label.align = Label.ALIGN_CENTER
-		label.add_font_override("font", ResourceManager.h2_font)
+		label.add_theme_font_override("font", ResourceManager.h2_font)
 		container.add_child(label)
 		
 		for item in item_levels[group].keys():
 			if item == "":
 				continue
-			var node = ResourceManager.ability_counter_class.instance()
+			var node = ResourceManager.ability_counter_class.instantiate()
 			node.ability_name = item
 			node.editable = editable
 			var perm_level = 0

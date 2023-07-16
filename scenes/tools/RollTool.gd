@@ -1,12 +1,5 @@
 extends Control
 
-onready var atribute_label = $HBoxContainer/AtributeCont/AtributeL
-onready var atribute_space = $HBoxContainer/AtributeCont/Atribute
-onready var ability_label = $HBoxContainer/AbilityCont/AbilityL
-onready var ability_space = $HBoxContainer/AbilityCont/Ability
-onready var mod_space = $HBoxContainer/Mod/Mod
-onready var result_space = $HBoxContainer/ResultCont/Result
-
 var character = null
 
 var selected_atribute = null
@@ -45,7 +38,7 @@ func set_tireness(related_atribute, node):
 
 
 func refresh():
-	atribute_label.text = "Atributo"
+	%AtributeL.text = "Atributo"
 	if selected_atribute:
 		if selected_atribute.is_in_group("físicos"):
 			type_of_attempt = "físicos"
@@ -54,15 +47,15 @@ func refresh():
 		if selected_atribute.is_in_group("plane_manipulation"):
 			type_of_attempt = "plane_manipulation"
 		
-		atribute_label.text = selected_atribute.get_name()
+		%AtributeL.text = selected_atribute.get_indicator_name()
 	
-	ability_label.text = "Habilidad"
+	%AbilityL.text = "Habilidad"
 	if selected_skill:
-		ability_label.text = selected_skill.get_name()
+		%AbilityL.text = selected_skill.get_indicator_name()
 	
-	atribute_space.text = str(calculate_atribute_level())
-	ability_space.text = str(calculate_skill_level())
-	mod_space.text = str(calculate_mod())
+	%Atribute.text = str(calculate_atribute_level())
+	%Ability.text = str(calculate_skill_level())
+	%Mod.text = str(calculate_mod())
 
 
 func calculate_atribute_level():
@@ -108,7 +101,7 @@ func _on_Roll_pressed():
 	var mod = calculate_mod()
 	
 	var luck = 0
-	var roll_throw = PoolStringArray()
+	var roll_throw = PackedStringArray()
 	for _i in range(4):
 		var die = roll_fudge_die()
 		luck += die
@@ -122,16 +115,16 @@ func _on_Roll_pressed():
 	var result = atribute_level + skill_level + mod + luck
 	
 	$SFXRoll.play()
-	result_space.text = str(result) + " = " + str(atribute_level + skill_level + mod) + " + [" +  roll_throw.join(" ") + "]"
-	if $HBoxContainer/RollButton/Public.pressed:
+	%Result.text = str(result) + " = " + str(atribute_level + skill_level + mod) + " + [" +  " ".join(roll_throw) + "]"
+	if %Public.pressed:
 		send_to_discord_web_hook(result, roll_throw)
 	
 	spend_boosts()
 
 
 func send_to_discord_web_hook(result, roll_throw):
-	var atribute_text = selected_atribute.get_name() if selected_atribute else "No atributo"
-	var skill_text = selected_skill.get_name() if selected_skill else "No habilidad"
+	var atribute_text = selected_atribute.get_indicator_name() if selected_atribute else "No atributo"
+	var skill_text = selected_skill.get_indicator_name() if selected_skill else "No habilidad"
 	var atribute_level = calculate_atribute_level()
 	var skill_level = calculate_skill_level()
 	var mod = calculate_mod()
@@ -145,7 +138,7 @@ func send_to_discord_web_hook(result, roll_throw):
 			{
 				"author": { "name": username },
 				"title": str(result) + "    [" + atribute_text + " + " + skill_text + "]",
-				"description": "Resultado: " + str(result) + " = " + str(atribute_level + skill_level + mod) + " + [" +  roll_throw.join(" ") + "]",
+				"description": "Resultado: " + str(result) + " = " + str(atribute_level + skill_level + mod) + " + [" +  " ".join(roll_throw) + "]",
 				"color": 4325120,
 				"fields": [
 					{
@@ -158,7 +151,7 @@ func send_to_discord_web_hook(result, roll_throw):
 						"inline": true
 					}, {
 						"name": "Suerte",
-						"value": str(result - (atribute_level + skill_level + mod)) + " = [" +  roll_throw.join(" ") + "]",
+						"value": str(result - (atribute_level + skill_level + mod)) + " = [" +  " ".join(roll_throw) + "]",
 						"inline": true
 					},
 				]
@@ -167,10 +160,9 @@ func send_to_discord_web_hook(result, roll_throw):
 	}
 	$Webhook.request(
 		GameInfo.discord_webhook_url,
-		PoolStringArray(["Content-Type: application/json"]),
-		true,
+		PackedStringArray(["Content-Type: application/json"]),
 		HTTPClient.METHOD_POST,
-		JSON.print(payload))
+		JSON.stringify(payload))
 
 
 func roll_fudge_die():

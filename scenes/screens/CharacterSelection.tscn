@@ -21,11 +21,11 @@ __meta__ = {
 [node name="BG" parent="." instance=ExtResource( 1 )]
 
 [node name="Logo" parent="." instance=ExtResource( 7 )]
-margin_bottom = 250.0
+offset_bottom = 250.0
 
 [node name="Warning" parent="." instance=ExtResource( 5 )]
-margin_right = 250.0
-margin_bottom = 120.0
+offset_right = 250.0
+offset_bottom = 120.0
 
 [node name="CharacterFinder" parent="." instance=ExtResource( 2 )]
 [connection signal="back" from="CharacterFinder" to="." method="_on_CharacterFinder_back"]

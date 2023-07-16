@@ -1,68 +1,55 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=9 format=3 uid="uid://bvsfexlw1hvsx"]
 
-[ext_resource path="res://scenes/counters/StandardCounter.tscn" type="PackedScene" id=1]
-[ext_resource path="res://resources/theme.tres" type="Theme" id=2]
-[ext_resource path="res://scenes/counters/Feature.gd" type="Script" id=3]
-[ext_resource path="res://resources/sprites/buttons/press-.png" type="Texture" id=4]
-[ext_resource path="res://resources/sprites/buttons/+.png" type="Texture" id=5]
-[ext_resource path="res://resources/sprites/buttons/-.png" type="Texture" id=6]
-[ext_resource path="res://resources/sprites/buttons/press-+.png" type="Texture" id=7]
+[ext_resource type="PackedScene" uid="uid://b7leqvhsa8ldp" path="res://scenes/counters/StandardCounter.tscn" id="1"]
+[ext_resource type="Theme" uid="uid://fdky2ckfobqg" path="res://resources/theme.tres" id="2"]
+[ext_resource type="Texture2D" uid="uid://ihe7mpeaajeh" path="res://resources/sprites/buttons/-.png" id="2_2xido"]
+[ext_resource type="Script" path="res://scenes/counters/Feature.gd" id="3"]
+[ext_resource type="Texture2D" uid="uid://bgjk7vnxodgu8" path="res://resources/sprites/buttons/press-.png" id="3_j04w5"]
+[ext_resource type="Texture2D" uid="uid://bkiqaws7da5q1" path="res://resources/sprites/buttons/+.png" id="5_kguy0"]
+[ext_resource type="Texture2D" uid="uid://4scsaxa35m1k" path="res://resources/sprites/buttons/press-+.png" id="6_cyw3l"]
 
-[sub_resource type="StyleBoxEmpty" id=1]
+[sub_resource type="StyleBoxEmpty" id="1"]
 
-[node name="Feature" type="VBoxContainer" groups=[
-"features",
-]]
-margin_right = 116.0
-margin_bottom = 83.0
+[node name="Feature" type="VBoxContainer" groups=["features"]]
+custom_minimum_size = Vector2(0, 50)
+offset_right = 116.0
+offset_bottom = 83.0
+theme = ExtResource("2")
 alignment = 1
-script = ExtResource( 3 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
+script = ExtResource("3")
 ability_name = "Conducir"
 
 [node name="Label" type="HBoxContainer" parent="."]
-margin_top = 18.0
-margin_right = 158.0
-margin_bottom = 40.0
+layout_mode = 2
 mouse_default_cursor_shape = 2
 alignment = 1
 
 [node name="Minus" type="TextureButton" parent="Label"]
-margin_right = 20.0
-margin_bottom = 22.0
-texture_normal = ExtResource( 6 )
-texture_pressed = ExtResource( 4 )
+layout_mode = 2
+texture_normal = ExtResource("2_2xido")
+texture_pressed = ExtResource("3_j04w5")
 
 [node name="Label" type="LineEdit" parent="Label"]
-margin_left = 24.0
-margin_right = 134.0
-margin_bottom = 22.0
-rect_min_size = Vector2( 110, 0 )
+custom_minimum_size = Vector2(110, 0)
+layout_mode = 2
 mouse_filter = 1
 mouse_default_cursor_shape = 2
-theme = ExtResource( 2 )
-custom_styles/read_only = SubResource( 1 )
-custom_colors/font_color = Color( 0, 0, 0, 1 )
+theme = ExtResource("2")
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_styles/read_only = SubResource("1")
 text = "Ability"
-align = 1
+alignment = 1
 editable = false
 
 [node name="Plus" type="TextureButton" parent="Label"]
-margin_left = 138.0
-margin_right = 158.0
-margin_bottom = 22.0
-texture_normal = ExtResource( 5 )
-texture_pressed = ExtResource( 7 )
+layout_mode = 2
+texture_normal = ExtResource("5_kguy0")
+texture_pressed = ExtResource("6_cyw3l")
 
-[node name="StandardCounter" parent="." instance=ExtResource( 1 )]
-anchor_right = 0.0
-anchor_bottom = 0.0
-margin_top = 44.0
-margin_right = 158.0
-margin_bottom = 64.0
+[node name="StandardCounter" parent="." instance=ExtResource("1")]
+layout_mode = 2
 mouse_default_cursor_shape = 2
+
 [connection signal="pressed" from="Label/Minus" to="." method="level_down"]
 [connection signal="gui_input" from="Label/Label" to="." method="_on_ability_click"]
 [connection signal="text_changed" from="Label/Label" to="." method="set_name"]
