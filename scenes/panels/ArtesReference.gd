@@ -23,4 +23,4 @@ func paint(paint_all = false):
 		list.add_child(ars)
 
 func _on_CheckButton_pressed():
-	paint(find_child("ShowAll").pressed)
+	paint(find_child("ShowAll").button_pressed)

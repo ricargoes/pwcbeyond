@@ -51,6 +51,7 @@ alignment = 1
 unique_name_in_owner = true
 layout_mode = 2
 text = "Atributo"
+horizontal_alignment = 1
 
 [node name="Atribute" type="LineEdit" parent="HBoxContainer/AtributeCont"]
 unique_name_in_owner = true
@@ -72,6 +73,7 @@ unique_name_in_owner = true
 custom_minimum_size = Vector2(150, 0)
 layout_mode = 2
 text = "Habilidad"
+horizontal_alignment = 1
 
 [node name="Ability" type="LineEdit" parent="HBoxContainer/AbilityCont"]
 unique_name_in_owner = true
@@ -91,6 +93,7 @@ alignment = 1
 [node name="ModL" type="Label" parent="HBoxContainer/Mod"]
 layout_mode = 2
 text = "Mod"
+horizontal_alignment = 1
 
 [node name="Mod" type="LineEdit" parent="HBoxContainer/Mod"]
 unique_name_in_owner = true
@@ -142,6 +145,7 @@ alignment = 1
 [node name="ResultL" type="Label" parent="HBoxContainer/ResultCont"]
 layout_mode = 2
 text = "Resultado"
+horizontal_alignment = 1
 
 [node name="Result" type="LineEdit" parent="HBoxContainer/ResultCont"]
 unique_name_in_owner = true

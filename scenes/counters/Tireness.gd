@@ -1,11 +1,10 @@
 extends Control
 
-@export var editable = false
 @export var status_name = "Status"
 @export var perm_level = 0
 
 var temp_level = 0
-var are_efforts_locked = false
+@export var are_efforts_allowed = true
 
 signal clicked(node)
 signal effort
@@ -16,14 +15,10 @@ func _ready():
 
 func refresh():
 	$Label/Label.text = status_name
-	if editable:
-		$Label/Plus.show()
-		$Label/Minus.show()
-		find_child("Effort").show()
+	if are_efforts_allowed:
+		%Effort.show()
 	else:
-		$Label/Plus.hide()
-		$Label/Minus.hide()
-		find_child("Effort").hide()
+		%Effort.hide()
 	
 	for i in range(1, 6):
 		if i <= perm_level:
@@ -38,11 +33,6 @@ func refresh():
 			$CenterContainer/Markers.get_node("t" + str(i)).mark()
 		elif i != 0:
 			$CenterContainer/Markers.get_node("t" + str(i)).is_empty()
-
-
-func set_editable(is_editable):
-	editable = is_editable
-	refresh()
 
 
 func set_level(level, temp = null):
@@ -79,7 +69,7 @@ func get_tired():
 
 
 func make_effort():
-	if are_efforts_locked:
+	if not are_efforts_allowed:
 		return
 	
 	var getting_tired = get_tired()
@@ -89,13 +79,13 @@ func make_effort():
 
 
 func lock_efforts():
-	are_efforts_locked = true
-	find_child("Effort").disabled = true
+	are_efforts_allowed = false
+	%Effort.disabled = true
 
 
 func unlock_efforts(_type):
-	are_efforts_locked = false
-	find_child("Effort").disabled = false
+	are_efforts_allowed = true
+	%Effort.disabled = false
 
 
 func get_indicator_name():

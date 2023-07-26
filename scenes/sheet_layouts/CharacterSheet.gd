@@ -57,11 +57,10 @@ func clean():
 
 
 func autosave():
-	var autosave_check = find_child("AutosaveCheck")
-	if autosave_check.pressed:
+	if %AutosaveCheck.button_pressed:
 		save_changes()
 		commit_changes()
-		autosave_check.get_node("CPUParticles2D").emitting = true
+		%AutosaveCheck.get_node("CPUParticles2D").emitting = true
 
 
 func save_changes():
@@ -168,11 +167,11 @@ func paint_status():
 
 
 func _on_EditarCheck_pressed():
-	var edit_check = find_child("EditCheck")
-	get_tree().call_group("features", "set_editable", edit_check.pressed)
-	get_tree().call_group("editable_lineedits", "set_editable", edit_check.pressed)
-	get_tree().call_group("editable_textedits", "set_readonly", not edit_check.pressed)
-	var new_focus_mode = Control.FOCUS_ALL if edit_check.pressed else Control.FOCUS_NONE
+	var make_editable = %EditCheck.button_pressed
+	get_tree().call_group("features", "set_editable", make_editable)
+	get_tree().call_group("editable_lineedits", "set_editable", make_editable)
+	get_tree().call_group("editable_textedits", "set_readonly", not make_editable)
+	var new_focus_mode = Control.FOCUS_ALL if make_editable else Control.FOCUS_NONE
 	get_tree().call_group("editable_lineedits", "set_focus_mode", new_focus_mode)
 	get_tree().call_group("editable_textedits", "set_focus_mode", new_focus_mode)
 

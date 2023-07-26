@@ -116,7 +116,7 @@ func _on_Roll_pressed():
 	
 	$SFXRoll.play()
 	%Result.text = str(result) + " = " + str(atribute_level + skill_level + mod) + " + [" +  " ".join(roll_throw) + "]"
-	if %Public.pressed:
+	if %Public.button_pressed:
 		send_to_discord_web_hook(result, roll_throw)
 	
 	spend_boosts()

@@ -1,173 +1,128 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=13 format=3 uid="uid://ds0lqr056s3xp"]
 
-[ext_resource path="res://resources/theme.tres" type="Theme" id=1]
-[ext_resource path="res://scenes/counters/Tireness.gd" type="Script" id=2]
-[ext_resource path="res://scenes/counters/RombusPoint.tscn" type="PackedScene" id=3]
-[ext_resource path="res://scenes/counters/CirclePoint.tscn" type="PackedScene" id=4]
-[ext_resource path="res://scenes/counters/SquarePoint.tscn" type="PackedScene" id=5]
-[ext_resource path="res://resources/sprites/buttons/press-.png" type="Texture2D" id=6]
-[ext_resource path="res://resources/sprites/buttons/+.png" type="Texture2D" id=7]
-[ext_resource path="res://resources/sprites/buttons/-.png" type="Texture2D" id=8]
-[ext_resource path="res://resources/sprites/buttons/press-+.png" type="Texture2D" id=9]
-[ext_resource path="res://resources/sfx/pen&papersound.wav" type="AudioStream" id=10]
-[ext_resource path="res://resources/sfx/erasersound.wav" type="AudioStream" id=11]
+[ext_resource type="Theme" uid="uid://fdky2ckfobqg" path="res://resources/theme.tres" id="1"]
+[ext_resource type="Script" path="res://scenes/counters/Tireness.gd" id="2"]
+[ext_resource type="PackedScene" path="res://scenes/counters/RombusPoint.tscn" id="3"]
+[ext_resource type="PackedScene" uid="uid://mw5vfpb1i1jg" path="res://scenes/counters/CirclePoint.tscn" id="4"]
+[ext_resource type="PackedScene" path="res://scenes/counters/SquarePoint.tscn" id="5"]
+[ext_resource type="Texture2D" uid="uid://bgjk7vnxodgu8" path="res://resources/sprites/buttons/press-.png" id="6"]
+[ext_resource type="Texture2D" uid="uid://bkiqaws7da5q1" path="res://resources/sprites/buttons/+.png" id="7"]
+[ext_resource type="Texture2D" uid="uid://ihe7mpeaajeh" path="res://resources/sprites/buttons/-.png" id="8"]
+[ext_resource type="Texture2D" uid="uid://4scsaxa35m1k" path="res://resources/sprites/buttons/press-+.png" id="9"]
+[ext_resource type="AudioStream" uid="uid://dqcidvum5fflu" path="res://resources/sfx/pen&papersound.wav" id="10"]
+[ext_resource type="AudioStream" uid="uid://c5vhg3huu2vw0" path="res://resources/sfx/erasersound.wav" id="11"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_kt64r"]
 
 [node name="Tireness" type="VBoxContainer"]
 offset_right = 116.0
 offset_bottom = 83.0
-theme = ExtResource( 1 )
+theme = ExtResource("1")
 theme_override_constants/separation = 0
 alignment = 1
-script = ExtResource( 2 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
-editable = true
-
-[node name="Effort" type="Button" parent="."]
-offset_right = 189.0
-offset_bottom = 28.0
-text = "Esfuerzo"
-flat = true
+script = ExtResource("2")
 
 [node name="Label" type="HBoxContainer" parent="."]
-offset_top = 28.0
-offset_right = 189.0
-offset_bottom = 50.0
+layout_mode = 2
 alignment = 1
 
+[node name="VSeparator" type="VSeparator" parent="Label"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/separator = SubResource("StyleBoxEmpty_kt64r")
+
 [node name="Minus" type="TextureButton" parent="Label"]
-offset_left = 29.0
-offset_right = 49.0
-offset_bottom = 22.0
-texture_normal = ExtResource( 8 )
-texture_pressed = ExtResource( 6 )
+layout_mode = 2
+texture_normal = ExtResource("8")
+texture_pressed = ExtResource("6")
 
 [node name="Label" type="Label" parent="Label"]
-offset_left = 53.0
-offset_right = 135.0
-offset_bottom = 22.0
+layout_mode = 2
 mouse_filter = 1
 mouse_default_cursor_shape = 2
-theme = ExtResource( 1 )
-theme_override_colors/font_color = Color( 0, 0, 0, 1 )
+theme = ExtResource("1")
+theme_override_colors/font_color = Color(0, 0, 0, 1)
 text = "Voluntad"
-align = 1
 
 [node name="Plus" type="TextureButton" parent="Label"]
-offset_left = 139.0
-offset_right = 159.0
-offset_bottom = 22.0
-texture_normal = ExtResource( 7 )
-texture_pressed = ExtResource( 9 )
+layout_mode = 2
+texture_normal = ExtResource("7")
+texture_pressed = ExtResource("9")
+
+[node name="Effort" type="Button" parent="Label"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+text = "E"
+flat = true
 
 [node name="CenterContainer" type="CenterContainer" parent="."]
-offset_top = 50.0
-offset_right = 189.0
-offset_bottom = 96.0
+layout_mode = 2
 
 [node name="Markers" type="GridContainer" parent="CenterContainer"]
-offset_right = 189.0
-offset_bottom = 46.0
+layout_mode = 2
 mouse_default_cursor_shape = 2
 columns = 8
 
 [node name="l-3" type="Label" parent="CenterContainer/Markers"]
-offset_right = 20.0
-offset_bottom = 22.0
+layout_mode = 2
 text = "x"
 
 [node name="l-2" type="Label" parent="CenterContainer/Markers"]
-offset_left = 24.0
-offset_right = 45.0
-offset_bottom = 22.0
+layout_mode = 2
 text = "-2"
 
 [node name="l-1" type="Label" parent="CenterContainer/Markers"]
-offset_left = 49.0
-offset_right = 69.0
-offset_bottom = 22.0
+layout_mode = 2
 text = "-1"
 
-[node name="p1" parent="CenterContainer/Markers" instance=ExtResource( 4 )]
-offset_left = 73.0
-offset_right = 93.0
-offset_bottom = 22.0
+[node name="p1" parent="CenterContainer/Markers" instance=ExtResource("4")]
+layout_mode = 2
 
-[node name="p2" parent="CenterContainer/Markers" instance=ExtResource( 4 )]
-offset_left = 97.0
-offset_right = 117.0
-offset_bottom = 22.0
+[node name="p2" parent="CenterContainer/Markers" instance=ExtResource("4")]
+layout_mode = 2
 
-[node name="p3" parent="CenterContainer/Markers" instance=ExtResource( 4 )]
-offset_left = 121.0
-offset_right = 141.0
-offset_bottom = 22.0
+[node name="p3" parent="CenterContainer/Markers" instance=ExtResource("4")]
+layout_mode = 2
 
-[node name="p4" parent="CenterContainer/Markers" instance=ExtResource( 4 )]
-offset_left = 145.0
-offset_right = 165.0
-offset_bottom = 22.0
+[node name="p4" parent="CenterContainer/Markers" instance=ExtResource("4")]
+layout_mode = 2
 
-[node name="p5" parent="CenterContainer/Markers" instance=ExtResource( 4 )]
-offset_left = 169.0
-offset_right = 189.0
-offset_bottom = 22.0
+[node name="p5" parent="CenterContainer/Markers" instance=ExtResource("4")]
+layout_mode = 2
 
-[node name="t-3" parent="CenterContainer/Markers" instance=ExtResource( 3 )]
-offset_top = 26.0
-offset_right = 20.0
-offset_bottom = 46.0
+[node name="t-3" parent="CenterContainer/Markers" instance=ExtResource("3")]
+layout_mode = 2
 
-[node name="t-2" parent="CenterContainer/Markers" instance=ExtResource( 3 )]
-offset_left = 24.0
-offset_top = 26.0
-offset_right = 45.0
-offset_bottom = 46.0
+[node name="t-2" parent="CenterContainer/Markers" instance=ExtResource("3")]
+layout_mode = 2
 
-[node name="t-1" parent="CenterContainer/Markers" instance=ExtResource( 3 )]
-offset_left = 49.0
-offset_top = 26.0
-offset_right = 69.0
-offset_bottom = 46.0
+[node name="t-1" parent="CenterContainer/Markers" instance=ExtResource("3")]
+layout_mode = 2
 
-[node name="t1" parent="CenterContainer/Markers" instance=ExtResource( 5 )]
-offset_left = 73.0
-offset_top = 26.0
-offset_right = 93.0
-offset_bottom = 46.0
+[node name="t1" parent="CenterContainer/Markers" instance=ExtResource("5")]
+layout_mode = 2
 
-[node name="t2" parent="CenterContainer/Markers" instance=ExtResource( 5 )]
-offset_left = 97.0
-offset_top = 26.0
-offset_right = 117.0
-offset_bottom = 46.0
+[node name="t2" parent="CenterContainer/Markers" instance=ExtResource("5")]
+layout_mode = 2
 
-[node name="t3" parent="CenterContainer/Markers" instance=ExtResource( 5 )]
-offset_left = 121.0
-offset_top = 26.0
-offset_right = 141.0
-offset_bottom = 46.0
+[node name="t3" parent="CenterContainer/Markers" instance=ExtResource("5")]
+layout_mode = 2
 
-[node name="t4" parent="CenterContainer/Markers" instance=ExtResource( 5 )]
-offset_left = 145.0
-offset_top = 26.0
-offset_right = 165.0
-offset_bottom = 46.0
+[node name="t4" parent="CenterContainer/Markers" instance=ExtResource("5")]
+layout_mode = 2
 
-[node name="t5" parent="CenterContainer/Markers" instance=ExtResource( 5 )]
-offset_left = 169.0
-offset_top = 26.0
-offset_right = 189.0
-offset_bottom = 46.0
+[node name="t5" parent="CenterContainer/Markers" instance=ExtResource("5")]
+layout_mode = 2
 
 [node name="SFXDraw" type="AudioStreamPlayer" parent="."]
-stream = ExtResource( 10 )
+stream = ExtResource("10")
 
 [node name="SFXErase" type="AudioStreamPlayer" parent="."]
-stream = ExtResource( 11 )
-[connection signal="pressed" from="Effort" to="." method="make_effort"]
+stream = ExtResource("11")
+
 [connection signal="pressed" from="Label/Minus" to="." method="get_tired"]
 [connection signal="gui_input" from="Label/Label" to="." method="_on_tireness_click"]
 [connection signal="pressed" from="Label/Plus" to="." method="rest"]
+[connection signal="pressed" from="Label/Effort" to="." method="make_effort"]
 [connection signal="gui_input" from="CenterContainer/Markers" to="." method="_on_tireness_click"]

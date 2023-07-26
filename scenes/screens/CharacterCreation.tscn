@@ -1,10 +1,9 @@
-[gd_scene load_steps=17 format=3 uid="uid://bea2i14o05ul0"]
+[gd_scene load_steps=16 format=3 uid="uid://bea2i14o05ul0"]
 
 [ext_resource type="Theme" uid="uid://fdky2ckfobqg" path="res://resources/theme.tres" id="1"]
 [ext_resource type="PackedScene" path="res://scenes/decorations/BG.tscn" id="2"]
 [ext_resource type="Texture2D" uid="uid://oaynf75i4sbe" path="res://resources/sprites/backgrounds/9patch_scroll3.png" id="3"]
 [ext_resource type="Script" path="res://scenes/screens/CharacterCreation.gd" id="4"]
-[ext_resource type="FontFile" path="res://resources/h1_font.tres" id="5"]
 [ext_resource type="PackedScene" uid="uid://dt4qyr1o62ww5" path="res://scenes/tools/Warning.tscn" id="6"]
 [ext_resource type="Shortcut" path="res://resources/EscapeKeyShortcut.tres" id="7"]
 [ext_resource type="PackedScene" path="res://scenes/panels/Logo.tscn" id="8"]
@@ -72,12 +71,13 @@ item_0/text = "v1"
 item_1/text = "v2"
 
 [node name="SheetInfo" type="VBoxContainer" parent="CenterContainer"]
+unique_name_in_owner = true
 layout_mode = 2
 alignment = 1
 
 [node name="NewCharacter" type="Label" parent="CenterContainer/SheetInfo"]
 layout_mode = 2
-theme_override_fonts/font = ExtResource("5")
+theme_override_font_sizes/font_size = 33
 text = "NewCharacter"
 horizontal_alignment = 1
 
@@ -126,6 +126,7 @@ theme_override_styles/separator = SubResource("2")
 
 [node name="ChooseL" type="Label" parent="CenterContainer/SheetInfo"]
 layout_mode = 2
+theme_override_font_sizes/font_size = 33
 text = "Tipo de personaje"
 horizontal_alignment = 1
 
@@ -187,13 +188,14 @@ text = "Atras"
 flat = true
 
 [node name="SheetDescription" type="VBoxContainer" parent="CenterContainer"]
+unique_name_in_owner = true
 visible = false
 layout_mode = 2
 alignment = 1
 
 [node name="DescriptionL" type="Label" parent="CenterContainer/SheetDescription"]
 layout_mode = 2
-theme_override_fonts/font = ExtResource("5")
+theme_override_font_sizes/font_size = 33
 text = "Descripción"
 horizontal_alignment = 1
 
@@ -296,12 +298,13 @@ text = "Siguiente"
 flat = true
 
 [node name="SheetAtributes" type="VBoxContainer" parent="CenterContainer"]
+unique_name_in_owner = true
 visible = false
 layout_mode = 2
 
 [node name="AtrubutesL" type="Label" parent="CenterContainer/SheetAtributes"]
 layout_mode = 2
-theme_override_fonts/font = ExtResource("5")
+theme_override_font_sizes/font_size = 33
 text = "Atributos"
 horizontal_alignment = 1
 
@@ -312,7 +315,7 @@ theme_override_constants/separation = 10
 [node name="Atributes" type="HBoxContainer" parent="CenterContainer/SheetAtributes"]
 unique_name_in_owner = true
 layout_mode = 2
-theme_override_constants/separation = 20
+theme_override_constants/separation = 60
 
 [node name="BlankSeparator" type="HSeparator" parent="CenterContainer/SheetAtributes"]
 layout_mode = 2
@@ -323,6 +326,7 @@ theme_override_styles/separator = SubResource("2")
 custom_minimum_size = Vector2(450, 0)
 layout_mode = 2
 text = "Tienes 6/4/2 niveles para repartir entre atributos de cada tipo + 1 a poner donde quieras"
+autowrap_mode = 3
 
 [node name="BlankSeparator2" type="HSeparator" parent="CenterContainer/SheetAtributes"]
 layout_mode = 2
@@ -346,12 +350,13 @@ text = "Siguiente"
 flat = true
 
 [node name="SheetSkills" type="VBoxContainer" parent="CenterContainer"]
+unique_name_in_owner = true
 visible = false
 layout_mode = 2
 
 [node name="SkillsL" type="Label" parent="CenterContainer/SheetSkills"]
 layout_mode = 2
-theme_override_fonts/font = ExtResource("5")
+theme_override_font_sizes/font_size = 33
 text = "Habilidades"
 horizontal_alignment = 1
 
@@ -360,9 +365,10 @@ layout_mode = 2
 theme_override_constants/separation = 10
 
 [node name="Skills" type="HBoxContainer" parent="CenterContainer/SheetSkills"]
+unique_name_in_owner = true
 custom_minimum_size = Vector2(0, 615)
 layout_mode = 2
-theme_override_constants/separation = 20
+theme_override_constants/separation = 60
 
 [node name="BlankSeparator3" type="HSeparator" parent="CenterContainer/SheetSkills"]
 layout_mode = 2
@@ -373,8 +379,10 @@ theme_override_styles/separator = SubResource("2")
 custom_minimum_size = Vector2(450, 0)
 layout_mode = 2
 text = "Tienes 30 puntos para repartir como quieras. Cada círculo cuesta el nivel correspondiente en puntos."
+autowrap_mode = 3
 
-[node name="PointsLeft" type="Label" parent="CenterContainer/SheetSkills"]
+[node name="SkillPointsLeft" type="Label" parent="CenterContainer/SheetSkills"]
+unique_name_in_owner = true
 custom_minimum_size = Vector2(450, 0)
 layout_mode = 2
 text = "Quedan 30 puntos"
@@ -395,19 +403,21 @@ layout_mode = 2
 text = "Atras"
 flat = true
 
-[node name="Next" type="Button" parent="CenterContainer/SheetSkills/ButtonsCont"]
+[node name="SkillsNext" type="Button" parent="CenterContainer/SheetSkills/ButtonsCont"]
+unique_name_in_owner = true
 custom_minimum_size = Vector2(100, 0)
 layout_mode = 2
 text = "Siguiente"
 flat = true
 
 [node name="SheetPlaneManipulation" type="VBoxContainer" parent="CenterContainer"]
+unique_name_in_owner = true
 visible = false
 layout_mode = 2
 
 [node name="PlaneManipulationL" type="Label" parent="CenterContainer/SheetPlaneManipulation"]
 layout_mode = 2
-theme_override_fonts/font = ExtResource("5")
+theme_override_font_sizes/font_size = 33
 text = "Manipulación de planos"
 horizontal_alignment = 1
 
@@ -436,6 +446,7 @@ layout_mode = 2
 text = "Vía: "
 
 [node name="Via" type="OptionButton" parent="CenterContainer/SheetPlaneManipulation/CenterData/GridContainer"]
+unique_name_in_owner = true
 layout_mode = 2
 
 [node name="AspectL" type="Label" parent="CenterContainer/SheetPlaneManipulation/CenterData/GridContainer"]
@@ -455,13 +466,16 @@ layout_mode = 2
 
 [node name="Journey" parent="CenterContainer/SheetPlaneManipulation" instance=ExtResource("9")]
 layout_mode = 2
+size_flags_horizontal = 4
 ability_name = "Viaje"
 
 [node name="HSeparator" type="HSeparator" parent="CenterContainer/SheetPlaneManipulation"]
 layout_mode = 2
+theme_override_constants/separation = 20
 theme_override_styles/separator = ExtResource("10")
 
 [node name="InstructionsAccessL" type="Label" parent="CenterContainer/SheetPlaneManipulation"]
+unique_name_in_owner = true
 layout_mode = 2
 text = "Reparte puntos"
 horizontal_alignment = 1
@@ -491,8 +505,9 @@ ability_name = "Scientia"
 
 [node name="AccessL" type="Label" parent="CenterContainer/SheetPlaneManipulation/CenterAccess/GridContainer"]
 layout_mode = 2
-theme_override_fonts/font = ExtResource("5")
+theme_override_font_sizes/font_size = 29
 text = "Access"
+horizontal_alignment = 1
 
 [node name="Opus" parent="CenterContainer/SheetPlaneManipulation/CenterAccess/GridContainer" instance=ExtResource("9")]
 layout_mode = 2
@@ -517,11 +532,12 @@ theme_override_styles/separator = ExtResource("10")
 
 [node name="ArtesL" type="Label" parent="CenterContainer/SheetPlaneManipulation"]
 layout_mode = 2
-theme_override_fonts/font = ExtResource("5")
+theme_override_font_sizes/font_size = 33
 text = "Artes"
 horizontal_alignment = 1
 
 [node name="InstructionsArtesL" type="Label" parent="CenterContainer/SheetPlaneManipulation"]
+unique_name_in_owner = true
 layout_mode = 2
 text = "Reparte puntos"
 horizontal_alignment = 1
@@ -530,6 +546,7 @@ horizontal_alignment = 1
 layout_mode = 2
 
 [node name="Artes" type="GridContainer" parent="CenterContainer/SheetPlaneManipulation/CenterArtes"]
+unique_name_in_owner = true
 custom_minimum_size = Vector2(0, 201)
 layout_mode = 2
 theme_override_constants/h_separation = 20
@@ -578,7 +595,7 @@ size = Vector2i(150, 100)
 [connection signal="pressed" from="CenterContainer/SheetAtributes/ButtonsCont/Back" to="." method="description_phase"]
 [connection signal="pressed" from="CenterContainer/SheetAtributes/ButtonsCont/Next" to="." method="skills_phase"]
 [connection signal="pressed" from="CenterContainer/SheetSkills/ButtonsCont/Back" to="." method="atributes_phase"]
-[connection signal="pressed" from="CenterContainer/SheetSkills/ButtonsCont/Next" to="." method="plane_manipulation_phase"]
+[connection signal="pressed" from="CenterContainer/SheetSkills/ButtonsCont/SkillsNext" to="." method="plane_manipulation_phase"]
 [connection signal="item_selected" from="CenterContainer/SheetPlaneManipulation/CenterData/GridContainer/Via" to="." method="_on_Via_item_selected"]
 [connection signal="pressed" from="CenterContainer/SheetPlaneManipulation/ButtonsCont/Back" to="." method="skills_phase"]
 [connection signal="pressed" from="CenterContainer/SheetPlaneManipulation/ButtonsCont/Finish" to="." method="finish"]

@@ -80,7 +80,7 @@ func _on_CharSheetExit_pressed():
 
 
 func _on_EditBut_pressed():
-	if find_child("EditBut").pressed:
+	if find_child("EditBut").button_pressed:
 		$RefreshInterval.stop()
 		make_ui_editable(true)
 	else:

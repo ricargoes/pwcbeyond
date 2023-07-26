@@ -1,4 +1,4 @@
-[gd_scene load_steps=34 format=3 uid="uid://418hr3w7mvqv"]
+[gd_scene load_steps=33 format=3 uid="uid://418hr3w7mvqv"]
 
 [ext_resource type="Theme" uid="uid://fdky2ckfobqg" path="res://resources/theme.tres" id="1"]
 [ext_resource type="Texture2D" uid="uid://cycusujak170" path="res://resources/sprites/backgrounds/logoletter (3).png" id="2"]
@@ -7,10 +7,9 @@
 [ext_resource type="Script" path="res://scenes/sheet_layouts/CharacterSheet.gd" id="5"]
 [ext_resource type="Texture2D" uid="uid://dkrgghkol20l4" path="res://resources/logos/PWC-logo-fighting_man.png" id="6"]
 [ext_resource type="PackedScene" path="res://scenes/counters/Status.tscn" id="7"]
-[ext_resource type="PackedScene" path="res://scenes/counters/Tireness.tscn" id="8"]
+[ext_resource type="PackedScene" uid="uid://ds0lqr056s3xp" path="res://scenes/counters/Tireness.tscn" id="8"]
 [ext_resource type="StyleBox" path="res://resources/underline_small.tres" id="9"]
 [ext_resource type="PackedScene" path="res://scenes/decorations/BG.tscn" id="10"]
-[ext_resource type="FontFile" path="res://resources/h2_font.tres" id="11"]
 [ext_resource type="PackedScene" uid="uid://bvsfexlw1hvsx" path="res://scenes/counters/Feature.tscn" id="12"]
 [ext_resource type="Shortcut" path="res://resources/EscapeKeyShortcut.tres" id="13"]
 [ext_resource type="PackedScene" uid="uid://mhvw62e3bmj2" path="res://scenes/tools/RollTool.tscn" id="14"]
@@ -364,9 +363,10 @@ alignment = 1
 
 [node name="AtributosL" type="Label" parent="BG/Margin/Sheet/Body/Sec1/AtributesBG/AtributesCenter/AtributesFrame"]
 layout_mode = 2
-theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("4")
+theme_override_font_sizes/font_size = 33
 text = "Atributos"
+horizontal_alignment = 1
 
 [node name="HSeparator" type="HSeparator" parent="BG/Margin/Sheet/Body/Sec1/AtributesBG/AtributesCenter/AtributesFrame"]
 layout_mode = 2
@@ -409,8 +409,9 @@ layout_mode = 2
 [node name="EstadoL" type="Label" parent="BG/Margin/Sheet/Body/Sec1/StatusBG/StatusCenter/StatusFrame"]
 layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_fonts/font = ExtResource("4")
+theme_override_font_sizes/font_size = 33
 text = "Estado"
+horizontal_alignment = 1
 
 [node name="HSeparator" type="HSeparator" parent="BG/Margin/Sheet/Body/Sec1/StatusBG/StatusCenter/StatusFrame"]
 layout_mode = 2
@@ -488,8 +489,9 @@ alignment = 1
 
 [node name="Title" type="Label" parent="BG/Margin/Sheet/Body/SkillsBG/VBoxContainer"]
 layout_mode = 2
-theme_override_fonts/font = ExtResource("4")
+theme_override_font_sizes/font_size = 33
 text = "Habilidades"
+horizontal_alignment = 1
 
 [node name="HSeparator" type="HSeparator" parent="BG/Margin/Sheet/Body/SkillsBG/VBoxContainer"]
 layout_mode = 2
@@ -540,8 +542,9 @@ alignment = 1
 
 [node name="Title" type="Label" parent="BG/Margin/Sheet/Body/Manipulacion de planos/PlaneManipulation"]
 layout_mode = 2
-theme_override_fonts/font = ExtResource("4")
+theme_override_font_sizes/font_size = 33
 text = "Manipulacion de planos"
+horizontal_alignment = 1
 
 [node name="HSeparator" type="HSeparator" parent="BG/Margin/Sheet/Body/Manipulacion de planos/PlaneManipulation"]
 layout_mode = 2
@@ -604,6 +607,7 @@ caret_blink_interval = 0.5
 
 [node name="Journey" parent="BG/Margin/Sheet/Body/Manipulacion de planos/PlaneManipulation" instance=ExtResource("12")]
 layout_mode = 2
+size_flags_horizontal = 4
 ability_name = "Viaje"
 
 [node name="HSeparator2" type="HSeparator" parent="BG/Margin/Sheet/Body/Manipulacion de planos/PlaneManipulation"]
@@ -615,7 +619,7 @@ layout_mode = 2
 
 [node name="Access" type="GridContainer" parent="BG/Margin/Sheet/Body/Manipulacion de planos/PlaneManipulation/AccessCenter"]
 layout_mode = 2
-theme_override_constants/h_separation = -20
+theme_override_constants/h_separation = -30
 theme_override_constants/v_separation = -5
 columns = 3
 
@@ -635,8 +639,9 @@ ability_name = "Scientia"
 
 [node name="AccessL" type="Label" parent="BG/Margin/Sheet/Body/Manipulacion de planos/PlaneManipulation/AccessCenter/Access"]
 layout_mode = 2
-theme_override_fonts/font = ExtResource("11")
+theme_override_font_sizes/font_size = 29
 text = "Accesos"
+horizontal_alignment = 1
 
 [node name="Opus" parent="BG/Margin/Sheet/Body/Manipulacion de planos/PlaneManipulation/AccessCenter/Access" instance=ExtResource("12")]
 layout_mode = 2
@@ -658,8 +663,9 @@ theme_override_styles/separator = ExtResource("9")
 
 [node name="ArtesL" type="Label" parent="BG/Margin/Sheet/Body/Manipulacion de planos/PlaneManipulation"]
 layout_mode = 2
-theme_override_fonts/font = ExtResource("11")
+theme_override_font_sizes/font_size = 29
 text = "Artes"
+horizontal_alignment = 1
 
 [node name="ArtesCenter" type="CenterContainer" parent="BG/Margin/Sheet/Body/Manipulacion de planos/PlaneManipulation"]
 layout_mode = 2
@@ -735,6 +741,7 @@ layout_mode = 2
 text = "Editar"
 
 [node name="EditCheck" type="CheckButton" parent="BG/Margin/Sheet/Tools"]
+unique_name_in_owner = true
 layout_mode = 2
 
 [node name="AutosaveL" type="Label" parent="BG/Margin/Sheet/Tools"]
@@ -742,6 +749,7 @@ layout_mode = 2
 text = "Autosave"
 
 [node name="AutosaveCheck" type="CheckButton" parent="BG/Margin/Sheet/Tools"]
+unique_name_in_owner = true
 layout_mode = 2
 
 [node name="CPUParticles2D" type="CPUParticles2D" parent="BG/Margin/Sheet/Tools/AutosaveCheck"]
