@@ -13,7 +13,7 @@
 [ext_resource type="Texture2D" uid="uid://cr4h1iyp0wwr3" path="res://resources/sprites/buttons/PWpressed.png" id="12"]
 [ext_resource type="Texture2D" uid="uid://bjw4fi48xto8w" path="res://resources/sprites/buttons/human.png" id="13"]
 [ext_resource type="Texture2D" uid="uid://ccjrx5xmro2a5" path="res://resources/sprites/buttons/humanpressed.png" id="14"]
-[ext_resource type="PackedScene" path="res://scenes/panels/ArtesReference.tscn" id="15"]
+[ext_resource type="PackedScene" uid="uid://bwd4j06olcxmr" path="res://scenes/panels/ArtesReference.tscn" id="15"]
 
 [sub_resource type="StyleBoxEmpty" id="2"]
 
@@ -255,10 +255,12 @@ text = "Personalidad"
 [node name="Looks" type="TextEdit" parent="CenterContainer/SheetDescription/GridDescription"]
 custom_minimum_size = Vector2(300, 150)
 layout_mode = 2
+wrap_mode = 1
 
 [node name="Personality" type="TextEdit" parent="CenterContainer/SheetDescription/GridDescription"]
 custom_minimum_size = Vector2(300, 150)
 layout_mode = 2
+wrap_mode = 1
 
 [node name="PastL" type="Label" parent="CenterContainer/SheetDescription/GridDescription"]
 layout_mode = 2
@@ -271,10 +273,12 @@ text = "Motivación"
 [node name="Past" type="TextEdit" parent="CenterContainer/SheetDescription/GridDescription"]
 custom_minimum_size = Vector2(300, 150)
 layout_mode = 2
+wrap_mode = 1
 
 [node name="Motivation" type="TextEdit" parent="CenterContainer/SheetDescription/GridDescription"]
 custom_minimum_size = Vector2(300, 150)
 layout_mode = 2
+wrap_mode = 1
 
 [node name="BlankSeparator4" type="HSeparator" parent="CenterContainer/SheetDescription"]
 layout_mode = 2
@@ -584,7 +588,8 @@ offset_bottom = 100.0
 grow_horizontal = 2
 
 [node name="ArtesReference" parent="." instance=ExtResource("15")]
-size = Vector2i(150, 100)
+size = Vector2i(1735, 516)
+visible = false
 
 [connection signal="item_selected" from="CenterContainer/NinePatchRect/Version" to="." method="_on_Version_item_selected"]
 [connection signal="pressed" from="CenterContainer/SheetInfo/CenterContainer2/GridContainer/Human" to="." method="_on_Human_pressed"]

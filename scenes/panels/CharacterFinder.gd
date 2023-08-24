@@ -9,6 +9,7 @@ signal back()
 
 func _ready():
 	char_list.clear()
+	CharactersGetter.connect("cache_refreshed", populate_list)
 	$VBoxContainer/PosibleChars.select_mode = ItemList.SELECT_MULTI if multiple_selection else ItemList.SELECT_SINGLE
 
 
@@ -16,7 +17,6 @@ func _on_SearchButton_pressed():
 	var search_text = $VBoxContainer/SearchCont/SearchLine.text
 	char_list.clear()
 	CharactersGetter.search(search_text)
-	CharactersGetter.connect("cache_refreshed", Callable(self, "populate_list"))
 
 
 func populate_list(characters):

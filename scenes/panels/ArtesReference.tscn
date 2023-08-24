@@ -1,74 +1,61 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=4 format=3 uid="uid://bwd4j06olcxmr"]
 
-[ext_resource path="res://scenes/info_elements/ArsCard.tscn" type="PackedScene" id=1]
-[ext_resource path="res://scenes/panels/ArtesReference.gd" type="Script" id=2]
-[ext_resource path="res://resources/sprites/backgrounds/logoletter1.png" type="Texture2D" id=3]
-
-
+[ext_resource type="PackedScene" uid="uid://dc0p05gocgu2v" path="res://scenes/info_elements/ArsCard.tscn" id="1"]
+[ext_resource type="Script" path="res://scenes/panels/ArtesReference.gd" id="2"]
+[ext_resource type="Texture2D" uid="uid://cm4b624x2xln0" path="res://resources/sprites/backgrounds/logoletter1.png" id="3"]
 
 [node name="ArtesReference" type="Popup"]
-offset_right = 1100.0
-offset_bottom = 600.0
-size_flags_horizontal = 3
-size_flags_vertical = 3
-script = ExtResource( 2 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
+size = Vector2i(1870, 550)
+visible = true
+script = ExtResource("2")
 
 [node name="BG" type="NinePatchRect" parent="."]
+custom_minimum_size = Vector2(1850, 520)
+anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-texture = ExtResource( 3 )
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3")
 patch_margin_left = 78
 patch_margin_top = 27
 patch_margin_right = 72
 patch_margin_bottom = 21
 
 [node name="ScrollContainer" type="ScrollContainer" parent="."]
+custom_minimum_size = Vector2(1850, 550)
+anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-__meta__ = {
-"_edit_use_anchors_": false
-}
+grow_horizontal = 2
+grow_vertical = 2
 
 [node name="VBoxContainer" type="VBoxContainer" parent="ScrollContainer"]
-offset_right = 1830.0
-offset_bottom = 494.0
+layout_mode = 2
 
 [node name="ShowAll" type="CheckButton" parent="ScrollContainer/VBoxContainer"]
-offset_right = 172.0
-offset_bottom = 40.0
+layout_mode = 2
 size_flags_horizontal = 0
 text = "Muestra todos"
 
 [node name="ArtesList" type="HBoxContainer" parent="ScrollContainer/VBoxContainer"]
-offset_top = 44.0
-offset_right = 1830.0
-offset_bottom = 494.0
+layout_mode = 2
 theme_override_constants/separation = 20
 alignment = 1
 
-[node name="ArsCard" parent="ScrollContainer/VBoxContainer/ArtesList" instance=ExtResource( 1 )]
-offset_bottom = 450.0
+[node name="ArsCard" parent="ScrollContainer/VBoxContainer/ArtesList" instance=ExtResource("1")]
+layout_mode = 2
 
-[node name="ArsCard2" parent="ScrollContainer/VBoxContainer/ArtesList" instance=ExtResource( 1 )]
-offset_left = 370.0
-offset_right = 720.0
-offset_bottom = 450.0
+[node name="ArsCard2" parent="ScrollContainer/VBoxContainer/ArtesList" instance=ExtResource("1")]
+layout_mode = 2
 
-[node name="ArsCard3" parent="ScrollContainer/VBoxContainer/ArtesList" instance=ExtResource( 1 )]
-offset_left = 740.0
-offset_right = 1090.0
-offset_bottom = 450.0
+[node name="ArsCard3" parent="ScrollContainer/VBoxContainer/ArtesList" instance=ExtResource("1")]
+layout_mode = 2
 
-[node name="ArsCard4" parent="ScrollContainer/VBoxContainer/ArtesList" instance=ExtResource( 1 )]
-offset_left = 1110.0
-offset_right = 1460.0
-offset_bottom = 450.0
+[node name="ArsCard4" parent="ScrollContainer/VBoxContainer/ArtesList" instance=ExtResource("1")]
+layout_mode = 2
 
-[node name="ArsCard5" parent="ScrollContainer/VBoxContainer/ArtesList" instance=ExtResource( 1 )]
-offset_left = 1480.0
-offset_right = 1830.0
-offset_bottom = 450.0
+[node name="ArsCard5" parent="ScrollContainer/VBoxContainer/ArtesList" instance=ExtResource("1")]
+layout_mode = 2
+
 [connection signal="pressed" from="ScrollContainer/VBoxContainer/ShowAll" to="." method="_on_CheckButton_pressed"]

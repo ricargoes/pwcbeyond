@@ -26,7 +26,7 @@
 [ext_resource type="Texture2D" uid="uid://c7m8nq28murv8" path="res://resources/sprites/details/dirt1.png" id="25"]
 [ext_resource type="Texture2D" uid="uid://du88fnuc3vlvb" path="res://resources/sprites/details/dirt4.png" id="26"]
 [ext_resource type="Texture2D" uid="uid://dfmegm04crtnf" path="res://resources/sprites/details/dirt5.png" id="27"]
-[ext_resource type="PackedScene" path="res://scenes/panels/ArtesReference.tscn" id="28"]
+[ext_resource type="PackedScene" uid="uid://bwd4j06olcxmr" path="res://scenes/panels/ArtesReference.tscn" id="28"]
 [ext_resource type="PackedScene" path="res://scenes/panels/Inventory.tscn" id="29"]
 
 [sub_resource type="StyleBoxEmpty" id="1"]
@@ -304,24 +304,28 @@ unique_name_in_owner = true
 custom_minimum_size = Vector2(280, 90)
 layout_mode = 2
 focus_mode = 0
+wrap_mode = 1
 
 [node name="Personality" type="TextEdit" parent="BG/Margin/Sheet/Header/Info" groups=["editable_textedits"]]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(280, 0)
 layout_mode = 2
 focus_mode = 0
+wrap_mode = 1
 
 [node name="Past" type="TextEdit" parent="BG/Margin/Sheet/Header/Info" groups=["editable_textedits"]]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(280, 0)
 layout_mode = 2
 focus_mode = 0
+wrap_mode = 1
 
 [node name="Motivation" type="TextEdit" parent="BG/Margin/Sheet/Header/Info" groups=["editable_textedits"]]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(280, 0)
 layout_mode = 2
 focus_mode = 0
+wrap_mode = 1
 
 [node name="HSeparator" type="HSeparator" parent="BG/Margin/Sheet"]
 layout_mode = 2

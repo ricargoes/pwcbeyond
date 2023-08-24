@@ -78,17 +78,17 @@ func search(search_text):
 
 
 func insert_character(character):
-	var post_data = {
+	var post_data = JSON.stringify({
 		"chronicle": character.chronicle, 
 		"player": character.player_name, 
 		"character_name": character.char_name, 
 		"character_stats": character.get_data_dict()
-		}
+		})
 	$CharactersInserter.request(
 		GameInfo.character_sheets_table_url,
 		PackedStringArray(["Content-Type: application/json"]),
 		HTTPClient.METHOD_POST,
-		JSON.stringify(post_data)
+		post_data
 		)
 
 
