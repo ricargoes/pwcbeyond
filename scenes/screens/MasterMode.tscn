@@ -1,7 +1,7 @@
 [gd_scene load_steps=15 format=3 uid="uid://bbvg21v5m6vnf"]
 
 [ext_resource type="PackedScene" uid="uid://cqq7n32w7m6dd" path="res://scenes/panels/CharStatusPanel.tscn" id="1"]
-[ext_resource type="PackedScene" path="res://scenes/decorations/BG.tscn" id="2"]
+[ext_resource type="PackedScene" uid="uid://bt8v31k067cal" path="res://scenes/decorations/BG.tscn" id="2"]
 [ext_resource type="PackedScene" uid="uid://2bewf06uoc6u" path="res://scenes/panels/CharacterFinder.tscn" id="3"]
 [ext_resource type="Script" path="res://scenes/screens/MasterMode.gd" id="4"]
 [ext_resource type="Theme" uid="uid://fdky2ckfobqg" path="res://resources/theme.tres" id="5"]
@@ -27,9 +27,7 @@ theme = ExtResource("5")
 script = ExtResource("4")
 
 [node name="BG" parent="." instance=ExtResource("2")]
-layout_mode = 0
-offset_right = 1920.0
-offset_bottom = 1080.0
+layout_mode = 1
 
 [node name="Logo" parent="." instance=ExtResource("7")]
 layout_mode = 1
@@ -577,14 +575,11 @@ text = "Salir"
 flat = true
 
 [node name="Warning" parent="." instance=ExtResource("6")]
-layout_mode = 0
-anchors_preset = 0
-anchor_left = 0.0
-anchor_right = 0.0
-offset_left = 0.0
+layout_mode = 1
 offset_top = 0.0
-offset_right = 500.0
-offset_bottom = 70.0
+offset_right = 250.0
+offset_bottom = 93.0
+grow_horizontal = 2
 
 [node name="CharacterFinder" parent="." instance=ExtResource("3")]
 unique_name_in_owner = true

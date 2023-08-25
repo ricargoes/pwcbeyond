@@ -11,7 +11,7 @@
 [ext_resource type="Shortcut" path="res://resources/EscapeKeyShortcut.tres" id="9"]
 [ext_resource type="Texture2D" uid="uid://b17x343mn1vuw" path="res://resources/sprites/buttons/Mastermodepressed.png" id="10"]
 [ext_resource type="PackedScene" path="res://scenes/panels/Logo.tscn" id="11"]
-[ext_resource type="PackedScene" path="res://scenes/decorations/BG.tscn" id="12"]
+[ext_resource type="PackedScene" uid="uid://bt8v31k067cal" path="res://scenes/decorations/BG.tscn" id="12"]
 
 [node name="MainMenu" type="Control"]
 layout_mode = 3
@@ -24,7 +24,7 @@ theme = ExtResource("1")
 script = ExtResource("6")
 
 [node name="BG" parent="." instance=ExtResource("12")]
-layout_mode = 0
+layout_mode = 1
 
 [node name="Logo" parent="." instance=ExtResource("11")]
 layout_mode = 1

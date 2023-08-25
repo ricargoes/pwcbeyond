@@ -1,4 +1,4 @@
-[gd_scene load_steps=33 format=3 uid="uid://418hr3w7mvqv"]
+[gd_scene load_steps=36 format=3 uid="uid://418hr3w7mvqv"]
 
 [ext_resource type="Theme" uid="uid://fdky2ckfobqg" path="res://resources/theme.tres" id="1"]
 [ext_resource type="Texture2D" uid="uid://cycusujak170" path="res://resources/sprites/backgrounds/logoletter (3).png" id="2"]
@@ -6,10 +6,10 @@
 [ext_resource type="FontFile" path="res://resources/h1_font.tres" id="4"]
 [ext_resource type="Script" path="res://scenes/sheet_layouts/CharacterSheet.gd" id="5"]
 [ext_resource type="Texture2D" uid="uid://dkrgghkol20l4" path="res://resources/logos/PWC-logo-fighting_man.png" id="6"]
-[ext_resource type="PackedScene" path="res://scenes/counters/Status.tscn" id="7"]
+[ext_resource type="PackedScene" uid="uid://bgsu7k31kntjl" path="res://scenes/counters/Status.tscn" id="7"]
 [ext_resource type="PackedScene" uid="uid://ds0lqr056s3xp" path="res://scenes/counters/Tireness.tscn" id="8"]
 [ext_resource type="StyleBox" path="res://resources/underline_small.tres" id="9"]
-[ext_resource type="PackedScene" path="res://scenes/decorations/BG.tscn" id="10"]
+[ext_resource type="PackedScene" uid="uid://bt8v31k067cal" path="res://scenes/decorations/BG.tscn" id="10"]
 [ext_resource type="PackedScene" uid="uid://bvsfexlw1hvsx" path="res://scenes/counters/Feature.tscn" id="12"]
 [ext_resource type="Shortcut" path="res://resources/EscapeKeyShortcut.tres" id="13"]
 [ext_resource type="PackedScene" uid="uid://mhvw62e3bmj2" path="res://scenes/tools/RollTool.tscn" id="14"]
@@ -29,29 +29,40 @@
 [ext_resource type="PackedScene" uid="uid://bwd4j06olcxmr" path="res://scenes/panels/ArtesReference.tscn" id="28"]
 [ext_resource type="PackedScene" path="res://scenes/panels/Inventory.tscn" id="29"]
 
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_r5qff"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_h3qsf"]
+
 [sub_resource type="StyleBoxEmpty" id="1"]
 
 [sub_resource type="StyleBoxEmpty" id="2"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_epvhe"]
 
 [sub_resource type="StyleBoxEmpty" id="3"]
 
 [sub_resource type="StyleBoxEmpty" id="4"]
 
-[node name="DashboardLayout" type="ScrollContainer"]
+[node name="DashboardLayout" type="Control"]
+layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 theme = ExtResource("1")
 script = ExtResource("5")
+
+[node name="GET" type="HTTPRequest" parent="."]
 
 [node name="Autosave" type="Timer" parent="."]
 wait_time = 3.0
 autostart = true
 
-[node name="GET" type="HTTPRequest" parent="."]
-
 [node name="BG" parent="." instance=ExtResource("10")]
-layout_mode = 2
+layout_mode = 1
+size_flags_horizontal = 3
+size_flags_vertical = 3
 
 [node name="Envelope" type="TextureRect" parent="BG"]
 custom_minimum_size = Vector2(720, 270)
@@ -70,65 +81,29 @@ offset_right = 1260.0
 offset_bottom = 300.0
 texture = ExtResource("18")
 
-[node name="Margin" type="MarginContainer" parent="BG"]
-custom_minimum_size = Vector2(1919, 0)
-layout_mode = 0
-offset_right = 1919.0
-offset_bottom = 1080.0
-theme_override_constants/margin_left = 30
-theme_override_constants/margin_top = 30
-theme_override_constants/margin_bottom = 10
-
-[node name="Pivot" type="Control" parent="BG/Margin"]
-layout_mode = 2
-mouse_filter = 2
-
-[node name="CenterContainer" type="CenterContainer" parent="BG/Margin/Pivot"]
-layout_mode = 0
-anchor_right = 1.0
-anchor_bottom = 1.0
-mouse_filter = 2
-
-[node name="ConfirmationPopup" type="Popup" parent="BG/Margin/Pivot/CenterContainer"]
-
-[node name="NinePatchRect" type="NinePatchRect" parent="BG/Margin/Pivot/CenterContainer/ConfirmationPopup"]
-modulate = Color(0.768627, 0.776471, 0, 1)
-custom_minimum_size = Vector2(400, 100)
-offset_right = 400.0
-offset_bottom = 100.0
-texture = ExtResource("16")
-patch_margin_left = 55
-patch_margin_top = 64
-patch_margin_right = 51
-patch_margin_bottom = 45
-
-[node name="VBoxContainer" type="VBoxContainer" parent="BG/Margin/Pivot/CenterContainer/ConfirmationPopup"]
+[node name="Sheet" type="VBoxContainer" parent="BG"]
+layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-alignment = 1
+grow_horizontal = 2
+grow_vertical = 2
 
-[node name="ConfirmationL" type="Label" parent="BG/Margin/Pivot/CenterContainer/ConfirmationPopup/VBoxContainer"]
-layout_mode = 2
-text = "Acepta para confirmar el borrado"
-
-[node name="ConfirmButtons" type="HBoxContainer" parent="BG/Margin/Pivot/CenterContainer/ConfirmationPopup/VBoxContainer"]
-layout_mode = 2
-alignment = 1
-
-[node name="Aceptar" type="Button" parent="BG/Margin/Pivot/CenterContainer/ConfirmationPopup/VBoxContainer/ConfirmButtons"]
-layout_mode = 2
-text = "Aceptar"
-
-[node name="Sheet" type="VBoxContainer" parent="BG/Margin"]
+[node name="HSeparator2" type="HSeparator" parent="BG/Sheet"]
 layout_mode = 2
 theme_override_constants/separation = 10
+theme_override_styles/separator = SubResource("StyleBoxEmpty_r5qff")
 
-[node name="Header" type="HBoxContainer" parent="BG/Margin/Sheet"]
+[node name="Header" type="HBoxContainer" parent="BG/Sheet"]
 layout_mode = 2
-theme_override_constants/separation = 100
 
-[node name="Logo" type="TextureRect" parent="BG/Margin/Sheet/Header"]
+[node name="VSeparator3" type="VSeparator" parent="BG/Sheet/Header"]
+layout_mode = 2
+theme_override_constants/separation = 20
+theme_override_styles/separator = SubResource("StyleBoxEmpty_h3qsf")
+
+[node name="Logo" type="TextureRect" parent="BG/Sheet/Header"]
+unique_name_in_owner = true
 custom_minimum_size = Vector2(540, 200)
 layout_mode = 2
 mouse_default_cursor_shape = 2
@@ -136,21 +111,26 @@ texture = ExtResource("6")
 expand_mode = 1
 stretch_mode = 5
 
-[node name="Info" type="GridContainer" parent="BG/Margin/Sheet/Header"]
+[node name="VSeparator2" type="VSeparator" parent="BG/Sheet/Header"]
+layout_mode = 2
+theme_override_constants/separation = 120
+theme_override_styles/separator = SubResource("StyleBoxEmpty_h3qsf")
+
+[node name="Info" type="GridContainer" parent="BG/Sheet/Header"]
 layout_mode = 2
 theme_override_constants/h_separation = 20
 columns = 4
 
-[node name="PlayerBox" type="HBoxContainer" parent="BG/Margin/Sheet/Header/Info"]
+[node name="PlayerBox" type="HBoxContainer" parent="BG/Sheet/Header/Info"]
 layout_mode = 2
 alignment = 2
 
-[node name="PlayerL" type="Label" parent="BG/Margin/Sheet/Header/Info/PlayerBox"]
+[node name="PlayerL" type="Label" parent="BG/Sheet/Header/Info/PlayerBox"]
 layout_mode = 2
 size_flags_horizontal = 3
 text = "Jugador: "
 
-[node name="Player" type="LineEdit" parent="BG/Margin/Sheet/Header/Info/PlayerBox"]
+[node name="Player" type="LineEdit" parent="BG/Sheet/Header/Info/PlayerBox"]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(150, 30)
 layout_mode = 2
@@ -160,16 +140,16 @@ editable = false
 caret_blink = true
 caret_blink_interval = 0.5
 
-[node name="NameBox" type="HBoxContainer" parent="BG/Margin/Sheet/Header/Info"]
+[node name="NameBox" type="HBoxContainer" parent="BG/Sheet/Header/Info"]
 layout_mode = 2
 alignment = 2
 
-[node name="NameL" type="Label" parent="BG/Margin/Sheet/Header/Info/NameBox"]
+[node name="NameL" type="Label" parent="BG/Sheet/Header/Info/NameBox"]
 layout_mode = 2
 size_flags_horizontal = 3
 text = "Nombre: "
 
-[node name="Name" type="LineEdit" parent="BG/Margin/Sheet/Header/Info/NameBox"]
+[node name="Name" type="LineEdit" parent="BG/Sheet/Header/Info/NameBox"]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(150, 0)
 layout_mode = 2
@@ -178,16 +158,16 @@ editable = false
 caret_blink = true
 caret_blink_interval = 0.5
 
-[node name="SpeciesBox" type="HBoxContainer" parent="BG/Margin/Sheet/Header/Info"]
+[node name="SpeciesBox" type="HBoxContainer" parent="BG/Sheet/Header/Info"]
 layout_mode = 2
 alignment = 2
 
-[node name="SpeciesL" type="Label" parent="BG/Margin/Sheet/Header/Info/SpeciesBox"]
+[node name="SpeciesL" type="Label" parent="BG/Sheet/Header/Info/SpeciesBox"]
 layout_mode = 2
 size_flags_horizontal = 3
 text = "Especie: "
 
-[node name="Species" type="LineEdit" parent="BG/Margin/Sheet/Header/Info/SpeciesBox" groups=["editable_lineedits"]]
+[node name="Species" type="LineEdit" parent="BG/Sheet/Header/Info/SpeciesBox" groups=["editable_lineedits"]]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(150, 0)
 layout_mode = 2
@@ -196,32 +176,32 @@ editable = false
 caret_blink = true
 caret_blink_interval = 0.5
 
-[node name="XPBox" type="HBoxContainer" parent="BG/Margin/Sheet/Header/Info"]
+[node name="XPBox" type="HBoxContainer" parent="BG/Sheet/Header/Info"]
 layout_mode = 2
 alignment = 2
 
-[node name="XPL" type="Label" parent="BG/Margin/Sheet/Header/Info/XPBox"]
+[node name="XPL" type="Label" parent="BG/Sheet/Header/Info/XPBox"]
 layout_mode = 2
 size_flags_horizontal = 3
 text = "XP: "
 
-[node name="XP" type="LineEdit" parent="BG/Margin/Sheet/Header/Info/XPBox"]
+[node name="XP" type="LineEdit" parent="BG/Sheet/Header/Info/XPBox"]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(150, 30)
 layout_mode = 2
 caret_blink = true
 caret_blink_interval = 0.5
 
-[node name="ChronicleBox" type="HBoxContainer" parent="BG/Margin/Sheet/Header/Info"]
+[node name="ChronicleBox" type="HBoxContainer" parent="BG/Sheet/Header/Info"]
 layout_mode = 2
 alignment = 2
 
-[node name="ChronicleL" type="Label" parent="BG/Margin/Sheet/Header/Info/ChronicleBox"]
+[node name="ChronicleL" type="Label" parent="BG/Sheet/Header/Info/ChronicleBox"]
 layout_mode = 2
 size_flags_horizontal = 3
 text = "Cronica:"
 
-[node name="Chronicle" type="LineEdit" parent="BG/Margin/Sheet/Header/Info/ChronicleBox"]
+[node name="Chronicle" type="LineEdit" parent="BG/Sheet/Header/Info/ChronicleBox"]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(150, 30)
 layout_mode = 2
@@ -231,16 +211,16 @@ editable = false
 caret_blink = true
 caret_blink_interval = 0.5
 
-[node name="JobBox" type="HBoxContainer" parent="BG/Margin/Sheet/Header/Info"]
+[node name="JobBox" type="HBoxContainer" parent="BG/Sheet/Header/Info"]
 layout_mode = 2
 alignment = 2
 
-[node name="JobL" type="Label" parent="BG/Margin/Sheet/Header/Info/JobBox"]
+[node name="JobL" type="Label" parent="BG/Sheet/Header/Info/JobBox"]
 layout_mode = 2
 size_flags_horizontal = 3
 text = "Profesion: "
 
-[node name="Job" type="LineEdit" parent="BG/Margin/Sheet/Header/Info/JobBox" groups=["editable_lineedits"]]
+[node name="Job" type="LineEdit" parent="BG/Sheet/Header/Info/JobBox" groups=["editable_lineedits"]]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(150, 0)
 layout_mode = 2
@@ -249,16 +229,16 @@ editable = false
 caret_blink = true
 caret_blink_interval = 0.5
 
-[node name="AgeBox" type="HBoxContainer" parent="BG/Margin/Sheet/Header/Info"]
+[node name="AgeBox" type="HBoxContainer" parent="BG/Sheet/Header/Info"]
 layout_mode = 2
 alignment = 2
 
-[node name="AgeL" type="Label" parent="BG/Margin/Sheet/Header/Info/AgeBox"]
+[node name="AgeL" type="Label" parent="BG/Sheet/Header/Info/AgeBox"]
 layout_mode = 2
 size_flags_horizontal = 3
 text = "Edad: "
 
-[node name="Age" type="LineEdit" parent="BG/Margin/Sheet/Header/Info/AgeBox" groups=["editable_lineedits"]]
+[node name="Age" type="LineEdit" parent="BG/Sheet/Header/Info/AgeBox" groups=["editable_lineedits"]]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(150, 0)
 layout_mode = 2
@@ -267,80 +247,80 @@ editable = false
 caret_blink = true
 caret_blink_interval = 0.5
 
-[node name="EPBox" type="HBoxContainer" parent="BG/Margin/Sheet/Header/Info"]
+[node name="EPBox" type="HBoxContainer" parent="BG/Sheet/Header/Info"]
 layout_mode = 2
 alignment = 2
 
-[node name="EPL" type="Label" parent="BG/Margin/Sheet/Header/Info/EPBox"]
+[node name="EPL" type="Label" parent="BG/Sheet/Header/Info/EPBox"]
 layout_mode = 2
 size_flags_horizontal = 3
 text = "EP: "
 
-[node name="EP" type="LineEdit" parent="BG/Margin/Sheet/Header/Info/EPBox"]
+[node name="EP" type="LineEdit" parent="BG/Sheet/Header/Info/EPBox"]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(150, 30)
 layout_mode = 2
 caret_blink = true
 caret_blink_interval = 0.5
 
-[node name="RasgosL" type="Label" parent="BG/Margin/Sheet/Header/Info"]
+[node name="RasgosL" type="Label" parent="BG/Sheet/Header/Info"]
 layout_mode = 2
 text = "Rasgos: "
 
-[node name="PersonalidadL" type="Label" parent="BG/Margin/Sheet/Header/Info"]
+[node name="PersonalidadL" type="Label" parent="BG/Sheet/Header/Info"]
 layout_mode = 2
 text = "Personalidad: "
 
-[node name="PasadoL" type="Label" parent="BG/Margin/Sheet/Header/Info"]
+[node name="PasadoL" type="Label" parent="BG/Sheet/Header/Info"]
 layout_mode = 2
 text = "Pasado: "
 
-[node name="MotivacionL" type="Label" parent="BG/Margin/Sheet/Header/Info"]
+[node name="MotivacionL" type="Label" parent="BG/Sheet/Header/Info"]
 layout_mode = 2
 text = "Motivación:"
 
-[node name="Looks" type="TextEdit" parent="BG/Margin/Sheet/Header/Info" groups=["editable_textedits"]]
+[node name="Looks" type="TextEdit" parent="BG/Sheet/Header/Info" groups=["editable_textedits"]]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(280, 90)
 layout_mode = 2
 focus_mode = 0
 wrap_mode = 1
 
-[node name="Personality" type="TextEdit" parent="BG/Margin/Sheet/Header/Info" groups=["editable_textedits"]]
+[node name="Personality" type="TextEdit" parent="BG/Sheet/Header/Info" groups=["editable_textedits"]]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(280, 0)
 layout_mode = 2
 focus_mode = 0
 wrap_mode = 1
 
-[node name="Past" type="TextEdit" parent="BG/Margin/Sheet/Header/Info" groups=["editable_textedits"]]
+[node name="Past" type="TextEdit" parent="BG/Sheet/Header/Info" groups=["editable_textedits"]]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(280, 0)
 layout_mode = 2
 focus_mode = 0
 wrap_mode = 1
 
-[node name="Motivation" type="TextEdit" parent="BG/Margin/Sheet/Header/Info" groups=["editable_textedits"]]
+[node name="Motivation" type="TextEdit" parent="BG/Sheet/Header/Info" groups=["editable_textedits"]]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(280, 0)
 layout_mode = 2
 focus_mode = 0
 wrap_mode = 1
 
-[node name="HSeparator" type="HSeparator" parent="BG/Margin/Sheet"]
+[node name="HSeparator" type="HSeparator" parent="BG/Sheet"]
 layout_mode = 2
-theme_override_constants/separation = 30
+theme_override_constants/separation = 60
 theme_override_styles/separator = SubResource("1")
 
-[node name="Body" type="HBoxContainer" parent="BG/Margin/Sheet"]
+[node name="Body" type="HBoxContainer" parent="BG/Sheet"]
+layout_mode = 2
+theme_override_constants/separation = 25
+
+[node name="Sec1" type="VBoxContainer" parent="BG/Sheet/Body"]
 layout_mode = 2
 theme_override_constants/separation = 50
 
-[node name="Sec1" type="VBoxContainer" parent="BG/Margin/Sheet/Body"]
-layout_mode = 2
-theme_override_constants/separation = 50
-
-[node name="AtributesBG" type="NinePatchRect" parent="BG/Margin/Sheet/Body/Sec1"]
+[node name="AtributesBG" type="NinePatchRect" parent="BG/Sheet/Body/Sec1"]
 custom_minimum_size = Vector2(550, 300)
 layout_mode = 2
 texture = ExtResource("15")
@@ -349,39 +329,39 @@ patch_margin_top = 70
 patch_margin_right = 62
 patch_margin_bottom = 59
 
-[node name="AtributeDetails" type="Node2D" parent="BG/Margin/Sheet/Body/Sec1/AtributesBG"]
+[node name="AtributeDetails" type="Node2D" parent="BG/Sheet/Body/Sec1/AtributesBG"]
 
-[node name="Sprite2D" type="Sprite2D" parent="BG/Margin/Sheet/Body/Sec1/AtributesBG/AtributeDetails"]
+[node name="Sprite2D" type="Sprite2D" parent="BG/Sheet/Body/Sec1/AtributesBG/AtributeDetails"]
 self_modulate = Color(1, 1, 1, 0.411765)
 position = Vector2(288, 137)
 texture = ExtResource("24")
 
-[node name="AtributesCenter" type="CenterContainer" parent="BG/Margin/Sheet/Body/Sec1/AtributesBG"]
+[node name="AtributesCenter" type="CenterContainer" parent="BG/Sheet/Body/Sec1/AtributesBG"]
 layout_mode = 0
 anchor_right = 1.0
 anchor_bottom = 1.0
 
-[node name="AtributesFrame" type="VBoxContainer" parent="BG/Margin/Sheet/Body/Sec1/AtributesBG/AtributesCenter"]
+[node name="AtributesFrame" type="VBoxContainer" parent="BG/Sheet/Body/Sec1/AtributesBG/AtributesCenter"]
 layout_mode = 2
 alignment = 1
 
-[node name="AtributosL" type="Label" parent="BG/Margin/Sheet/Body/Sec1/AtributesBG/AtributesCenter/AtributesFrame"]
+[node name="AtributosL" type="Label" parent="BG/Sheet/Body/Sec1/AtributesBG/AtributesCenter/AtributesFrame"]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("4")
 theme_override_font_sizes/font_size = 33
 text = "Atributos"
 horizontal_alignment = 1
 
-[node name="HSeparator" type="HSeparator" parent="BG/Margin/Sheet/Body/Sec1/AtributesBG/AtributesCenter/AtributesFrame"]
+[node name="HSeparator" type="HSeparator" parent="BG/Sheet/Body/Sec1/AtributesBG/AtributesCenter/AtributesFrame"]
 layout_mode = 2
 theme_override_styles/separator = ExtResource("3")
 
-[node name="Atributes" type="HBoxContainer" parent="BG/Margin/Sheet/Body/Sec1/AtributesBG/AtributesCenter/AtributesFrame"]
+[node name="Atributes" type="HBoxContainer" parent="BG/Sheet/Body/Sec1/AtributesBG/AtributesCenter/AtributesFrame"]
 unique_name_in_owner = true
 layout_mode = 2
 theme_override_constants/separation = 10
 
-[node name="StatusBG" type="NinePatchRect" parent="BG/Margin/Sheet/Body/Sec1"]
+[node name="StatusBG" type="NinePatchRect" parent="BG/Sheet/Body/Sec1"]
 custom_minimum_size = Vector2(570, 350)
 layout_mode = 2
 texture = ExtResource("16")
@@ -390,7 +370,7 @@ patch_margin_top = 66
 patch_margin_right = 67
 patch_margin_bottom = 71
 
-[node name="Dirt" type="TextureRect" parent="BG/Margin/Sheet/Body/Sec1/StatusBG"]
+[node name="Dirt" type="TextureRect" parent="BG/Sheet/Body/Sec1/StatusBG"]
 layout_mode = 0
 anchor_left = 0.5
 anchor_top = 0.5
@@ -402,68 +382,73 @@ offset_right = 200.0
 offset_bottom = 200.0
 texture = ExtResource("26")
 
-[node name="StatusCenter" type="CenterContainer" parent="BG/Margin/Sheet/Body/Sec1/StatusBG"]
+[node name="StatusCenter" type="CenterContainer" parent="BG/Sheet/Body/Sec1/StatusBG"]
 layout_mode = 0
 anchor_right = 1.0
 anchor_bottom = 1.0
 
-[node name="StatusFrame" type="VBoxContainer" parent="BG/Margin/Sheet/Body/Sec1/StatusBG/StatusCenter"]
+[node name="StatusFrame" type="VBoxContainer" parent="BG/Sheet/Body/Sec1/StatusBG/StatusCenter"]
 layout_mode = 2
 
-[node name="EstadoL" type="Label" parent="BG/Margin/Sheet/Body/Sec1/StatusBG/StatusCenter/StatusFrame"]
+[node name="EstadoL" type="Label" parent="BG/Sheet/Body/Sec1/StatusBG/StatusCenter/StatusFrame"]
 layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 33
 text = "Estado"
 horizontal_alignment = 1
 
-[node name="HSeparator" type="HSeparator" parent="BG/Margin/Sheet/Body/Sec1/StatusBG/StatusCenter/StatusFrame"]
+[node name="HSeparator" type="HSeparator" parent="BG/Sheet/Body/Sec1/StatusBG/StatusCenter/StatusFrame"]
 layout_mode = 2
 theme_override_styles/separator = ExtResource("3")
 
-[node name="Status" type="HBoxContainer" parent="BG/Margin/Sheet/Body/Sec1/StatusBG/StatusCenter/StatusFrame"]
+[node name="Status" type="HBoxContainer" parent="BG/Sheet/Body/Sec1/StatusBG/StatusCenter/StatusFrame"]
 layout_mode = 2
 theme_override_constants/separation = 40
 alignment = 1
 
-[node name="PhysicalStatus" type="VBoxContainer" parent="BG/Margin/Sheet/Body/Sec1/StatusBG/StatusCenter/StatusFrame/Status"]
+[node name="PhysicalStatus" type="VBoxContainer" parent="BG/Sheet/Body/Sec1/StatusBG/StatusCenter/StatusFrame/Status"]
 layout_mode = 2
 
-[node name="Vigor" parent="BG/Margin/Sheet/Body/Sec1/StatusBG/StatusCenter/StatusFrame/Status/PhysicalStatus" groups=["features"] instance=ExtResource("8")]
+[node name="Vigor" parent="BG/Sheet/Body/Sec1/StatusBG/StatusCenter/StatusFrame/Status/PhysicalStatus" groups=["features"] instance=ExtResource("8")]
 layout_mode = 2
 status_name = "Vigor"
 
-[node name="BlankSep" type="HSeparator" parent="BG/Margin/Sheet/Body/Sec1/StatusBG/StatusCenter/StatusFrame/Status/PhysicalStatus"]
+[node name="BlankSep" type="HSeparator" parent="BG/Sheet/Body/Sec1/StatusBG/StatusCenter/StatusFrame/Status/PhysicalStatus"]
 layout_mode = 2
 theme_override_constants/separation = 20
 theme_override_styles/separator = SubResource("2")
 
-[node name="Salud" parent="BG/Margin/Sheet/Body/Sec1/StatusBG/StatusCenter/StatusFrame/Status/PhysicalStatus" instance=ExtResource("7")]
+[node name="Salud" parent="BG/Sheet/Body/Sec1/StatusBG/StatusCenter/StatusFrame/Status/PhysicalStatus" instance=ExtResource("7")]
 layout_mode = 2
 
-[node name="MentalStatus" type="VBoxContainer" parent="BG/Margin/Sheet/Body/Sec1/StatusBG/StatusCenter/StatusFrame/Status"]
+[node name="MentalStatus" type="VBoxContainer" parent="BG/Sheet/Body/Sec1/StatusBG/StatusCenter/StatusFrame/Status"]
 layout_mode = 2
 
-[node name="Voluntad" parent="BG/Margin/Sheet/Body/Sec1/StatusBG/StatusCenter/StatusFrame/Status/MentalStatus" groups=["features"] instance=ExtResource("8")]
+[node name="Voluntad" parent="BG/Sheet/Body/Sec1/StatusBG/StatusCenter/StatusFrame/Status/MentalStatus" groups=["features"] instance=ExtResource("8")]
 layout_mode = 2
 status_name = "Voluntad"
 
-[node name="BlankSep2" type="HSeparator" parent="BG/Margin/Sheet/Body/Sec1/StatusBG/StatusCenter/StatusFrame/Status/MentalStatus"]
+[node name="BlankSep2" type="HSeparator" parent="BG/Sheet/Body/Sec1/StatusBG/StatusCenter/StatusFrame/Status/MentalStatus"]
 layout_mode = 2
 theme_override_constants/separation = 20
 theme_override_styles/separator = SubResource("2")
 
-[node name="Cordura" parent="BG/Margin/Sheet/Body/Sec1/StatusBG/StatusCenter/StatusFrame/Status/MentalStatus" instance=ExtResource("7")]
+[node name="Cordura" parent="BG/Sheet/Body/Sec1/StatusBG/StatusCenter/StatusFrame/Status/MentalStatus" instance=ExtResource("7")]
 layout_mode = 2
 type = "Cordura"
 icon_colection = "sanity"
 
-[node name="Inkwell" type="Sprite2D" parent="BG/Margin/Sheet/Body/Sec1/StatusBG"]
+[node name="Inkwell" type="Sprite2D" parent="BG/Sheet/Body/Sec1/StatusBG"]
 position = Vector2(24, -19)
 scale = Vector2(0.7, 0.7)
 texture = ExtResource("21")
 
-[node name="SkillsBG" type="NinePatchRect" parent="BG/Margin/Sheet/Body"]
+[node name="VSeparator" type="VSeparator" parent="BG/Sheet/Body"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/separator = SubResource("StyleBoxEmpty_epvhe")
+
+[node name="SkillsBG" type="NinePatchRect" parent="BG/Sheet/Body"]
 custom_minimum_size = Vector2(700, 700)
 layout_mode = 2
 texture = ExtResource("15")
@@ -472,49 +457,54 @@ patch_margin_top = 71
 patch_margin_right = 60
 patch_margin_bottom = 65
 
-[node name="SkillDetails" type="Node2D" parent="BG/Margin/Sheet/Body/SkillsBG"]
+[node name="SkillDetails" type="Node2D" parent="BG/Sheet/Body/SkillsBG"]
 
-[node name="Sprite2D" type="Sprite2D" parent="BG/Margin/Sheet/Body/SkillsBG/SkillDetails"]
+[node name="Sprite2D" type="Sprite2D" parent="BG/Sheet/Body/SkillsBG/SkillDetails"]
 position = Vector2(357, 345)
 scale = Vector2(1.5, 1.5)
 texture = ExtResource("25")
 
-[node name="Sprite2" type="Sprite2D" parent="BG/Margin/Sheet/Body/SkillsBG/SkillDetails"]
+[node name="Sprite2" type="Sprite2D" parent="BG/Sheet/Body/SkillsBG/SkillDetails"]
 self_modulate = Color(1, 1, 1, 0.388235)
 position = Vector2(277, 271)
 scale = Vector2(1.5, 1.5)
 texture = ExtResource("27")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="BG/Margin/Sheet/Body/SkillsBG"]
+[node name="VBoxContainer" type="VBoxContainer" parent="BG/Sheet/Body/SkillsBG"]
 layout_mode = 0
 anchor_right = 1.0
 anchor_bottom = 1.0
 alignment = 1
 
-[node name="Title" type="Label" parent="BG/Margin/Sheet/Body/SkillsBG/VBoxContainer"]
+[node name="Title" type="Label" parent="BG/Sheet/Body/SkillsBG/VBoxContainer"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 33
 text = "Habilidades"
 horizontal_alignment = 1
 
-[node name="HSeparator" type="HSeparator" parent="BG/Margin/Sheet/Body/SkillsBG/VBoxContainer"]
+[node name="HSeparator" type="HSeparator" parent="BG/Sheet/Body/SkillsBG/VBoxContainer"]
 layout_mode = 2
 theme_override_styles/separator = ExtResource("3")
 
-[node name="CenterContainer" type="CenterContainer" parent="BG/Margin/Sheet/Body/SkillsBG/VBoxContainer"]
+[node name="CenterContainer" type="CenterContainer" parent="BG/Sheet/Body/SkillsBG/VBoxContainer"]
 layout_mode = 2
 
-[node name="Skills" type="HBoxContainer" parent="BG/Margin/Sheet/Body/SkillsBG/VBoxContainer/CenterContainer"]
+[node name="Skills" type="HBoxContainer" parent="BG/Sheet/Body/SkillsBG/VBoxContainer/CenterContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 theme_override_constants/separation = 30
 
-[node name="Feather" type="Sprite2D" parent="BG/Margin/Sheet/Body/SkillsBG"]
+[node name="Feather" type="Sprite2D" parent="BG/Sheet/Body/SkillsBG"]
 position = Vector2(-23.0448, 238.014)
 rotation = 0.174533
 texture = ExtResource("22")
 
-[node name="Manipulacion de planos" type="NinePatchRect" parent="BG/Margin/Sheet/Body"]
+[node name="VSeparator2" type="VSeparator" parent="BG/Sheet/Body"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/separator = SubResource("StyleBoxEmpty_epvhe")
+
+[node name="Manipulacion de planos" type="NinePatchRect" parent="BG/Sheet/Body"]
 custom_minimum_size = Vector2(450, 0)
 layout_mode = 2
 texture = ExtResource("17")
@@ -523,15 +513,15 @@ patch_margin_top = 38
 patch_margin_right = 44
 patch_margin_bottom = 38
 
-[node name="PWDetails" type="Node2D" parent="BG/Margin/Sheet/Body/Manipulacion de planos"]
+[node name="PWDetails" type="Node2D" parent="BG/Sheet/Body/Manipulacion de planos"]
 
-[node name="Sprite2D" type="Sprite2D" parent="BG/Margin/Sheet/Body/Manipulacion de planos/PWDetails"]
+[node name="Sprite2D" type="Sprite2D" parent="BG/Sheet/Body/Manipulacion de planos/PWDetails"]
 self_modulate = Color(1, 1, 1, 0.411765)
 position = Vector2(232, 361)
 scale = Vector2(1, 1.6)
 texture = ExtResource("23")
 
-[node name="PlaneManipulation" type="VBoxContainer" parent="BG/Margin/Sheet/Body/Manipulacion de planos"]
+[node name="PlaneManipulation" type="VBoxContainer" parent="BG/Sheet/Body/Manipulacion de planos"]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(450, 0)
 layout_mode = 0
@@ -544,29 +534,29 @@ offset_bottom = 1.75818
 theme_override_constants/separation = 8
 alignment = 1
 
-[node name="Title" type="Label" parent="BG/Margin/Sheet/Body/Manipulacion de planos/PlaneManipulation"]
+[node name="Title" type="Label" parent="BG/Sheet/Body/Manipulacion de planos/PlaneManipulation"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 33
 text = "Manipulacion de planos"
 horizontal_alignment = 1
 
-[node name="HSeparator" type="HSeparator" parent="BG/Margin/Sheet/Body/Manipulacion de planos/PlaneManipulation"]
+[node name="HSeparator" type="HSeparator" parent="BG/Sheet/Body/Manipulacion de planos/PlaneManipulation"]
 layout_mode = 2
 theme_override_styles/separator = ExtResource("3")
 
-[node name="DataCenter" type="CenterContainer" parent="BG/Margin/Sheet/Body/Manipulacion de planos/PlaneManipulation"]
+[node name="DataCenter" type="CenterContainer" parent="BG/Sheet/Body/Manipulacion de planos/PlaneManipulation"]
 layout_mode = 2
 
-[node name="Data" type="GridContainer" parent="BG/Margin/Sheet/Body/Manipulacion de planos/PlaneManipulation/DataCenter"]
+[node name="Data" type="GridContainer" parent="BG/Sheet/Body/Manipulacion de planos/PlaneManipulation/DataCenter"]
 layout_mode = 2
 theme_override_constants/h_separation = 30
 columns = 2
 
-[node name="ModusL" type="Label" parent="BG/Margin/Sheet/Body/Manipulacion de planos/PlaneManipulation/DataCenter/Data"]
+[node name="ModusL" type="Label" parent="BG/Sheet/Body/Manipulacion de planos/PlaneManipulation/DataCenter/Data"]
 layout_mode = 2
 text = "Modo: "
 
-[node name="Modus" type="LineEdit" parent="BG/Margin/Sheet/Body/Manipulacion de planos/PlaneManipulation/DataCenter/Data"]
+[node name="Modus" type="LineEdit" parent="BG/Sheet/Body/Manipulacion de planos/PlaneManipulation/DataCenter/Data"]
 custom_minimum_size = Vector2(150, 30)
 layout_mode = 2
 focus_mode = 0
@@ -574,11 +564,11 @@ editable = false
 caret_blink = true
 caret_blink_interval = 0.5
 
-[node name="ViaL" type="Label" parent="BG/Margin/Sheet/Body/Manipulacion de planos/PlaneManipulation/DataCenter/Data"]
+[node name="ViaL" type="Label" parent="BG/Sheet/Body/Manipulacion de planos/PlaneManipulation/DataCenter/Data"]
 layout_mode = 2
 text = "Via:"
 
-[node name="Via" type="LineEdit" parent="BG/Margin/Sheet/Body/Manipulacion de planos/PlaneManipulation/DataCenter/Data"]
+[node name="Via" type="LineEdit" parent="BG/Sheet/Body/Manipulacion de planos/PlaneManipulation/DataCenter/Data"]
 custom_minimum_size = Vector2(150, 30)
 layout_mode = 2
 focus_mode = 0
@@ -586,11 +576,11 @@ editable = false
 caret_blink = true
 caret_blink_interval = 0.5
 
-[node name="AspectL" type="Label" parent="BG/Margin/Sheet/Body/Manipulacion de planos/PlaneManipulation/DataCenter/Data"]
+[node name="AspectL" type="Label" parent="BG/Sheet/Body/Manipulacion de planos/PlaneManipulation/DataCenter/Data"]
 layout_mode = 2
 text = "Aspectos:"
 
-[node name="Aspect1" type="LineEdit" parent="BG/Margin/Sheet/Body/Manipulacion de planos/PlaneManipulation/DataCenter/Data"]
+[node name="Aspect1" type="LineEdit" parent="BG/Sheet/Body/Manipulacion de planos/PlaneManipulation/DataCenter/Data"]
 custom_minimum_size = Vector2(150, 30)
 layout_mode = 2
 focus_mode = 0
@@ -598,10 +588,10 @@ editable = false
 caret_blink = true
 caret_blink_interval = 0.5
 
-[node name="Blank" type="Label" parent="BG/Margin/Sheet/Body/Manipulacion de planos/PlaneManipulation/DataCenter/Data"]
+[node name="Blank" type="Label" parent="BG/Sheet/Body/Manipulacion de planos/PlaneManipulation/DataCenter/Data"]
 layout_mode = 2
 
-[node name="Aspect2" type="LineEdit" parent="BG/Margin/Sheet/Body/Manipulacion de planos/PlaneManipulation/DataCenter/Data"]
+[node name="Aspect2" type="LineEdit" parent="BG/Sheet/Body/Manipulacion de planos/PlaneManipulation/DataCenter/Data"]
 custom_minimum_size = Vector2(150, 30)
 layout_mode = 2
 focus_mode = 0
@@ -609,104 +599,109 @@ editable = false
 caret_blink = true
 caret_blink_interval = 0.5
 
-[node name="Journey" parent="BG/Margin/Sheet/Body/Manipulacion de planos/PlaneManipulation" instance=ExtResource("12")]
+[node name="Journey" parent="BG/Sheet/Body/Manipulacion de planos/PlaneManipulation" instance=ExtResource("12")]
 layout_mode = 2
 size_flags_horizontal = 4
 ability_name = "Viaje"
 
-[node name="HSeparator2" type="HSeparator" parent="BG/Margin/Sheet/Body/Manipulacion de planos/PlaneManipulation"]
+[node name="HSeparator2" type="HSeparator" parent="BG/Sheet/Body/Manipulacion de planos/PlaneManipulation"]
 layout_mode = 2
 theme_override_styles/separator = ExtResource("9")
 
-[node name="AccessCenter" type="CenterContainer" parent="BG/Margin/Sheet/Body/Manipulacion de planos/PlaneManipulation"]
+[node name="AccessCenter" type="CenterContainer" parent="BG/Sheet/Body/Manipulacion de planos/PlaneManipulation"]
 layout_mode = 2
 
-[node name="Access" type="GridContainer" parent="BG/Margin/Sheet/Body/Manipulacion de planos/PlaneManipulation/AccessCenter"]
+[node name="Access" type="GridContainer" parent="BG/Sheet/Body/Manipulacion de planos/PlaneManipulation/AccessCenter"]
 layout_mode = 2
 theme_override_constants/h_separation = -30
 theme_override_constants/v_separation = -5
 columns = 3
 
-[node name="Blank" type="Label" parent="BG/Margin/Sheet/Body/Manipulacion de planos/PlaneManipulation/AccessCenter/Access"]
+[node name="Blank" type="Label" parent="BG/Sheet/Body/Manipulacion de planos/PlaneManipulation/AccessCenter/Access"]
 layout_mode = 2
 
-[node name="Ego" parent="BG/Margin/Sheet/Body/Manipulacion de planos/PlaneManipulation/AccessCenter/Access" instance=ExtResource("12")]
+[node name="Ego" parent="BG/Sheet/Body/Manipulacion de planos/PlaneManipulation/AccessCenter/Access" instance=ExtResource("12")]
 layout_mode = 2
 ability_name = "Ego"
 
-[node name="Blank2" type="Label" parent="BG/Margin/Sheet/Body/Manipulacion de planos/PlaneManipulation/AccessCenter/Access"]
+[node name="Blank2" type="Label" parent="BG/Sheet/Body/Manipulacion de planos/PlaneManipulation/AccessCenter/Access"]
 layout_mode = 2
 
-[node name="Scientia" parent="BG/Margin/Sheet/Body/Manipulacion de planos/PlaneManipulation/AccessCenter/Access" instance=ExtResource("12")]
+[node name="Scientia" parent="BG/Sheet/Body/Manipulacion de planos/PlaneManipulation/AccessCenter/Access" instance=ExtResource("12")]
 layout_mode = 2
 ability_name = "Scientia"
 
-[node name="AccessL" type="Label" parent="BG/Margin/Sheet/Body/Manipulacion de planos/PlaneManipulation/AccessCenter/Access"]
+[node name="AccessL" type="Label" parent="BG/Sheet/Body/Manipulacion de planos/PlaneManipulation/AccessCenter/Access"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 29
 text = "Accesos"
 horizontal_alignment = 1
 
-[node name="Opus" parent="BG/Margin/Sheet/Body/Manipulacion de planos/PlaneManipulation/AccessCenter/Access" instance=ExtResource("12")]
+[node name="Opus" parent="BG/Sheet/Body/Manipulacion de planos/PlaneManipulation/AccessCenter/Access" instance=ExtResource("12")]
 layout_mode = 2
 ability_name = "Opus"
 
-[node name="Blank4" type="Label" parent="BG/Margin/Sheet/Body/Manipulacion de planos/PlaneManipulation/AccessCenter/Access"]
+[node name="Blank4" type="Label" parent="BG/Sheet/Body/Manipulacion de planos/PlaneManipulation/AccessCenter/Access"]
 layout_mode = 2
 
-[node name="Quod" parent="BG/Margin/Sheet/Body/Manipulacion de planos/PlaneManipulation/AccessCenter/Access" instance=ExtResource("12")]
+[node name="Quod" parent="BG/Sheet/Body/Manipulacion de planos/PlaneManipulation/AccessCenter/Access" instance=ExtResource("12")]
 layout_mode = 2
 ability_name = "Quod"
 
-[node name="Blank5" type="Label" parent="BG/Margin/Sheet/Body/Manipulacion de planos/PlaneManipulation/AccessCenter/Access"]
+[node name="Blank5" type="Label" parent="BG/Sheet/Body/Manipulacion de planos/PlaneManipulation/AccessCenter/Access"]
 layout_mode = 2
 
-[node name="HSeparator3" type="HSeparator" parent="BG/Margin/Sheet/Body/Manipulacion de planos/PlaneManipulation"]
+[node name="HSeparator3" type="HSeparator" parent="BG/Sheet/Body/Manipulacion de planos/PlaneManipulation"]
 layout_mode = 2
 theme_override_styles/separator = ExtResource("9")
 
-[node name="ArtesL" type="Label" parent="BG/Margin/Sheet/Body/Manipulacion de planos/PlaneManipulation"]
+[node name="ArtesL" type="Label" parent="BG/Sheet/Body/Manipulacion de planos/PlaneManipulation"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 29
 text = "Artes"
 horizontal_alignment = 1
 
-[node name="ArtesCenter" type="CenterContainer" parent="BG/Margin/Sheet/Body/Manipulacion de planos/PlaneManipulation"]
+[node name="ArtesCenter" type="CenterContainer" parent="BG/Sheet/Body/Manipulacion de planos/PlaneManipulation"]
 layout_mode = 2
 
-[node name="Artes" type="GridContainer" parent="BG/Margin/Sheet/Body/Manipulacion de planos/PlaneManipulation/ArtesCenter"]
+[node name="Artes" type="GridContainer" parent="BG/Sheet/Body/Manipulacion de planos/PlaneManipulation/ArtesCenter"]
 unique_name_in_owner = true
 layout_mode = 2
 theme_override_constants/h_separation = 20
 theme_override_constants/v_separation = 10
 columns = 2
 
-[node name="HSeparator4" type="HSeparator" parent="BG/Margin/Sheet/Body/Manipulacion de planos/PlaneManipulation"]
+[node name="HSeparator4" type="HSeparator" parent="BG/Sheet/Body/Manipulacion de planos/PlaneManipulation"]
 layout_mode = 2
 theme_override_styles/separator = ExtResource("9")
 
-[node name="Coherencia" parent="BG/Margin/Sheet/Body/Manipulacion de planos/PlaneManipulation" groups=["features"] instance=ExtResource("8")]
+[node name="Coherencia" parent="BG/Sheet/Body/Manipulacion de planos/PlaneManipulation" groups=["features"] instance=ExtResource("8")]
 layout_mode = 2
 status_name = "Coherencia"
 
-[node name="PropSep" type="VSeparator" parent="BG/Margin/Sheet/Body"]
+[node name="PropSep" type="VSeparator" parent="BG/Sheet/Body"]
 visible = false
 layout_mode = 2
 theme_override_constants/separation = 20
 theme_override_styles/separator = SubResource("3")
 
-[node name="Prop" type="TextureRect" parent="BG/Margin/Sheet/Body"]
+[node name="Prop" type="TextureRect" parent="BG/Sheet/Body"]
 visible = false
 custom_minimum_size = Vector2(450, 700)
 layout_mode = 2
 texture = ExtResource("19")
 script = ExtResource("20")
 
-[node name="Tools" type="HBoxContainer" parent="BG/Margin/Sheet"]
+[node name="VSeparator3" type="VSeparator" parent="BG/Sheet/Body"]
+layout_mode = 2
+theme_override_constants/separation = 30
+theme_override_styles/separator = SubResource("StyleBoxEmpty_epvhe")
+
+[node name="Tools" type="HBoxContainer" parent="BG/Sheet"]
 layout_mode = 2
 theme_override_constants/separation = 20
 
-[node name="InventoryButton" type="Button" parent="BG/Margin/Sheet/Tools"]
+[node name="InventoryButton" type="Button" parent="BG/Sheet/Tools"]
 custom_minimum_size = Vector2(70, 0)
 layout_mode = 2
 size_flags_vertical = 4
@@ -716,21 +711,22 @@ theme_override_colors/font_hover_color = Color(0.537255, 0.537255, 0.537255, 1)
 text = "Equipo"
 flat = true
 
-[node name="VSeparator4" type="VSeparator" parent="BG/Margin/Sheet/Tools"]
+[node name="VSeparator4" type="VSeparator" parent="BG/Sheet/Tools"]
 layout_mode = 2
+size_flags_horizontal = 3
 theme_override_constants/separation = 100
 theme_override_styles/separator = SubResource("4")
 
-[node name="RollTool" parent="BG/Margin/Sheet/Tools" instance=ExtResource("14")]
+[node name="RollTool" parent="BG/Sheet/Tools" instance=ExtResource("14")]
 unique_name_in_owner = true
 layout_mode = 2
 
-[node name="VSeparator3" type="VSeparator" parent="BG/Margin/Sheet/Tools"]
+[node name="VSeparator3" type="VSeparator" parent="BG/Sheet/Tools"]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_styles/separator = SubResource("4")
 
-[node name="ChangeLayout" type="Button" parent="BG/Margin/Sheet/Tools"]
+[node name="ChangeLayout" type="Button" parent="BG/Sheet/Tools"]
 custom_minimum_size = Vector2(70, 0)
 layout_mode = 2
 size_flags_vertical = 4
@@ -740,23 +736,23 @@ theme_override_colors/font_hover_color = Color(0.537255, 0.537255, 0.537255, 1)
 text = "Interfaz"
 flat = true
 
-[node name="EditL" type="Label" parent="BG/Margin/Sheet/Tools"]
+[node name="EditL" type="Label" parent="BG/Sheet/Tools"]
 layout_mode = 2
 text = "Editar"
 
-[node name="EditCheck" type="CheckButton" parent="BG/Margin/Sheet/Tools"]
+[node name="EditCheck" type="CheckButton" parent="BG/Sheet/Tools"]
 unique_name_in_owner = true
 layout_mode = 2
 
-[node name="AutosaveL" type="Label" parent="BG/Margin/Sheet/Tools"]
+[node name="AutosaveL" type="Label" parent="BG/Sheet/Tools"]
 layout_mode = 2
 text = "Autosave"
 
-[node name="AutosaveCheck" type="CheckButton" parent="BG/Margin/Sheet/Tools"]
+[node name="AutosaveCheck" type="CheckButton" parent="BG/Sheet/Tools"]
 unique_name_in_owner = true
 layout_mode = 2
 
-[node name="CPUParticles2D" type="CPUParticles2D" parent="BG/Margin/Sheet/Tools/AutosaveCheck"]
+[node name="CPUParticles2D" type="CPUParticles2D" parent="BG/Sheet/Tools/AutosaveCheck"]
 emitting = false
 amount = 50
 one_shot = true
@@ -766,7 +762,7 @@ spread = 180.0
 gravity = Vector2(0, 0)
 color = Color(0.690196, 0.607843, 0, 1)
 
-[node name="Delete" type="Button" parent="BG/Margin/Sheet/Tools"]
+[node name="Delete" type="Button" parent="BG/Sheet/Tools"]
 custom_minimum_size = Vector2(70, 0)
 layout_mode = 2
 size_flags_vertical = 4
@@ -776,7 +772,7 @@ theme_override_colors/font_hover_color = Color(0.537255, 0.537255, 0.537255, 1)
 text = "Borrar"
 flat = true
 
-[node name="Exit" type="Button" parent="BG/Margin/Sheet/Tools"]
+[node name="Exit" type="Button" parent="BG/Sheet/Tools"]
 custom_minimum_size = Vector2(70, 0)
 layout_mode = 2
 size_flags_vertical = 4
@@ -787,10 +783,56 @@ shortcut = ExtResource("13")
 text = "Salir"
 flat = true
 
-[node name="VSeparator2" type="VSeparator" parent="BG/Margin/Sheet/Tools"]
+[node name="VSeparator2" type="VSeparator" parent="BG/Sheet/Tools"]
 layout_mode = 2
 theme_override_constants/separation = 30
 theme_override_styles/separator = SubResource("4")
+
+[node name="Pivot" type="Control" parent="BG"]
+layout_mode = 2
+anchors_preset = 0
+offset_left = 30.0
+offset_top = 30.0
+offset_right = 1919.0
+offset_bottom = 1070.0
+mouse_filter = 2
+
+[node name="CenterContainer" type="CenterContainer" parent="BG/Pivot"]
+layout_mode = 0
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+
+[node name="ConfirmationPopup" type="Popup" parent="BG/Pivot/CenterContainer"]
+
+[node name="NinePatchRect" type="NinePatchRect" parent="BG/Pivot/CenterContainer/ConfirmationPopup"]
+modulate = Color(0.768627, 0.776471, 0, 1)
+custom_minimum_size = Vector2(400, 100)
+offset_right = 400.0
+offset_bottom = 100.0
+texture = ExtResource("16")
+patch_margin_left = 55
+patch_margin_top = 64
+patch_margin_right = 51
+patch_margin_bottom = 45
+
+[node name="VBoxContainer" type="VBoxContainer" parent="BG/Pivot/CenterContainer/ConfirmationPopup"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+alignment = 1
+
+[node name="ConfirmationL" type="Label" parent="BG/Pivot/CenterContainer/ConfirmationPopup/VBoxContainer"]
+layout_mode = 2
+text = "Acepta para confirmar el borrado"
+
+[node name="ConfirmButtons" type="HBoxContainer" parent="BG/Pivot/CenterContainer/ConfirmationPopup/VBoxContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="Aceptar" type="Button" parent="BG/Pivot/CenterContainer/ConfirmationPopup/VBoxContainer/ConfirmButtons"]
+layout_mode = 2
+text = "Aceptar"
 
 [node name="ArtesReference" parent="BG" instance=ExtResource("28")]
 
@@ -798,18 +840,18 @@ theme_override_styles/separator = SubResource("4")
 unique_name_in_owner = true
 
 [connection signal="timeout" from="Autosave" to="." method="autosave"]
-[connection signal="pressed" from="BG/Margin/Pivot/CenterContainer/ConfirmationPopup/VBoxContainer/ConfirmButtons/Aceptar" to="." method="_on_Confirmation_pressed"]
-[connection signal="gui_input" from="BG/Margin/Sheet/Header/Logo" to="." method="_on_Logo_gui_input"]
-[connection signal="clicked" from="BG/Margin/Sheet/Body/Sec1/StatusBG/StatusCenter/StatusFrame/Status/PhysicalStatus/Vigor" to="BG/Margin/Sheet/Tools/RollTool" method="select_atribute"]
-[connection signal="clicked" from="BG/Margin/Sheet/Body/Sec1/StatusBG/StatusCenter/StatusFrame/Status/MentalStatus/Voluntad" to="BG/Margin/Sheet/Tools/RollTool" method="select_atribute"]
-[connection signal="clicked" from="BG/Margin/Sheet/Body/Manipulacion de planos/PlaneManipulation/Journey" to="BG/Margin/Sheet/Tools/RollTool" method="select_ability"]
-[connection signal="clicked" from="BG/Margin/Sheet/Body/Manipulacion de planos/PlaneManipulation/AccessCenter/Access/Ego" to="BG/Margin/Sheet/Tools/RollTool" method="select_skill"]
-[connection signal="clicked" from="BG/Margin/Sheet/Body/Manipulacion de planos/PlaneManipulation/AccessCenter/Access/Scientia" to="BG/Margin/Sheet/Tools/RollTool" method="select_atribute"]
-[connection signal="clicked" from="BG/Margin/Sheet/Body/Manipulacion de planos/PlaneManipulation/AccessCenter/Access/Opus" to="BG/Margin/Sheet/Tools/RollTool" method="select_atribute"]
-[connection signal="clicked" from="BG/Margin/Sheet/Body/Manipulacion de planos/PlaneManipulation/AccessCenter/Access/Quod" to="BG/Margin/Sheet/Tools/RollTool" method="select_skill"]
-[connection signal="clicked" from="BG/Margin/Sheet/Body/Manipulacion de planos/PlaneManipulation/Coherencia" to="BG/Margin/Sheet/Tools/RollTool" method="select_atribute"]
-[connection signal="pressed" from="BG/Margin/Sheet/Tools/InventoryButton" to="." method="_on_InventoryButton_pressed"]
-[connection signal="pressed" from="BG/Margin/Sheet/Tools/ChangeLayout" to="." method="change_layout"]
-[connection signal="pressed" from="BG/Margin/Sheet/Tools/EditCheck" to="." method="_on_EditarCheck_pressed"]
-[connection signal="pressed" from="BG/Margin/Sheet/Tools/Delete" to="." method="_on_Delete_pressed"]
-[connection signal="pressed" from="BG/Margin/Sheet/Tools/Exit" to="." method="_on_Exit_pressed"]
+[connection signal="gui_input" from="BG/Sheet/Header/Logo" to="." method="_on_Logo_gui_input"]
+[connection signal="clicked" from="BG/Sheet/Body/Sec1/StatusBG/StatusCenter/StatusFrame/Status/PhysicalStatus/Vigor" to="BG/Sheet/Tools/RollTool" method="select_atribute"]
+[connection signal="clicked" from="BG/Sheet/Body/Sec1/StatusBG/StatusCenter/StatusFrame/Status/MentalStatus/Voluntad" to="BG/Sheet/Tools/RollTool" method="select_atribute"]
+[connection signal="clicked" from="BG/Sheet/Body/Manipulacion de planos/PlaneManipulation/Journey" to="BG/Sheet/Tools/RollTool" method="select_ability"]
+[connection signal="clicked" from="BG/Sheet/Body/Manipulacion de planos/PlaneManipulation/AccessCenter/Access/Ego" to="BG/Sheet/Tools/RollTool" method="select_skill"]
+[connection signal="clicked" from="BG/Sheet/Body/Manipulacion de planos/PlaneManipulation/AccessCenter/Access/Scientia" to="BG/Sheet/Tools/RollTool" method="select_atribute"]
+[connection signal="clicked" from="BG/Sheet/Body/Manipulacion de planos/PlaneManipulation/AccessCenter/Access/Opus" to="BG/Sheet/Tools/RollTool" method="select_atribute"]
+[connection signal="clicked" from="BG/Sheet/Body/Manipulacion de planos/PlaneManipulation/AccessCenter/Access/Quod" to="BG/Sheet/Tools/RollTool" method="select_skill"]
+[connection signal="clicked" from="BG/Sheet/Body/Manipulacion de planos/PlaneManipulation/Coherencia" to="BG/Sheet/Tools/RollTool" method="select_atribute"]
+[connection signal="pressed" from="BG/Sheet/Tools/InventoryButton" to="." method="_on_InventoryButton_pressed"]
+[connection signal="pressed" from="BG/Sheet/Tools/ChangeLayout" to="." method="change_layout"]
+[connection signal="pressed" from="BG/Sheet/Tools/EditCheck" to="." method="_on_EditarCheck_pressed"]
+[connection signal="pressed" from="BG/Sheet/Tools/Delete" to="." method="_on_Delete_pressed"]
+[connection signal="pressed" from="BG/Sheet/Tools/Exit" to="." method="_on_Exit_pressed"]
+[connection signal="pressed" from="BG/Pivot/CenterContainer/ConfirmationPopup/VBoxContainer/ConfirmButtons/Aceptar" to="." method="_on_Confirmation_pressed"]

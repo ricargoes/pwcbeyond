@@ -5,10 +5,10 @@
 [ext_resource type="Script" path="res://scenes/tools/FullVScroll.gd" id="3"]
 [ext_resource type="Script" path="res://scenes/sheet_layouts/CharacterSheet.gd" id="5"]
 [ext_resource type="Texture2D" uid="uid://dkrgghkol20l4" path="res://resources/logos/PWC-logo-fighting_man.png" id="6"]
-[ext_resource type="PackedScene" path="res://scenes/counters/Status.tscn" id="7"]
+[ext_resource type="PackedScene" uid="uid://bgsu7k31kntjl" path="res://scenes/counters/Status.tscn" id="7"]
 [ext_resource type="PackedScene" uid="uid://ds0lqr056s3xp" path="res://scenes/counters/Tireness.tscn" id="8"]
 [ext_resource type="StyleBox" path="res://resources/underline_small.tres" id="9"]
-[ext_resource type="PackedScene" path="res://scenes/decorations/BG.tscn" id="10"]
+[ext_resource type="PackedScene" uid="uid://bt8v31k067cal" path="res://scenes/decorations/BG.tscn" id="10"]
 [ext_resource type="FontFile" path="res://resources/h2_font.tres" id="11"]
 [ext_resource type="PackedScene" uid="uid://bvsfexlw1hvsx" path="res://scenes/counters/Feature.tscn" id="12"]
 [ext_resource type="Shortcut" path="res://resources/EscapeKeyShortcut.tres" id="13"]
@@ -19,7 +19,7 @@
 [ext_resource type="Texture2D" uid="uid://od2fk7ag3hfc" path="res://resources/sprites/props/compass.png" id="18"]
 [ext_resource type="Texture2D" uid="uid://drpopeqf7yrkb" path="res://resources/sprites/props/inkwell.png" id="19"]
 [ext_resource type="Texture2D" uid="uid://duah1n3m3iiyp" path="res://resources/sprites/props/feather.png" id="20"]
-[ext_resource type="PackedScene" path="res://scenes/panels/ArtesReference.tscn" id="28"]
+[ext_resource type="PackedScene" uid="uid://bwd4j06olcxmr" path="res://scenes/panels/ArtesReference.tscn" id="28"]
 [ext_resource type="PackedScene" path="res://scenes/panels/Inventory.tscn" id="29"]
 
 [sub_resource type="StyleBoxEmpty" id="1"]
@@ -53,9 +53,7 @@ autostart = true
 [node name="GET" type="HTTPRequest" parent="."]
 
 [node name="BG" parent="." instance=ExtResource("10")]
-layout_mode = 0
-offset_right = 1920.0
-offset_bottom = 1080.0
+layout_mode = 1
 
 [node name="Inkwell" type="TextureRect" parent="BG"]
 layout_mode = 0
@@ -157,6 +155,7 @@ texture = ExtResource("2")
 expand_mode = 1
 
 [node name="Logo" type="TextureRect" parent="CenterContainer/VScrollContainer/Center/Sheet/Envelope"]
+unique_name_in_owner = true
 custom_minimum_size = Vector2(540, 200)
 layout_mode = 0
 anchor_left = 0.5

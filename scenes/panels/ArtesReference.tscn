@@ -6,7 +6,6 @@
 
 [node name="ArtesReference" type="Popup"]
 size = Vector2i(1870, 550)
-visible = true
 script = ExtResource("2")
 
 [node name="BG" type="NinePatchRect" parent="."]

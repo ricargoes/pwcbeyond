@@ -31,6 +31,11 @@ layout_mode = 2
 size_flags_horizontal = 3
 theme_override_styles/separator = SubResource("StyleBoxEmpty_kt64r")
 
+[node name="EffortFillerCompensator" type="VSeparator" parent="Label"]
+custom_minimum_size = Vector2(20, 0)
+layout_mode = 2
+theme_override_styles/separator = SubResource("StyleBoxEmpty_kt64r")
+
 [node name="Minus" type="TextureButton" parent="Label"]
 layout_mode = 2
 texture_normal = ExtResource("8")
@@ -51,10 +56,16 @@ texture_pressed = ExtResource("9")
 
 [node name="Effort" type="Button" parent="Label"]
 unique_name_in_owner = true
+custom_minimum_size = Vector2(20, 0)
 layout_mode = 2
 size_flags_horizontal = 3
 text = "E"
 flat = true
+
+[node name="VSeparator2" type="VSeparator" parent="Label"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/separator = SubResource("StyleBoxEmpty_kt64r")
 
 [node name="CenterContainer" type="CenterContainer" parent="."]
 layout_mode = 2

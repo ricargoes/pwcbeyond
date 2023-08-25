@@ -1,6 +1,6 @@
 [gd_scene load_steps=7 format=3 uid="uid://bado3xsdipjwl"]
 
-[ext_resource type="PackedScene" path="res://scenes/decorations/BG.tscn" id="1"]
+[ext_resource type="PackedScene" uid="uid://bt8v31k067cal" path="res://scenes/decorations/BG.tscn" id="1"]
 [ext_resource type="PackedScene" uid="uid://2bewf06uoc6u" path="res://scenes/panels/CharacterFinder.tscn" id="2"]
 [ext_resource type="Theme" uid="uid://fdky2ckfobqg" path="res://resources/theme.tres" id="3"]
 [ext_resource type="Script" path="res://scenes/screens/CharacterSelection.gd" id="4"]
@@ -18,11 +18,12 @@ theme = ExtResource("3")
 script = ExtResource("4")
 
 [node name="BG" parent="." instance=ExtResource("1")]
-layout_mode = 0
+layout_mode = 1
 
 [node name="Logo" parent="." instance=ExtResource("7")]
 layout_mode = 1
 anchors_preset = 5
+offset_top = 0.0
 offset_bottom = 250.0
 grow_horizontal = 2
 expand_mode = 1

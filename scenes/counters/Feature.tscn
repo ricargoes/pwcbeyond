@@ -11,7 +11,7 @@
 [sub_resource type="StyleBoxEmpty" id="1"]
 
 [node name="Feature" type="VBoxContainer" groups=["features"]]
-custom_minimum_size = Vector2(0, 50)
+custom_minimum_size = Vector2(160, 50)
 offset_right = 116.0
 offset_bottom = 83.0
 theme = ExtResource("2")
@@ -19,17 +19,8 @@ alignment = 1
 script = ExtResource("3")
 ability_name = "Conducir"
 
-[node name="Label" type="HBoxContainer" parent="."]
-layout_mode = 2
-mouse_default_cursor_shape = 2
-alignment = 1
-
-[node name="Minus" type="TextureButton" parent="Label"]
-layout_mode = 2
-texture_normal = ExtResource("2_2xido")
-texture_pressed = ExtResource("3_j04w5")
-
-[node name="Label" type="LineEdit" parent="Label"]
+[node name="FeatureName" type="LineEdit" parent="."]
+unique_name_in_owner = true
 custom_minimum_size = Vector2(110, 0)
 layout_mode = 2
 mouse_filter = 1
@@ -41,17 +32,30 @@ text = "Ability"
 alignment = 1
 editable = false
 
+[node name="Label" type="HBoxContainer" parent="."]
+layout_mode = 2
+mouse_default_cursor_shape = 2
+alignment = 1
+
+[node name="Minus" type="TextureButton" parent="Label"]
+layout_mode = 2
+texture_normal = ExtResource("2_2xido")
+texture_pressed = ExtResource("3_j04w5")
+
+[node name="StandardCounter" parent="Label" instance=ExtResource("1")]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 20)
+layout_mode = 2
+size_flags_horizontal = 3
+mouse_default_cursor_shape = 2
+
 [node name="Plus" type="TextureButton" parent="Label"]
 layout_mode = 2
 texture_normal = ExtResource("5_kguy0")
 texture_pressed = ExtResource("6_cyw3l")
 
-[node name="StandardCounter" parent="." instance=ExtResource("1")]
-layout_mode = 2
-mouse_default_cursor_shape = 2
-
+[connection signal="gui_input" from="FeatureName" to="." method="_on_ability_click"]
+[connection signal="text_changed" from="FeatureName" to="." method="set_name"]
 [connection signal="pressed" from="Label/Minus" to="." method="level_down"]
-[connection signal="gui_input" from="Label/Label" to="." method="_on_ability_click"]
-[connection signal="text_changed" from="Label/Label" to="." method="set_name"]
+[connection signal="gui_input" from="Label/StandardCounter" to="." method="_on_ability_click"]
 [connection signal="pressed" from="Label/Plus" to="." method="level_up"]
-[connection signal="gui_input" from="StandardCounter" to="." method="_on_ability_click"]

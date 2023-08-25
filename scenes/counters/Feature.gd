@@ -13,42 +13,42 @@ func _ready():
 
 
 func refresh():
-	$StandardCounter.refresh()
-	$Label/Label.text = ability_name
+	%StandardCounter.refresh()
+	%FeatureName.text = ability_name
 	if editable:
 		$Label/Plus.show()
 		$Label/Minus.show()
-		$Label/Label.custom_minimum_size = Vector2(110, 0)
+		%FeatureName.custom_minimum_size = Vector2(110, 0)
 	else:
 		$Label/Plus.hide()
 		$Label/Minus.hide()
-		$Label/Label.custom_minimum_size = Vector2(160, 0)
+		%FeatureName.custom_minimum_size = Vector2(160, 0)
 
 
 func set_level(level, min_level = 1):
-	$StandardCounter.initial_level = min_level
-	$StandardCounter.level = max(level, min_level)
-	$StandardCounter.refresh()
+	%StandardCounter.initial_level = min_level
+	%StandardCounter.level = max(level, min_level)
+	%StandardCounter.refresh()
 
 
 func get_level():
-	return $StandardCounter.level
+	return %StandardCounter.level
 
 
 func level_up():
-	if $StandardCounter.level >= 5:
+	if %StandardCounter.level >= 5:
 		return
 	
-	$StandardCounter.level += 1
+	%StandardCounter.level += 1
 	leveled_up.emit(self)
 	refresh()
 
 
 func level_down():
-	if $StandardCounter.level <= $StandardCounter.initial_level:
+	if %StandardCounter.level <= %StandardCounter.initial_level:
 		return
 	
-	$StandardCounter.level -= 1
+	%StandardCounter.level -= 1
 	leveled_down.emit(self)
 	refresh()
 
@@ -72,7 +72,7 @@ func get_indicator_name():
 
 
 func set_name_editable(is_editable):
-	$Label/Label.editable = is_editable
+	%FeatureName.editable = is_editable
 
 
 

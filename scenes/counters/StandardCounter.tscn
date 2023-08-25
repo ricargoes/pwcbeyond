@@ -4,12 +4,9 @@
 [ext_resource type="Script" path="res://scenes/counters/StandardCounter.gd" id="2"]
 
 [node name="StandardCounter" type="HBoxContainer"]
-anchors_preset = 15
+anchors_preset = 10
 anchor_right = 1.0
-anchor_bottom = 1.0
-offset_right = -908.0
-offset_bottom = -580.0
-alignment = 1
+grow_horizontal = 2
 script = ExtResource("2")
 
 [node name="1" parent="." instance=ExtResource("1")]

@@ -12,16 +12,31 @@ offset_right = 100.0
 offset_bottom = 100.0
 script = ExtResource("3")
 
-[node name="Empty" type="Sprite2D" parent="."]
-position = Vector2(10, 10)
+[node name="Empty" type="TextureRect" parent="."]
+custom_minimum_size = Vector2(10, 10)
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
 texture = ExtResource("2_45ido")
+expand_mode = 1
+stretch_mode = 2
 
-[node name="Full" type="Sprite2D" parent="."]
+[node name="Full" type="TextureRect" parent="."]
 visible = false
-position = Vector2(10, 10)
+custom_minimum_size = Vector2(10, 10)
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
 texture = ExtResource("2_sjis8")
+expand_mode = 1
+stretch_mode = 2
 
-[node name="Permanent" type="Sprite2D" parent="."]
+[node name="Permanent" type="TextureRect" parent="."]
 visible = false
-position = Vector2(10, 10)
+custom_minimum_size = Vector2(10, 10)
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
 texture = ExtResource("3_w02td")
+expand_mode = 1
+stretch_mode = 2

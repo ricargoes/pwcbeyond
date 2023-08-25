@@ -1,7 +1,7 @@
 [gd_scene load_steps=16 format=3 uid="uid://bea2i14o05ul0"]
 
 [ext_resource type="Theme" uid="uid://fdky2ckfobqg" path="res://resources/theme.tres" id="1"]
-[ext_resource type="PackedScene" path="res://scenes/decorations/BG.tscn" id="2"]
+[ext_resource type="PackedScene" uid="uid://bt8v31k067cal" path="res://scenes/decorations/BG.tscn" id="2"]
 [ext_resource type="Texture2D" uid="uid://oaynf75i4sbe" path="res://resources/sprites/backgrounds/9patch_scroll3.png" id="3"]
 [ext_resource type="Script" path="res://scenes/screens/CharacterCreation.gd" id="4"]
 [ext_resource type="PackedScene" uid="uid://dt4qyr1o62ww5" path="res://scenes/tools/Warning.tscn" id="6"]
@@ -30,7 +30,7 @@ script = ExtResource("4")
 [node name="GET" type="HTTPRequest" parent="."]
 
 [node name="BG" parent="." instance=ExtResource("2")]
-layout_mode = 0
+layout_mode = 1
 
 [node name="Logo" parent="." instance=ExtResource("8")]
 layout_mode = 1
@@ -78,7 +78,7 @@ alignment = 1
 [node name="NewCharacter" type="Label" parent="CenterContainer/SheetInfo"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 33
-text = "NewCharacter"
+text = "Nuevo Personaje"
 horizontal_alignment = 1
 
 [node name="HSeparator2" type="HSeparator" parent="CenterContainer/SheetInfo"]
@@ -496,7 +496,6 @@ layout_mode = 2
 
 [node name="Ego" parent="CenterContainer/SheetPlaneManipulation/CenterAccess/GridContainer" instance=ExtResource("9")]
 layout_mode = 2
-editable = true
 ability_name = "Ego"
 
 [node name="Blank2" type="Label" parent="CenterContainer/SheetPlaneManipulation/CenterAccess/GridContainer"]
@@ -504,7 +503,6 @@ layout_mode = 2
 
 [node name="Scientia" parent="CenterContainer/SheetPlaneManipulation/CenterAccess/GridContainer" instance=ExtResource("9")]
 layout_mode = 2
-editable = true
 ability_name = "Scientia"
 
 [node name="AccessL" type="Label" parent="CenterContainer/SheetPlaneManipulation/CenterAccess/GridContainer"]
@@ -515,7 +513,6 @@ horizontal_alignment = 1
 
 [node name="Opus" parent="CenterContainer/SheetPlaneManipulation/CenterAccess/GridContainer" instance=ExtResource("9")]
 layout_mode = 2
-editable = true
 ability_name = "Opus"
 
 [node name="Blank3" type="Label" parent="CenterContainer/SheetPlaneManipulation/CenterAccess/GridContainer"]
@@ -523,7 +520,6 @@ layout_mode = 2
 
 [node name="Quod" parent="CenterContainer/SheetPlaneManipulation/CenterAccess/GridContainer" instance=ExtResource("9")]
 layout_mode = 2
-editable = true
 ability_name = "Quod"
 
 [node name="Blank4" type="Label" parent="CenterContainer/SheetPlaneManipulation/CenterAccess/GridContainer"]
@@ -589,7 +585,6 @@ grow_horizontal = 2
 
 [node name="ArtesReference" parent="." instance=ExtResource("15")]
 size = Vector2i(1735, 516)
-visible = false
 
 [connection signal="item_selected" from="CenterContainer/NinePatchRect/Version" to="." method="_on_Version_item_selected"]
 [connection signal="pressed" from="CenterContainer/SheetInfo/CenterContainer2/GridContainer/Human" to="." method="_on_Human_pressed"]

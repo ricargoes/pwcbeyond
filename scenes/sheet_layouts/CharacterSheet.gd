@@ -88,7 +88,7 @@ func choose_logo():
 		preload("res://resources/logos/PWC-logo-top-tentacles.png")
 	]
 	var logo = possible_logos[randi() % possible_logos.size()]
-	find_child("Logo").texture = logo
+	%Logo.texture = logo
 
 func paint_info():
 	%Player.text = character.player_name
