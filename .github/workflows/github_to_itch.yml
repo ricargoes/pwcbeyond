@@ -10,7 +10,6 @@ on:
 env:
   BUTLER_API_KEY: ${{ secrets.BUTLER_API_KEY }} # Needs to be added through github
   GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-  IS_MAIN: ${{ contains(github.ref, 'main') }}
 
 jobs:
   CleanArtifacts:

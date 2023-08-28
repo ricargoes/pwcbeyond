@@ -72,8 +72,8 @@ func initialize_status():
 	status["Vigor"] = { "perm": atributes["Físicos"]["Resistencia"], "temp": atributes["Físicos"]["Resistencia"] }
 	status["Voluntad"] = { "perm": atributes["Mentales"]["Astucia"], "temp": atributes["Mentales"]["Astucia"] }
 	status["Coherencia"] = { "perm": plane_manipulation["access"]["ego"], "temp": plane_manipulation["access"]["ego"] }
-	for type in ["Salud", "Cordura"]:
-		status[type] = { "light": 0, "heavy": 0 }
+	status["Salud"] = {}
+	status["Cordura"] = {}
 	
 	for type in ["xp", "ep"]:
 		status[type] = ""
@@ -84,8 +84,8 @@ func save_status(character_sheet):
 	status["Voluntad"] = { "perm": atributes["Mentales"]["Astucia"], "temp": character_sheet.find_child("Voluntad").temp_level}
 	status["Coherencia"] = { "perm": plane_manipulation["access"]["ego"], "temp": character_sheet.find_child("Coherencia").temp_level}
 	
-	status["Salud"] = { "light": character_sheet.find_child("Salud").damage_light, "heavy": character_sheet.find_child("Salud").damage_heavy }
-	status["Cordura"] = { "light": character_sheet.find_child("Cordura").damage_light, "heavy": character_sheet.find_child("Cordura").damage_heavy }
+	status["Salud"] = character_sheet.find_child("Salud").states_damage
+	status["Cordura"] = character_sheet.find_child("Cordura").states_damage
 	
 	status["ep"] = character_sheet.find_child("EP").text
 	status["xp"] = character_sheet.find_child("XP").text

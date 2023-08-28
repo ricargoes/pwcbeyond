@@ -159,8 +159,8 @@ func paint_status():
 	vigor.set_level(sheet_status["Vigor"]["perm"], sheet_status["Vigor"]["temp"])
 	voluntad.set_level(sheet_status["Voluntad"]["perm"], sheet_status["Voluntad"]["temp"])
 	
-	salud.set_damage(sheet_status["Salud"]["light"],sheet_status["Salud"]["heavy"])
-	cordura.set_damage(sheet_status["Cordura"]["light"],sheet_status["Cordura"]["heavy"])
+	salud.set_damage(sheet_status["Salud"])
+	cordura.set_damage(sheet_status["Cordura"])
 	
 	if not character.plane_manipulation.is_empty():
 		coherencia.set_level(sheet_status["Coherencia"]["perm"], sheet_status["Coherencia"]["temp"])

@@ -4,68 +4,63 @@ extends Control
 @export var type = "Salud"
 @export var icon_colection = "health"
 
-var damage_light = 0
-var damage_heavy = 0
-var max_damage = 0
+var states_damage = {}
 var states = {}
 
 func _ready():
 	states = GameInfo.states[type]
-	load_icons()
 	generate_status()
 	refresh()
 
-
-func load_icons():
-	$Label/Minus.texture_normal = load("res://resources/sprites/buttons/" + icon_colection + ".png")
-	$Label/Minus.texture_pressed = load("res://resources/sprites/buttons/pressed_" + icon_colection + ".png")
-	$Label/Plus.texture_normal = load("res://resources/sprites/buttons/" + icon_colection + "1.png")
-	$Label/Plus.texture_pressed = load("res://resources/sprites/buttons/pressed_" + icon_colection + "1.png")
-	$Label/PlusHeavy.texture_normal = load("res://resources/sprites/buttons/" + icon_colection + "2.png")
-	$Label/PlusHeavy.texture_pressed = load("res://resources/sprites/buttons/pressed_" + icon_colection + "2.png")
-
-
 func generate_status():
-	$Label/Label.text = type
+	%Label.text = type
 	var rombus_class = preload("res://scenes/counters/RombusPoint.tscn")
-	var degrees_counter = 0
-	for state in states:
-		var state_name = Label.new()
-		state_name.text = state["label"]
-		$CenterContainer/States.add_child(state_name)
-		var state_penalty = Label.new()
-		state_penalty.text = state["penalty"]
-#		state_penalty.align = Label.ALIGN_RIGHT
-		$CenterContainer/States.add_child(state_penalty)
-		var degrees_container = HBoxContainer.new()
-		degrees_container.name = "MarkersContainer"
-		$CenterContainer/States.add_child(degrees_container)
-		for _i in range(0, state["degrees"]):
-			degrees_counter += 1
+	for idx in range(states.size()):
+		var state = states[idx]
+		var plus_icon_level = "1" if idx == 0 else "2"
+		var state_name = state["label"]
+		var state_label = Label.new()
+		state_label.text = state_name
+		%States.add_child(state_label)
+		var minus = TextureButton.new()
+		minus.texture_normal = load("res://resources/sprites/buttons/" + icon_colection + ".png")
+		minus.texture_pressed = load("res://resources/sprites/buttons/pressed_" + icon_colection + ".png")
+		var plus = TextureButton.new()
+		plus.texture_normal = load("res://resources/sprites/buttons/" + icon_colection + plus_icon_level + ".png")
+		plus.texture_pressed = load("res://resources/sprites/buttons/pressed_" + icon_colection + plus_icon_level + ".png")
+		plus.pressed.connect(hurt.bind(state_name))
+		minus.pressed.connect(heal.bind(state_name))
+		var state_controls = HBoxContainer.new()
+		minus.add_to_group("status_damage")
+		plus.add_to_group("status_damage")
+		state_controls.add_child(minus)
+		state_controls.add_child(plus)
+		%States.add_child(state_controls)
+		var degrees_container = GridContainer.new()
+		degrees_container.columns = 5
+		degrees_container.name =  state_name + "Markers"
+		%States.add_child(degrees_container)
+		for n_counter in range(0, state["degrees"]):
 			var damage_marker = rombus_class.instantiate()
-			damage_marker.name = "d"+str(degrees_counter)
+			damage_marker.name = "d"+str(n_counter + 1)
 			degrees_container.add_child(damage_marker)
-	max_damage = degrees_counter
 
 
 func refresh():
 	if editable:
-		$Label/Minus.show()
-		$Label/Plus.show()
-		$Label/PlusHeavy.show()
+		get_tree().call_group("status_damage", "show")
 	else:
-		$Label/Minus.hide()
-		$Label/Plus.hide()
-		$Label/PlusHeavy.hide()
+		get_tree().call_group("status_damage", "hide")
 	
-	for i in range(1, max_damage + 1):
-		var marker = $CenterContainer/States.find_child("*d"+str(i), true, false)
-		if i <= damage_heavy:
-			marker.cross()
-		elif i <= damage_heavy + damage_light:
-			marker.mark()
-		else:
-			marker.is_empty()
+	for state in states:
+		var state_name = state["label"]
+		var markers_cont = %States.get_node(state_name + "Markers")
+		for i in range(1, state["degrees"] + 1):
+			var marker = markers_cont.get_node("d"+str(i))
+			if i <= states_damage.get(state_name, 0):
+				marker.cross()
+			else:
+				marker.is_empty()
 
 
 func set_editable(is_editable):
@@ -73,42 +68,28 @@ func set_editable(is_editable):
 	refresh()
 
 
-func set_damage(new_damage_light, new_damage_heavy):
-	damage_light = new_damage_light
-	damage_heavy = new_damage_heavy
+func set_damage(new_states_damage):
+	states_damage = new_states_damage
 	refresh()
 
-func hurt(heavy = true):
-	if heavy or damage_heavy + damage_light + 1 > max_damage:
-		damage_heavy = min(damage_heavy + 1, max_damage)
-		$SFXHeavy.play()
-		if damage_heavy + damage_light > max_damage:
-			damage_light -= 1
-	else:
-		$SFXLight.play()
-		damage_light = min(damage_light + 1, max_damage)
+
+func hurt(state_name):
+	var relevant_state = {}
+	for state in states:
+		if state["label"] == state_name:
+			relevant_state = state
+			break
+	var max_damage = relevant_state["degrees"]
+	states_damage[state_name] = min(states_damage.get(state_name, 0) + 1, max_damage)
+	$SFXHeavy.play()
 	refresh()
 
-func heal():
+
+func heal(state_name):
 	$SFXHeal.play()
-	if damage_light > 0:
-		damage_light -= 1
-	else:
-		damage_heavy = max(damage_heavy - 1, 0)
+	states_damage[state_name] = max(states_damage[state_name] - 1, 0)
 	refresh()
 
 
 func get_penalty():
-	var damage = damage_light + damage_heavy
-	var penalty
-	var degrees_count = 0
-	for state in states:
-		degrees_count += state["degrees"]
-		if damage <= degrees_count:
-			if state["penalty"] == "x":
-				penalty = -100
-			else:
-				penalty = int(state["penalty"])
-				break
-	
-	return penalty
+	return 0

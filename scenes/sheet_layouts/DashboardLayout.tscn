@@ -420,6 +420,9 @@ theme_override_styles/separator = SubResource("2")
 
 [node name="Salud" parent="BG/Sheet/Body/Sec1/StatusBG/StatusCenter/StatusFrame/Status/PhysicalStatus" instance=ExtResource("7")]
 layout_mode = 2
+editable = true
+type = "Salud"
+icon_colection = "health"
 
 [node name="MentalStatus" type="VBoxContainer" parent="BG/Sheet/Body/Sec1/StatusBG/StatusCenter/StatusFrame/Status"]
 layout_mode = 2
@@ -435,6 +438,7 @@ theme_override_styles/separator = SubResource("2")
 
 [node name="Cordura" parent="BG/Sheet/Body/Sec1/StatusBG/StatusCenter/StatusFrame/Status/MentalStatus" instance=ExtResource("7")]
 layout_mode = 2
+editable = true
 type = "Cordura"
 icon_colection = "sanity"
 

@@ -2,10 +2,10 @@
 
 [ext_resource type="Theme" uid="uid://fdky2ckfobqg" path="res://resources/theme.tres" id="1"]
 [ext_resource type="StyleBox" path="res://resources/underline.tres" id="2"]
-[ext_resource type="PackedScene" path="res://scenes/counters/Status.tscn" id="3"]
+[ext_resource type="PackedScene" uid="uid://bgsu7k31kntjl" path="res://scenes/counters/Status.tscn" id="3"]
 [ext_resource type="Texture2D" uid="uid://bjcldyjvuol4g" path="res://resources/sprites/backgrounds/9patch_scroll2.png" id="4"]
 [ext_resource type="FontFile" path="res://resources/h1_font.tres" id="5"]
-[ext_resource type="PackedScene" path="res://scenes/counters/Tireness.tscn" id="6"]
+[ext_resource type="PackedScene" uid="uid://ds0lqr056s3xp" path="res://scenes/counters/Tireness.tscn" id="6"]
 [ext_resource type="Script" path="res://scenes/panels/CharStatusPanel.gd" id="7"]
 
 [node name="CharStatus" type="Control"]
@@ -32,6 +32,7 @@ anchor_bottom = 1.0
 alignment = 1
 
 [node name="Name" type="Label" parent="Layout"]
+unique_name_in_owner = true
 layout_mode = 2
 mouse_filter = 1
 mouse_default_cursor_shape = 2
@@ -51,6 +52,7 @@ grow_horizontal = 0
 theme_override_constants/margin_right = 25
 
 [node name="EditBut" type="CheckButton" parent="Layout/Name/MarginContainer"]
+unique_name_in_owner = true
 layout_mode = 2
 theme_override_constants/h_separation = 5
 text = "Editar"
@@ -60,6 +62,7 @@ layout_mode = 2
 theme_override_styles/separator = ExtResource("2")
 
 [node name="DataBox" type="HBoxContainer" parent="Layout"]
+unique_name_in_owner = true
 layout_mode = 2
 theme_override_constants/separation = 30
 alignment = 1
@@ -69,18 +72,18 @@ layout_mode = 2
 theme_override_constants/separation = 10
 
 [node name="Vigor" parent="Layout/DataBox/TirenessBox" instance=ExtResource("6")]
+unique_name_in_owner = true
 layout_mode = 2
-editable = false
 status_name = "Vigor"
 
 [node name="Voluntad" parent="Layout/DataBox/TirenessBox" instance=ExtResource("6")]
+unique_name_in_owner = true
 layout_mode = 2
-editable = false
 status_name = "Voluntad"
 
 [node name="Coherencia" parent="Layout/DataBox/TirenessBox" instance=ExtResource("6")]
+unique_name_in_owner = true
 layout_mode = 2
-editable = false
 status_name = "Coherencia"
 
 [node name="StatusBox" type="VBoxContainer" parent="Layout/DataBox"]
@@ -89,10 +92,12 @@ theme_override_constants/separation = 10
 alignment = 1
 
 [node name="Salud" parent="Layout/DataBox/StatusBox" instance=ExtResource("3")]
+unique_name_in_owner = true
 layout_mode = 2
 editable = false
 
 [node name="Cordura" parent="Layout/DataBox/StatusBox" instance=ExtResource("3")]
+unique_name_in_owner = true
 layout_mode = 2
 editable = false
 type = "Cordura"

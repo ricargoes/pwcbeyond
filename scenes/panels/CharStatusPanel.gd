@@ -3,12 +3,6 @@ extends Control
 
 var character = null
 
-@onready var salud_node = find_child("Salud")
-@onready var cordura_node = find_child("Cordura")
-@onready var vigor_node = find_child("Vigor")
-@onready var voluntad_node = find_child("Voluntad")
-@onready var coherencia_node = find_child("Coherencia")
-
 func _ready():
 	CharactersGetter.connect("cache_refreshed", Callable(self, "refresh_ui"))
 
@@ -30,32 +24,32 @@ func refresh_char():
 
 func refresh_ui(_characters_refreshed):
 	if not character:
-		find_child("Name").text = "Sin personaje"
-		find_child("DataBox").hide()
+		%Name.text = "Sin personaje"
+		%DataBox.hide()
 		return
 	else:
-		find_child("DataBox").show()
+		%DataBox.show()
 		character = CharactersGetter.get_character(character.chronicle, character.player_name, character.char_name)
-		find_child("Name").text = character.char_name + " [" + character.player_name + "]"
+		%Name.text = character.char_name + " [" + character.player_name + "]"
 		var char_status = character.status
-		vigor_node.set_level(char_status["Vigor"]["perm"], char_status["Vigor"]["temp"])
-		voluntad_node.set_level(char_status["Voluntad"]["perm"], char_status["Voluntad"]["temp"])
+		%Vigor.set_level(char_status["Vigor"]["perm"], char_status["Vigor"]["temp"])
+		%Voluntad.set_level(char_status["Voluntad"]["perm"], char_status["Voluntad"]["temp"])
 		if char_status.has("Coherencia"):
-			coherencia_node.set_level(char_status["Coherencia"]["perm"], char_status["Coherencia"]["temp"])
-			coherencia_node.show()
+			%Coherencia.set_level(char_status["Coherencia"]["perm"], char_status["Coherencia"]["temp"])
+			%Coherencia.show()
 		else:
-			coherencia_node.hide()
+			%Coherencia.hide()
 		
-		salud_node.set_damage(char_status["Salud"]["light"],char_status["Salud"]["heavy"])
-		cordura_node.set_damage(char_status["Cordura"]["light"],char_status["Cordura"]["heavy"])
+		%Salud.set_damage(char_status["Salud"])
+		%Cordura.set_damage(char_status["Cordura"])
 
 
 func make_ui_editable(do_it):
-	salud_node.set_editable(do_it)
-	cordura_node.set_editable(do_it)
-	vigor_node.set_editable(do_it)
-	voluntad_node.set_editable(do_it)
-	coherencia_node.set_editable(do_it)
+	%Salud.set_editable(do_it)
+	%Cordura.set_editable(do_it)
+#	%Vigor.set_editable(do_it)
+#	%Voluntad.set_editable(do_it)
+#	%Coherencia.set_editable(do_it)
 
 
 func _on_Name_clicked(event):
@@ -64,8 +58,8 @@ func _on_Name_clicked(event):
 			var full_character_sheet = load("res://scenes/sheet_layouts/WebSheetLayout.tscn").instantiate()
 			full_character_sheet.character = character
 			var exit_button = full_character_sheet.find_child("Exit")
-			exit_button.disconnect("pressed", Callable(full_character_sheet, "_on_Exit_pressed"))
-			exit_button.connect("pressed", Callable(self, "_on_CharSheetExit_pressed"))
+			exit_button.pressed.disconnect(full_character_sheet._on_Exit_pressed)
+			exit_button.pressed.connect(_on_CharSheetExit_pressed)
 			full_character_sheet.find_child("AutosaveCheck").button_pressed = false
 			full_character_sheet.find_child("Delete").queue_free()
 			full_character_sheet.find_child("EditL").queue_free()
@@ -80,7 +74,7 @@ func _on_CharSheetExit_pressed():
 
 
 func _on_EditBut_pressed():
-	if find_child("EditBut").button_pressed:
+	if %EditBut.button_pressed:
 		$RefreshInterval.stop()
 		make_ui_editable(true)
 	else:

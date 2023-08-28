@@ -32,20 +32,16 @@ const version_skill_template = {
 const states = {
 	"Salud": [
 		{
-			"label": "Magullado",
+			"label": "Aturdido",
 			"penalty": "",
-			"degrees": 3
+			"degrees": 10
 		},{
 			"label": "Herido",
-			"penalty": "-1",
-			"degrees": 3
+			"penalty": "",
+			"degrees": 5
 		},{
-			"label": "Malherido",
-			"penalty": "-2",
-			"degrees": 2
-		},{
-			"label": "Incapacitado",
-			"penalty": "x",
+			"label": "Crítico",
+			"penalty": "",
 			"degrees": 2
 		}
 	],

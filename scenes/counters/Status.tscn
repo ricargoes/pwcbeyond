@@ -1,10 +1,7 @@
-[gd_scene load_steps=9 format=3 uid="uid://bgsu7k31kntjl"]
+[gd_scene load_steps=6 format=3 uid="uid://bgsu7k31kntjl"]
 
-[ext_resource type="Texture2D" uid="uid://b0mepsm31xkgh" path="res://resources/sprites/buttons/health2.png" id="1"]
 [ext_resource type="Theme" uid="uid://fdky2ckfobqg" path="res://resources/theme.tres" id="2"]
 [ext_resource type="Script" path="res://scenes/counters/Status.gd" id="3"]
-[ext_resource type="Texture2D" uid="uid://5ongs1c4eokb" path="res://resources/sprites/buttons/health1.png" id="4"]
-[ext_resource type="Texture2D" uid="uid://baiec8mobnv5t" path="res://resources/sprites/buttons/health.png" id="5"]
 [ext_resource type="AudioStream" uid="uid://dqcidvum5fflu" path="res://resources/sfx/pen&papersound.wav" id="6"]
 [ext_resource type="AudioStream" uid="uid://c5vhg3huu2vw0" path="res://resources/sfx/erasersound.wav" id="7"]
 [ext_resource type="AudioStream" uid="uid://dh1s8m3ocopby" path="res://resources/sfx/pen&papersound2.wav" id="8"]
@@ -20,39 +17,21 @@ script = ExtResource("3")
 layout_mode = 2
 alignment = 1
 
-[node name="Minus" type="TextureButton" parent="Label"]
-visible = false
-custom_minimum_size = Vector2(25, 25)
-layout_mode = 2
-texture_normal = ExtResource("5")
-stretch_mode = 4
-
 [node name="Label" type="Label" parent="Label"]
+unique_name_in_owner = true
 layout_mode = 2
 theme = ExtResource("2")
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 text = "Salud"
 
-[node name="Plus" type="TextureButton" parent="Label"]
-visible = false
-custom_minimum_size = Vector2(25, 25)
-layout_mode = 2
-texture_normal = ExtResource("4")
-stretch_mode = 4
-
-[node name="PlusHeavy" type="TextureButton" parent="Label"]
-visible = false
-custom_minimum_size = Vector2(25, 25)
-layout_mode = 2
-texture_normal = ExtResource("1")
-stretch_mode = 4
-
 [node name="CenterContainer" type="CenterContainer" parent="."]
 layout_mode = 2
 
 [node name="States" type="GridContainer" parent="CenterContainer"]
+unique_name_in_owner = true
 layout_mode = 2
-theme_override_constants/h_separation = 15
+theme_override_constants/h_separation = 5
+theme_override_constants/v_separation = 12
 columns = 3
 
 [node name="SFXLight" type="AudioStreamPlayer" parent="."]
@@ -63,7 +42,3 @@ stream = ExtResource("8")
 
 [node name="SFXHeal" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("7")
-
-[connection signal="pressed" from="Label/Minus" to="." method="heal"]
-[connection signal="pressed" from="Label/Plus" to="." method="hurt" binds= [false]]
-[connection signal="pressed" from="Label/PlusHeavy" to="." method="hurt" binds= [true]]
