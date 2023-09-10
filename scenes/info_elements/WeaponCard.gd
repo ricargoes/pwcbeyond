@@ -1,18 +1,33 @@
 extends NinePatchRect
 
 func paint(weapon_data):
-	find_child("Name").text = weapon_data["name"]
-	find_child("WeaponClass").text = weapon_data["weapon_class_name"]
-	find_child("Proficiency").initial_level = weapon_data["proficiency"]
-	find_child("Proficiency").refresh()
-	find_child("DamageType").text = "Letal" if weapon_data["is_lethal_damage"] else "Contundente"
-	find_child("IsRanged").text = "A distancia" if weapon_data["is_ranged"] else "Melee"
-	find_child("Range").text = weapon_data["weapon_range"]
-	find_child("BaseDamage").text = str(weapon_data["base_damage"])
-	find_child("IncrementDamage").text = str(weapon_data["increment_damage"])
-	find_child("Description").text = weapon_data["description"]
+	%Name.text = weapon_data["name"]
+	%WeaponClass.text = weapon_data["weapon_class_name"]
+	%Proficiency.initial_level = weapon_data["proficiency"]
+	%Proficiency.refresh()
+	%IsRanged.text = "A distancia" if weapon_data["is_ranged"] else "Melee"
+	%Range.text = weapon_data["weapon_range"]
+	
+	Helper.remove_children(%Damage)
+	for damage in weapon_data["damage"]:
+		var cost = Label.new()
+		cost.size_flags_horizontal = Label.SIZE_EXPAND
+		var plural = "" if damage["cost"] == 1 else "s"
+		cost.text = str(damage["cost"]) + " éxito" + plural + ": "
+		%Damage.add_child(cost)
+		var value = Label.new()
+		value.size_flags_horizontal = Label.SIZE_EXPAND 
+		if damage.has("stun"):
+			value.text = str(damage["stun"]) + "A"
+		if damage.has("lethal"):
+			value.text = str(damage["lethal"]) + "L"
+		if damage.has("critical"):
+			value.text = str(damage["critical"]) + "X"
+		%Damage.add_child(value)		
+	
+	%Description.text = weapon_data["description"]
 	if weapon_data["ammo"] == 0:
-		find_child("AmmoContainer").hide()
+		%AmmoContainer.hide()
 	else:
-		find_child("Ammo").text = str(weapon_data["ammo"])
-		find_child("AmmoContainer").show()
+		%Ammo.text = str(weapon_data["ammo"])
+		%AmmoContainer.show()
