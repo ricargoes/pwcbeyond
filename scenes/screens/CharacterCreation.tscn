@@ -64,11 +64,8 @@ offset_right = 0.902527
 offset_bottom = 52.0
 focus_mode = 0
 auto_height = true
-item_count = 2
 max_columns = 6
 same_column_width = true
-item_0/text = "v1"
-item_1/text = "v2"
 
 [node name="SheetInfo" type="VBoxContainer" parent="CenterContainer"]
 unique_name_in_owner = true

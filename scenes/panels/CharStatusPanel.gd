@@ -33,7 +33,7 @@ func refresh_ui(_characters_refreshed):
 		%Name.text = character.char_name + " [" + character.player_name + "]"
 		var char_status = character.status
 		%Vigor.set_level(char_status["Vigor"]["perm"], char_status["Vigor"]["temp"])
-		%Voluntad.set_level(char_status["Voluntad"]["perm"], char_status["Voluntad"]["temp"])
+		%Concentracion.set_level(char_status["Concentración"]["perm"], char_status["Concentración"]["temp"])
 		if char_status.has("Coherencia"):
 			%Coherencia.set_level(char_status["Coherencia"]["perm"], char_status["Coherencia"]["temp"])
 			%Coherencia.show()
@@ -48,7 +48,7 @@ func make_ui_editable(do_it):
 	%Salud.set_editable(do_it)
 	%Cordura.set_editable(do_it)
 #	%Vigor.set_editable(do_it)
-#	%Voluntad.set_editable(do_it)
+#	%Concentracion.set_editable(do_it)
 #	%Coherencia.set_editable(do_it)
 
 

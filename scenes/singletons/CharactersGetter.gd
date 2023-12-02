@@ -9,6 +9,7 @@ signal cache_refreshed(loaded_characters)
 
 
 func _ready():
+	await request_character_sheet_schemas()
 	set_process(true)
 
 
@@ -60,12 +61,24 @@ func try_request():
 		request(
 			url,
 			PackedStringArray(["accept: application/json", "Range-Unit: items"]),
-			HTTPClient.METHOD_GET
-			)
+			HTTPClient.METHOD_GET)
 
 
 func request_character(chronicle, player, char_name):
 	request_queue.append(GameInfo.character_sheets_table_url + character_filter(chronicle, player, char_name))
+
+
+func request_character_sheet_schemas():
+	$SchemasGetter.request(
+		GameInfo.schemas_table_url + '?entity=eq.character_sheet_stats',
+		PackedStringArray(["accept: application/json", "Range-Unit: items"]),
+		HTTPClient.METHOD_GET)
+	var response = await $SchemasGetter.request_completed
+	var test_json_conv = JSON.new()
+	test_json_conv.parse(response[3].get_string_from_utf8())
+	var schemas = test_json_conv.get_data()
+	for schema in schemas:
+		GameInfo.abilities_schema[schema["version"]] = schema["schema_definition"]
 
 
 func search(search_text):
@@ -88,16 +101,14 @@ func insert_character(character):
 		GameInfo.character_sheets_table_url,
 		PackedStringArray(["Content-Type: application/json"]),
 		HTTPClient.METHOD_POST,
-		post_data
-		)
+		post_data)
 
 
 func delete_character(chronicle, player, char_name):
 	$CharactersDeleter.request(
 		GameInfo.character_sheets_table_url + character_filter(chronicle, player, char_name),
 		PackedStringArray(["Content-Type: application/json"]),
-		HTTPClient.METHOD_DELETE
-		)
+		HTTPClient.METHOD_DELETE)
 
 
 func update_character(chronicle, player, char_name, payload):
@@ -105,6 +116,4 @@ func update_character(chronicle, player, char_name, payload):
 		GameInfo.character_sheets_table_url + character_filter(chronicle, player, char_name),
 		PackedStringArray(["Content-Type: application/json"]),
 		HTTPClient.METHOD_PATCH,
-		JSON.stringify(payload)
-		)
-
+		JSON.stringify(payload))

@@ -12,24 +12,29 @@ var _count_artes_points = 0
 var _char_type = ""
 
 func _ready():
-	%Version.select(1)
+	prepare_versions()
 	paint_atributes()
 	paint_skills()
 	paint_plane_manipulation()
 
 
+func prepare_versions():
+	var available_versions = GameInfo.abilities_schema.keys()
+	available_versions.sort()
+	for version in available_versions:
+		%Version.add_item(version)
+	%Version.select(2)
+
 func paint_atributes():
 	var feature_type = "atributes"
-	var item_levels = GameInfo.version_skill_template[get_sheet_version()][feature_type]
-	Helper.build_ability_tree(feature_type, %Atributes, item_levels)
+	Helper.build_ability_tree(%Atributes, feature_type, get_sheet_version(), 1)
 	get_tree().call_group(feature_type, "connect", "leveled_up", update_atribute_points)
 	get_tree().call_group(feature_type, "connect", "leveled_down", update_atribute_points)
 
 
 func paint_skills():
 	var feature_type = "skills"
-	var item_levels = GameInfo.version_skill_template[get_sheet_version()][feature_type]
-	Helper.build_ability_tree(feature_type, %Skills, item_levels)
+	Helper.build_ability_tree(%Skills, feature_type, get_sheet_version())
 	
 	for group_containers in %Skills.get_children():
 		var group = group_containers.name
@@ -280,7 +285,7 @@ func update_access_points(last_updated_ability, going_up):
 
 func finish():
 	var character = load("res://scenes/classes/Character.tscn").instantiate()
-	character.set_id(self)
+	character.set_id(self, get_sheet_version())
 	character.save_human_side(self)
 	character.save_planewalker_side(self)
 	character.initialize_status()

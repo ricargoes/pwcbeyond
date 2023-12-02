@@ -20,7 +20,7 @@
 [ext_resource type="Texture2D" uid="uid://drpopeqf7yrkb" path="res://resources/sprites/props/inkwell.png" id="19"]
 [ext_resource type="Texture2D" uid="uid://duah1n3m3iiyp" path="res://resources/sprites/props/feather.png" id="20"]
 [ext_resource type="PackedScene" uid="uid://bwd4j06olcxmr" path="res://scenes/panels/ArtesReference.tscn" id="28"]
-[ext_resource type="PackedScene" path="res://scenes/panels/Inventory.tscn" id="29"]
+[ext_resource type="PackedScene" uid="uid://ctxi8o5t5d0hw" path="res://scenes/panels/Inventory.tscn" id="29"]
 
 [sub_resource type="StyleBoxEmpty" id="1"]
 
@@ -114,12 +114,15 @@ anchor_bottom = 1.0
 mouse_filter = 2
 
 [node name="ConfirmationPopup" type="Popup" parent="CenterContainer/VScrollContainer/Center/Pivot/CenterContainer"]
+size = Vector2i(600, 130)
 
 [node name="NinePatchRect" type="NinePatchRect" parent="CenterContainer/VScrollContainer/Center/Pivot/CenterContainer/ConfirmationPopup"]
 modulate = Color(0.768627, 0.776471, 0, 1)
-custom_minimum_size = Vector2(400, 100)
-offset_right = 400.0
-offset_bottom = 100.0
+custom_minimum_size = Vector2(400, 130)
+offset_right = 600.0
+offset_bottom = 109.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
 texture = ExtResource("16")
 patch_margin_left = 55
 patch_margin_top = 64
@@ -135,6 +138,7 @@ alignment = 1
 [node name="ConfirmationL" type="Label" parent="CenterContainer/VScrollContainer/Center/Pivot/CenterContainer/ConfirmationPopup/VBoxContainer"]
 layout_mode = 2
 text = "Acepta para confirmar el borrado"
+horizontal_alignment = 1
 
 [node name="ConfirmButtons" type="HBoxContainer" parent="CenterContainer/VScrollContainer/Center/Pivot/CenterContainer/ConfirmationPopup/VBoxContainer"]
 layout_mode = 2
@@ -296,9 +300,9 @@ layout_mode = 2
 theme_override_constants/separation = 20
 theme_override_styles/separator = SubResource("1")
 
-[node name="Voluntad" parent="CenterContainer/VScrollContainer/Center/Sheet/CharData/Sec1/StatusBG/StatusFrame" groups=["features"] instance=ExtResource("8")]
+[node name="Concentracion" parent="CenterContainer/VScrollContainer/Center/Sheet/CharData/Sec1/StatusBG/StatusFrame" groups=["features"] instance=ExtResource("8")]
 layout_mode = 2
-status_name = "Voluntad"
+status_name = "Concentración"
 
 [node name="BlankSep3" type="HSeparator" parent="CenterContainer/VScrollContainer/Center/Sheet/CharData/Sec1/StatusBG/StatusFrame"]
 layout_mode = 2
@@ -867,7 +871,7 @@ unique_name_in_owner = true
 [connection signal="pressed" from="CenterContainer/VScrollContainer/Center/Pivot/CenterContainer/ConfirmationPopup/VBoxContainer/ConfirmButtons/Aceptar" to="." method="_on_Confirmation_pressed"]
 [connection signal="gui_input" from="CenterContainer/VScrollContainer/Center/Sheet/Envelope/Logo" to="." method="_on_Logo_gui_input"]
 [connection signal="clicked" from="CenterContainer/VScrollContainer/Center/Sheet/CharData/Sec1/StatusBG/StatusFrame/Vigor" to="CenterContainer/VScrollContainer/Center/Sheet/RollTool" method="select_atribute"]
-[connection signal="clicked" from="CenterContainer/VScrollContainer/Center/Sheet/CharData/Sec1/StatusBG/StatusFrame/Voluntad" to="CenterContainer/VScrollContainer/Center/Sheet/RollTool" method="select_atribute"]
+[connection signal="clicked" from="CenterContainer/VScrollContainer/Center/Sheet/CharData/Sec1/StatusBG/StatusFrame/Concentracion" to="CenterContainer/VScrollContainer/Center/Sheet/RollTool" method="select_atribute"]
 [connection signal="pressed" from="CenterContainer/VScrollContainer/Center/Sheet/CharData/Sec1/InventoryButton" to="." method="_on_InventoryButton_pressed"]
 [connection signal="clicked" from="CenterContainer/VScrollContainer/Center/Sheet/CharData/TabContainer/Manipulacion de planos/PlaneManipulation/CenterContainer/HBoxContainer/Journey" to="CenterContainer/VScrollContainer/Center/Sheet/RollTool" method="select_ability"]
 [connection signal="clicked" from="CenterContainer/VScrollContainer/Center/Sheet/CharData/TabContainer/Manipulacion de planos/PlaneManipulation/CenterContainer/HBoxContainer/Coherencia" to="CenterContainer/VScrollContainer/Center/Sheet/RollTool" method="select_atribute"]

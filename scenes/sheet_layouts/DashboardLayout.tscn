@@ -27,7 +27,7 @@
 [ext_resource type="Texture2D" uid="uid://du88fnuc3vlvb" path="res://resources/sprites/details/dirt4.png" id="26"]
 [ext_resource type="Texture2D" uid="uid://dfmegm04crtnf" path="res://resources/sprites/details/dirt5.png" id="27"]
 [ext_resource type="PackedScene" uid="uid://bwd4j06olcxmr" path="res://scenes/panels/ArtesReference.tscn" id="28"]
-[ext_resource type="PackedScene" path="res://scenes/panels/Inventory.tscn" id="29"]
+[ext_resource type="PackedScene" uid="uid://ctxi8o5t5d0hw" path="res://scenes/panels/Inventory.tscn" id="29"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_r5qff"]
 
@@ -281,7 +281,7 @@ text = "Motivación:"
 
 [node name="Looks" type="TextEdit" parent="BG/Sheet/Header/Info" groups=["editable_textedits"]]
 unique_name_in_owner = true
-custom_minimum_size = Vector2(280, 90)
+custom_minimum_size = Vector2(280, 120)
 layout_mode = 2
 focus_mode = 0
 wrap_mode = 1
@@ -309,7 +309,7 @@ wrap_mode = 1
 
 [node name="HSeparator" type="HSeparator" parent="BG/Sheet"]
 layout_mode = 2
-theme_override_constants/separation = 60
+theme_override_constants/separation = 30
 theme_override_styles/separator = SubResource("1")
 
 [node name="Body" type="HBoxContainer" parent="BG/Sheet"]
@@ -420,16 +420,13 @@ theme_override_styles/separator = SubResource("2")
 
 [node name="Salud" parent="BG/Sheet/Body/Sec1/StatusBG/StatusCenter/StatusFrame/Status/PhysicalStatus" instance=ExtResource("7")]
 layout_mode = 2
-editable = true
-type = "Salud"
-icon_colection = "health"
 
 [node name="MentalStatus" type="VBoxContainer" parent="BG/Sheet/Body/Sec1/StatusBG/StatusCenter/StatusFrame/Status"]
 layout_mode = 2
 
-[node name="Voluntad" parent="BG/Sheet/Body/Sec1/StatusBG/StatusCenter/StatusFrame/Status/MentalStatus" groups=["features"] instance=ExtResource("8")]
+[node name="Concentracion" parent="BG/Sheet/Body/Sec1/StatusBG/StatusCenter/StatusFrame/Status/MentalStatus" groups=["features"] instance=ExtResource("8")]
 layout_mode = 2
-status_name = "Voluntad"
+status_name = "Concentración"
 
 [node name="BlankSep2" type="HSeparator" parent="BG/Sheet/Body/Sec1/StatusBG/StatusCenter/StatusFrame/Status/MentalStatus"]
 layout_mode = 2
@@ -438,7 +435,6 @@ theme_override_styles/separator = SubResource("2")
 
 [node name="Cordura" parent="BG/Sheet/Body/Sec1/StatusBG/StatusCenter/StatusFrame/Status/MentalStatus" instance=ExtResource("7")]
 layout_mode = 2
-editable = true
 type = "Cordura"
 icon_colection = "sanity"
 
@@ -808,12 +804,15 @@ anchor_bottom = 1.0
 mouse_filter = 2
 
 [node name="ConfirmationPopup" type="Popup" parent="BG/Pivot/CenterContainer"]
+size = Vector2i(600, 130)
 
 [node name="NinePatchRect" type="NinePatchRect" parent="BG/Pivot/CenterContainer/ConfirmationPopup"]
 modulate = Color(0.768627, 0.776471, 0, 1)
-custom_minimum_size = Vector2(400, 100)
+custom_minimum_size = Vector2(600, 130)
 offset_right = 400.0
 offset_bottom = 100.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
 texture = ExtResource("16")
 patch_margin_left = 55
 patch_margin_top = 64
@@ -829,6 +828,7 @@ alignment = 1
 [node name="ConfirmationL" type="Label" parent="BG/Pivot/CenterContainer/ConfirmationPopup/VBoxContainer"]
 layout_mode = 2
 text = "Acepta para confirmar el borrado"
+horizontal_alignment = 1
 
 [node name="ConfirmButtons" type="HBoxContainer" parent="BG/Pivot/CenterContainer/ConfirmationPopup/VBoxContainer"]
 layout_mode = 2
@@ -846,7 +846,7 @@ unique_name_in_owner = true
 [connection signal="timeout" from="Autosave" to="." method="autosave"]
 [connection signal="gui_input" from="BG/Sheet/Header/Logo" to="." method="_on_Logo_gui_input"]
 [connection signal="clicked" from="BG/Sheet/Body/Sec1/StatusBG/StatusCenter/StatusFrame/Status/PhysicalStatus/Vigor" to="BG/Sheet/Tools/RollTool" method="select_atribute"]
-[connection signal="clicked" from="BG/Sheet/Body/Sec1/StatusBG/StatusCenter/StatusFrame/Status/MentalStatus/Voluntad" to="BG/Sheet/Tools/RollTool" method="select_atribute"]
+[connection signal="clicked" from="BG/Sheet/Body/Sec1/StatusBG/StatusCenter/StatusFrame/Status/MentalStatus/Concentracion" to="BG/Sheet/Tools/RollTool" method="select_atribute"]
 [connection signal="clicked" from="BG/Sheet/Body/Manipulacion de planos/PlaneManipulation/Journey" to="BG/Sheet/Tools/RollTool" method="select_ability"]
 [connection signal="clicked" from="BG/Sheet/Body/Manipulacion de planos/PlaneManipulation/AccessCenter/Access/Ego" to="BG/Sheet/Tools/RollTool" method="select_skill"]
 [connection signal="clicked" from="BG/Sheet/Body/Manipulacion de planos/PlaneManipulation/AccessCenter/Access/Scientia" to="BG/Sheet/Tools/RollTool" method="select_atribute"]

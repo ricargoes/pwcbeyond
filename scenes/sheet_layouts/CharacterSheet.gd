@@ -13,7 +13,7 @@ var sheet_layouts = {
 var character = null
 
 var vigor
-var voluntad
+var concentracion
 var coherencia
 var salud
 var cordura
@@ -24,18 +24,18 @@ func _ready():
 	salud = find_child("Salud")
 	cordura = find_child("Cordura")
 	vigor = find_child("Vigor")
-	voluntad = find_child("Voluntad")
+	concentracion = find_child("Concentracion")
 	coherencia = find_child("Coherencia")
-	vigor.connect("effort", Callable(character, "effort").bind("físicos"))
-	voluntad.connect("effort", Callable(character, "effort").bind("mentales"))
-	coherencia.connect("effort", Callable(character, "effort").bind("plane_manipulation"))
-	character.connect("effort_spended", Callable(vigor, "unlock_efforts"))
-	character.connect("effort_spended", Callable(voluntad, "unlock_efforts"))
-	character.connect("effort_spended", Callable(coherencia, "unlock_efforts"))
+	vigor.effort.connect(character.effort.bind("físicos"))
+	concentracion.effort.connect(character.effort.bind("mentales"))
+	coherencia.effort.connect(character.effort.bind("plane_manipulation"))
+	character.effort_spended.connect(vigor.unlock_efforts)
+	character.effort_spended.connect(concentracion.unlock_efforts)
+	character.effort_spended.connect(coherencia.unlock_efforts)
 	%RollTool.set_roller(character)
 	%RollTool.set_health(salud)
 	%RollTool.set_tireness("físicos", vigor)
-	%RollTool.set_tireness("mentales", voluntad)
+	%RollTool.set_tireness("mentales", concentracion)
 	%RollTool.set_tireness("plane_manipulation", coherencia)
 	build_sheet()
 
@@ -110,13 +110,13 @@ func paint_info():
 
 func paint_atributes():
 	var feature_type = "atributes"
-	Helper.build_ability_tree(feature_type, %Atributes, character.atributes, false)
+	Helper.build_ability_tree(%Atributes, feature_type, character.version, 1, false, character.atributes)
 	get_tree().call_group(feature_type, "connect", "clicked", %RollTool.select_atribute)
 
 
 func paint_skills():
 	var feature_type = "skills"
-	Helper.build_ability_tree(feature_type, %Skills, character.skills, false)
+	Helper.build_ability_tree(%Skills, feature_type, character.version, 0, false, character.skills)
 	get_tree().call_group(feature_type, "connect", "clicked", %RollTool.select_skill)
 
 
@@ -157,7 +157,7 @@ func paint_plane_manipulation():
 func paint_status():
 	var sheet_status = character.status
 	vigor.set_level(sheet_status["Vigor"]["perm"], sheet_status["Vigor"]["temp"])
-	voluntad.set_level(sheet_status["Voluntad"]["perm"], sheet_status["Voluntad"]["temp"])
+	concentracion.set_level(sheet_status["Concentración"]["perm"], sheet_status["Concentración"]["temp"])
 	
 	salud.set_damage(sheet_status["Salud"])
 	cordura.set_damage(sheet_status["Cordura"])

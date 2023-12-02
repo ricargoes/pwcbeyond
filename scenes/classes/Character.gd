@@ -1,9 +1,11 @@
 extends Node
 
+const default_concentracion = 2
 
 var char_name = ""
 var player_name = ""
 var chronicle = ""
+var version = ""
 
 var atributes = {}
 var skills = {}
@@ -20,10 +22,11 @@ var boosts = []
 
 signal effort_spended(type)
 
-func set_id(character_sheet):
+func set_id(character_sheet, sheet_version):
 	chronicle = character_sheet.find_child("Chronicle").text
 	player_name = character_sheet.find_child("Player").text
 	char_name = character_sheet.find_child("Name").text
+	version = sheet_version
 
 func save_human_side(character_sheet):
 	
@@ -70,7 +73,8 @@ func save_planewalker_side(character_sheet):
 
 func initialize_status():
 	status["Vigor"] = { "perm": atributes["Físicos"]["Resistencia"], "temp": atributes["Físicos"]["Resistencia"] }
-	status["Voluntad"] = { "perm": atributes["Mentales"]["Astucia"], "temp": atributes["Mentales"]["Astucia"] }
+	var concentracion_value = atributes["Mentales"].get("Voluntad", default_concentracion)
+	status["Concentración"] = { "perm": concentracion_value, "temp": concentracion_value }
 	status["Coherencia"] = { "perm": plane_manipulation["access"]["ego"], "temp": plane_manipulation["access"]["ego"] }
 	status["Salud"] = {}
 	status["Cordura"] = {}
@@ -80,9 +84,9 @@ func initialize_status():
 
 func save_status(character_sheet):
 	status = {}
-	status["Vigor"] = { "perm": atributes["Físicos"]["Resistencia"], "temp": character_sheet.find_child("Vigor").temp_level}
-	status["Voluntad"] = { "perm": atributes["Mentales"]["Astucia"], "temp": character_sheet.find_child("Voluntad").temp_level}
-	status["Coherencia"] = { "perm": plane_manipulation["access"]["ego"], "temp": character_sheet.find_child("Coherencia").temp_level}
+	status["Vigor"] = {"perm": atributes["Físicos"]["Resistencia"], "temp": character_sheet.find_child("Vigor").temp_level}
+	status["Concentración"] = {"perm": atributes["Mentales"].get("Voluntad", default_concentracion), "temp": character_sheet.find_child("Concentracion").temp_level}
+	status["Coherencia"] = {"perm": plane_manipulation["access"]["ego"], "temp": character_sheet.find_child("Coherencia").temp_level}
 	
 	status["Salud"] = character_sheet.find_child("Salud").states_damage
 	status["Cordura"] = character_sheet.find_child("Cordura").states_damage
@@ -96,7 +100,8 @@ func get_data_dict():
 		"atributes": atributes,
 		"skills": skills,
 		"plane_manipulation": plane_manipulation,
-		"status": status
+		"status": status,
+		"version": version,
 	}
 
 func from_data_dict(char_dict):
@@ -108,6 +113,7 @@ func from_data_dict(char_dict):
 	skills = char_dict["character_stats"]["skills"]
 	plane_manipulation = char_dict["character_stats"]["plane_manipulation"]
 	status = char_dict["character_stats"]["status"]
+	version = char_dict["character_stats"]["version"]
 	
 	equipment = char_dict["character_inventory"]
 
@@ -126,4 +132,4 @@ func spend_effort(type):
 	if boosts.has(type):
 		for _i in range(boosts.count(type)):
 			boosts.erase(type)
-		emit_signal("effort_spended", type)
+		effort_spended.emit(type)
