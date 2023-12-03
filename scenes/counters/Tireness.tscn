@@ -1,10 +1,9 @@
-[gd_scene load_steps=13 format=3 uid="uid://ds0lqr056s3xp"]
+[gd_scene load_steps=12 format=3 uid="uid://ds0lqr056s3xp"]
 
 [ext_resource type="Theme" uid="uid://fdky2ckfobqg" path="res://resources/theme.tres" id="1"]
 [ext_resource type="Script" path="res://scenes/counters/Tireness.gd" id="2"]
 [ext_resource type="PackedScene" path="res://scenes/counters/RombusPoint.tscn" id="3"]
 [ext_resource type="PackedScene" uid="uid://mw5vfpb1i1jg" path="res://scenes/counters/CirclePoint.tscn" id="4"]
-[ext_resource type="PackedScene" path="res://scenes/counters/SquarePoint.tscn" id="5"]
 [ext_resource type="Texture2D" uid="uid://bgjk7vnxodgu8" path="res://resources/sprites/buttons/press-.png" id="6"]
 [ext_resource type="Texture2D" uid="uid://bkiqaws7da5q1" path="res://resources/sprites/buttons/+.png" id="7"]
 [ext_resource type="Texture2D" uid="uid://ihe7mpeaajeh" path="res://resources/sprites/buttons/-.png" id="8"]
@@ -111,19 +110,19 @@ layout_mode = 2
 [node name="t-1" parent="CenterContainer/Markers" instance=ExtResource("3")]
 layout_mode = 2
 
-[node name="t1" parent="CenterContainer/Markers" instance=ExtResource("5")]
+[node name="t1" parent="CenterContainer/Markers" instance=ExtResource("3")]
 layout_mode = 2
 
-[node name="t2" parent="CenterContainer/Markers" instance=ExtResource("5")]
+[node name="t2" parent="CenterContainer/Markers" instance=ExtResource("3")]
 layout_mode = 2
 
-[node name="t3" parent="CenterContainer/Markers" instance=ExtResource("5")]
+[node name="t3" parent="CenterContainer/Markers" instance=ExtResource("3")]
 layout_mode = 2
 
-[node name="t4" parent="CenterContainer/Markers" instance=ExtResource("5")]
+[node name="t4" parent="CenterContainer/Markers" instance=ExtResource("3")]
 layout_mode = 2
 
-[node name="t5" parent="CenterContainer/Markers" instance=ExtResource("5")]
+[node name="t5" parent="CenterContainer/Markers" instance=ExtResource("3")]
 layout_mode = 2
 
 [node name="SFXDraw" type="AudioStreamPlayer" parent="."]

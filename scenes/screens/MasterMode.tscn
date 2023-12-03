@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://bbvg21v5m6vnf"]
+[gd_scene load_steps=14 format=3 uid="uid://bbvg21v5m6vnf"]
 
 [ext_resource type="PackedScene" uid="uid://cqq7n32w7m6dd" path="res://scenes/panels/CharStatusPanel.tscn" id="1"]
 [ext_resource type="PackedScene" uid="uid://bt8v31k067cal" path="res://scenes/decorations/BG.tscn" id="2"]
@@ -11,7 +11,6 @@
 [ext_resource type="PackedScene" uid="uid://b7leqvhsa8ldp" path="res://scenes/counters/StandardCounter.tscn" id="9"]
 [ext_resource type="FontFile" path="res://resources/h2_font.tres" id="10"]
 [ext_resource type="Texture2D" uid="uid://oaynf75i4sbe" path="res://resources/sprites/backgrounds/9patch_scroll3.png" id="11"]
-[ext_resource type="FontFile" path="res://resources/h1_font.tres" id="12"]
 [ext_resource type="Texture2D" uid="uid://sekwcgb6rwfb" path="res://resources/sprites/backgrounds/9patch_paper_small.png" id="13"]
 
 [sub_resource type="StyleBoxEmpty" id="1"]
@@ -106,7 +105,7 @@ theme_override_constants/separation = 10
 
 [node name="Label" type="Label" parent="Scroll/Margin/MasterScreen/UpperSec/MiddleSpace/MasterRef/RulesBG/CenterContainer/Rules"]
 layout_mode = 2
-theme_override_fonts/font = ExtResource("12")
+theme_override_font_sizes/font_size = 33
 text = "Pruebas"
 horizontal_alignment = 1
 
@@ -126,13 +125,15 @@ theme_override_fonts/font = ExtResource("10")
 
 [node name="DifficultyH" type="Label" parent="Scroll/Margin/MasterScreen/UpperSec/MiddleSpace/MasterRef/RulesBG/CenterContainer/Rules/CenterContainer/ChallengesRef"]
 layout_mode = 2
-theme_override_fonts/font = ExtResource("10")
+theme_override_font_sizes/font_size = 27
 text = "Dificultad"
+horizontal_alignment = 1
 
 [node name="ProficiencyH" type="Label" parent="Scroll/Margin/MasterScreen/UpperSec/MiddleSpace/MasterRef/RulesBG/CenterContainer/Rules/CenterContainer/ChallengesRef"]
 layout_mode = 2
-theme_override_fonts/font = ExtResource("10")
+theme_override_font_sizes/font_size = 27
 text = "Competencia"
+horizontal_alignment = 1
 
 [node name="Level1" type="HBoxContainer" parent="Scroll/Margin/MasterScreen/UpperSec/MiddleSpace/MasterRef/RulesBG/CenterContainer/Rules/CenterContainer/ChallengesRef"]
 custom_minimum_size = Vector2(100, 0)
@@ -249,7 +250,7 @@ theme_override_styles/separator = SubResource("1")
 
 [node name="Label2" type="Label" parent="Scroll/Margin/MasterScreen/UpperSec/MiddleSpace/MasterRef/RulesBG/CenterContainer/Rules"]
 layout_mode = 2
-theme_override_fonts/font = ExtResource("12")
+theme_override_font_sizes/font_size = 33
 text = "Combate a distancia"
 horizontal_alignment = 1
 
@@ -264,25 +265,31 @@ columns = 4
 
 [node name="StatusH1" type="Label" parent="Scroll/Margin/MasterScreen/UpperSec/MiddleSpace/MasterRef/RulesBG/CenterContainer/Rules/CenterContainer2/ChallengesRef"]
 layout_mode = 2
-theme_override_fonts/font = ExtResource("10")
+theme_override_font_sizes/font_size = 27
 text = "Situación"
+horizontal_alignment = 1
 
 [node name="ModH1" type="Label" parent="Scroll/Margin/MasterScreen/UpperSec/MiddleSpace/MasterRef/RulesBG/CenterContainer/Rules/CenterContainer2/ChallengesRef"]
+custom_minimum_size = Vector2(100, 0)
 layout_mode = 2
 size_flags_horizontal = 3
-theme_override_fonts/font = ExtResource("10")
+theme_override_font_sizes/font_size = 27
 text = "Mod"
+horizontal_alignment = 1
 
 [node name="StatusH2" type="Label" parent="Scroll/Margin/MasterScreen/UpperSec/MiddleSpace/MasterRef/RulesBG/CenterContainer/Rules/CenterContainer2/ChallengesRef"]
 layout_mode = 2
-theme_override_fonts/font = ExtResource("10")
+theme_override_font_sizes/font_size = 27
 text = "Situación"
+horizontal_alignment = 1
 
 [node name="ModH2" type="Label" parent="Scroll/Margin/MasterScreen/UpperSec/MiddleSpace/MasterRef/RulesBG/CenterContainer/Rules/CenterContainer2/ChallengesRef"]
+custom_minimum_size = Vector2(100, 0)
 layout_mode = 2
 size_flags_horizontal = 3
-theme_override_fonts/font = ExtResource("10")
+theme_override_font_sizes/font_size = 27
 text = "Mod"
+horizontal_alignment = 1
 
 [node name="Range0" type="Label" parent="Scroll/Margin/MasterScreen/UpperSec/MiddleSpace/MasterRef/RulesBG/CenterContainer/Rules/CenterContainer2/ChallengesRef"]
 layout_mode = 2

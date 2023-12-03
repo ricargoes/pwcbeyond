@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://mhvw62e3bmj2"]
+[gd_scene load_steps=10 format=3 uid="uid://mhvw62e3bmj2"]
 
 [ext_resource type="Texture2D" uid="uid://q6ia50mggtiw" path="res://resources/sprites/buttons/fudgedicepressed (2).png" id="1"]
 [ext_resource type="Theme" uid="uid://fdky2ckfobqg" path="res://resources/theme.tres" id="2"]
@@ -6,6 +6,8 @@
 [ext_resource type="Texture2D" uid="uid://sekwcgb6rwfb" path="res://resources/sprites/backgrounds/9patch_paper_small.png" id="4"]
 [ext_resource type="Texture2D" uid="uid://blncyjlcnny1j" path="res://resources/sprites/buttons/fudgedice (2).png" id="5"]
 [ext_resource type="AudioStream" uid="uid://bdy8g4mhiym13" path="res://resources/sfx/dicerollingsound.wav" id="6"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_bw2tc"]
 
 [sub_resource type="StyleBoxEmpty" id="1"]
 
@@ -36,86 +38,99 @@ patch_margin_top = 43
 patch_margin_right = 37
 patch_margin_bottom = 41
 
-[node name="HBoxContainer" type="HBoxContainer" parent="."]
-layout_mode = 0
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+custom_minimum_size = Vector2(800, 0)
+layout_mode = 1
+anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="HSeparator" type="HSeparator" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 10
+theme_override_styles/separator = SubResource("StyleBoxEmpty_bw2tc")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
 theme_override_constants/separation = 16
 alignment = 1
 
-[node name="AtributeCont" type="VBoxContainer" parent="HBoxContainer"]
+[node name="AtributeCont" type="VBoxContainer" parent="VBoxContainer/HBoxContainer"]
 layout_mode = 2
 alignment = 1
 
-[node name="AtributeL" type="Label" parent="HBoxContainer/AtributeCont"]
+[node name="AtributeL" type="Label" parent="VBoxContainer/HBoxContainer/AtributeCont"]
 unique_name_in_owner = true
 layout_mode = 2
 text = "Atributo"
 horizontal_alignment = 1
 
-[node name="Atribute" type="LineEdit" parent="HBoxContainer/AtributeCont"]
+[node name="Atribute" type="LineEdit" parent="VBoxContainer/HBoxContainer/AtributeCont"]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(120, 0)
 layout_mode = 2
 text = "0"
 editable = false
 
-[node name="Plus" type="Label" parent="HBoxContainer"]
+[node name="Plus" type="Label" parent="VBoxContainer/HBoxContainer"]
 layout_mode = 2
 text = "+"
 
-[node name="AbilityCont" type="VBoxContainer" parent="HBoxContainer"]
+[node name="AbilityCont" type="VBoxContainer" parent="VBoxContainer/HBoxContainer"]
 layout_mode = 2
 alignment = 1
 
-[node name="AbilityL" type="Label" parent="HBoxContainer/AbilityCont"]
+[node name="AbilityL" type="Label" parent="VBoxContainer/HBoxContainer/AbilityCont"]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(150, 0)
 layout_mode = 2
 text = "Habilidad"
 horizontal_alignment = 1
 
-[node name="Ability" type="LineEdit" parent="HBoxContainer/AbilityCont"]
+[node name="Ability" type="LineEdit" parent="VBoxContainer/HBoxContainer/AbilityCont"]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(120, 0)
 layout_mode = 2
 text = "0"
 editable = false
 
-[node name="Plus2" type="Label" parent="HBoxContainer"]
+[node name="Plus2" type="Label" parent="VBoxContainer/HBoxContainer"]
 layout_mode = 2
 text = "+"
 
-[node name="Mod" type="VBoxContainer" parent="HBoxContainer"]
+[node name="Mod" type="VBoxContainer" parent="VBoxContainer/HBoxContainer"]
 layout_mode = 2
 alignment = 1
 
-[node name="ModL" type="Label" parent="HBoxContainer/Mod"]
+[node name="ModL" type="Label" parent="VBoxContainer/HBoxContainer/Mod"]
 layout_mode = 2
 text = "Mod"
 horizontal_alignment = 1
 
-[node name="Mod" type="LineEdit" parent="HBoxContainer/Mod"]
+[node name="Mod" type="LineEdit" parent="VBoxContainer/HBoxContainer/Mod"]
 unique_name_in_owner = true
 layout_mode = 2
 text = "0"
 editable = false
 
-[node name="Plus3" type="Label" parent="HBoxContainer"]
+[node name="Plus3" type="Label" parent="VBoxContainer/HBoxContainer"]
 layout_mode = 2
 text = "+"
 
-[node name="RollButton" type="VBoxContainer" parent="HBoxContainer"]
+[node name="RollButton" type="VBoxContainer" parent="VBoxContainer/HBoxContainer"]
 layout_mode = 2
 theme_override_constants/separation = -7
 alignment = 1
 
-[node name="HSeparator" type="HSeparator" parent="HBoxContainer/RollButton"]
+[node name="HSeparator" type="HSeparator" parent="VBoxContainer/HBoxContainer/RollButton"]
 layout_mode = 2
 theme_override_constants/separation = 10
 theme_override_styles/separator = SubResource("1")
 
-[node name="Roll" type="TextureButton" parent="HBoxContainer/RollButton"]
+[node name="Roll" type="TextureButton" parent="VBoxContainer/HBoxContainer/RollButton"]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
@@ -123,7 +138,7 @@ texture_normal = ExtResource("5")
 texture_pressed = ExtResource("1")
 stretch_mode = 5
 
-[node name="Public" type="CheckBox" parent="HBoxContainer/RollButton"]
+[node name="Public" type="CheckBox" parent="VBoxContainer/HBoxContainer/RollButton"]
 unique_name_in_owner = true
 layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
@@ -133,21 +148,21 @@ theme_override_colors/font_hover_pressed_color = Color(0, 0, 0, 1)
 theme_override_colors/font_disabled_color = Color(0, 0, 0, 1)
 text = "Public"
 
-[node name="VSeparator" type="VSeparator" parent="HBoxContainer"]
+[node name="VSeparator" type="VSeparator" parent="VBoxContainer/HBoxContainer"]
 layout_mode = 2
 theme_override_constants/separation = 10
 theme_override_styles/separator = SubResource("2")
 
-[node name="ResultCont" type="VBoxContainer" parent="HBoxContainer"]
+[node name="ResultCont" type="VBoxContainer" parent="VBoxContainer/HBoxContainer"]
 layout_mode = 2
 alignment = 1
 
-[node name="ResultL" type="Label" parent="HBoxContainer/ResultCont"]
+[node name="ResultL" type="Label" parent="VBoxContainer/HBoxContainer/ResultCont"]
 layout_mode = 2
 text = "Resultado"
 horizontal_alignment = 1
 
-[node name="Result" type="LineEdit" parent="HBoxContainer/ResultCont"]
+[node name="Result" type="LineEdit" parent="VBoxContainer/HBoxContainer/ResultCont"]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(170, 0)
 layout_mode = 2
@@ -158,4 +173,4 @@ editable = false
 [node name="SFXRoll" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("6")
 
-[connection signal="pressed" from="HBoxContainer/RollButton/Roll" to="." method="_on_Roll_pressed"]
+[connection signal="pressed" from="VBoxContainer/HBoxContainer/RollButton/Roll" to="." method="_on_Roll_pressed"]

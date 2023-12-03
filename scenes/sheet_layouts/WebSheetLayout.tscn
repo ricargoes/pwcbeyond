@@ -176,6 +176,7 @@ expand_mode = 1
 stretch_mode = 5
 
 [node name="PlayerIDBG" type="NinePatchRect" parent="CenterContainer/VScrollContainer/Center/Sheet"]
+custom_minimum_size = Vector2(0, 100)
 layout_mode = 2
 texture = ExtResource("16")
 patch_margin_left = 42
@@ -191,6 +192,7 @@ anchor_bottom = 1.0
 [node name="PlayerID" type="HBoxContainer" parent="CenterContainer/VScrollContainer/Center/Sheet/PlayerIDBG/CenterContainer"]
 layout_mode = 2
 theme_override_constants/separation = 30
+alignment = 1
 
 [node name="PlayerBox" type="HBoxContainer" parent="CenterContainer/VScrollContainer/Center/Sheet/PlayerIDBG/CenterContainer/PlayerID"]
 layout_mode = 2
@@ -200,6 +202,7 @@ alignment = 2
 layout_mode = 2
 size_flags_horizontal = 3
 text = "Jugador: "
+vertical_alignment = 2
 
 [node name="Player" type="LineEdit" parent="CenterContainer/VScrollContainer/Center/Sheet/PlayerIDBG/CenterContainer/PlayerID/PlayerBox"]
 unique_name_in_owner = true
@@ -219,6 +222,7 @@ alignment = 2
 layout_mode = 2
 size_flags_horizontal = 3
 text = "Nombre: "
+vertical_alignment = 2
 
 [node name="Name" type="LineEdit" parent="CenterContainer/VScrollContainer/Center/Sheet/PlayerIDBG/CenterContainer/PlayerID/NameBox"]
 unique_name_in_owner = true
@@ -237,6 +241,7 @@ alignment = 2
 layout_mode = 2
 size_flags_horizontal = 3
 text = "Cronica:"
+vertical_alignment = 2
 
 [node name="Chronicle" type="LineEdit" parent="CenterContainer/VScrollContainer/Center/Sheet/PlayerIDBG/CenterContainer/PlayerID/ChronicleBox"]
 unique_name_in_owner = true
@@ -338,10 +343,12 @@ size_flags_vertical = 3
 theme_override_styles/separator = SubResource("2")
 
 [node name="TabContainer" type="TabContainer" parent="CenterContainer/VScrollContainer/Center/Sheet/CharData"]
+custom_minimum_size = Vector2(570, 600)
 layout_mode = 2
 size_flags_horizontal = 3
 
 [node name="Stats" type="VBoxContainer" parent="CenterContainer/VScrollContainer/Center/Sheet/CharData/TabContainer"]
+custom_minimum_size = Vector2(570, 600)
 layout_mode = 2
 theme_override_constants/separation = 0
 
@@ -420,7 +427,7 @@ alignment = 1
 
 [node name="Manipulacion de planos" type="NinePatchRect" parent="CenterContainer/VScrollContainer/Center/Sheet/CharData/TabContainer"]
 visible = false
-custom_minimum_size = Vector2(450, 620)
+custom_minimum_size = Vector2(570, 600)
 layout_mode = 2
 texture = ExtResource("15")
 region_rect = Rect2(7, 0, 290, 297)
@@ -596,7 +603,7 @@ columns = 2
 
 [node name="Info" type="NinePatchRect" parent="CenterContainer/VScrollContainer/Center/Sheet/CharData/TabContainer"]
 visible = false
-custom_minimum_size = Vector2(0, 480)
+custom_minimum_size = Vector2(570, 600)
 layout_mode = 2
 texture = ExtResource("15")
 region_rect = Rect2(6.71851, 3.13211, 290.465, 291.186)
@@ -732,17 +739,24 @@ text = "Personalidad: "
 
 [node name="Looks" type="TextEdit" parent="CenterContainer/VScrollContainer/Center/Sheet/CharData/TabContainer/Info/MarginContainer/Info" groups=["editable_textedits"]]
 unique_name_in_owner = true
-custom_minimum_size = Vector2(250, 90)
+custom_minimum_size = Vector2(250, 150)
 layout_mode = 2
 focus_mode = 0
 wrap_mode = 1
 
 [node name="Personality" type="TextEdit" parent="CenterContainer/VScrollContainer/Center/Sheet/CharData/TabContainer/Info/MarginContainer/Info" groups=["editable_textedits"]]
 unique_name_in_owner = true
-custom_minimum_size = Vector2(250, 90)
+custom_minimum_size = Vector2(250, 150)
 layout_mode = 2
 focus_mode = 0
 wrap_mode = 1
+
+[node name="Blank6" type="Control" parent="CenterContainer/VScrollContainer/Center/Sheet/CharData/TabContainer/Info/MarginContainer/Info"]
+custom_minimum_size = Vector2(0, 20)
+layout_mode = 2
+
+[node name="Blank7" type="Control" parent="CenterContainer/VScrollContainer/Center/Sheet/CharData/TabContainer/Info/MarginContainer/Info"]
+layout_mode = 2
 
 [node name="PasadoL" type="Label" parent="CenterContainer/VScrollContainer/Center/Sheet/CharData/TabContainer/Info/MarginContainer/Info"]
 layout_mode = 2
@@ -754,14 +768,14 @@ text = "Motivación:"
 
 [node name="Past" type="TextEdit" parent="CenterContainer/VScrollContainer/Center/Sheet/CharData/TabContainer/Info/MarginContainer/Info" groups=["editable_textedits"]]
 unique_name_in_owner = true
-custom_minimum_size = Vector2(250, 90)
+custom_minimum_size = Vector2(250, 150)
 layout_mode = 2
 focus_mode = 0
 wrap_mode = 1
 
 [node name="Motivation" type="TextEdit" parent="CenterContainer/VScrollContainer/Center/Sheet/CharData/TabContainer/Info/MarginContainer/Info" groups=["editable_textedits"]]
 unique_name_in_owner = true
-custom_minimum_size = Vector2(250, 90)
+custom_minimum_size = Vector2(250, 150)
 layout_mode = 2
 focus_mode = 0
 wrap_mode = 1

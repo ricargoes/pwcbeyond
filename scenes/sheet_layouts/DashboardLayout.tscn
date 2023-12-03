@@ -403,7 +403,7 @@ theme_override_styles/separator = ExtResource("3")
 
 [node name="Status" type="HBoxContainer" parent="BG/Sheet/Body/Sec1/StatusBG/StatusCenter/StatusFrame"]
 layout_mode = 2
-theme_override_constants/separation = 40
+theme_override_constants/separation = 20
 alignment = 1
 
 [node name="PhysicalStatus" type="VBoxContainer" parent="BG/Sheet/Body/Sec1/StatusBG/StatusCenter/StatusFrame/Status"]

@@ -39,10 +39,11 @@ func generate_status():
 		var degrees_container = GridContainer.new()
 		degrees_container.columns = 5
 		degrees_container.name =  state_name + "Markers"
+		degrees_container.add_theme_constant_override("h_separation", 0)
 		%States.add_child(degrees_container)
-		for n_counter in range(0, state["degrees"]):
+		for n_counter in range(state["degrees"], 0, -1):
 			var damage_marker = rombus_class.instantiate()
-			damage_marker.name = "d"+str(n_counter + 1)
+			damage_marker.name = "d"+str(n_counter)
 			degrees_container.add_child(damage_marker)
 
 
@@ -55,7 +56,7 @@ func refresh():
 	for state in states:
 		var state_name = state["label"]
 		var markers_cont = %States.get_node(state_name + "Markers")
-		for i in range(1, state["degrees"] + 1):
+		for i in range(state["degrees"], 0, -1):
 			var marker = markers_cont.get_node("d"+str(i))
 			if i <= states_damage.get(state_name, 0):
 				marker.cross()

@@ -4,7 +4,7 @@ extends Control
 var character = null
 
 func _ready():
-	CharactersGetter.connect("cache_refreshed", Callable(self, "refresh_ui"))
+	CharactersGetter.cache_refreshed.connect(refresh_ui)
 
 
 func set_character(new_character):
@@ -47,9 +47,6 @@ func refresh_ui(_characters_refreshed):
 func make_ui_editable(do_it):
 	%Salud.set_editable(do_it)
 	%Cordura.set_editable(do_it)
-#	%Vigor.set_editable(do_it)
-#	%Concentracion.set_editable(do_it)
-#	%Coherencia.set_editable(do_it)
 
 
 func _on_Name_clicked(event):
