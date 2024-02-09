@@ -2,8 +2,8 @@
 -- PostgreSQL database dump
 --
 
--- Dumped from database version 12.3 (Debian 12.3-1.pgdg100+1)
--- Dumped by pg_dump version 13.2
+-- Dumped from database version 15.4 (Debian 15.4-1.pgdg120+1)
+-- Dumped by pg_dump version 15.4 (Debian 15.4-1.pgdg120+1)
 
 SET statement_timeout = 0;
 SET lock_timeout = 0;
@@ -83,6 +83,19 @@ CREATE TABLE public.character_sheets (
 ALTER TABLE public.character_sheets OWNER TO master;
 
 --
+-- Name: json_schemas; Type: TABLE; Schema: public; Owner: master
+--
+
+CREATE TABLE public.json_schemas (
+    entity character varying NOT NULL,
+    version character varying NOT NULL,
+    schema_definition jsonb NOT NULL
+);
+
+
+ALTER TABLE public.json_schemas OWNER TO master;
+
+--
 -- Name: modus; Type: TABLE; Schema: public; Owner: master
 --
 
@@ -137,7 +150,6 @@ ALTER TABLE public.vias_to_aspecti_association OWNER TO master;
 CREATE TABLE public.weapon_class (
     name character varying NOT NULL,
     is_ranged boolean,
-    is_lethal_damage boolean,
     weapon_range character varying,
     icon character varying
 );
@@ -152,11 +164,10 @@ ALTER TABLE public.weapon_class OWNER TO master;
 CREATE TABLE public.weapons (
     name character varying NOT NULL,
     weapon_class_name character varying,
-    base_damage double precision,
-    increment_damage double precision,
     proficiency integer,
     ammo integer,
-    description character varying
+    description character varying,
+    damage jsonb DEFAULT '{}'::jsonb
 );
 
 
@@ -170,11 +181,9 @@ CREATE VIEW public.weapon_spec AS
  SELECT weapons.name,
     weapons.weapon_class_name,
     weapons.proficiency,
-    weapon_class.is_lethal_damage,
     weapon_class.is_ranged,
     weapon_class.weapon_range,
-    weapons.base_damage,
-    weapons.increment_damage,
+    weapons.damage,
     weapons.ammo,
     weapons.description,
     weapon_class.icon
@@ -183,6 +192,14 @@ CREATE VIEW public.weapon_spec AS
 
 
 ALTER TABLE public.weapon_spec OWNER TO master;
+
+--
+-- Name: json_schemas ID_PKEY; Type: CONSTRAINT; Schema: public; Owner: master
+--
+
+ALTER TABLE ONLY public.json_schemas
+    ADD CONSTRAINT "ID_PKEY" PRIMARY KEY (entity, version);
+
 
 --
 -- Name: ars_groups ars_groups_pkey; Type: CONSTRAINT; Schema: public; Owner: master
