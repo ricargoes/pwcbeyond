@@ -4,12 +4,16 @@ on:
   push:
     branches:
       - main
+    paths:
+      - '**.tscn'
+      - '**.gd'
   pull_request:
     branches:
       - main
 env:
   BUTLER_API_KEY: ${{ secrets.BUTLER_API_KEY }} # Needs to be added through github
   GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+  GODOT_VERSION: 4.1.1
 
 jobs:
   CleanArtifacts:
@@ -29,17 +33,17 @@ jobs:
 
       - name: Download + Authorize Godot
         run: |
-          curl -sL -o godot.zip https://downloads.tuxfamily.org/godotengine/4.1.1/Godot_v4.1.1-stable_linux.x86_64.zip
+          curl -sL -o godot.zip https://downloads.tuxfamily.org/godotengine/${{ vars.GODOT_VERSION }}/Godot_v${{ vars.GODOT_VERSION }}-stable_linux.x86_64.zip
           unzip godot.zip
-          mv Godot_v4.1.1-stable_linux.x86_64 godot
+          mv Godot_v${{ vars.GODOT_VERSION }}-stable_linux.x86_64 godot
           chmod +x godot
 
       - name: Prepare Export Templates
         run: |
-          curl -sL -o export_templates.zip https://downloads.tuxfamily.org/godotengine/4.1.1/Godot_v4.1.1-stable_export_templates.tpz
+          curl -sL -o export_templates.zip https://downloads.tuxfamily.org/godotengine/${{ vars.GODOT_VERSION }}/Godot_v${{ vars.GODOT_VERSION }}-stable_export_templates.tpz
           unzip export_templates.zip
-          mkdir -p ~/.local/share/godot/export_templates/4.1.1.stable
-          mv ./templates/* ~/.local/share/godot/export_templates/4.1.1.stable
+          mkdir -p ~/.local/share/godot/export_templates/${{ vars.GODOT_VERSION }}.stable
+          mv ./templates/* ~/.local/share/godot/export_templates/${{ vars.GODOT_VERSION }}.stable
 
       - name: Godot Build Windows Desktop
         run: |
@@ -49,7 +53,7 @@ jobs:
       - name: Godot Build HTML5/Web
         run: |
           mkdir -p ./build/${{vars.ITCH_PROJECT_NAME}}-html
-          ./godot --headless --path ./ --export-release "${{vars.ITCH_PROJECT_NAME}}-html" ./build/${{vars.ITCH_PROJECT_NAME}}-html/index.html
+          ./godot --headless --path ./ --export-release "Web" ./build/${{vars.ITCH_PROJECT_NAME}}-html/index.html
           zip -mjr ./build/${{vars.ITCH_PROJECT_NAME}}.zip ./build/${{vars.ITCH_PROJECT_NAME}}-html/*
 
       - name: Godot Build Linux/X11
@@ -72,7 +76,7 @@ jobs:
 
       - name: Version
         id: tag_version
-        uses: mathieudutour/github-tag-action@v5.6
+        uses: mathieudutour/github-tag-action@v6.1
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
 
