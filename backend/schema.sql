@@ -83,6 +83,19 @@ CREATE TABLE public.character_sheets (
 ALTER TABLE public.character_sheets OWNER TO master;
 
 --
+-- Name: json_schemas; Type: TABLE; Schema: public; Owner: master
+--
+
+CREATE TABLE public.json_schemas (
+    entity character varying NOT NULL,
+    version character varying NOT NULL,
+    schema_definition jsonb NOT NULL
+);
+
+
+ALTER TABLE public.json_schemas OWNER TO master;
+
+--
 -- Name: modus; Type: TABLE; Schema: public; Owner: master
 --
 
@@ -179,6 +192,14 @@ CREATE VIEW public.weapon_spec AS
 
 
 ALTER TABLE public.weapon_spec OWNER TO master;
+
+--
+-- Name: json_schemas ID_PKEY; Type: CONSTRAINT; Schema: public; Owner: master
+--
+
+ALTER TABLE ONLY public.json_schemas
+    ADD CONSTRAINT "ID_PKEY" PRIMARY KEY (entity, version);
+
 
 --
 -- Name: ars_groups ars_groups_pkey; Type: CONSTRAINT; Schema: public; Owner: master
