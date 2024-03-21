@@ -2,8 +2,8 @@
 -- PostgreSQL database dump
 --
 
--- Dumped from database version 15.4 (Debian 15.4-1.pgdg120+1)
--- Dumped by pg_dump version 15.4 (Debian 15.4-1.pgdg120+1)
+-- Dumped from database version 12.3 (Debian 12.3-1.pgdg100+1)
+-- Dumped by pg_dump version 16.1
 
 SET statement_timeout = 0;
 SET lock_timeout = 0;
@@ -15,6 +15,15 @@ SET check_function_bodies = false;
 SET xmloption = content;
 SET client_min_messages = warning;
 SET row_security = off;
+
+--
+-- Name: public; Type: SCHEMA; Schema: -; Owner: master
+--
+
+-- *not* creating schema, since initdb creates it
+
+
+ALTER SCHEMA public OWNER TO master;
 
 SET default_tablespace = '';
 
@@ -191,7 +200,7 @@ CREATE VIEW public.weapon_spec AS
      LEFT JOIN public.weapon_class ON (((weapon_class.name)::text = (weapons.weapon_class_name)::text)));
 
 
-ALTER TABLE public.weapon_spec OWNER TO master;
+ALTER VIEW public.weapon_spec OWNER TO master;
 
 --
 -- Name: json_schemas ID_PKEY; Type: CONSTRAINT; Schema: public; Owner: master
@@ -319,6 +328,14 @@ ALTER TABLE ONLY public.vias_to_aspecti_association
 
 ALTER TABLE ONLY public.weapons
     ADD CONSTRAINT weapons_weapon_class_name_fkey FOREIGN KEY (weapon_class_name) REFERENCES public.weapon_class(name);
+
+
+--
+-- Name: SCHEMA public; Type: ACL; Schema: -; Owner: master
+--
+
+REVOKE USAGE ON SCHEMA public FROM PUBLIC;
+GRANT ALL ON SCHEMA public TO PUBLIC;
 
 
 --
